@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BusinessCardController;
+use App\Http\Controllers\LetterHeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $req) {
     return $req->user();
 });
 
-Route::prefix('templates')->group(function () {
-    /** Business Cards Routes **/
-    Route::post('/business-card/{CardSide}', [BusinessCardController::class, 'create']);
+Route::middleware('auth.api.reqs')->group(function () {
+    
+    Route::prefix('business-card')->group(function () {
+        // Route::post('/templates', [BusinessCardController::class, 'create']);
+        Route::post('/create/{CardSide}', [BusinessCardController::class, 'create']);
+    });
+
+    Route::post('/letter-head/create', [LetterHeadController::class, 'create']);
 });
 
 

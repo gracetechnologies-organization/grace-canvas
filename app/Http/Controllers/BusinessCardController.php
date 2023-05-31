@@ -30,18 +30,22 @@ class BusinessCardController extends Controller
         | Save the image to the default storage path "storage/app/public/images"
         |--------------------------------------------------------------------------
         */
-        // $this->ex_thumbnail->storeAs('public/images', $this->ex_thumbnail_url);
-        // dd($ImgName);
-        // Storage::disk('public')->put('images/', $Img);
-        // Storage::disk('public')->put('images/' . $ImgName, file_get_contents($Img));
-        // $temporaryUrl = Storage::disk('public')->put($ImgName, $Img);
-        $ImgURL = url('/storage') . '/' . Storage::disk('public')->putFileAs('images', $Img, $ImgName);
-        // echo '<a href="' . $ImgURL . '">' . $ImgURL . '</a>';
-        // exit;
-        return $ImgURL;
+        return url('/storage') . '/' . Storage::disk('public')->putFileAs('images', $Img, $ImgName);
+    }
 
-        //     <a
-        // href="F:\laragon\www\grace-canvas\public\storage/images/1685340351_Ellipse_372.png">F:\laragon\www\grace-canvas\public\storage/images/1685340351_Ellipse_372.png</a>
+    public function converInto2IndexArray(string $string)
+    {
+        $words = explode(' ', $string);
+        // Get the last word of the string
+        $lastWord = end($words);
+        // Remove the last word from the array
+        $wordsWithoutLast = array_slice($words, 0, -1);
+        // Create the final array with the desired indexes
+        $array = [
+            implode(' ', $wordsWithoutLast), // Index 0: All words except the last one
+            $lastWord // Index 1: Last word
+        ];
+        return $array;
     }
 
     /**
@@ -66,13 +70,13 @@ class BusinessCardController extends Controller
         //     );
         // }
         try {
-            // dd($CardSide);
+            // dd(str_word_count($Req->Company));
             $CardId = $Req->CardId;
             $Logo = $this->getImgURL($Req->Logo);
             $FName = $Req->FName;
             $LName = $Req->LName;
             $Designation = $Req->Designation;
-            $Company = $Req->Company;
+            $Company = (str_word_count($Req->Company) > 1) ? $this->converInto2IndexArray($Req->Company) : $Req->Company;
             $TagLine = $Req->TagLine;
             $Address = $Req->Address;
             $Phone = $Req->Phone;
@@ -80,7 +84,7 @@ class BusinessCardController extends Controller
             $Email = $Req->Email;
             $Template = '2/2_' . $CardSide;
             // $CardBack = '1/1_back';
-            // dd($Template);
+            // dd($Company);
 
             $CardContent = view('business_cards.' . $Template, compact('Logo', 'FName', 'LName', 'Designation', 'Company', 'TagLine', 'Address', 'Phone', 'Website', 'Email'));
             // $CardContent = view('business_cards.' . $CardBack, compact('Logo','FName', 'LName', 'Designation', 'Company', 'TagLine', 'Address', 'Phone', 'Website', 'Email'));
