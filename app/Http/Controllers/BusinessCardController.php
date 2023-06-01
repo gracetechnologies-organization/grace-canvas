@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessCard;
+use App\Services\CustomHelpers;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -19,35 +20,8 @@ class BusinessCardController extends Controller
      */
     public function index()
     {
-        return view('google-ads');
+        // return view('google-ads');
     }
-
-    public function getImgURL(object $Img)
-    {
-        $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
-        /*
-        |--------------------------------------------------------------------------
-        | Save the image to the default storage path "storage/app/public/images"
-        |--------------------------------------------------------------------------
-        */
-        return url('/storage') . '/' . Storage::disk('public')->putFileAs('images', $Img, $ImgName);
-    }
-
-    public function converInto2IndexArray(string $string)
-    {
-        $words = explode(' ', $string);
-        // Get the last word of the string
-        $lastWord = end($words);
-        // Remove the last word from the array
-        $wordsWithoutLast = array_slice($words, 0, -1);
-        // Create the final array with the desired indexes
-        $array = [
-            implode(' ', $wordsWithoutLast), // Index 0: All words except the last one
-            $lastWord // Index 1: Last word
-        ];
-        return $array;
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -72,11 +46,11 @@ class BusinessCardController extends Controller
         try {
             // dd(str_word_count($Req->Company));
             $CardId = $Req->CardId;
-            $Logo = $this->getImgURL($Req->Logo);
+            $Logo = CustomHelpers::getImgURL($Req->Logo);
             $FName = $Req->FName;
             $LName = $Req->LName;
             $Designation = $Req->Designation;
-            $Company = (str_word_count($Req->Company) > 1) ? $this->converInto2IndexArray($Req->Company) : $Req->Company;
+            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::converInto2IndexArray($Req->Company) : $Req->Company;
             $TagLine = $Req->TagLine;
             $Address = $Req->Address;
             $Phone = $Req->Phone;

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('front_svg');
             $table->text('back_svg');
             $table->timestamps();
+            $table->softDeletesTz();
         });
     }
 

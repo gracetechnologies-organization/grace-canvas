@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\LetterHeadController;
+use App\Http\Controllers\TemplatesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,13 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $req) {
 });
 
 Route::middleware('auth.api.reqs')->group(function () {
-    
+
+    Route::post('/upload-templates', [TemplatesController::class, 'store']);
+
     Route::prefix('business-card')->group(function () {
         // Route::post('/templates', [BusinessCardController::class, 'create']);
         Route::post('/create/{CardSide}', [BusinessCardController::class, 'create']);
     });
 
     Route::post('/letter-head/create', [LetterHeadController::class, 'create']);
+    
 });
 
 
