@@ -34,4 +34,14 @@ class BusinessCard extends Model
             'back_svg' => $BackSvg
         ]);
     }
+
+    public static function getBusinessCardByID(int $CardID)
+    {
+        return BusinessCard::find($CardID);
+    }
+
+    public static function getBusinessCards()
+    {
+        return BusinessCard::paginate(10);
+    }
 }

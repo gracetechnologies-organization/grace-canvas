@@ -2,15 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\BusinessCard;
 use Carbon\Carbon;
-use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\View;
-use SebastianBergmann\Type\ObjectType;
-use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Facades\File;
 
 class CustomHelpers

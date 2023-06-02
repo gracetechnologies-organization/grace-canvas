@@ -1,5 +1,6 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 </style>
 <svg id="back" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1125"
     height="675" viewBox="0 0 1125 675">
@@ -17,7 +18,12 @@
             }
 
             .cls-2 {
-                fill: #7337d3;
+                fill: @if ($Color)
+                    {{ $Color }}
+                @else
+                    #7337d3
+                @endif
+                ;
             }
 
             .cls-3 {
@@ -25,7 +31,12 @@
             }
 
             .cls-4 {
-                fill: #632eb6;
+                fill: @if ($Color)
+                    {{ $Color }}
+                @else
+                    #632eb6
+                @endif
+                ;
             }
 
             .cls-5 {
@@ -41,6 +52,7 @@
 
             .cls-6 {
                 font-size: 20.521px;
+                font-weight: 700;
             }
 
             .cls-7 {
@@ -48,7 +60,12 @@
             }
 
             .cls-8 {
-                fill: #63c;
+                fill: @if ($Color)
+                    {{ $Color }}
+                @else
+                    #632eb6
+                @endif
+                ;
             }
         </style>
     </defs>
@@ -71,15 +88,22 @@
         <image id="Group_1" data-name="Group 1" x="345" y="237" width="111" height="106"
             href="{{ $Logo }}" />
         <text id="TAGLINE_HERE" data-name="TAGLINE HERE" class="cls-5"
-            transform="translate(399.179 439.956) scale(1.196)"> {{ $TagLine }} </text>
+            transform="translate(399.179 439.956) scale(1.196)">
+            <tspan x="0"> {{ $TagLine }} </tspan>
+        </text>
         @if (is_array($Company))
             <text id="Ciomo_Pro" data-name="Ciomo Pro" class="cls-6"
-                transform="translate(399.999 403.803) scale(2.437)"> {{ $Company[0] }} <tspan class="cls-7">
-                    <tspan class="cls-8"> {{ $Company[1] }} </tspan>
-                </tspan></text>
+                transform="translate(399.999 403.803) scale(2.437)">
+                <tspan x="0">{{ $Company[0] }}<tspan class="cls-7">
+                        <tspan class="cls-8">{{ $Company[1] }}</tspan>
+                    </tspan>
+                </tspan>
+            </text>
         @else
             <text id="Ciomo_Pro" data-name="Ciomo Pro" class="cls-6"
-                transform="translate(399.999 403.803) scale(2.437)"> {{ $Company }} </text>
+                transform="translate(399.999 403.803) scale(2.437)">
+                {{ $Company }}
+            </text>
         @endif
     </g>
 </svg>

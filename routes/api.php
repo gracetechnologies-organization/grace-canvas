@@ -25,13 +25,13 @@ Route::middleware('auth.api.reqs')->group(function () {
 
     Route::post('/upload-templates', [TemplatesController::class, 'store']);
 
+    Route::post('/letter-head/create', [LetterHeadController::class, 'create']);
+
     Route::prefix('business-card')->group(function () {
-        // Route::post('/templates', [BusinessCardController::class, 'create']);
+        Route::get('/templates', [BusinessCardController::class, 'show']);
         Route::post('/create/{CardSide}', [BusinessCardController::class, 'create']);
     });
 
-    Route::post('/letter-head/create', [LetterHeadController::class, 'create']);
-    
 });
 
 
