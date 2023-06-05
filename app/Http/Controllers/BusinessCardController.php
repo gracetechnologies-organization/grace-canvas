@@ -15,7 +15,7 @@ class BusinessCardController extends Controller
         // return view('google-ads');
     }
 
-    public function create(Request $Req, BusinessCard $BusinessCard, string $CardSide)
+    public function create(Request $Req, string $CardSide)
     {
         try {
             $Validator = Validator::make($Req->all(), [
@@ -37,7 +37,7 @@ class BusinessCardController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            
+
             $Logo = CustomHelpers::getImgURL($Req->Logo);
             $FName = $Req->FName;
             $LName = $Req->LName;
@@ -52,9 +52,6 @@ class BusinessCardController extends Controller
 
             $BusinessCard = BusinessCard::getBusinessCardByID($Req->CardID);
             $ThisTemplate = ($CardSide === 'front') ? $BusinessCard->front_svg . $CardSide : $BusinessCard->back_svg . $CardSide;
-            // $Template = $BusinessCard->front_svg . $CardSide;
-            // $CardBack = '1/1_back';
-            // dd($ThisTemplate);  
             $CardView = view('business_cards.' . $ThisTemplate, compact('Logo', 'FName', 'LName', 'Designation', 'Company', 'TagLine', 'Address', 'Phone', 'Website', 'Email', 'Color'));
             // Create a response with the file content
             return response()->macroView(
@@ -71,11 +68,6 @@ class BusinessCardController extends Controller
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
-    }
-
-    public function store(Request $Req)
-    {
-        //
     }
 
     public function show()
@@ -110,18 +102,88 @@ class BusinessCardController extends Controller
         }
     }
 
-    public function edit(BusinessCard $businessCard)
+    public function edit(Request $Req)
     {
-        //
+        try {
+            $Validator = Validator::make($Req->all(), [
+                'FrontImage' => 'required|mimes:png,jpg|max:500',
+                'BackImage' => 'required|mimes:png,jpg|max:500',
+                'FrontSvg' => 'required|mimes:svg',
+                'BackSvg' => 'required|mimes:svg'
+            ]);
+            if ($Validator->fails()) {
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    $Validator->errors(),
+                    config('messages.HTTP_UNPROCESSABLE_DATA')
+                );
+            }
+            $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $Req->CardID, 'front');
+            $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $Req->CardID, 'back');
+            /*
+            |--------------------------------------------------------------------------
+            | Here we are using "getViewPathWithID()" function only to update the svg 
+            | Content present in the blade file
+            |--------------------------------------------------------------------------
+            */
+            CustomHelpers::getViewPathWithID($Req->FrontSvg, 'business_cards', $Req->CardID, 'front');
+            CustomHelpers::getViewPathWithID($Req->BackSvg, 'business_cards', $Req->CardID, 'back');
+            /*
+            |--------------------------------------------------------------------------
+            */
+            $Updated = BusinessCard::updateBusinessCard($Req->CardID, $FrontImage, $BackImage);
+            if ($Updated) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.UPDATION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.UPDATION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 
-    public function update(Request $Req, BusinessCard $businessCard)
+    public function destroy(Request $Req)
     {
-        //
-    }
-
-    public function destroy(BusinessCard $businessCard)
-    {
-        //
+        try {
+            $Deleted = BusinessCard::deleteBusinessCard($Req->CardID);
+            if ($Deleted) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.DELETION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.DELETION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 }

@@ -23,13 +23,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $req) {
 
 Route::middleware('auth.api.reqs')->group(function () {
 
-    Route::post('/upload-templates', [TemplatesController::class, 'store']);
-
-    Route::post('/letter-head/create', [LetterHeadController::class, 'create']);
+    Route::prefix('template')->group(function () {
+        Route::post('/upload', [TemplatesController::class, 'store']);
+    });
 
     Route::prefix('business-card')->group(function () {
+        // 
         Route::get('/templates', [BusinessCardController::class, 'show']);
+        // 
         Route::post('/create/{CardSide}', [BusinessCardController::class, 'create']);
+        Route::post('/edit/{CardID}', [BusinessCardController::class, 'edit']);
+        Route::post('/destroy/{CardID}', [BusinessCardController::class, 'destroy']);
+    });
+
+    Route::prefix('letter-head')->group(function () {
+        Route::post('/create', [LetterHeadController::class, 'create']);
     });
 
 });
