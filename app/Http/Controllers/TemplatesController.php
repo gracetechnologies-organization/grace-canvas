@@ -32,7 +32,7 @@ class TemplatesController extends Controller
     public function store(Request $Req)
     {
         try {
-            $AvailableTypes = ['business_cards'];
+            $AvailableTypes = ['business_cards', 'letter_heads'];
             if (in_array($Req->Type, $AvailableTypes)) {
                 if ($Req->Type == 'business_cards') {
                     $Validator = Validator::make($Req->all(), [
@@ -54,6 +54,41 @@ class TemplatesController extends Controller
                     //     'appointment_date' => 'exclude_if:has_appointment,false|required|date',
                     //     'doctor_name' => 'exclude_if:has_appointment,false|required|string',
                     // ]);
+                    $LastInsertedId =  BusinessCard::getLastInsertedID();
+                    $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
+                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');
+                    $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $LastInsertedId, 'back');
+                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId, 'front');
+                    $BackSvg = CustomHelpers::getViewPathWithID($Req->BackSvg, $Req->Type, $LastInsertedId, 'back');
+                    $Inserted = BusinessCard::insertBusinessCard($FrontImage, $BackImage, $FrontSvg, $BackSvg);
+                    if ($Inserted) {
+                        return response()->macroJson(
+                            [],
+                            config('messages.SUCCESS_CODE'),
+                            config('messages.INSERTION_SUCCESS'),
+                            config('messages.HTTP_SUCCESS_CODE')
+                        );
+                    }
+                    return response()->macroJson(
+                        [],
+                        config('messages.FAILED_CODE'),
+                        config('messages.INSERTION_FAILED'),
+                        config('messages.HTTP_SUCCESS_CODE')
+                    );
+                } elseif ($Req->Type == 'letter_heads') {
+                    $Validator = Validator::make($Req->all(), [
+                        'FrontImage' => 'required|mimes:png,jpg|max:500',
+                        'FrontSvg' => 'required|mimes:svg'
+                    ]);
+                    if ($Validator->fails()) {
+                        return response()->macroJson(
+                            [],
+                            config('messages.FAILED_CODE'),
+                            $Validator->errors(),
+                            config('messages.HTTP_UNPROCESSABLE_DATA')
+                        );
+                    }
+                    // Create LetterHead Model
                     $LastInsertedId =  BusinessCard::getLastInsertedID();
                     $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
                     $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');

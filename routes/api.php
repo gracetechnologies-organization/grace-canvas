@@ -26,7 +26,7 @@ Route::middleware('auth.api.reqs')->group(function () {
     Route::prefix('template')->group(function () {
         Route::post('/upload', [TemplatesController::class, 'store']);
     });
-
+           
     Route::prefix('business-card')->group(function () {
         // 
         Route::get('/templates', [BusinessCardController::class, 'show']);
