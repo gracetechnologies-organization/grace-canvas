@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BusinessCard extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'front_image',
@@ -17,7 +18,7 @@ class BusinessCard extends Model
     ];
     /*
     |--------------------------------------------------------------------------
-    | Custom Helper Functions
+    | Helpers
     |--------------------------------------------------------------------------
     */
     public static function getLastInsertedID()
@@ -33,5 +34,28 @@ class BusinessCard extends Model
             'front_svg' => $FrontSvg,
             'back_svg' => $BackSvg
         ]);
+    }
+
+    public static function updateBusinessCard(int $CardID, string $FrontImage, string $BackImage)
+    {
+        return BusinessCard::where('id', $CardID)->update([
+            'front_image' => $FrontImage,
+            'back_image' => $BackImage
+        ]);
+    }
+
+    public static function deleteBusinessCard(int $CardId)
+    {
+        return BusinessCard::where('id', $CardId)->delete();
+    }
+
+    public static function getBusinessCardByID(int $CardID)
+    {
+        return BusinessCard::findOrFail($CardID);
+    }
+
+    public static function getBusinessCards()
+    {
+        return BusinessCard::paginate(10);
     }
 }

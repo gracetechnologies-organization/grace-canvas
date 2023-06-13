@@ -32,51 +32,57 @@ class TemplatesController extends Controller
     public function store(Request $Req)
     {
         try {
-            if ($Req->Type == 'business-cards') {
-                $validator = Validator::make($Req->all(), [
-                    'FrontImage' => 'required|mimes:png,jpg|max:500',
-                    'BackImage' => 'required|mimes:png,jpg|max:500',
-                    'FrontSvg' => 'required|mimes:svg',
-                    'BackSvg' => 'required|mimes:svg'
-                ]);
-                if ($validator->fails()) {
+            $AvailableTypes = ['business_cards'];
+            if (in_array($Req->Type, $AvailableTypes)) {
+                if ($Req->Type == 'business_cards') {
+                    $Validator = Validator::make($Req->all(), [
+                        'FrontImage' => 'required|mimes:png,jpg|max:500',
+                        'BackImage' => 'required|mimes:png,jpg|max:500',
+                        'FrontSvg' => 'required|mimes:svg',
+                        'BackSvg' => 'required|mimes:svg'
+                    ]);
+                    if ($Validator->fails()) {
+                        return response()->macroJson(
+                            [],
+                            config('messages.FAILED_CODE'),
+                            $Validator->errors(),
+                            config('messages.HTTP_UNPROCESSABLE_DATA')
+                        );
+                    }
+                    // $validator = Validator::make($data, [
+                    //     'has_appointment' => 'required|boolean',
+                    //     'appointment_date' => 'exclude_if:has_appointment,false|required|date',
+                    //     'doctor_name' => 'exclude_if:has_appointment,false|required|string',
+                    // ]);
+                    $LastInsertedId =  BusinessCard::getLastInsertedID();
+                    $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
+                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');
+                    $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $LastInsertedId, 'back');
+                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId, 'front');
+                    $BackSvg = CustomHelpers::getViewPathWithID($Req->BackSvg, $Req->Type, $LastInsertedId, 'back');
+                    $Inserted = BusinessCard::insertBusinessCard($FrontImage, $BackImage, $FrontSvg, $BackSvg);
+                    if ($Inserted) {
+                        return response()->macroJson(
+                            [],
+                            config('messages.SUCCESS_CODE'),
+                            config('messages.INSERTION_SUCCESS'),
+                            config('messages.HTTP_SUCCESS_CODE')
+                        );
+                    }
                     return response()->macroJson(
                         [],
                         config('messages.FAILED_CODE'),
-                        $validator->errors(),
-                        config('messages.HTTP_SERVER_ERROR_CODE')
-                    );
-                }
-                // $validator = Validator::make($data, [
-                //     'has_appointment' => 'required|boolean',
-                //     'appointment_date' => 'exclude_if:has_appointment,false|required|date',
-                //     'doctor_name' => 'exclude_if:has_appointment,false|required|string',
-                // ]);
-                $LastInsertedId =  BusinessCard::getLastInsertedID();
-                $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-                // dd($LastInsertedId);
-                $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');
-                $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $LastInsertedId, 'back');
-                $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId, 'front');
-                $BackSvg = CustomHelpers::getViewPathWithID($Req->BackSvg, $Req->Type, $LastInsertedId, 'back');
-                
-                $Inserted = BusinessCard::insertBusinessCard($FrontImage, $BackImage, $FrontSvg, $BackSvg);
-                // dd($Inserted);
-                if($Inserted){
-                    return response()->macroJson(
-                        [],
-                        config('messages.SUCCESS_CODE'),
-                        config('messages.INSERTION_SUCCESS'),
+                        config('messages.INSERTION_FAILED'),
                         config('messages.HTTP_SUCCESS_CODE')
                     );
                 }
-                return response()->macroJson(
-                    [],
-                    config('messages.FAILED_CODE'),
-                    config('messages.INSERTION_FAILED'),
-                    config('messages.HTTP_SUCCESS_CODE')
-                );
             }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.TYPE_NA'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
         } catch (Exception $error) {
             report($error);
             return response()->macroJson(

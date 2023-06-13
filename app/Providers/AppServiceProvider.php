@@ -20,12 +20,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Response::macro('macroJson', function ($data = [], $success = null, $message = '', $http_code = 500) {
+        Response::macro('macroJson', function (array $Data = [], int $Success = null, string $Message = '', int $HttpCode = 500) {
             return Response::make([
-                'data' => $data,
-                'success' => $success,
-                'message' => $message
-            ], $http_code);
+                'data' => $Data,
+                'success' => $Success,
+                'message' => $Message
+            ], $HttpCode);
+        });
+
+        Response::macro('macroView', function (string $View, int $HttpCode = 500, array $ContentType) {
+            return Response::make($View, $HttpCode, $ContentType);
         });
     }
 }
