@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessCard;
+use App\Models\LetterHead;
 use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
@@ -89,13 +90,11 @@ class TemplatesController extends Controller
                         );
                     }
                     // Create LetterHead Model
-                    $LastInsertedId =  BusinessCard::getLastInsertedID();
+                    $LastInsertedId =  LetterHead::getLastInsertedID();
                     $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');
-                    $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $LastInsertedId, 'back');
-                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId, 'front');
-                    $BackSvg = CustomHelpers::getViewPathWithID($Req->BackSvg, $Req->Type, $LastInsertedId, 'back');
-                    $Inserted = BusinessCard::insertBusinessCard($FrontImage, $BackImage, $FrontSvg, $BackSvg);
+                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId);
+                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId);
+                    $Inserted = LetterHead::insertLetterHead($FrontImage, $FrontSvg);
                     if ($Inserted) {
                         return response()->macroJson(
                             [],

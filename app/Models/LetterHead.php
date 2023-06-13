@@ -24,37 +24,33 @@ class LetterHead extends Model
         return LetterHead::orderByDesc('id')->first()->id ?? 0;
     }
 
-    // Modify the following helpers
-    public static function insertBusinessCard(string $FrontImage, string $BackImage, string $FrontSvg, string $BackSvg)
+    public static function insertLetterHead(string $FrontImage, string $FrontSvg)
     {
-        return BusinessCard::create([
+        return LetterHead::create([
             'front_image' => $FrontImage,
-            'back_image' => $BackImage,
-            'front_svg' => $FrontSvg,
-            'back_svg' => $BackSvg
+            'front_svg' => $FrontSvg
         ]);
     }
 
-    public static function updateBusinessCard(int $CardID, string $FrontImage, string $BackImage)
+    public static function updateLetterHead(int $CardID, string $FrontImage)
     {
-        return BusinessCard::where('id', $CardID)->update([
-            'front_image' => $FrontImage,
-            'back_image' => $BackImage
+        return LetterHead::where('id', $CardID)->update([
+            'front_image' => $FrontImage
         ]);
     }
 
-    public static function deleteBusinessCard(int $CardId)
+    public static function deleteLetterHead(int $CardId)
     {
-        return BusinessCard::where('id', $CardId)->delete();
+        return LetterHead::where('id', $CardId)->delete();
     }
 
-    public static function getBusinessCardByID(int $CardID)
+    public static function getLetterHeadByID(int $CardID)
     {
-        return BusinessCard::findOrFail($CardID);
+        return LetterHead::findOrFail($CardID);
     }
 
-    public static function getBusinessCards()
+    public static function getLetterHeads()
     {
-        return BusinessCard::paginate(10);
+        return LetterHead::paginate(10);
     }
 }

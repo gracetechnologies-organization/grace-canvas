@@ -40,6 +40,8 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/create', [LetterHeadController::class, 'create']);
     });
 
+    Route::get('collections-testing', [LetterHeadController::class, 'collectionsTestCode']);
+
 });
 
 
