@@ -32,21 +32,21 @@ class LetterHead extends Model
         ]);
     }
 
-    public static function updateLetterHead(int $CardID, string $FrontImage)
+    public static function updateLetterHead(int $ID, string $FrontImage)
     {
-        return LetterHead::where('id', $CardID)->update([
+        return LetterHead::where('id', $ID)->update([
             'front_image' => $FrontImage
         ]);
     }
 
-    public static function deleteLetterHead(int $CardId)
+    public static function deleteLetterHead(int $ID)
     {
-        return LetterHead::where('id', $CardId)->delete();
+        return LetterHead::where('id', $ID)->delete();
     }
 
-    public static function getLetterHeadByID(int $CardID)
+    public static function getLetterHeadByID(int $ID)
     {
-        return LetterHead::findOrFail($CardID);
+        return LetterHead::findOrFail($ID);
     }
 
     public static function getLetterHeads()

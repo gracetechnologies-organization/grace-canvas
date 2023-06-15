@@ -72,34 +72,7 @@ class BusinessCardController extends Controller
 
     public function show()
     {
-        try {
-            $BusinessCards = BusinessCard::getBusinessCards();
-            $Data = [];
-            foreach ($BusinessCards as $Card) {
-                array_push($Data, (object)[
-                    'id' => $Card->id,
-                    'front_image' => url('/storage/images') . '/' . $Card->front_image,
-                    'back_image' => url('/storage/images') . '/' . $Card->back_image,
-                    'cteated_at' => $Card->created_at,
-                    'updated_at' => $Card->updated_at,
-                    'deleted_at' => $Card->deleted_at
-                ]);
-            }
-            return response()->macroJson(
-                $Data,
-                config('messages.SUCCESS_CODE'),
-                (empty($Data)) ? config('messages.NO_RECORD') : '',
-                config('messages.HTTP_SUCCESS_CODE')
-            );
-        } catch (Exception $error) {
-            report($error);
-            return response()->macroJson(
-                [],
-                config('messages.FAILED_CODE'),
-                $error->getMessage(),
-                config('messages.HTTP_SERVER_ERROR_CODE')
-            );
-        }
+       
     }
 
     public function edit(Request $Req)
@@ -129,9 +102,7 @@ class BusinessCardController extends Controller
             */
             CustomHelpers::getViewPathWithID($Req->FrontSvg, 'business_cards', $Req->CardID, 'front');
             CustomHelpers::getViewPathWithID($Req->BackSvg, 'business_cards', $Req->CardID, 'back');
-            /*
-            |--------------------------------------------------------------------------
-            */
+
             $Updated = BusinessCard::updateBusinessCard($Req->CardID, $FrontImage, $BackImage);
             if ($Updated) {
                 return response()->macroJson(

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BusinessCardController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterHeadController;
 use App\Http\Controllers\TemplatesController;
+use App\Http\Controllers\WallpaperController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,14 +25,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $req) {
 
 Route::middleware('auth.api.reqs')->group(function () {
 
+    Route::prefix('category')->group(function () {
+        Route::post('/create', [CategoryController::class, 'create']);
+    });
+
     Route::prefix('template')->group(function () {
         Route::post('/upload', [TemplatesController::class, 'store']);
+        Route::prefix('show')->group(function () {
+            Route::get('/business-cards', [TemplatesController::class, 'showBusinessCards']);
+            Route::get('/wallpapers', [TemplatesController::class, 'showWallpapers']);
+        });
     });
-           
+
     Route::prefix('business-card')->group(function () {
-        // 
-        Route::get('/templates', [BusinessCardController::class, 'show']);
-        // 
         Route::post('/create/{CardSide}', [BusinessCardController::class, 'create']);
         Route::post('/edit/{CardID}', [BusinessCardController::class, 'edit']);
         Route::post('/destroy/{CardID}', [BusinessCardController::class, 'destroy']);
@@ -38,10 +45,16 @@ Route::middleware('auth.api.reqs')->group(function () {
 
     Route::prefix('letter-head')->group(function () {
         Route::post('/create', [LetterHeadController::class, 'create']);
+        Route::post('/edit/{ID}', [LetterHeadController::class, 'edit']);
+        Route::post('/destroy/{ID}', [LetterHeadController::class, 'destroy']);
+    });
+
+    Route::prefix('wallpaper')->group(function () {
+        Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
+        Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
     });
 
     Route::get('collections-testing', [LetterHeadController::class, 'collectionsTestCode']);
-
 });
 
 

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\View;
 
 class LetterHeadController extends Controller
 {
-
     public function collectionsTestCode()
     {
         // $flights = LetterHead::chunkById(2, function (Collection $flights) {
@@ -40,28 +39,12 @@ class LetterHeadController extends Controller
 
         dd($flights->contains(33));
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         //
     }
 
-    public function getImgURL(object $Img)
-    {
-        $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
-        /*
-        |--------------------------------------------------------------------------
-        | Save the image to the default storage path "storage/app/public/images"
-        |--------------------------------------------------------------------------
-        */
-        return url('/storage') . '/' . Storage::disk('public')->putFileAs('images', $Img, $ImgName);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $Req)
     {
         try {
@@ -114,43 +97,97 @@ class LetterHeadController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $Req)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Request $Req)
     {
         // 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit()
+    public function edit(Request $Req)
     {
-        //
+        try {
+            $Validator = Validator::make($Req->all(), [
+                'FrontImage' => 'required|mimes:png,jpg|max:500',
+                'FrontSvg' => 'required|mimes:svg'
+            ]);
+            if ($Validator->fails()) {
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    $Validator->errors(),
+                    config('messages.HTTP_UNPROCESSABLE_DATA')
+                );
+            }
+            $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $Req->ID, 'front');
+            /*
+            |--------------------------------------------------------------------------
+            | Here we are using "getViewPathWithID()" function only to update the svg 
+            | Content present in the blade file
+            |--------------------------------------------------------------------------
+            */
+            CustomHelpers::getViewPathWithID($Req->FrontSvg, 'letter_heads', $Req->ID);
+
+            $Updated = LetterHead::updateLetterHead($Req->ID, $FrontImage);
+            if ($Updated) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.UPDATION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.UPDATION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $Req)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy()
+    public function destroy(Request $Req)
     {
-        //
+        try {
+            $Deleted = LetterHead::deleteLetterHead($Req->ID);
+            if ($Deleted) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.DELETION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.DELETION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 }

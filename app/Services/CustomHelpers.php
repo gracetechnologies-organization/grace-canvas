@@ -19,6 +19,18 @@ class CustomHelpers
         return url('/storage') . '/' . Storage::disk('public')->putFileAs('images', $Img, $ImgName);
     }
 
+    public static function getWallpaperImgName(object $Img)
+    {
+        $ImgName = str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default wallpapers path "storage/app/public/wallpapers"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('wallpapers', $Img, $ImgName);
+        return $ImgName;
+    }
+
     public static function getImgNameWithID(object $Img, int $ID, string $Side = null)
     {
         $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
@@ -74,7 +86,7 @@ class CustomHelpers
         // Join the first 4 words into a string
         $Line1 = implode(' ', array_slice($Words, 0, 4));
         // Join the remaining words into a string 
-        $Line2 = implode(' ', array_slice($Words, 4)); 
+        $Line2 = implode(' ', array_slice($Words, 4));
         return [$Line1, $Line2];
     }
 }
