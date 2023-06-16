@@ -3,23 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $Req)
     {
         try {
@@ -60,41 +55,55 @@ class CategoryController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
+    public function show(Request $Req, Category $category)
     {
-        //
+        try {
+            // echo $Req->CatID;
+            $Categories = Category::getCategories();
+            $Data = [];
+            foreach ($Categories as $Category) {
+                array_push($Data, [
+                    'id' => $Category->id,
+                    'name' => $Category->name,
+                    'cteated_at' => $Category->created_at,
+                    'updated_at' => $Category->updated_at,
+                    'deleted_at' => $Category->deleted_at
+                ]);
+            }
+            return response()->macroJsonExtention(
+                $Data,
+                'pagination',
+                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($Categories)],
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson([
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            ]);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Category $category)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Category $category)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Category $category)
     {
         //

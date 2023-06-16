@@ -149,18 +149,62 @@ class TemplatesController extends Controller
         }
     }
 
+    public function storeBulkWallpapers(Request $Req)
+    {
+        try {
+            $Validator = Validator::make($Req->all(), [
+                'FrontImages.*' => 'required|mimes:png,jpg|max:500',
+                'CatID' => 'required|integer'
+            ]);
+            if ($Validator->fails()) {
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    $Validator->errors(),
+                    config('messages.HTTP_UNPROCESSABLE_DATA')
+                );
+            }
+            foreach ($Req->file('FrontImages') as $Image) {
+                $FrontImage = CustomHelpers::getWallpaperImgName($Image);
+                $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->CatID);
+            }
+            if ($Inserted) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.INSERTION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.INSERTION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
+    }
+
     public function show()
     {
         // 
     }
-   
+
     public function showBusinessCards()
     {
         try {
             $BusinessCards = BusinessCard::getBusinessCards();
             $Data = [];
             foreach ($BusinessCards as $Card) {
-                array_push($Data, (object)[
+                array_push($Data, [
                     'id' => $Card->id,
                     'front_image' => url('/storage/images') . '/' . $Card->front_image,
                     'back_image' => url('/storage/images') . '/' . $Card->back_image,
@@ -169,8 +213,10 @@ class TemplatesController extends Controller
                     'deleted_at' => $Card->deleted_at
                 ]);
             }
-            return response()->macroJson(
+            return response()->macroJsonExtention(
                 $Data,
+                'pagination',
+                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($BusinessCards)],
                 config('messages.SUCCESS_CODE'),
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
@@ -192,7 +238,7 @@ class TemplatesController extends Controller
             $Wallapapers = Wallpaper::getWallpapers();
             $Data = [];
             foreach ($Wallapapers as $Wallpaper) {
-                array_push($Data, (object)[
+                array_push($Data, [
                     'id' => $Wallpaper->id,
                     'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
                     'cat_id' => $Wallpaper->cat_id,
@@ -201,8 +247,10 @@ class TemplatesController extends Controller
                     'deleted_at' => $Wallpaper->deleted_at
                 ]);
             }
-            return response()->macroJson(
+            return response()->macroJsonExtention(
                 $Data,
+                'pagination',
+                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($Wallapapers)],
                 config('messages.SUCCESS_CODE'),
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')

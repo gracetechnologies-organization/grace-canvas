@@ -89,4 +89,17 @@ class CustomHelpers
         $Line2 = implode(' ', array_slice($Words, 4));
         return [$Line1, $Line2];
     }
+
+    public static function getPaginationKeys(object $Paginator)
+    {
+        return [
+            'currentPage' => $Paginator->currentPage(),
+            'getOptions' => $Paginator->getOptions(),
+            'hasMorePages' => $Paginator->hasMorePages(),
+            'nextPageUrl' => $Paginator->nextPageUrl(),
+            'previousPageUrl' => $Paginator->previousPageUrl(),
+            'perPage' => $Paginator->perPage(),
+            'total' => $Paginator->total(),
+        ];
+    }
 }

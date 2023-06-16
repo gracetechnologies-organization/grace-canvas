@@ -27,10 +27,14 @@ Route::middleware('auth.api.reqs')->group(function () {
 
     Route::prefix('category')->group(function () {
         Route::post('/create', [CategoryController::class, 'create']);
+        Route::get('/show/{CatID?}', [CategoryController::class, 'show']);
     });
 
     Route::prefix('template')->group(function () {
-        Route::post('/upload', [TemplatesController::class, 'store']);
+        Route::prefix('upload')->group(function () {
+            Route::post('/', [TemplatesController::class, 'store']);
+            Route::post('/bulk/wallpapers', [TemplatesController::class, 'storeBulkWallpapers']);
+        });
         Route::prefix('show')->group(function () {
             Route::get('/business-cards', [TemplatesController::class, 'showBusinessCards']);
             Route::get('/wallpapers', [TemplatesController::class, 'showWallpapers']);
