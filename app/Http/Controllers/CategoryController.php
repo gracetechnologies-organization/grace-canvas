@@ -82,10 +82,8 @@ class CategoryController extends Controller
                     'deleted_at' => $Category->deleted_at
                 ]);
             }
-            return response()->macroJsonExtention(
-                $Data,
-                'pagination',
-                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($Categories)],
+            return response()->macroJson(
+                (empty($Data)) ? [] : $Data,
                 config('messages.SUCCESS_CODE'),
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')

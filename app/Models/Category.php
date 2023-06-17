@@ -54,7 +54,7 @@ class Category extends Model
 
     public static function getCategories()
     {
-        return Category::paginate(10);
+        return Category::all();
     }
 
     public static function getWallpapersOfCategory(int $ID)
