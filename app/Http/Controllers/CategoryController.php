@@ -77,7 +77,7 @@ class CategoryController extends Controller
                 array_push($Data, [
                     'id' => $Category->id,
                     'name' => $Category->name,
-                    'cteated_at' => $Category->created_at,
+                    'created_at' => $Category->created_at,
                     'updated_at' => $Category->updated_at,
                     'deleted_at' => $Category->deleted_at
                 ]);

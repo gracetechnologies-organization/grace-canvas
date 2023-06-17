@@ -209,7 +209,7 @@ class TemplatesController extends Controller
                     'id' => $Card->id,
                     'front_image' => url('/storage/images') . '/' . $Card->front_image,
                     'back_image' => url('/storage/images') . '/' . $Card->back_image,
-                    'cteated_at' => $Card->created_at,
+                    'created_at' => $Card->created_at,
                     'updated_at' => $Card->updated_at,
                     'deleted_at' => $Card->deleted_at
                 ]);
@@ -242,7 +242,7 @@ class TemplatesController extends Controller
                 'id' => $Wallpaper->id,
                 'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
                 'cat_id' => $Wallpaper->cat_id,
-                'cteated_at' => $Wallpaper->created_at,
+                'created_at' => $Wallpaper->created_at,
                 'updated_at' => $Wallpaper->updated_at,
                 'deleted_at' => $Wallpaper->deleted_at
             ]);
@@ -271,7 +271,7 @@ class TemplatesController extends Controller
                     'id' => $Wallpaper->id,
                     'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
                     'cat_id' => $Wallpaper->cat_id,
-                    'cteated_at' => $Wallpaper->created_at,
+                    'created_at' => $Wallpaper->created_at,
                     'updated_at' => $Wallpaper->updated_at,
                     'deleted_at' => $Wallpaper->deleted_at
                 ]);
