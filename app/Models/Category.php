@@ -13,6 +13,15 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+    public function wallpapers()
+    {
+        return $this->hasMany(Wallpaper::class, 'cat_id');
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -46,5 +55,10 @@ class Category extends Model
     public static function getCategories()
     {
         return Category::paginate(10);
+    }
+
+    public static function getWallpapersOfCategory(int $ID)
+    {
+        return Category::findOrFail($ID)->wallpapers()->paginate(10);
     }
 }

@@ -37,7 +37,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         });
         Route::prefix('show')->group(function () {
             Route::get('/business-cards', [TemplatesController::class, 'showBusinessCards']);
-            Route::get('/wallpapers', [TemplatesController::class, 'showWallpapers']);
+            Route::get('/wallpapers/{CatID?}', [TemplatesController::class, 'showWallpapers']);
         });
     });
 

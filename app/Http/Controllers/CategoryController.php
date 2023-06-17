@@ -46,12 +46,12 @@ class CategoryController extends Controller
             );
         } catch (Exception $error) {
             report($error);
-            return response()->macroJson([
+            return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
                 $error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
-            ]);
+            );
         }
     }
 
@@ -60,10 +60,17 @@ class CategoryController extends Controller
         //
     }
 
-    public function show(Request $Req, Category $category)
+    public function show(Request $Req)
     {
         try {
-            // echo $Req->CatID;
+            if ($Req->CatID) {
+                return response()->macroJson(
+                    $Data = [Category::getCategoryByID($Req->CatID)->toArray()],
+                    config('messages.SUCCESS_CODE'),
+                    empty($Data) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
             $Categories = Category::getCategories();
             $Data = [];
             foreach ($Categories as $Category) {
@@ -85,12 +92,12 @@ class CategoryController extends Controller
             );
         } catch (Exception $error) {
             report($error);
-            return response()->macroJson([
+            return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
                 $error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
-            ]);
+            );
         }
     }
 

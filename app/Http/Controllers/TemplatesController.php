@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessCard;
+use App\Models\Category;
 use App\Models\LetterHead;
 use App\Models\Wallpaper;
 use App\Services\CustomHelpers;
@@ -232,9 +233,37 @@ class TemplatesController extends Controller
         }
     }
 
-    public function showWallpapers()
+    public function showWallpapersByCatID(int $CatID)
+    {
+        $Wallpapers = Category::getWallpapersOfCategory($CatID);
+        $Data = [];
+        foreach ($Wallpapers as $Wallpaper) {
+            array_push($Data, [
+                'id' => $Wallpaper->id,
+                'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
+                'cat_id' => $Wallpaper->cat_id,
+                'cteated_at' => $Wallpaper->created_at,
+                'updated_at' => $Wallpaper->updated_at,
+                'deleted_at' => $Wallpaper->deleted_at
+            ]);
+        }
+        return ['data' => $Data, 'pagination' => $Wallpapers];
+    }
+
+    public function showWallpapers(Request $Req)
     {
         try {
+            if ($Req->CatID) {
+                $Data = $this->showWallpapersByCatID($Req->CatID);
+                return response()->macroJsonExtention(
+                    (empty($Data['data'])) ? [] : $Data['data'],
+                    'pagination',
+                    (empty($Data['data'])) ? [] : [CustomHelpers::getPaginationKeys($Data['pagination'])],
+                    config('messages.SUCCESS_CODE'),
+                    (empty($Data['data'])) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
             $Wallapapers = Wallpaper::getWallpapers();
             $Data = [];
             foreach ($Wallapapers as $Wallpaper) {
