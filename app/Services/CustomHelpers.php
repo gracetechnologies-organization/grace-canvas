@@ -62,6 +62,18 @@ class CustomHelpers
         return $ID . '/' . $ID . '_';
     }
 
+    public static function saveImgAndGetName(object $Img)
+    {
+        $ImgName = str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('images', $Img, $ImgName);
+        return $ImgName;
+    }
+
     public static function converInto2IndexArray(string $String)
     {
         $Words = explode(' ', $String);

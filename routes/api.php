@@ -27,6 +27,8 @@ Route::middleware('auth.api.reqs')->group(function () {
 
     Route::prefix('category')->group(function () {
         Route::post('/create', [CategoryController::class, 'create']);
+        Route::post('/edit/{CatID}', [CategoryController::class, 'edit']);
+        Route::post('/destroy/{CatID}', [CategoryController::class, 'destroy']);
         Route::get('/show/{CatID?}', [CategoryController::class, 'show']);
     });
 

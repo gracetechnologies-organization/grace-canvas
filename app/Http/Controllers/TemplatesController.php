@@ -233,18 +233,18 @@ class TemplatesController extends Controller
         }
     }
 
-    public function showWallpapersByCatID(int $CatID)
-    {
-        $Wallpapers = Category::getWallpapersOfCategory($CatID);
+    public function showWallpapersByCatID(array $Category)
+    {   
+        $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
         $Data = [];
         foreach ($Wallpapers as $Wallpaper) {
             array_push($Data, [
                 'id' => $Wallpaper->id,
                 'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
-                'cat_id' => $Wallpaper->cat_id,
                 'created_at' => $Wallpaper->created_at,
                 'updated_at' => $Wallpaper->updated_at,
-                'deleted_at' => $Wallpaper->deleted_at
+                'deleted_at' => $Wallpaper->deleted_at,
+                'category' => $Category
             ]);
         }
         return ['data' => $Data, 'pagination' => $Wallpapers];
@@ -254,7 +254,8 @@ class TemplatesController extends Controller
     {
         try {
             if ($Req->CatID) {
-                $Data = $this->showWallpapersByCatID($Req->CatID);
+                $Category = Category::getCategoryByID($Req->CatID);
+                $Data = $this->showWallpapersByCatID($Category);
                 return response()->macroJsonExtention(
                     (empty($Data['data'])) ? [] : $Data['data'],
                     'pagination',
@@ -270,10 +271,10 @@ class TemplatesController extends Controller
                 array_push($Data, [
                     'id' => $Wallpaper->id,
                     'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
-                    'cat_id' => $Wallpaper->cat_id,
                     'created_at' => $Wallpaper->created_at,
                     'updated_at' => $Wallpaper->updated_at,
-                    'deleted_at' => $Wallpaper->deleted_at
+                    'deleted_at' => $Wallpaper->deleted_at,
+                    'category' => $Wallpaper->categories
                 ]);
             }
             return response()->macroJsonExtention(

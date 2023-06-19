@@ -19,7 +19,9 @@ class CategoryController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Name' => 'required|string'
+                'Name' => 'required|string|unique:categories,name',
+                'Description' => 'required|string',
+                'Image' => 'required|mimes:png,jpg|max:50'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -29,7 +31,7 @@ class CategoryController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            $Inserted = Category::insertCategory($Req->Name);
+            $Inserted = Category::insertCategory($Req->Name, $Req->Description, CustomHelpers::saveImgAndGetName($Req->Image));
             if ($Inserted) {
                 return response()->macroJson(
                     [],
@@ -55,17 +57,12 @@ class CategoryController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
     public function show(Request $Req)
     {
         try {
             if ($Req->CatID) {
                 return response()->macroJson(
-                    $Data = [Category::getCategoryByID($Req->CatID)->toArray()],
+                    $Data = [Category::getCategoryByID($Req->CatID)],
                     config('messages.SUCCESS_CODE'),
                     empty($Data) ? config('messages.NO_RECORD') : '',
                     config('messages.HTTP_SUCCESS_CODE')
@@ -77,6 +74,8 @@ class CategoryController extends Controller
                 array_push($Data, [
                     'id' => $Category->id,
                     'name' => $Category->name,
+                    "description" => $Category->description,
+                    "image" => url('/storage/images') . '/' . $Category->image,
                     'created_at' => $Category->created_at,
                     'updated_at' => $Category->updated_at,
                     'deleted_at' => $Category->deleted_at
@@ -99,14 +98,47 @@ class CategoryController extends Controller
         }
     }
 
-    public function edit(Category $category)
+    public function edit(Request $Req)
     {
-        //
-    }
-
-    public function update(Request $request, Category $category)
-    {
-        //
+        try {
+            $Validator = Validator::make($Req->all(), [
+                'Name' => 'string|unique:categories,name',
+                'Description' => 'string',
+                'Image' => 'mimes:png,jpg|max:50'
+            ]);
+            if ($Validator->fails()) {
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    $Validator->errors(),
+                    config('messages.HTTP_UNPROCESSABLE_DATA')
+                );
+            }
+            $Image = (!is_null($Req->Image)) ? CustomHelpers::saveImgAndGetName($Req->Image) : null;
+            $Updated = Category::updateCategory($Req->CatID, $Req->Name, $Req->Description, $Image);
+            if ($Updated) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.UPDATION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.UPDATION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 
     public function destroy(Category $category)

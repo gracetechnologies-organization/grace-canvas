@@ -14,6 +14,15 @@ class Wallpaper extends Model
         'front_image',
         'cat_id'
     ];
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'cat_id');
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +62,7 @@ class Wallpaper extends Model
 
     public static function getWallpapers()
     {
-        return Wallpaper::paginate(10);
+        return Wallpaper::with(['categories'])->paginate(10);
+        // return Wallpaper::paginate(10);
     }
 }

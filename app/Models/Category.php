@@ -11,7 +11,9 @@ class Category extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name'
+        'name',
+        'description',
+        'image'
     ];
     /*
     |--------------------------------------------------------------------------
@@ -28,18 +30,22 @@ class Category extends Model
     | Helpers
     |--------------------------------------------------------------------------
     */
-    public static function insertCategory(string $Name)
+    public static function insertCategory(string $Name, string $Description, string $Image)
     {
         return Category::create([
-            'name' => ucfirst($Name)
+            'name' => ucfirst($Name),
+            'description' => ucfirst($Description),
+            'image' => $Image
         ]);
     }
 
-    public static function updateCategory(int $ID, string $Name)
+    public static function updateCategory(int $ID, string $Name = null, string $Description = null, string $Image = null)
     {
-        return Category::where('id', $ID)->update([
-            'name' => ucfirst($Name)
-        ]);
+        $Category = Category::findOrFail($ID);
+        if(!is_null($Name)) $Category->name = $Name;
+        if(!is_null($Description)) $Category->description = $Description;
+        if(!is_null($Image)) $Category->image = $Image;
+        return $Category->save();
     }
 
     public static function deleteCategory(int $ID)
@@ -49,7 +55,16 @@ class Category extends Model
 
     public static function getCategoryByID(int $ID)
     {
-        return Category::findOrFail($ID);
+        $Category = Category::findOrFail($ID);
+        return [
+            "id" => $Category->id,
+            "name" => $Category->name,
+            "description" => $Category->description,
+            "image" => url('/storage/images') . '/' . $Category->image,
+            "created_at" => $Category->created_at,
+            "updated_at" => $Category->updated_at,
+            "deleted_at" => $Category->deleted_at
+        ];
     }
 
     public static function getCategories()
