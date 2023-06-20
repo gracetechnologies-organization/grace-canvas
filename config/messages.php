@@ -41,6 +41,7 @@ return [
     'TOKEN_RESET_FAILED' => 'Token reset failed.',
     'TOKEN_DESTROYED_FAILED' => 'Failed to destroy the token.',
     'TOKEN_INVALID' => 'Invalid token.',
+    'TOEKN_NOT_PROVIDED' => 'Please provide token for authentication',
     'PARAM_MISSING' => 'Some required parameters are missing.',
     'NO_RECORD' => 'No record found.',
     'TYPE_NA' => 'The "Type" which you have entered is not available in our system',

@@ -36,22 +36,22 @@ class BusinessCard extends Model
         ]);
     }
 
-    public static function updateBusinessCard(int $CardID, string $FrontImage, string $BackImage)
+    public static function updateBusinessCard(int $ID, string $FrontImage, string $BackImage)
     {
-        return BusinessCard::where('id', $CardID)->update([
+        return BusinessCard::where('id', $ID)->update([
             'front_image' => $FrontImage,
             'back_image' => $BackImage
         ]);
     }
 
-    public static function deleteBusinessCard(int $CardId)
+    public static function deleteBusinessCard(int $ID)
     {
-        return BusinessCard::where('id', $CardId)->delete();
+        return BusinessCard::where('id', $ID)->delete();
     }
 
-    public static function getBusinessCardByID(int $CardID)
+    public static function getBusinessCardByID(int $ID)
     {
-        return BusinessCard::findOrFail($CardID);
+        return BusinessCard::findOrFail($ID);
     }
 
     public static function getBusinessCards()

@@ -19,10 +19,22 @@ class CustomHelpers
         return url('/storage') . '/' . Storage::disk('public')->putFileAs('images', $Img, $ImgName);
     }
 
+    public static function getWallpaperImgName(object $Img)
+    {
+        $ImgName = str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default wallpapers path "storage/app/public/wallpapers"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('wallpapers', $Img, $ImgName);
+        return $ImgName;
+    }
+
     public static function getImgNameWithID(object $Img, int $ID, string $Side = null)
     {
         $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
-        if (!is_null($Side)) $ImgName = $Side . '_' . $ImgName; 
+        if (!is_null($Side)) $ImgName = $Side . '_' . $ImgName;
         /*
         |--------------------------------------------------------------------------
         | Save the image to the default storage path "storage/app/public/images"
@@ -41,7 +53,7 @@ class CustomHelpers
         // Create the directory if it doesn't exist
         File::makeDirectory($DirectoryPath, 0755, true, true);
         // Generate the blade file name
-        $FileName = $ID . '_' . $Side . '.blade.php';
+        $FileName = (is_null($Side)) ? $ID . '_' . $Type . '.blade.php' : $ID . '_' . $Side . '.blade.php';
         // Set the file path
         $FilePath = $DirectoryPath . '/' . $FileName;
         // Write the SVG content into the blade file
@@ -50,18 +62,56 @@ class CustomHelpers
         return $ID . '/' . $ID . '_';
     }
 
-    public static function converInto2IndexArray(string $string)
+    public static function saveImgAndGetName(object $Img)
     {
-        $words = explode(' ', $string);
+        $ImgName = str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('images', $Img, $ImgName);
+        return $ImgName;
+    }
+
+    public static function converInto2IndexArray(string $String)
+    {
+        $Words = explode(' ', $String);
         // Get the last word of the string
-        $lastWord = end($words);
+        $LastWord = end($Words);
         // Remove the last word from the array
-        $wordsWithoutLast = array_slice($words, 0, -1);
+        $wordsWithoutLast = array_slice($Words, 0, -1);
         // Create the final array with the desired indexes
-        $array = [
+        $Array = [
             implode(' ', $wordsWithoutLast), // Index 0: All words except the last one
-            $lastWord // Index 1: Last word
+            $LastWord // Index 1: Last word
         ];
-        return $array;
+        return $Array;
+    }
+
+    public static function convertAddressIntoArray(string $Address)
+    {
+        // Split address into an array of words
+        $Words = explode(' ', $Address);
+        // Return the address as it is
+        if (count($Words) <= 4)  return $Address;
+        // Join the first 4 words into a string
+        $Line1 = implode(' ', array_slice($Words, 0, 4));
+        // Join the remaining words into a string 
+        $Line2 = implode(' ', array_slice($Words, 4));
+        return [$Line1, $Line2];
+    }
+
+    public static function getPaginationKeys(object $Paginator)
+    {
+        return [
+            'currentPage' => $Paginator->currentPage(),
+            'getOptions' => $Paginator->getOptions(),
+            'hasMorePages' => $Paginator->hasMorePages(),
+            'nextPageUrl' => $Paginator->nextPageUrl(),
+            'previousPageUrl' => $Paginator->previousPageUrl(),
+            'perPage' => $Paginator->perPage(),
+            'total' => $Paginator->total(),
+        ];
     }
 }

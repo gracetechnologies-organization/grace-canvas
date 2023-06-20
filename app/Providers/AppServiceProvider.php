@@ -28,6 +28,15 @@ class AppServiceProvider extends ServiceProvider
             ], $HttpCode);
         });
 
+        Response::macro('macroJsonExtention', function (array $Data = [], string $ExtentionKey, array $ExtentionData, int $Success = null, string $Message = '', int $HttpCode = 500) {
+            return Response::make([
+                'data' => $Data,
+                $ExtentionKey => $ExtentionData,
+                'success' => $Success,
+                'message' => $Message
+            ], $HttpCode);
+        });
+
         Response::macro('macroView', function (string $View, int $HttpCode = 500, array $ContentType) {
             return Response::make($View, $HttpCode, $ContentType);
         });

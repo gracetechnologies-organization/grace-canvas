@@ -2,32 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BusinessCard;
+use App\Models\Category;
 use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class BusinessCardController extends Controller
+class CategoryController extends Controller
 {
     public function index()
     {
-        // return view('google-ads');
+        //
     }
 
-    public function create(Request $Req, string $CardSide)
+    public function create(Request $Req)
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Logo' => 'required|mimes:png,jpg|max:1000',
-                'FName' => 'string',
-                'LName' => 'string',
-                'Designation' => 'string',
-                'TagLine' => 'string',
-                'Address' => 'string',
-                'Phone' => 'string',
-                'Website' => 'string',
-                'Email' => 'email'
+                'Name' => 'required|string|unique:categories,name',
+                'Description' => 'required|string',
+                'Image' => 'required|mimes:png,jpg|max:50'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -37,27 +31,20 @@ class BusinessCardController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-
-            $Logo = CustomHelpers::getImgURL($Req->Logo);
-            $FName = $Req->FName;
-            $LName = $Req->LName;
-            $Designation = $Req->Designation;
-            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::converInto2IndexArray($Req->Company) : $Req->Company;
-            $TagLine = $Req->TagLine;
-            $Address = $Req->Address;
-            $Phone = $Req->Phone;
-            $Website = $Req->Website;
-            $Email = $Req->Email;
-            $Color = ($Req->Color) ? $Req->Color : null;
-
-            $BusinessCard = BusinessCard::getBusinessCardByID($Req->CardID);
-            $ThisTemplate = ($CardSide === 'front') ? $BusinessCard->front_svg . $CardSide : $BusinessCard->back_svg . $CardSide;
-            $CardView = view('business_cards.' . $ThisTemplate, compact('Logo', 'FName', 'LName', 'Designation', 'Company', 'TagLine', 'Address', 'Phone', 'Website', 'Email', 'Color'));
-            // Create a response with the file content
-            return response()->macroView(
-                $CardView,
-                config('messages.HTTP_SERVER_ERROR_CODE'),
-                ['Content-Type' => 'text/html']
+            $Inserted = Category::insertCategory($Req->Name, $Req->Description, CustomHelpers::saveImgAndGetName($Req->Image));
+            if ($Inserted) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.INSERTION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.INSERTION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
             );
         } catch (Exception $error) {
             report($error);
@@ -70,19 +57,54 @@ class BusinessCardController extends Controller
         }
     }
 
-    public function show()
+    public function show(Request $Req)
     {
-       
+        try {
+            if ($Req->ID) {
+                return response()->macroJson(
+                    $Data = [Category::getCategoryByID($Req->ID)],
+                    config('messages.SUCCESS_CODE'),
+                    empty($Data) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            $Categories = Category::getCategories();
+            $Data = [];
+            foreach ($Categories as $Category) {
+                array_push($Data, [
+                    'id' => $Category->id,
+                    'name' => $Category->name,
+                    "description" => $Category->description,
+                    "image" => url('/storage/images') . '/' . $Category->image,
+                    'created_at' => $Category->created_at,
+                    'updated_at' => $Category->updated_at,
+                    'deleted_at' => $Category->deleted_at
+                ]);
+            }
+            return response()->macroJson(
+                (empty($Data)) ? [] : $Data,
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 
     public function edit(Request $Req)
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'FrontImage' => 'required|mimes:png,jpg|max:500',
-                'BackImage' => 'required|mimes:png,jpg|max:500',
-                'FrontSvg' => 'required|mimes:svg',
-                'BackSvg' => 'required|mimes:svg'
+                'Name' => 'string|unique:categories,name',
+                'Description' => 'string',
+                'Image' => 'mimes:png,jpg|max:50'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -92,18 +114,8 @@ class BusinessCardController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $Req->CardID, 'front');
-            $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $Req->CardID, 'back');
-            /*
-            |--------------------------------------------------------------------------
-            | Here we are using "getViewPathWithID()" function only to update the svg 
-            | Content present in the blade file
-            |--------------------------------------------------------------------------
-            */
-            CustomHelpers::getViewPathWithID($Req->FrontSvg, 'business_cards', $Req->CardID, 'front');
-            CustomHelpers::getViewPathWithID($Req->BackSvg, 'business_cards', $Req->CardID, 'back');
-
-            $Updated = BusinessCard::updateBusinessCard($Req->CardID, $FrontImage, $BackImage);
+            $Image = (!is_null($Req->Image)) ? CustomHelpers::saveImgAndGetName($Req->Image) : null;
+            $Updated = Category::updateCategory($Req->ID, $Req->Name, $Req->Description, $Image);
             if ($Updated) {
                 return response()->macroJson(
                     [],
@@ -132,7 +144,7 @@ class BusinessCardController extends Controller
     public function destroy(Request $Req)
     {
         try {
-            $Deleted = BusinessCard::deleteBusinessCard($Req->CardID);
+            $Deleted = Category::deleteCategory($Req->ID);
             if ($Deleted) {
                 return response()->macroJson(
                     [],
