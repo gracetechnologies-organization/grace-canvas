@@ -80,7 +80,7 @@ class Category extends Model
     
         return $Categories->each(function ($Category) {
             $Category->wallpapers->each(function ($Wallpaper) {
-                $Wallpaper->front_image = url('/storage/wallpappers') . '/' . $Wallpaper->front_image;
+                $Wallpaper->front_image = url('/storage/wallpapers') . '/' . $Wallpaper->front_image;
             });
         });
     }
