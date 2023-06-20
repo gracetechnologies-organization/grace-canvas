@@ -228,6 +228,39 @@ class TemplatesController extends Controller
         }
     }
 
+    public function showLetterHeads()
+    {
+        try {
+            $LetterHeads = LetterHead::getLetterHeads();
+            $Data = [];
+            foreach ($LetterHeads as $Letter) {
+                array_push($Data, [
+                    'id' => $Letter->id,
+                    'front_image' => url('/storage/images') . '/' . $Letter->front_image,
+                    'created_at' => $Letter->created_at,
+                    'updated_at' => $Letter->updated_at,
+                    'deleted_at' => $Letter->deleted_at
+                ]);
+            }
+            return response()->macroJsonExtention(
+                $Data,
+                'pagination',
+                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($LetterHeads)],
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
+    }
+
     public function showWallpapersByCatID(array $Category)
     {
         $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
