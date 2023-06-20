@@ -27,9 +27,9 @@ Route::middleware('auth.api.reqs')->group(function () {
 
     Route::prefix('category')->group(function () {
         Route::post('/create', [CategoryController::class, 'create']);
-        Route::post('/edit/{CatID}', [CategoryController::class, 'edit']);
-        Route::post('/destroy/{CatID}', [CategoryController::class, 'destroy']);
-        Route::get('/show/{CatID?}', [CategoryController::class, 'show']);
+        Route::post('/edit/{ID}', [CategoryController::class, 'edit']);
+        Route::post('/destroy/{ID}', [CategoryController::class, 'destroy']);
+        Route::get('/show/{ID?}', [CategoryController::class, 'show']);
     });
 
     Route::prefix('template')->group(function () {
@@ -40,6 +40,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::prefix('show')->group(function () {
             Route::get('/business-cards', [TemplatesController::class, 'showBusinessCards']);
             Route::get('/wallpapers/{CatID?}', [TemplatesController::class, 'showWallpapers']);
+            Route::get('/category/wallpapers/{CatID?}', [TemplatesController::class, 'showCategoriesWallpapers']);
         });
     });
 

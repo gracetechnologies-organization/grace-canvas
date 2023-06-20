@@ -42,9 +42,9 @@ class Category extends Model
     public static function updateCategory(int $ID, string $Name = null, string $Description = null, string $Image = null)
     {
         $Category = Category::findOrFail($ID);
-        if(!is_null($Name)) $Category->name = $Name;
-        if(!is_null($Description)) $Category->description = $Description;
-        if(!is_null($Image)) $Category->image = $Image;
+        if (!is_null($Name)) $Category->name = $Name;
+        if (!is_null($Description)) $Category->description = $Description;
+        if (!is_null($Image)) $Category->image = $Image;
         return $Category->save();
     }
 
@@ -70,6 +70,19 @@ class Category extends Model
     public static function getCategories()
     {
         return Category::all();
+    }
+
+    public static function getCategoriesWithWallpapers(int $ID = null)
+    {
+        $Categories = Category::with('wallpapers')->when($ID, function ($query, $ID) {
+            return $query->where('id', $ID);
+        })->get();
+    
+        return $Categories->each(function ($Category) {
+            $Category->wallpapers->each(function ($Wallpaper) {
+                $Wallpaper->front_image = url('/storage/wallpappers') . '/' . $Wallpaper->front_image;
+            });
+        });
     }
 
     public static function getWallpapersOfCategory(int $ID)

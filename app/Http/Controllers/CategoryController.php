@@ -60,9 +60,9 @@ class CategoryController extends Controller
     public function show(Request $Req)
     {
         try {
-            if ($Req->CatID) {
+            if ($Req->ID) {
                 return response()->macroJson(
-                    $Data = [Category::getCategoryByID($Req->CatID)],
+                    $Data = [Category::getCategoryByID($Req->ID)],
                     config('messages.SUCCESS_CODE'),
                     empty($Data) ? config('messages.NO_RECORD') : '',
                     config('messages.HTTP_SUCCESS_CODE')
@@ -115,7 +115,7 @@ class CategoryController extends Controller
                 );
             }
             $Image = (!is_null($Req->Image)) ? CustomHelpers::saveImgAndGetName($Req->Image) : null;
-            $Updated = Category::updateCategory($Req->CatID, $Req->Name, $Req->Description, $Image);
+            $Updated = Category::updateCategory($Req->ID, $Req->Name, $Req->Description, $Image);
             if ($Updated) {
                 return response()->macroJson(
                     [],
@@ -141,8 +141,32 @@ class CategoryController extends Controller
         }
     }
 
-    public function destroy(Category $category)
+    public function destroy(Request $Req)
     {
-        //
+        try {
+            $Deleted = Category::deleteCategory($Req->ID);
+            if ($Deleted) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.DELETION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.DELETION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 }

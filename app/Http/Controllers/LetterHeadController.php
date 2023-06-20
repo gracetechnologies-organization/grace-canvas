@@ -22,10 +22,10 @@ class LetterHeadController extends Controller
         //     $flights->each->update(['front_svg' => 'test data']);
         // }, $column = 'id');
 
-    //     Flight::where('departed', true)
-    // ->chunkById(200, function (Collection $flights) {
-    //     $flights->each->update(['departed' => false]);
-    // }, $column = 'id');
+        //     Flight::where('departed', true)
+        // ->chunkById(200, function (Collection $flights) {
+        //     $flights->each->update(['departed' => false]);
+        // }, $column = 'id');
 
         // LetterHead::chunk(2, function (Collection $flights) {
         //     dd($flights);
@@ -155,11 +155,6 @@ class LetterHeadController extends Controller
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
-    }
-
-    public function update(Request $Req)
-    {
-        //
     }
 
     public function destroy(Request $Req)

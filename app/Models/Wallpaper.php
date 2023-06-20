@@ -63,6 +63,5 @@ class Wallpaper extends Model
     public static function getWallpapers()
     {
         return Wallpaper::with(['categories'])->paginate(10);
-        // return Wallpaper::paginate(10);
     }
 }

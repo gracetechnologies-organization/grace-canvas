@@ -44,11 +44,6 @@ class TemplatesController extends Controller
                             config('messages.HTTP_UNPROCESSABLE_DATA')
                         );
                     }
-                    // $validator = Validator::make($data, [
-                    //     'has_appointment' => 'required|boolean',
-                    //     'appointment_date' => 'exclude_if:has_appointment,false|required|date',
-                    //     'doctor_name' => 'exclude_if:has_appointment,false|required|string',
-                    // ]);
                     $LastInsertedId =  BusinessCard::getLastInsertedID();
                     $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
                     $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');
@@ -234,7 +229,7 @@ class TemplatesController extends Controller
     }
 
     public function showWallpapersByCatID(array $Category)
-    {   
+    {
         $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
         $Data = [];
         foreach ($Wallpapers as $Wallpaper) {
@@ -296,12 +291,41 @@ class TemplatesController extends Controller
         }
     }
 
-    public function edit()
+    public function showCategoriesWallpapers(Request $Req)
     {
-        //
+        try {
+            $Categories = Category::getCategoriesWithWallpapers(($Req->CatID) ? $Req->CatID : null);
+            $Data = [];
+            foreach ($Categories as $Category) {
+                array_push($Data, [
+                    'id' => $Category->id,
+                    'name' => $Category->name,
+                    'description' => $Category->description,
+                    'image' => url('/storage/images') . '/' . $Category->image,
+                    'created_at' => $Category->created_at,
+                    'updated_at' => $Category->updated_at,
+                    'deleted_at' => $Category->deleted_at,
+                    'wallpapers' => $Category->wallpapers
+                ]);
+            }
+            return response()->macroJson(
+                $Data,
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 
-    public function update()
+    public function edit()
     {
         //
     }
