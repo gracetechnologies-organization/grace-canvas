@@ -126,8 +126,42 @@ class TemplatesController extends Controller
                         config('messages.INSERTION_FAILED'),
                         config('messages.HTTP_SUCCESS_CODE')
                     );
-                }
-            }
+                } elseif ($Req->Type == 'resume') {
+
+                    $Validator = Validator::make($Req->all(), [
+                        'FrontImage' => 'required|mimes:png,jpg|max:500',
+                        'FrontSvg' => 'required|mimes:svg'
+                    ]);
+                    if ($Validator->fails()) {
+                        return response()->macroJson(
+                            [],
+                            config('messages.FAILED_CODE'),
+                            $Validator->errors(),
+                            config('messages.HTTP_UNPROCESSABLE_DATA')
+                        );
+                    }
+                    $LastInsertedId =  LetterHead::getLastInsertedID();
+                    $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
+                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId);
+                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId);
+                    $Inserted = LetterHead::insertLetterHead($FrontImage, $FrontSvg);
+                    if ($Inserted) {
+                        return response()->macroJson(
+                            [],
+                            config('messages.SUCCESS_CODE'),
+                            config('messages.INSERTION_SUCCESS'),
+                            config('messages.HTTP_SUCCESS_CODE')
+                        );
+                    }
+                    return response()->macroJson(
+                        [],
+                        config('messages.FAILED_CODE'),
+                        config('messages.INSERTION_FAILED'),
+                        config('messages.HTTP_SUCCESS_CODE')
+                    );
+                    
+            } 
+        }
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),

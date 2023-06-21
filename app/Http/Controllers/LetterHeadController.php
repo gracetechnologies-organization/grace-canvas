@@ -35,8 +35,7 @@ class LetterHeadController extends Controller
         // $flights = LetterHead::lazy();
         // foreach (LetterHead::lazy() as $flight) print_r($flight);
         
-        $flights = LetterHead::all() ;
-
+        $flights = LetterHead::all();
         dd($flights->contains(33));
     }
 
@@ -83,7 +82,7 @@ class LetterHeadController extends Controller
             // Create a response with the file content
             return response()->macroView(
                 $LetterHeadView,
-                config('messages.HTTP_SERVER_ERROR_CODE'),
+                config('messages.HTTP_SUCCESS_CODE'),
                 ['Content-Type' => 'text/html']
             );
         } catch (Exception $error) {

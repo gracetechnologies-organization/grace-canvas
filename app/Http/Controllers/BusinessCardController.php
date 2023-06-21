@@ -56,7 +56,7 @@ class BusinessCardController extends Controller
             // Create a response with the file content
             return response()->macroView(
                 $CardView,
-                config('messages.HTTP_SERVER_ERROR_CODE'),
+                config('messages.HTTP_SUCCESS_CODE'),
                 ['Content-Type' => 'text/html']
             );
         } catch (Exception $error) {
