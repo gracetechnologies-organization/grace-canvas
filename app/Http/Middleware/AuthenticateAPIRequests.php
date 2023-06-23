@@ -25,9 +25,8 @@ class AuthenticateAPIRequests
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
 
-            if ($request->header('token') == '99640a15-7bfa-4c23-90f7-b634acb14dc3')
-                return $next($request);
-            else
+            if ($request->header('token') == '99640a15-7bfa-4c23-90f7-b634acb14dc3') return $next($request);
+
                 return response()->macroJson(
                     [],
                     config('messages.FAILED_CODE'),

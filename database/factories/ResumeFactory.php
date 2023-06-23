@@ -18,7 +18,8 @@ class ResumeFactory extends Factory
     {
         return [
             'front_image' => $this->faker->unique()->word() . '.jpg',
-            'front_svg' => '1/1_'
+            'front_svg' => '1/1_',
+            'version' => 0
         ];
     }
 }

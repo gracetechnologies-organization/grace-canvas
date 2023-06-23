@@ -3,6 +3,7 @@
 use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterHeadController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
 use Illuminate\Http\Request;
@@ -55,6 +56,12 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/create', [LetterHeadController::class, 'create']);
         Route::post('/edit/{ID}', [LetterHeadController::class, 'edit']);
         Route::post('/destroy/{ID}', [LetterHeadController::class, 'destroy']);
+    });
+
+    Route::prefix('resume')->group(function () {
+        Route::post('/create', [ResumeController::class, 'create']);
+        Route::post('/edit/{ID}', [ResumeController::class, 'edit']);
+        Route::post('/destroy/{ID}', [ResumeController::class, 'destroy']);
     });
 
     Route::prefix('wallpaper')->group(function () {

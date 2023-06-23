@@ -19,6 +19,7 @@ class BusinessCardController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
+                'ID' => 'required|integer',
                 'Logo' => 'required|mimes:png,jpg|max:1000',
                 'FName' => 'string',
                 'LName' => 'string',
@@ -50,7 +51,7 @@ class BusinessCardController extends Controller
             $Email = $Req->Email;
             $Color = ($Req->Color) ? $Req->Color : null;
 
-            $BusinessCard = BusinessCard::getBusinessCardByID($Req->CardID);
+            $BusinessCard = BusinessCard::getBusinessCardByID($Req->ID);
             $ThisTemplate = ($CardSide === 'front') ? $BusinessCard->front_svg . $CardSide : $BusinessCard->back_svg . $CardSide;
             $CardView = view('business_cards.' . $ThisTemplate, compact('Logo', 'FName', 'LName', 'Designation', 'Company', 'TagLine', 'Address', 'Phone', 'Website', 'Email', 'Color'));
             // Create a response with the file content

@@ -42,8 +42,8 @@ class Category extends Model
     public static function updateCategory(int $ID, string $Name = null, string $Description = null, string $Image = null)
     {
         $Category = Category::findOrFail($ID);
-        if (!is_null($Name)) $Category->name = $Name;
-        if (!is_null($Description)) $Category->description = $Description;
+        if (!is_null($Name)) $Category->name = ucfirst($Name);
+        if (!is_null($Description)) $Category->description = ucfirst($Description);
         if (!is_null($Image)) $Category->image = $Image;
         return $Category->save();
     }

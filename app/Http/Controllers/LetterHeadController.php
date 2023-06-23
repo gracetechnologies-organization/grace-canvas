@@ -48,6 +48,7 @@ class LetterHeadController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
+                'ID' => 'required|integer',
                 'Logo' => 'required|mimes:png,jpg|max:1000',
                 'Company' => 'required|string',
                 'TagLine' => 'string',
