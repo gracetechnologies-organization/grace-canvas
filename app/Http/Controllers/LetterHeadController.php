@@ -4,14 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\LetterHead;
 use App\Services\CustomHelpers;
-use Carbon\Carbon;
-use Dompdf\Dompdf;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
 
 class LetterHeadController extends Controller
 {
