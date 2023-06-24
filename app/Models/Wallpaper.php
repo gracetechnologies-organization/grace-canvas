@@ -12,6 +12,7 @@ class Wallpaper extends Model
 
     protected $fillable = [
         'front_image',
+        'type',
         'cat_id'
     ];
     /*
@@ -34,20 +35,22 @@ class Wallpaper extends Model
         return Wallpaper::orderByDesc('id')->first()->id ?? 0;
     }
 
-    public static function insertWallpaper(string $FrontImage, int $CatID)
+    public static function insertWallpaper(string $FrontImage, int $Type, int $CatID)
     {
         return Wallpaper::create([
             'front_image' => $FrontImage,
+            'type' => $Type,
             'cat_id' => $CatID
         ]);
     }
 
-    public static function updateWallpaper(int $ID, string $FrontImage, int $CatID)
+    public static function updateWallpaper(int $ID, string $FrontImage = null, int $Type = null, int $CatID = null)
     {
-        return Wallpaper::where('id', $ID)->update([
-            'front_image' => $FrontImage,
-            'cat_id' => $CatID
-        ]);
+        $Wallpaper = Wallpaper::findOrFail($ID);
+        if (!is_null($FrontImage)) $Wallpaper->front_image = $FrontImage;
+        if (!is_null($Type)) $Wallpaper->type = $Type;
+        if (!is_null($CatID)) $Wallpaper->cat_id = $CatID;
+        return $Wallpaper->save();
     }
 
     public static function deleteWallpaper(int $ID)

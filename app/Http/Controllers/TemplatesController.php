@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BusinessCard;
 use App\Models\Category;
 use App\Models\LetterHead;
+use App\Models\Resume;
 use App\Models\Wallpaper;
 use App\Services\CustomHelpers;
 use Exception;
@@ -27,147 +28,23 @@ class TemplatesController extends Controller
     public function store(Request $Req)
     {
         try {
-            $AvailableTypes = ['business_cards', 'letter_heads', 'wallpapers'];
-            if (in_array($Req->Type, $AvailableTypes)) {
-                if ($Req->Type == 'business_cards') {
-                    $Validator = Validator::make($Req->all(), [
-                        'FrontImage' => 'required|mimes:png,jpg|max:500',
-                        'BackImage' => 'required|mimes:png,jpg|max:500',
-                        'FrontSvg' => 'required|mimes:svg',
-                        'BackSvg' => 'required|mimes:svg'
-                    ]);
-                    if ($Validator->fails()) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.FAILED_CODE'),
-                            $Validator->errors(),
-                            config('messages.HTTP_UNPROCESSABLE_DATA')
-                        );
-                    }
-                    $LastInsertedId =  BusinessCard::getLastInsertedID();
-                    $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');
-                    $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $LastInsertedId, 'back');
-                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId, 'front');
-                    $BackSvg = CustomHelpers::getViewPathWithID($Req->BackSvg, $Req->Type, $LastInsertedId, 'back');
-                    $Inserted = BusinessCard::insertBusinessCard($FrontImage, $BackImage, $FrontSvg, $BackSvg);
-                    if ($Inserted) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.SUCCESS_CODE'),
-                            config('messages.INSERTION_SUCCESS'),
-                            config('messages.HTTP_SUCCESS_CODE')
-                        );
-                    }
+            switch ($Req->Type) {
+                case 'business_cards':
+                    return $this->storeBusinessCard($Req);
+                case 'letter_heads':
+                    return $this->storeLetterHead($Req);
+                case 'wallpapers':
+                    return $this->storeWallpaper($Req);
+                case 'resume':
+                    return $this->storeResume($Req);
+                default:
                     return response()->macroJson(
                         [],
                         config('messages.FAILED_CODE'),
-                        config('messages.INSERTION_FAILED'),
+                        config('messages.TYPE_NA'),
                         config('messages.HTTP_SUCCESS_CODE')
                     );
-                } elseif ($Req->Type == 'letter_heads') {
-                    $Validator = Validator::make($Req->all(), [
-                        'FrontImage' => 'required|mimes:png,jpg|max:500',
-                        'FrontSvg' => 'required|mimes:svg'
-                    ]);
-                    if ($Validator->fails()) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.FAILED_CODE'),
-                            $Validator->errors(),
-                            config('messages.HTTP_UNPROCESSABLE_DATA')
-                        );
-                    }
-                    $LastInsertedId =  LetterHead::getLastInsertedID();
-                    $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId);
-                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId);
-                    $Inserted = LetterHead::insertLetterHead($FrontImage, $FrontSvg);
-                    if ($Inserted) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.SUCCESS_CODE'),
-                            config('messages.INSERTION_SUCCESS'),
-                            config('messages.HTTP_SUCCESS_CODE')
-                        );
-                    }
-                    return response()->macroJson(
-                        [],
-                        config('messages.FAILED_CODE'),
-                        config('messages.INSERTION_FAILED'),
-                        config('messages.HTTP_SUCCESS_CODE')
-                    );
-                } elseif ($Req->Type == 'wallpapers') {
-                    $Validator = Validator::make($Req->all(), [
-                        'FrontImage' => 'required|mimes:png,jpg|max:500',
-                        'CatID' => 'required|integer'
-                    ]);
-                    if ($Validator->fails()) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.FAILED_CODE'),
-                            $Validator->errors(),
-                            config('messages.HTTP_UNPROCESSABLE_DATA')
-                        );
-                    }
-                    $FrontImage = CustomHelpers::getWallpaperImgName($Req->FrontImage);
-                    $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->CatID);
-                    if ($Inserted) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.SUCCESS_CODE'),
-                            config('messages.INSERTION_SUCCESS'),
-                            config('messages.HTTP_SUCCESS_CODE')
-                        );
-                    }
-                    return response()->macroJson(
-                        [],
-                        config('messages.FAILED_CODE'),
-                        config('messages.INSERTION_FAILED'),
-                        config('messages.HTTP_SUCCESS_CODE')
-                    );
-                } elseif ($Req->Type == 'resume') {
-
-                    $Validator = Validator::make($Req->all(), [
-                        'FrontImage' => 'required|mimes:png,jpg|max:500',
-                        'FrontSvg' => 'required|mimes:svg'
-                    ]);
-                    if ($Validator->fails()) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.FAILED_CODE'),
-                            $Validator->errors(),
-                            config('messages.HTTP_UNPROCESSABLE_DATA')
-                        );
-                    }
-                    $LastInsertedId =  LetterHead::getLastInsertedID();
-                    $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-                    $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId);
-                    $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId);
-                    $Inserted = LetterHead::insertLetterHead($FrontImage, $FrontSvg);
-                    if ($Inserted) {
-                        return response()->macroJson(
-                            [],
-                            config('messages.SUCCESS_CODE'),
-                            config('messages.INSERTION_SUCCESS'),
-                            config('messages.HTTP_SUCCESS_CODE')
-                        );
-                    }
-                    return response()->macroJson(
-                        [],
-                        config('messages.FAILED_CODE'),
-                        config('messages.INSERTION_FAILED'),
-                        config('messages.HTTP_SUCCESS_CODE')
-                    );
-                    
-            } 
-        }
-            return response()->macroJson(
-                [],
-                config('messages.FAILED_CODE'),
-                config('messages.TYPE_NA'),
-                config('messages.HTTP_SUCCESS_CODE')
-            );
+            }
         } catch (Exception $error) {
             report($error);
             return response()->macroJson(
@@ -179,11 +56,118 @@ class TemplatesController extends Controller
         }
     }
 
+    public function storeBusinessCard(Request $Req)
+    {
+        $Validator = Validator::make($Req->all(), [
+            'FrontImage' => 'required|mimes:png,jpg|max:500',
+            'BackImage' => 'required|mimes:png,jpg|max:500',
+            'FrontSvg' => 'required|mimes:svg',
+            'BackSvg' => 'required|mimes:svg'
+        ]);
+        if ($Validator->fails()) {
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $Validator->errors(),
+                config('messages.HTTP_UNPROCESSABLE_DATA')
+            );
+        }
+        $LastInsertedId =  BusinessCard::getLastInsertedID();
+        $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
+        $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId, 'front');
+        $BackImage = CustomHelpers::getImgNameWithID($Req->BackImage, $LastInsertedId, 'back');
+        $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId, 'front');
+        $BackSvg = CustomHelpers::getViewPathWithID($Req->BackSvg, $Req->Type, $LastInsertedId, 'back');
+        $Inserted = BusinessCard::insertBusinessCard($FrontImage, $BackImage, $FrontSvg, $BackSvg);
+        if ($Inserted) {
+            return response()->macroJson(
+                [],
+                config('messages.SUCCESS_CODE'),
+                config('messages.INSERTION_SUCCESS'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        }
+        return response()->macroJson(
+            [],
+            config('messages.FAILED_CODE'),
+            config('messages.INSERTION_FAILED'),
+            config('messages.HTTP_SUCCESS_CODE')
+        );
+    }
+
+    public function storeLetterHead(Request $Req)
+    {
+        $Validator = Validator::make($Req->all(), [
+            'FrontImage' => 'required|mimes:png,jpg|max:500',
+            'FrontSvg' => 'required|mimes:svg'
+        ]);
+        if ($Validator->fails()) {
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $Validator->errors(),
+                config('messages.HTTP_UNPROCESSABLE_DATA')
+            );
+        }
+        $LastInsertedId =  LetterHead::getLastInsertedID();
+        $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
+        $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId);
+        $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId);
+        $Inserted = LetterHead::insertLetterHead($FrontImage, $FrontSvg);
+        if ($Inserted) {
+            return response()->macroJson(
+                [],
+                config('messages.SUCCESS_CODE'),
+                config('messages.INSERTION_SUCCESS'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        }
+        return response()->macroJson(
+            [],
+            config('messages.FAILED_CODE'),
+            config('messages.INSERTION_FAILED'),
+            config('messages.HTTP_SUCCESS_CODE')
+        );
+    }
+    public function storeWallpaper(Request $Req)
+    {
+        $Validator = Validator::make($Req->all(), [
+            'FrontImage' => 'required|mimes:png,jpg|max:500',
+            'Type' => 'required|integer',
+            'CatID' => 'required|integer'
+        ]);
+        if ($Validator->fails()) {
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $Validator->errors(),
+                config('messages.HTTP_UNPROCESSABLE_DATA')
+            );
+        }
+        $FrontImage = CustomHelpers::getWallpaperImgName($Req->FrontImage);
+        $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->Type, $Req->CatID);
+        if ($Inserted) {
+            return response()->macroJson(
+                [],
+                config('messages.SUCCESS_CODE'),
+                config('messages.INSERTION_SUCCESS'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        }
+        return response()->macroJson(
+            [],
+            config('messages.FAILED_CODE'),
+            config('messages.INSERTION_FAILED'),
+            config('messages.HTTP_SUCCESS_CODE')
+        );
+    }
+
     public function storeBulkWallpapers(Request $Req)
     {
         try {
             $Validator = Validator::make($Req->all(), [
                 'FrontImages.*' => 'required|mimes:png,jpg|max:500',
+                'Type' =>  'required|integer',
                 'CatID' => 'required|integer'
             ]);
             if ($Validator->fails()) {
@@ -196,7 +180,7 @@ class TemplatesController extends Controller
             }
             foreach ($Req->file('FrontImages') as $Image) {
                 $FrontImage = CustomHelpers::getWallpaperImgName($Image);
-                $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->CatID);
+                $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->Type, $Req->CatID);
             }
             if ($Inserted) {
                 return response()->macroJson(
@@ -221,6 +205,42 @@ class TemplatesController extends Controller
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
+    }
+
+    public function storeResume(Request $Req)
+    {
+        $Validator = Validator::make($Req->all(), [
+            'FrontImage' => 'required|mimes:png,jpg|max:500',
+            'FrontSvg' => 'required|mimes:svg',
+            'Version' => 'required|integer'
+        ]);
+        if ($Validator->fails()) {
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $Validator->errors(),
+                config('messages.HTTP_UNPROCESSABLE_DATA')
+            );
+        }
+        $LastInsertedId =  Resume::getLastInsertedID();
+        $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
+        $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId);
+        $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId);
+        $Inserted = Resume::insertResume($FrontImage, $FrontSvg, $Req->Version);
+        if ($Inserted) {
+            return response()->macroJson(
+                [],
+                config('messages.SUCCESS_CODE'),
+                config('messages.INSERTION_SUCCESS'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        }
+        return response()->macroJson(
+            [],
+            config('messages.FAILED_CODE'),
+            config('messages.INSERTION_FAILED'),
+            config('messages.HTTP_SUCCESS_CODE')
+        );
     }
 
     public function show()
@@ -303,6 +323,7 @@ class TemplatesController extends Controller
             array_push($Data, [
                 'id' => $Wallpaper->id,
                 'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
+                'type' => $Wallpaper->type,
                 'created_at' => $Wallpaper->created_at,
                 'updated_at' => $Wallpaper->updated_at,
                 'deleted_at' => $Wallpaper->deleted_at,
@@ -333,6 +354,7 @@ class TemplatesController extends Controller
                 array_push($Data, [
                     'id' => $Wallpaper->id,
                     'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
+                    'type' => $Wallpaper->type,
                     'created_at' => $Wallpaper->created_at,
                     'updated_at' => $Wallpaper->updated_at,
                     'deleted_at' => $Wallpaper->deleted_at,
