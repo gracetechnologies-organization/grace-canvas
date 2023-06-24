@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -113,5 +114,43 @@ class CustomHelpers
             'perPage' => $Paginator->perPage(),
             'total' => $Paginator->total(),
         ];
+    }
+
+    public static function getOnlyWallpapers(Collection $Images)
+    {
+        $Data = [];
+        foreach ($Images as $SingleIndex) {
+            if ($SingleIndex->type === 1) {
+                array_push($Data, [
+                    "id" => $SingleIndex->id,
+                    "front_image" => $SingleIndex->front_image,
+                    "type" => $SingleIndex->type,
+                    "cat_id" => $SingleIndex->cat_id,
+                    "created_at" => $SingleIndex->created_at,
+                    "updated_at" => $SingleIndex->updated_at,
+                    "deleted_at" => $SingleIndex->deleted_at,
+                ]);
+            }
+        }
+        return $Data;
+    }
+
+    public static function getOnlyPreviews(Collection $Images)
+    {
+        $Data = [];
+        foreach ($Images as $SingleIndex) {
+            if ($SingleIndex->type === 2) {
+                array_push($Data, [
+                    "id" => $SingleIndex->id,
+                    "front_image" => $SingleIndex->front_image,
+                    "type" => $SingleIndex->type,
+                    "cat_id" => $SingleIndex->cat_id,
+                    "created_at" => $SingleIndex->created_at,
+                    "updated_at" => $SingleIndex->updated_at,
+                    "deleted_at" => $SingleIndex->deleted_at,
+                ]);
+            }
+        }
+        return $Data;
     }
 }

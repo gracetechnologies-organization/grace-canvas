@@ -394,7 +394,8 @@ class TemplatesController extends Controller
                     'created_at' => $Category->created_at,
                     'updated_at' => $Category->updated_at,
                     'deleted_at' => $Category->deleted_at,
-                    'wallpapers' => $Category->wallpapers
+                    'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers),
+                    'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers),
                 ]);
             }
             return response()->macroJson(
