@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('wallpapers', function (Blueprint $table) {
-            $table->tinyInteger('type')->after('front_image')->default(1)->index()->comment('1: Wallpaper, 2: Preview');
+            $table->tinyInteger('type')->after('front_image')->default(1)->index()->comment('1: wallpaper, 2: preview');
         });
     }
 
