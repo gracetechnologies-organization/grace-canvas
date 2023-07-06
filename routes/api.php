@@ -7,6 +7,7 @@ use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,7 +70,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
     });
 
-    Route::get('collections-testing', [LetterHeadController::class, 'collectionsTestCode']);
+    Route::get('testing', [LetterHeadController::class, 'TestingMethod'])->withoutMiddleware('auth.api.reqs');
 });
 
 

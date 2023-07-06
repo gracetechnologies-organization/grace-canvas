@@ -6,32 +6,14 @@ use App\Models\LetterHead;
 use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Validator;
 
 class LetterHeadController extends Controller
 {
-    public function collectionsTestCode()
+    public function TestingMethod()
     {
-        // $flights = LetterHead::chunkById(2, function (Collection $flights) {
-        //     // dd($flights->each->update(['deleted_at' => '2023-06-07 13:10:17']));
-        //     $flights->each->update(['front_svg' => 'test data']);
-        // }, $column = 'id');
-
-        //     Flight::where('departed', true)
-        // ->chunkById(200, function (Collection $flights) {
-        //     $flights->each->update(['departed' => false]);
-        // }, $column = 'id');
-
-        // LetterHead::chunk(2, function (Collection $flights) {
-        //     dd($flights);
-        //     // $flights->each->update(['departed' => false]);
-        // });
-
-        // $flights = LetterHead::lazy();
-        // foreach (LetterHead::lazy() as $flight) print_r($flight);
-        
-        $flights = LetterHead::all();
-        dd($flights->contains(33));
+       return Process::run('dir')->output();
     }
 
     public function index()

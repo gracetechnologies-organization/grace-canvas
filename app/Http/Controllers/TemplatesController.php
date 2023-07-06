@@ -35,7 +35,7 @@ class TemplatesController extends Controller
                     return $this->storeLetterHead($Req);
                 case 'wallpapers':
                     return $this->storeWallpaper($Req);
-                case 'resume':
+                case 'resumes':
                     return $this->storeResume($Req);
                 default:
                     return response()->macroJson(
@@ -129,6 +129,7 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
+
     public function storeWallpaper(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -394,8 +395,8 @@ class TemplatesController extends Controller
                     'created_at' => $Category->created_at,
                     'updated_at' => $Category->updated_at,
                     'deleted_at' => $Category->deleted_at,
-                    'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers),
-                    'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers),
+                    'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
+                    'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
                 ]);
             }
             return response()->macroJson(

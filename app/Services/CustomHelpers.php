@@ -116,7 +116,7 @@ class CustomHelpers
         ];
     }
 
-    public static function getOnlyWallpapers(Collection $Images)
+    public static function getOnlyWallpapers(Collection $Images, string $CatName)
     {
         $Data = [];
         foreach ($Images as $SingleIndex) {
@@ -126,6 +126,7 @@ class CustomHelpers
                     "front_image" => $SingleIndex->front_image,
                     "type" => $SingleIndex->type,
                     "cat_id" => $SingleIndex->cat_id,
+                    "cat_title" => $CatName,
                     "created_at" => $SingleIndex->created_at,
                     "updated_at" => $SingleIndex->updated_at,
                     "deleted_at" => $SingleIndex->deleted_at,
@@ -135,7 +136,7 @@ class CustomHelpers
         return $Data;
     }
 
-    public static function getOnlyPreviews(Collection $Images)
+    public static function getOnlyPreviews(Collection $Images, string $CatName)
     {
         $Data = [];
         foreach ($Images as $SingleIndex) {
@@ -145,6 +146,7 @@ class CustomHelpers
                     "front_image" => $SingleIndex->front_image,
                     "type" => $SingleIndex->type,
                     "cat_id" => $SingleIndex->cat_id,
+                    "cat_title" => $CatName,
                     "created_at" => $SingleIndex->created_at,
                     "updated_at" => $SingleIndex->updated_at,
                     "deleted_at" => $SingleIndex->deleted_at,

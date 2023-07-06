@@ -75,7 +75,7 @@ class BusinessCardController extends Controller
     {
        
     }
-
+    
     public function edit(Request $Req)
     {
         try {
