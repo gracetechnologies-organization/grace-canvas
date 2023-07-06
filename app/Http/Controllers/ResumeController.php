@@ -66,7 +66,7 @@ class ResumeController extends Controller
             $Address = $Req->Address;
             $Objective = CustomHelpers::convertStringIntoLines($Req->Objective, 67, 5);
             // dd($Objective);
-            $Experience = json_decode($Req->Experience);
+            $Experience = json_decode($Req->Experience, true);
             dd($Experience);
             $Qualification = $Req->Qualification;
             $Skills = $Req->Skills;
