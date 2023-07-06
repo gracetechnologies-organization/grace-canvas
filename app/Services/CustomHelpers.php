@@ -22,7 +22,7 @@ class CustomHelpers
 
     public static function getWallpaperImgName(object $Img)
     {
-        $ImgName = str_replace(" ", "_", $Img->getClientOriginalName());
+        $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
         /*
         |--------------------------------------------------------------------------
         | Save the image to the default wallpapers path "storage/app/public/wallpapers"
