@@ -33,7 +33,7 @@ class ResumeController extends Controller
                 'Nationality' => 'string',
                 'Address' => 'string',
                 'Objective' => 'string',
-                'Experience' => 'array',
+                // 'Experience' => 'array',
                 'Qualification' => 'array',
                 'Skills' => 'array',
                 'Achievements' => 'array',
@@ -64,8 +64,10 @@ class ResumeController extends Controller
             $Nationality = $Req->Nationality;
             // $Address = CustomHelpers::convertAddressIntoArray($Req->Address);
             $Address = $Req->Address;
-            $Objective = $Req->Objective;
-            $Experience = $Req->Experience;
+            $Objective = CustomHelpers::convertStringIntoLines($Req->Objective, 67, 5);
+            // dd($Objective);
+            $Experience = json_decode($Req->Experience);
+            dd($Experience);
             $Qualification = $Req->Qualification;
             $Skills = $Req->Skills;
             $Achievements = $Req->Achievements;

@@ -43,7 +43,7 @@ class BusinessCardController extends Controller
             $FName = $Req->FName;
             $LName = $Req->LName;
             $Designation = $Req->Designation;
-            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::converInto2IndexArray($Req->Company) : $Req->Company;
+            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::convertInto2IndexArray($Req->Company) : $Req->Company;
             $TagLine = $Req->TagLine;
             $Address = $Req->Address;
             $Phone = $Req->Phone;

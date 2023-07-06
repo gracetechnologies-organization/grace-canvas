@@ -45,7 +45,7 @@ class LetterHeadController extends Controller
             }
 
             $Logo = CustomHelpers::getImgURL($Req->Logo);
-            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::converInto2IndexArray($Req->Company) : $Req->Company;
+            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::convertInto2IndexArray($Req->Company) : $Req->Company;
             $TagLine = $Req->TagLine;
             $Address = CustomHelpers::convertAddressIntoArray($Req->Address);
             $Phone_1 = $Req->Phone_1;

@@ -75,16 +75,16 @@ class CustomHelpers
         return $ImgName;
     }
 
-    public static function converInto2IndexArray(string $String)
+    public static function convertInto2IndexArray(string $String)
     {
         $Words = explode(' ', $String);
         // Get the last word of the string
         $LastWord = end($Words);
         // Remove the last word from the array
-        $wordsWithoutLast = array_slice($Words, 0, -1);
+        $WordsWithoutLast = array_slice($Words, 0, -1);
         // Create the final array with the desired indexes
         $Array = [
-            implode(' ', $wordsWithoutLast), // Index 0: All words except the last one
+            implode(' ', $WordsWithoutLast), // Index 0: All words except the last one
             $LastWord // Index 1: Last word
         ];
         return $Array;
@@ -101,6 +101,34 @@ class CustomHelpers
         // Join the remaining words into a string 
         $Line2 = implode(' ', array_slice($Words, 4));
         return [$Line1, $Line2];
+    }
+    /**
+     * @var $Characters total characters per line
+     * @var $Lines total lines
+     */
+    public static function ConvertStringIntoLines(string $StringValue, int $Characters, int $Lines)
+    {
+        $LinesArray = [];
+        $CurrentLine = '';
+        $CharactersCount = 0;
+        for ($i = 0; $i < strlen($StringValue); $i++) {
+            $Character = $StringValue[$i];
+            if ($CharactersCount < $Characters) {
+                $CurrentLine .= $Character;
+                $CharactersCount++;
+            } else {
+                if (count($LinesArray) < $Lines - 1) {
+                    $LinesArray[] = $CurrentLine;
+                    $CurrentLine = $Character;
+                    $CharactersCount = 1;
+                } else {
+                    $CurrentLine = $Character;
+                    $CharactersCount = 1;
+                }
+            }
+        }
+        if ($CurrentLine !== '') $LinesArray[] = $CurrentLine;
+        return $LinesArray;
     }
 
     public static function getPaginationKeys(object $Paginator)
