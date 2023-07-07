@@ -32,15 +32,15 @@ class ResumeController extends Controller
                 // 'Cnic' => 'string',
                 // 'Nationality' => 'string',
                 // 'Address' => 'string',
-                // 'Objective' => 'string',
-                // // 'Experience' => 'array',
-                // 'Qualification' => 'array',
-                // 'Skills' => 'array',
-                // 'Achievements' => 'array',
-                // 'Projects' => 'array',
-                // 'Interests' => 'array',
-                // 'Languages' => 'array',
-                // 'References' => 'array'
+                'Objective' => 'string',
+                'Experience' => 'string',
+                'Qualification' => 'string',
+                'Skills' => 'string',
+                'Achievements' => 'string',
+                'Projects' => 'string',
+                'Interests' => 'string',
+                'Languages' => 'string',
+                'References' => 'string'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -61,21 +61,25 @@ class ResumeController extends Controller
             $Email = $Req->Email;
             $DOB = $Req->DOB;
             $Cnic = $Req->Cnic;
+            $Address = $Req->Address;
             $Nationality = $Req->Nationality;
             // $Address = CustomHelpers::convertAddressIntoArray($Req->Address);
-            $Address = $Req->Address;
             $Objective = CustomHelpers::convertStringIntoLines($Req->Objective, 67, 5);
-            // dd($Objective);
+          
             $Experience = json_decode($Req->Experience, true);
-            // print_r($Experience);
-            // exit;
-            $Qualification = $Req->Qualification;
-            $Skills = $Req->Skills;
-            $Achievements = $Req->Achievements;
-            $Projects = $Req->Projects;
-            $Interests = $Req->Interests;
-            $Languages = $Req->Languages;
-            $References = $Req->References;
+            foreach ($Experience as $Index => $Array) $Experience[$Index]['JobDescription'] = CustomHelpers::convertStringIntoLines($Array['JobDescription'], 67, 3);
+
+            $Qualification = json_decode($Req->Qualification, true);
+            $Skills = json_decode($Req->Skills, true);
+            //  dd($Skills);
+            $Achievements = json_decode($Req->Achievements, true);
+            $Projects = json_decode($Req->Projects, true);
+            $Interests = json_decode($Req->Interests, true);
+            $Languages = json_decode($Req->Languages, true);
+
+            $References = json_decode($Req->References, true);
+            foreach ($References as $Index => $Array) $References[$Index]['Description'] = CustomHelpers::convertStringIntoLines($Array['Description'], 34, 2);
+            
             $Color = ($Req->Color) ? $Req->Color : null;
 
             $Resume = Resume::getResumeByID($Req->ID);
