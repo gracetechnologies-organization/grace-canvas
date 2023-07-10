@@ -58,6 +58,11 @@ class Wallpaper extends Model
         return Wallpaper::where('id', $ID)->delete();
     }
 
+    public static function deleteWallpapersByCatID(int $CatID, int $Type)
+    {
+        return Wallpaper::where('cat_id', $CatID)->where('type', $Type)->delete();
+    }
+
     public static function getWallpaperByID(int $ID)
     {
         return Wallpaper::findOrFail($ID);

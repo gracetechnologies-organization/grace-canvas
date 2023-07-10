@@ -62,7 +62,11 @@ class WallpaperController extends Controller
     public function destroy(Request $Req)
     {
         try {
-            $Deleted = Wallpaper::deleteWallpaper($Req->ID);
+            if ($Req->CatID)
+                $Deleted = Wallpaper::deleteWallpapersByCatID($Req->CatID, $Req->Type);
+            else
+                $Deleted = Wallpaper::deleteWallpaper($Req->ID);
+
             if ($Deleted) {
                 return response()->macroJson(
                     [],

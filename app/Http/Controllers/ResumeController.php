@@ -62,8 +62,8 @@ class ResumeController extends Controller
             $DOB = $Req->DOB;
             $Cnic = $Req->Cnic;
             $Address = $Req->Address;
-            $Nationality = $Req->Nationality;
             // $Address = CustomHelpers::convertAddressIntoArray($Req->Address);
+            $Nationality = $Req->Nationality;
             $Objective = CustomHelpers::convertStringIntoLines($Req->Objective, 67, 5);
           
             $Experience = json_decode($Req->Experience, true);
@@ -71,7 +71,6 @@ class ResumeController extends Controller
 
             $Qualification = json_decode($Req->Qualification, true);
             $Skills = json_decode($Req->Skills, true);
-            //  dd($Skills);
             $Achievements = json_decode($Req->Achievements, true);
             $Projects = json_decode($Req->Projects, true);
             $Interests = json_decode($Req->Interests, true);

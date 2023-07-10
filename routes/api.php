@@ -67,6 +67,7 @@ Route::middleware('auth.api.reqs')->group(function () {
 
     Route::prefix('wallpaper')->group(function () {
         Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
+        Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
     });
 
