@@ -319,6 +319,7 @@ class TemplatesController extends Controller
     public function showWallpapersByCatID(array $Category)
     {
         $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
+        // dd($Wallpapers);
         $Data = [];
         foreach ($Wallpapers as $Wallpaper) {
             array_push($Data, [
@@ -340,10 +341,16 @@ class TemplatesController extends Controller
             if ($Req->CatID) {
                 $Category = Category::getCategoryByID($Req->CatID);
                 $Data = $this->showWallpapersByCatID($Category);
-                return response()->macroJsonExtention(
+                // return response()->macroJsonExtention(
+                //     (empty($Data['data'])) ? [] : $Data['data'],
+                //     'pagination',
+                //     (empty($Data['data'])) ? [] : [CustomHelpers::getPaginationKeys($Data['pagination'])],
+                //     config('messages.SUCCESS_CODE'),
+                //     (empty($Data['data'])) ? config('messages.NO_RECORD') : '',
+                //     config('messages.HTTP_SUCCESS_CODE')
+                // );
+                return response()->macroJson(
                     (empty($Data['data'])) ? [] : $Data['data'],
-                    'pagination',
-                    (empty($Data['data'])) ? [] : [CustomHelpers::getPaginationKeys($Data['pagination'])],
                     config('messages.SUCCESS_CODE'),
                     (empty($Data['data'])) ? config('messages.NO_RECORD') : '',
                     config('messages.HTTP_SUCCESS_CODE')
@@ -362,14 +369,20 @@ class TemplatesController extends Controller
                     'category' => $Wallpaper->categories
                 ]);
             }
-            return response()->macroJsonExtention(
-                $Data,
-                'pagination',
-                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($Wallapapers)],
-                config('messages.SUCCESS_CODE'),
-                (empty($Data)) ? config('messages.NO_RECORD') : '',
-                config('messages.HTTP_SUCCESS_CODE')
-            );
+            // return response()->macroJsonExtention(
+            //     $Data,
+            //     'pagination',
+            //     (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($Wallapapers)],
+            //     config('messages.SUCCESS_CODE'),
+            //     (empty($Data)) ? config('messages.NO_RECORD') : '',
+            //     config('messages.HTTP_SUCCESS_CODE')
+            // );
+            return response()->macroJson(
+                    $Data,
+                    config('messages.SUCCESS_CODE'),
+                    (empty($Data)) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
         } catch (Exception $error) {
             report($error);
             return response()->macroJson(

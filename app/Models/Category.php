@@ -87,6 +87,7 @@ class Category extends Model
 
     public static function getWallpapersOfCategory(int $ID)
     {
-        return Category::findOrFail($ID)->wallpapers()->paginate(10);
+        // return Category::findOrFail($ID)->wallpapers()->paginate(10);
+        return Category::findOrFail($ID)->wallpapers()->get();
     }
 }
