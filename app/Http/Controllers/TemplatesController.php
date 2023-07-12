@@ -316,6 +316,40 @@ class TemplatesController extends Controller
         }
     }
 
+    public function showResumes()
+    {
+        try {
+            $Resumes = Resume::getResumes();
+            $Data = [];
+            foreach ($Resumes as $SingleResume) {
+                array_push($Data, [
+                    'id' => $SingleResume->id,
+                    'front_image' => url('/storage/images') . '/' . $SingleResume->front_image,
+                    'version' => $SingleResume->version,
+                    'created_at' => $SingleResume->created_at,
+                    'updated_at' => $SingleResume->updated_at,
+                    'deleted_at' => $SingleResume->deleted_at
+                ]);
+            }
+            return response()->macroJsonExtention(
+                $Data,
+                'pagination',
+                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($Resumes)],
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
+    }
+
     public function showWallpapersByCatID(array $Category)
     {
         $Wallpapers = Category::getWallpapersOfCategory($Category['id']);

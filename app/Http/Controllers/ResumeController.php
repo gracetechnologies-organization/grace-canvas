@@ -21,18 +21,18 @@ class ResumeController extends Controller
             $Validator = Validator::make($Req->all(), [
                 'ID' => 'required|integer',
                 'Photo' => 'required|mimes:png,jpg|max:1000',
-                // 'FName' => 'required|string',
-                // 'LName' => 'string',
-                // 'Profession' => 'string',
-                // 'Phone' => 'string',
-                // 'Gender' => 'string',
-                // 'MaritalStatus' => 'string',
-                // 'Email' => 'email',
-                // 'DOB' => 'string',
-                // 'Cnic' => 'string',
-                // 'Nationality' => 'string',
-                // 'Address' => 'string',
-                'Objective' => 'string',
+                'FName' => 'required|string',
+                'LName' => 'required|string',
+                'Profession' => 'required|string',
+                'Phone' => 'required|string',
+                'Gender' => 'required|string',
+                'MaritalStatus' => 'required|string',
+                'Email' => 'required|email',
+                'DOB' => 'required|string',
+                'Cnic' => 'required|string',
+                'Nationality' => 'required|string',
+                'Address' => 'required|string',
+                'Objective' => 'required|string',
                 'Experience' => 'string',
                 'Qualification' => 'string',
                 'Skills' => 'string',
@@ -64,10 +64,11 @@ class ResumeController extends Controller
             $Address = $Req->Address;
             // $Address = CustomHelpers::convertAddressIntoArray($Req->Address);
             $Nationality = $Req->Nationality;
-            $Objective = CustomHelpers::convertStringIntoLines($Req->Objective, 67, 5);
+            $Objective = $Req->Objective;
+            // $Objective = CustomHelpers::convertStringIntoLines($Req->Objective, 67, 5);
           
             $Experience = json_decode($Req->Experience, true);
-            foreach ($Experience as $Index => $Array) $Experience[$Index]['JobDescription'] = CustomHelpers::convertStringIntoLines($Array['JobDescription'], 67, 3);
+            // foreach ($Experience as $Index => $Array) $Experience[$Index]['JobDescription'] = CustomHelpers::convertStringIntoLines($Array['JobDescription'], 67, 3);
 
             $Qualification = json_decode($Req->Qualification, true);
             $Skills = json_decode($Req->Skills, true);
@@ -77,7 +78,7 @@ class ResumeController extends Controller
             $Languages = json_decode($Req->Languages, true);
 
             $References = json_decode($Req->References, true);
-            foreach ($References as $Index => $Array) $References[$Index]['Description'] = CustomHelpers::convertStringIntoLines($Array['Description'], 34, 2);
+            // foreach ($References as $Index => $Array) $References[$Index]['Description'] = CustomHelpers::convertStringIntoLines($Array['Description'], 34, 2);
             
             $Color = ($Req->Color) ? $Req->Color : null;
 
