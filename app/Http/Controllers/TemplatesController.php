@@ -10,6 +10,7 @@ use App\Models\Wallpaper;
 use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class TemplatesController extends Controller
@@ -412,11 +413,11 @@ class TemplatesController extends Controller
             //     config('messages.HTTP_SUCCESS_CODE')
             // );
             return response()->macroJson(
-                    $Data,
-                    config('messages.SUCCESS_CODE'),
-                    (empty($Data)) ? config('messages.NO_RECORD') : '',
-                    config('messages.HTTP_SUCCESS_CODE')
-                );
+                $Data,
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
+                config('messages.HTTP_SUCCESS_CODE')
+            );
         } catch (Exception $error) {
             report($error);
             return response()->macroJson(
@@ -431,21 +432,26 @@ class TemplatesController extends Controller
     public function showCategoriesWallpapers(Request $Req)
     {
         try {
-            $Categories = Category::getCategoriesWithWallpapers(($Req->CatID) ? $Req->CatID : null);
-            $Data = [];
-            foreach ($Categories as $Category) {
-                array_push($Data, [
-                    'id' => $Category->id,
-                    'name' => $Category->name,
-                    'description' => $Category->description,
-                    'image' => url('/storage/images') . '/' . $Category->image,
-                    'created_at' => $Category->created_at,
-                    'updated_at' => $Category->updated_at,
-                    'deleted_at' => $Category->deleted_at,
-                    'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
-                    'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
-                ]);
-            }
+            // dd(now()->addDays(30));
+            // dd(Cache::forget('showCategoriesWallpapers'));
+            $Data = Cache::remember('showCategoriesWallpapers', now()->addDays(30), function () use ($Req) {
+                $Categories = Category::getCategoriesWithWallpapers(($Req->CatID) ? $Req->CatID : null);
+                $Data = [];
+                foreach ($Categories as $Category) {
+                    array_push($Data, [
+                        'id' => $Category->id,
+                        'name' => $Category->name,
+                        'description' => $Category->description,
+                        'image' => url('/storage/images') . '/' . $Category->image,
+                        'created_at' => $Category->created_at,
+                        'updated_at' => $Category->updated_at,
+                        'deleted_at' => $Category->deleted_at,
+                        'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
+                        'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
+                    ]);
+                }
+                return $Data;
+            });
             return response()->macroJson(
                 $Data,
                 config('messages.SUCCESS_CODE'),

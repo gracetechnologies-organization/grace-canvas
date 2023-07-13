@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BusinessCardController;
+use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterHeadController;
 use App\Http\Controllers\ResumeController;
@@ -70,6 +71,10 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
         Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
+    });
+
+    Route::prefix('cache')->group(function () {
+        Route::post('/destroy', [CacheController::class, 'destroy']);
     });
 
     Route::get('testing', [LetterHeadController::class, 'TestingMethod'])->withoutMiddleware('auth.api.reqs');

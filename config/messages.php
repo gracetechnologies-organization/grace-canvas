@@ -24,6 +24,7 @@ return [
     'TOKEN_GENERATED_SUCCESS' => 'A token against your app has been generated successfully.',
     'TOKEN_RESET_SUCCESS' => 'Token reset successfully.',
     'TOKEN_DESTROYED_SUCCESS' => 'Token has been destroyed successfully.',
+    'CACHE_DESTROYED_SUCCESS' => 'Cached value against the provided key has been removed seccessfully',
     /* Failure Constants */
     'INSERTION_FAILED' => 'Failed to insert data.',
     'UPDATION_FAILED' => 'Failed to update data.',
@@ -42,6 +43,7 @@ return [
     'TOKEN_DESTROYED_FAILED' => 'Failed to destroy the token.',
     'TOKEN_INVALID' => 'Invalid token.',
     'TOEKN_NOT_PROVIDED' => 'Please provide token for authentication',
+    'CACHE_DESTROYED_FAILED' => 'There is no cache against this key',
     'PARAM_MISSING' => 'Some required parameters are missing.',
     'NO_RECORD' => 'No record found.',
     'TYPE_NA' => 'The "Type" which you have entered is not available in our system',

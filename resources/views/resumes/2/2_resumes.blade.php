@@ -490,8 +490,10 @@
     @endif
     {{-- Skills Section - Ends --}}
 
+    {{-- Interest Section - Begins --}}
+    @if (isset($Interests[0]))
     <text class="cls-14" transform="translate(40.44 727.16)">
-        <tspan x="0" y="0">GAMING</tspan>
+      {{ $Interests[0]['Interest'] }}
     </text>
     <g id="Slider-7" data-name="Slider" class="cls-52">
         <path class="cls-13" d="M40.44,739.86h0c0,1.45,1.18,2.63,2.63,2.63h109.78c1.45,0,2.63-1.18,2.63-2.63h0c0-1.45-1.18-2.63-2.63-2.63H43.08c-1.45,0-2.63,1.18-2.63,2.63Z" />
@@ -499,14 +501,10 @@
     <g id="Slider-8" data-name="Slider">
         <path class="cls-13" d="M40.44,739.86h0c0,1.45,1.18,2.63,2.63,2.63h91.87c1.45,0,2.63-1.18,2.63-2.63h0c0-1.45-1.18-2.63-2.63-2.63H43.08c-1.45,0-2.63,1.18-2.63,2.63Z" />
     </g>
+    @endif
+    @if (isset($Interests[1]))
     <text class="cls-14" transform="translate(40.44 767.19)">
-        <tspan class="cls-91" x="0" y="0">V</tspan>
-        <tspan class="cls-59" x="7.35" y="0">F</tspan>
-        <tspan x="13.87" y="0">X </tspan>
-        <tspan class="cls-4" x="23.8" y="0">V</tspan>
-        <tspan x="31.15" y="0">ID</tspan>
-        <tspan class="cls-41" x="43.12" y="0">E</tspan>
-        <tspan class="cls-62" x="50.16" y="0">O EDITING</tspan>
+      {{ $Interests[1]['Interest'] }}
     </text>
     <g id="Slider-9" data-name="Slider" class="cls-52">
         <path class="cls-13" d="M40.44,779.89h0c0,1.45,1.18,2.63,2.63,2.63h109.78c1.45,0,2.63-1.18,2.63-2.63h0c0-1.45-1.18-2.63-2.63-2.63H43.08c-1.45,0-2.63,1.18-2.63,2.63Z" />
@@ -514,10 +512,10 @@
     <g id="Slider-10" data-name="Slider">
         <path class="cls-13" d="M40.44,779.89h0c0,1.45,1.18,2.63,2.63,2.63h91.87c1.45,0,2.63-1.18,2.63-2.63h0c0-1.45-1.18-2.63-2.63-2.63H43.08c-1.45,0-2.63,1.18-2.63,2.63Z" />
     </g>
+    @endif
+    @if (isset($Interests[2]))
     <text class="cls-14" transform="translate(40.44 807.22)">
-        <tspan x="0" y="0">UI </tspan>
-        <tspan class="cls-77" x="14.44" y="0">U</tspan>
-        <tspan class="cls-85" x="22.68" y="0">X DESIGNING</tspan>
+      {{ $Interests[2]['Interest'] }}
     </text>
     <g id="Slider-11" data-name="Slider" class="cls-52">
         <rect class="cls-12" x="40.44" y="817.29" width="115.05" height="5.27" rx="2.63" ry="2.63" />
@@ -525,7 +523,10 @@
     <g id="Slider-12" data-name="Slider">
         <rect class="cls-12" x="40.44" y="817.29" width="77.58" height="5.27" rx="2.63" ry="2.63" />
     </g>
+    @endif
     <line class="cls-58" x1="237.69" y1="333.9" x2="569.78" y2="333.9" />
+    {{-- Interest Section - Ends --}}
+
     <text class="cls-11" transform="translate(239.07 189.48)">
         WORK EXPERIENCE
     </text>
