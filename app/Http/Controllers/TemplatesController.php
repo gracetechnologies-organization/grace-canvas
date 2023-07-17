@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Validator;
 
 class TemplatesController extends Controller
 {
-
     public function index()
     {
         // 
@@ -354,7 +353,6 @@ class TemplatesController extends Controller
     public function showWallpapersByCatID(array $Category)
     {
         $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
-        // dd($Wallpapers);
         $Data = [];
         foreach ($Wallpapers as $Wallpaper) {
             array_push($Data, [
@@ -373,9 +371,12 @@ class TemplatesController extends Controller
     public function showWallpapers(Request $Req)
     {
         try {
+            // dd(Cache::forget('showWallpapers'));
             if ($Req->CatID) {
-                $Category = Category::getCategoryByID($Req->CatID);
-                $Data = $this->showWallpapersByCatID($Category);
+                $Data = Cache::remember('showWallpapers' . $Req->CatID, now()->addDays(30), function () use ($Req) {
+                    $Category = Category::getCategoryByID($Req->CatID);
+                    return $this->showWallpapersByCatID($Category);
+                });
                 // return response()->macroJsonExtention(
                 //     (empty($Data['data'])) ? [] : $Data['data'],
                 //     'pagination',
@@ -391,19 +392,23 @@ class TemplatesController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            $Wallapapers = Wallpaper::getWallpapers();
-            $Data = [];
-            foreach ($Wallapapers as $Wallpaper) {
-                array_push($Data, [
-                    'id' => $Wallpaper->id,
-                    'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
-                    'type' => $Wallpaper->type,
-                    'created_at' => $Wallpaper->created_at,
-                    'updated_at' => $Wallpaper->updated_at,
-                    'deleted_at' => $Wallpaper->deleted_at,
-                    'category' => $Wallpaper->categories
-                ]);
-            }
+
+            $Data = Cache::remember('showWallpapers', now()->addDays(30), function () {
+                $Wallapapers = Wallpaper::getWallpapers();
+                $Data = [];
+                foreach ($Wallapapers as $Wallpaper) {
+                    array_push($Data, [
+                        'id' => $Wallpaper->id,
+                        'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
+                        'type' => $Wallpaper->type,
+                        'created_at' => $Wallpaper->created_at,
+                        'updated_at' => $Wallpaper->updated_at,
+                        'deleted_at' => $Wallpaper->deleted_at,
+                        'category' => $Wallpaper->categories
+                    ]);
+                }
+                return $Data;
+            });
             // return response()->macroJsonExtention(
             //     $Data,
             //     'pagination',
@@ -432,26 +437,46 @@ class TemplatesController extends Controller
     public function showCategoriesWallpapers(Request $Req)
     {
         try {
-            // dd(now()->addDays(30));
-            // dd(Cache::forget('showCategoriesWallpapers'));
-            $Data = Cache::remember('showCategoriesWallpapers', now()->addDays(30), function () use ($Req) {
-                $Categories = Category::getCategoriesWithWallpapers(($Req->CatID) ? $Req->CatID : null);
-                $Data = [];
-                foreach ($Categories as $Category) {
-                    array_push($Data, [
-                        'id' => $Category->id,
-                        'name' => $Category->name,
-                        'description' => $Category->description,
-                        'image' => url('/storage/images') . '/' . $Category->image,
-                        'created_at' => $Category->created_at,
-                        'updated_at' => $Category->updated_at,
-                        'deleted_at' => $Category->deleted_at,
-                        'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
-                        'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
-                    ]);
-                }
-                return $Data;
-            });
+            // dd(Cache::get('showCategoriesWallpapers11'));
+            if ($Req->CatID) {
+                $Data = Cache::remember('showCategoriesWallpapers' . $Req->CatID, now()->addDays(30), function () use ($Req) {
+                    $Categories = Category::getCategoriesWithWallpapers($Req->CatID);
+                    $Data = [];
+                    foreach ($Categories as $Category) {
+                        array_push($Data, [
+                            'id' => $Category->id,
+                            'name' => $Category->name,
+                            'description' => $Category->description,
+                            'image' => url('/storage/images') . '/' . $Category->image,
+                            'created_at' => $Category->created_at,
+                            'updated_at' => $Category->updated_at,
+                            'deleted_at' => $Category->deleted_at,
+                            'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
+                            'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
+                        ]);
+                    }
+                    return $Data;
+                });
+            } else {
+                $Data = Cache::remember('showCategoriesWallpapers', now()->addDays(30), function () {
+                    $Categories = Category::getCategoriesWithWallpapers();
+                    $Data = [];
+                    foreach ($Categories as $Category) {
+                        array_push($Data, [
+                            'id' => $Category->id,
+                            'name' => $Category->name,
+                            'description' => $Category->description,
+                            'image' => url('/storage/images') . '/' . $Category->image,
+                            'created_at' => $Category->created_at,
+                            'updated_at' => $Category->updated_at,
+                            'deleted_at' => $Category->deleted_at,
+                            'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
+                            'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
+                        ]);
+                    }
+                    return $Data;
+                });
+            }
             return response()->macroJson(
                 $Data,
                 config('messages.SUCCESS_CODE'),
