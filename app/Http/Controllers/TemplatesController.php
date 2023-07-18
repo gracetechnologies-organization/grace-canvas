@@ -190,6 +190,8 @@ class TemplatesController extends Controller
             //         config('messages.HTTP_SUCCESS_CODE')
             //     );
             // }
+            dd($Req->file('FrontImages'));
+            
             foreach ($Req->file('FrontImages') as $Key => $Image) {
                 $FrontImage = CustomHelpers::getWallpaperImgName($Image);
                 $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'wallpapers/thumbnails/', 'webp');
