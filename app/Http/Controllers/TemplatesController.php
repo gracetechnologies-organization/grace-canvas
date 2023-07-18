@@ -182,14 +182,14 @@ class TemplatesController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            if (count($Req->file('Thumbnails')) != count($Req->file('FrontImages'))) {
-                return response()->macroJson(
-                    [],
-                    config('messages.FAILED_CODE'),
-                    config('messages.ARRAYS_NOT_EQUAL'),
-                    config('messages.HTTP_SUCCESS_CODE')
-                );
-            }
+            // if (count($Req->file('Thumbnails')) != count($Req->file('FrontImages'))) {
+            //     return response()->macroJson(
+            //         [],
+            //         config('messages.FAILED_CODE'),
+            //         config('messages.ARRAYS_NOT_EQUAL'),
+            //         config('messages.HTTP_SUCCESS_CODE')
+            //     );
+            // }
             foreach ($Req->file('FrontImages') as $Key => $Image) {
                 $FrontImage = CustomHelpers::getWallpaperImgName($Image);
                 $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'wallpapers/thumbnails/', 'webp');
