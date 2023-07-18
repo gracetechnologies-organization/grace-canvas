@@ -46,6 +46,7 @@ return [
     'CACHE_DESTROYED_FAILED' => 'There is no cache against this key',
     'PARAM_MISSING' => 'Some required parameters are missing.',
     'NO_RECORD' => 'No record found.',
+    'ARRAYS_NOT_EQUAL' => 'Thumbnails & FrontImages should be equal in number.',
     'TYPE_NA' => 'The "Type" which you have entered is not available in our system',
     /* HTTP Codes Constants */
     'HTTP_SUCCESS_CODE' => 200,

@@ -167,8 +167,10 @@ class TemplatesController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'FrontImages.*' => 'required|mimes:png,jpg|max:500',
-                'Thumbnails.*' => 'required|mimes:png,jpg|max:200',
+                'FrontImages' => 'required',
+                'Thumbnails' => 'required',
+                'FrontImages.*' => 'mimes:png,jpg|max:500',
+                'Thumbnails.*' => 'mimes:png,jpg|max:200',
                 'Type' =>  'required|integer',
                 'CatID' => 'required|integer'
             ]);
@@ -180,19 +182,18 @@ class TemplatesController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            foreach ($Req->file('Thumbnails') as $Thumbnail) {
-                $ThisThumbnail = CustomHelpers::getThumbnailImgName($Thumbnail);
-                dd($ThisThumbnail);
-
-                // Image::load('example.jpg')
-                //     ->format(Manipulations::FORMAT_PNG)
-                //     ->save('example.png');
-
-                // $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->Type, $Req->CatID);
+            if (count($Req->file('Thumbnails')) != count($Req->file('FrontImages'))) {
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    config('messages.ARRAYS_NOT_EQUAL'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
             }
-            foreach ($Req->file('FrontImages') as $Image) {
+            foreach ($Req->file('FrontImages') as $Key => $Image) {
                 $FrontImage = CustomHelpers::getWallpaperImgName($Image);
-                $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->Type, $Req->CatID);
+                $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'wallpapers/thumbnails/', 'webp');
+                $Inserted = Wallpaper::insertWallpaper($FrontImage, $ThisThumbnail, $Req->Type, $Req->CatID);
             }
             if ($Inserted) {
                 return response()->macroJson(
