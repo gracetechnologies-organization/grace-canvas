@@ -167,8 +167,8 @@ class TemplatesController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'FrontImages' => 'required',
-                'Thumbnails' => 'required',
+                // 'FrontImages' => 'required',
+                // 'Thumbnails' => 'required',
                 'FrontImages.*' => 'mimes:png,jpg|max:500',
                 'Thumbnails.*' => 'mimes:png,jpg|max:200',
                 'Type' =>  'required|integer',
