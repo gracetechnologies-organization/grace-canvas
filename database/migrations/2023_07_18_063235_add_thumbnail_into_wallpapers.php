@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('wallpapers', function (Blueprint $table) {
-            $table->tinyInteger('type')->after('thumbnail')->default(1)->index()->comment('1: wallpaper, 2: preview');
+            $table->text('thumbnail')->after('front_image')->nullable();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('wallpapers', function (Blueprint $table) {
-            $table->dropColumn('type');
+            $table->dropColumn('thumbnail');
         });
     }
 };

@@ -19,6 +19,7 @@ class WallpaperFactory extends Factory
     {
         return [
             'front_image' => $this->faker->unique()->word() . '.jpg',
+            'thumbnail' => $this->faker->unique()->word() . '.webp',
             'cat_id' => Category::inRandomOrder()->first()->id
         ];
     }

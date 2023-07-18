@@ -6,6 +6,9 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
+use Spatie\ImageOptimizer\Optimizers\Cwebp;
 
 class CustomHelpers
 {
@@ -29,6 +32,38 @@ class CustomHelpers
         |--------------------------------------------------------------------------
         */
         Storage::disk('public')->putFileAs('wallpapers', $Img, $ImgName);
+        return $ImgName;
+    }
+
+    public static function getThumbnailImgName(object $Img)
+    {
+        // dd(pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME));
+        // $filenameWithExtension = $Img->getClientOriginalName();
+        // $filenameWithoutExtension = pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME);
+        // dd($Img->getClientOriginalExtension());
+        $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME));
+        // dd($ImgName);
+        // $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        Storage::disk('public')->putFileAs('wallpapers/thumbnails', $Img, $ImgName . '.' . $Img->getClientOriginalExtension());
+        // exit;
+        // dd($Img->get());
+        // dd(storage_path('app/public/wallpapers/' . 'Frame_87-min.jpg'));
+        dd(Image::load(storage_path('app/public/wallpapers/thumbnails/')  . $ImgName . '.' . $Img->getClientOriginalExtension())
+        // ->optimize()
+        ->optimize([Cwebp::class => [
+            '-m 6',
+            '-q 90'
+        ]])
+        ->format(Manipulations::FORMAT_WEBP)
+        ->save(storage_path('app/public/wallpapers/thumbnails/')  . $ImgName . '.webp'));
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default wallpapers path "storage/app/public/wallpapers"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('wallpapers/thumbnails', $Img, $ImgName);
         return $ImgName;
     }
 

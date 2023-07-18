@@ -168,6 +168,7 @@ class TemplatesController extends Controller
         try {
             $Validator = Validator::make($Req->all(), [
                 'FrontImages.*' => 'required|mimes:png,jpg|max:500',
+                'Thumbnails.*' => 'required|mimes:png,jpg|max:200',
                 'Type' =>  'required|integer',
                 'CatID' => 'required|integer'
             ]);
@@ -178,6 +179,16 @@ class TemplatesController extends Controller
                     $Validator->errors(),
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
+            }
+            foreach ($Req->file('Thumbnails') as $Thumbnail) {
+                $ThisThumbnail = CustomHelpers::getThumbnailImgName($Thumbnail);
+                dd($ThisThumbnail);
+
+                // Image::load('example.jpg')
+                //     ->format(Manipulations::FORMAT_PNG)
+                //     ->save('example.png');
+
+                // $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->Type, $Req->CatID);
             }
             foreach ($Req->file('FrontImages') as $Image) {
                 $FrontImage = CustomHelpers::getWallpaperImgName($Image);
