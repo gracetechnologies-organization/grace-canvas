@@ -24,7 +24,7 @@ return [
     'TOKEN_GENERATED_SUCCESS' => 'A token against your app has been generated successfully.',
     'TOKEN_RESET_SUCCESS' => 'Token reset successfully.',
     'TOKEN_DESTROYED_SUCCESS' => 'Token has been destroyed successfully.',
-    'CACHE_DESTROYED_SUCCESS' => 'Cached value against the provided key has been removed seccessfully',
+    'CACHE_DESTROYED_SUCCESS' => 'All cached data by your application has been removed seccessfully',
     /* Failure Constants */
     'INSERTION_FAILED' => 'Failed to insert data.',
     'UPDATION_FAILED' => 'Failed to update data.',

@@ -34,21 +34,10 @@ class CacheController extends Controller
         // 
     }
 
-    public function destroy(Request $Req)
+    public function destroy()
     {
         try {
-            $Validator = Validator::make($Req->all(), [
-                'cache_key' => 'required|string'
-            ]);
-            if ($Validator->fails()) {
-                return response()->macroJson(
-                    [],
-                    config('messages.FAILED_CODE'),
-                    $Validator->errors(),
-                    config('messages.HTTP_UNPROCESSABLE_DATA')
-                );
-            }
-            $Destroyed = Cache::forget($Req->cache_key);
+            $Destroyed = Cache::flush();
             return response()->macroJson(
                 [],
                 ($Destroyed) ? config('messages.SUCCESS_CODE') : config('messages.FAILED_CODE'),

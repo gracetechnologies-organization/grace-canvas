@@ -370,6 +370,7 @@ class TemplatesController extends Controller
             array_push($Data, [
                 'id' => $Wallpaper->id,
                 'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
+                'thumbnail' => url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail,
                 'type' => $Wallpaper->type,
                 'created_at' => $Wallpaper->created_at,
                 'updated_at' => $Wallpaper->updated_at,
@@ -383,7 +384,7 @@ class TemplatesController extends Controller
     public function showWallpapers(Request $Req)
     {
         try {
-            // dd(Cache::forget('showWallpapers'));
+            // dd(Cache::flush());
             if ($Req->CatID) {
                 $Data = Cache::remember('showWallpapers' . $Req->CatID, now()->addDays(30), function () use ($Req) {
                     $Category = Category::getCategoryByID($Req->CatID);
@@ -412,6 +413,7 @@ class TemplatesController extends Controller
                     array_push($Data, [
                         'id' => $Wallpaper->id,
                         'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
+                        'thumbnail' => url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail,
                         'type' => $Wallpaper->type,
                         'created_at' => $Wallpaper->created_at,
                         'updated_at' => $Wallpaper->updated_at,
