@@ -193,8 +193,9 @@ class TemplatesController extends Controller
             foreach ($Req->file('FrontImages') as $Key => $Image) {
                 $FrontImage = CustomHelpers::getWallpaperImgName($Image);
                 $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'wallpapers/thumbnails/', 'webp');
-                $Inserted = Wallpaper::insertWallpaper($FrontImage, $ThisThumbnail, $Req->Type, $Req->CatID);
+                $BulkData[] = ['front_image' => $FrontImage, 'thumbnail' => $ThisThumbnail, 'type' => $Req->Type, 'cat_id' => $Req->CatID];
             }
+            $Inserted = Wallpaper::insertBulkWallpapers($BulkData);
             if ($Inserted) {
                 return response()->macroJson(
                     [],
