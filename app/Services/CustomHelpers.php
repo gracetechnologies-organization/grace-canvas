@@ -152,6 +152,7 @@ class CustomHelpers
                 array_push($Data, [
                     "id" => $SingleIndex->id,
                     "front_image" => $SingleIndex->front_image,
+                    "thumbnail" => $SingleIndex->thumbnail,
                     "type" => $SingleIndex->type,
                     "cat_id" => $SingleIndex->cat_id,
                     "cat_title" => $CatName,
