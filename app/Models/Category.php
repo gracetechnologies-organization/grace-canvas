@@ -42,8 +42,8 @@ class Category extends Model
     public static function updateCategory(int $ID, string $Name = null, string $Description = null, string $Image = null)
     {
         $Category = Category::findOrFail($ID);
-        if (!is_null($Name)) $Category->name = $Name;
-        if (!is_null($Description)) $Category->description = $Description;
+        if (!is_null($Name)) $Category->name = ucfirst($Name);
+        if (!is_null($Description)) $Category->description = ucfirst($Description);
         if (!is_null($Image)) $Category->image = $Image;
         return $Category->save();
     }
@@ -81,12 +81,14 @@ class Category extends Model
         return $Categories->each(function ($Category) {
             $Category->wallpapers->each(function ($Wallpaper) {
                 $Wallpaper->front_image = url('/storage/wallpapers') . '/' . $Wallpaper->front_image;
+                $Wallpaper->thumbnail = url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail;
             });
         });
     }
 
     public static function getWallpapersOfCategory(int $ID)
     {
-        return Category::findOrFail($ID)->wallpapers()->paginate(10);
+        // return Category::findOrFail($ID)->wallpapers()->paginate(10);
+        return Category::findOrFail($ID)->wallpapers()->get();
     }
 }

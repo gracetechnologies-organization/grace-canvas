@@ -3,8 +3,11 @@
 namespace App\Services;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 
 class CustomHelpers
 {
@@ -21,7 +24,7 @@ class CustomHelpers
 
     public static function getWallpaperImgName(object $Img)
     {
-        $ImgName = str_replace(" ", "_", $Img->getClientOriginalName());
+        $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
         /*
         |--------------------------------------------------------------------------
         | Save the image to the default wallpapers path "storage/app/public/wallpapers"
@@ -29,6 +32,22 @@ class CustomHelpers
         */
         Storage::disk('public')->putFileAs('wallpapers', $Img, $ImgName);
         return $ImgName;
+    }
+    /**
+     * @param string $Path e.g $Path = 'wallpapers/thumbnails/'
+     */
+    public static function saveCompressReturnImgName(object $Img, string $Path, string $Extention)
+    {
+        $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME));
+        Storage::disk('public')->putFileAs($Path, $Img, $ImgName . '.' . $Img->getClientOriginalExtension());
+
+        Image::load(storage_path('app/public/') . $Path . $ImgName . '.' . $Img->getClientOriginalExtension())
+        ->optimize()
+        ->quality(70)
+        ->format(Manipulations::FORMAT_WEBP)
+        ->save(storage_path('app/public/') . $Path . $ImgName . '.webp');
+        
+        return $ImgName . '.' . $Extention;
     }
 
     public static function getImgNameWithID(object $Img, int $ID, string $Side = null)
@@ -74,16 +93,16 @@ class CustomHelpers
         return $ImgName;
     }
 
-    public static function converInto2IndexArray(string $String)
+    public static function convertInto2IndexArray(string $String)
     {
         $Words = explode(' ', $String);
         // Get the last word of the string
         $LastWord = end($Words);
         // Remove the last word from the array
-        $wordsWithoutLast = array_slice($Words, 0, -1);
+        $WordsWithoutLast = array_slice($Words, 0, -1);
         // Create the final array with the desired indexes
         $Array = [
-            implode(' ', $wordsWithoutLast), // Index 0: All words except the last one
+            implode(' ', $WordsWithoutLast), // Index 0: All words except the last one
             $LastWord // Index 1: Last word
         ];
         return $Array;
@@ -101,6 +120,34 @@ class CustomHelpers
         $Line2 = implode(' ', array_slice($Words, 4));
         return [$Line1, $Line2];
     }
+    /**
+     * @var $Characters total characters per line
+     * @var $Lines total lines
+     */
+    public static function ConvertStringIntoLines(string $StringValue, int $Characters, int $Lines)
+    {
+        $LinesArray = [];
+        $CurrentLine = '';
+        $CharactersCount = 0;
+        for ($i = 0; $i < strlen($StringValue); $i++) {
+            $Character = $StringValue[$i];
+            if ($CharactersCount < $Characters) {
+                $CurrentLine .= $Character;
+                $CharactersCount++;
+            } else {
+                if (count($LinesArray) < $Lines - 1) {
+                    $LinesArray[] = $CurrentLine;
+                    $CurrentLine = $Character;
+                    $CharactersCount = 1;
+                } else {
+                    $CurrentLine = $Character;
+                    $CharactersCount = 1;
+                }
+            }
+        }
+        if ($CurrentLine !== '') $LinesArray[] = $CurrentLine;
+        return $LinesArray;
+    }
 
     public static function getPaginationKeys(object $Paginator)
     {
@@ -113,5 +160,46 @@ class CustomHelpers
             'perPage' => $Paginator->perPage(),
             'total' => $Paginator->total(),
         ];
+    }
+
+    public static function getOnlyWallpapers(Collection $Images, string $CatName)
+    {
+        $Data = [];
+        foreach ($Images as $SingleIndex) {
+            if ($SingleIndex->type === 1) {
+                array_push($Data, [
+                    "id" => $SingleIndex->id,
+                    "front_image" => $SingleIndex->front_image,
+                    "thumbnail" => $SingleIndex->thumbnail,
+                    "type" => $SingleIndex->type,
+                    "cat_id" => $SingleIndex->cat_id,
+                    "cat_title" => $CatName,
+                    "created_at" => $SingleIndex->created_at,
+                    "updated_at" => $SingleIndex->updated_at,
+                    "deleted_at" => $SingleIndex->deleted_at,
+                ]);
+            }
+        }
+        return $Data;
+    }
+
+    public static function getOnlyPreviews(Collection $Images, string $CatName)
+    {
+        $Data = [];
+        foreach ($Images as $SingleIndex) {
+            if ($SingleIndex->type === 2) {
+                array_push($Data, [
+                    "id" => $SingleIndex->id,
+                    "front_image" => $SingleIndex->front_image,
+                    "type" => $SingleIndex->type,
+                    "cat_id" => $SingleIndex->cat_id,
+                    "cat_title" => $CatName,
+                    "created_at" => $SingleIndex->created_at,
+                    "updated_at" => $SingleIndex->updated_at,
+                    "deleted_at" => $SingleIndex->deleted_at,
+                ]);
+            }
+        }
+        return $Data;
     }
 }

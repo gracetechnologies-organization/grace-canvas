@@ -4,40 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\LetterHead;
 use App\Services\CustomHelpers;
-use Carbon\Carbon;
-use Dompdf\Dompdf;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
 
 class LetterHeadController extends Controller
 {
-    public function collectionsTestCode()
+    public function TestingMethod()
     {
-        // $flights = LetterHead::chunkById(2, function (Collection $flights) {
-        //     // dd($flights->each->update(['deleted_at' => '2023-06-07 13:10:17']));
-        //     $flights->each->update(['front_svg' => 'test data']);
-        // }, $column = 'id');
-
-        //     Flight::where('departed', true)
-        // ->chunkById(200, function (Collection $flights) {
-        //     $flights->each->update(['departed' => false]);
-        // }, $column = 'id');
-
-        // LetterHead::chunk(2, function (Collection $flights) {
-        //     dd($flights);
-        //     // $flights->each->update(['departed' => false]);
-        // });
-
-        // $flights = LetterHead::lazy();
-        // foreach (LetterHead::lazy() as $flight) print_r($flight);
-        
-        $flights = LetterHead::all() ;
-
-        dd($flights->contains(33));
+       return Process::run('dir')->output();
     }
 
     public function index()
@@ -49,6 +25,7 @@ class LetterHeadController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
+                'ID' => 'required|integer',
                 'Logo' => 'required|mimes:png,jpg|max:1000',
                 'Company' => 'required|string',
                 'TagLine' => 'string',
@@ -68,7 +45,7 @@ class LetterHeadController extends Controller
             }
 
             $Logo = CustomHelpers::getImgURL($Req->Logo);
-            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::converInto2IndexArray($Req->Company) : $Req->Company;
+            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::convertInto2IndexArray($Req->Company) : $Req->Company;
             $TagLine = $Req->TagLine;
             $Address = CustomHelpers::convertAddressIntoArray($Req->Address);
             $Phone_1 = $Req->Phone_1;
@@ -83,7 +60,7 @@ class LetterHeadController extends Controller
             // Create a response with the file content
             return response()->macroView(
                 $LetterHeadView,
-                config('messages.HTTP_SERVER_ERROR_CODE'),
+                config('messages.HTTP_SUCCESS_CODE'),
                 ['Content-Type' => 'text/html']
             );
         } catch (Exception $error) {

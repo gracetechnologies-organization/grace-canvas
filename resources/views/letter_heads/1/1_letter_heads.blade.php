@@ -2,6 +2,10 @@
     height="3579" viewBox="0 0 2551 3579">
     <defs>
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap');
+
             .cls-1,
             .cls-11,
             .cls-9 {

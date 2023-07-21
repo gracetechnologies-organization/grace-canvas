@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             BusinessCardSeeder::class,
             LetterHeadSeeder::class,
-            WallpaperSeeder::class
+            WallpaperSeeder::class,
+            ResumeSeeder::class
         ]);
     }
 }

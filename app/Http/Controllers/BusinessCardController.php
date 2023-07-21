@@ -19,6 +19,7 @@ class BusinessCardController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
+                'ID' => 'required|integer',
                 'Logo' => 'required|mimes:png,jpg|max:1000',
                 'FName' => 'string',
                 'LName' => 'string',
@@ -42,7 +43,7 @@ class BusinessCardController extends Controller
             $FName = $Req->FName;
             $LName = $Req->LName;
             $Designation = $Req->Designation;
-            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::converInto2IndexArray($Req->Company) : $Req->Company;
+            $Company = (str_word_count($Req->Company) > 1) ? CustomHelpers::convertInto2IndexArray($Req->Company) : $Req->Company;
             $TagLine = $Req->TagLine;
             $Address = $Req->Address;
             $Phone = $Req->Phone;
@@ -50,13 +51,13 @@ class BusinessCardController extends Controller
             $Email = $Req->Email;
             $Color = ($Req->Color) ? $Req->Color : null;
 
-            $BusinessCard = BusinessCard::getBusinessCardByID($Req->CardID);
+            $BusinessCard = BusinessCard::getBusinessCardByID($Req->ID);
             $ThisTemplate = ($CardSide === 'front') ? $BusinessCard->front_svg . $CardSide : $BusinessCard->back_svg . $CardSide;
             $CardView = view('business_cards.' . $ThisTemplate, compact('Logo', 'FName', 'LName', 'Designation', 'Company', 'TagLine', 'Address', 'Phone', 'Website', 'Email', 'Color'));
             // Create a response with the file content
             return response()->macroView(
                 $CardView,
-                config('messages.HTTP_SERVER_ERROR_CODE'),
+                config('messages.HTTP_SUCCESS_CODE'),
                 ['Content-Type' => 'text/html']
             );
         } catch (Exception $error) {
@@ -74,7 +75,7 @@ class BusinessCardController extends Controller
     {
        
     }
-
+    
     public function edit(Request $Req)
     {
         try {

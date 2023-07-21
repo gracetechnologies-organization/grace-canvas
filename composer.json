@@ -12,7 +12,10 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.11",
-        "spatie/browsershot": "^3.57"
+        "predis/predis": "^2.2",
+        "spatie/browsershot": "^3.57",
+        "spatie/image": "^2.2",
+        "spatie/image-optimizer": "^1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\BusinessCardController;
+use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterHeadController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +43,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::prefix('show')->group(function () {
             Route::get('/business-cards', [TemplatesController::class, 'showBusinessCards']);
             Route::get('/letter-heads', [TemplatesController::class, 'showLetterHeads']);
+            Route::get('/resumes', [TemplatesController::class, 'showResumes']);
             Route::get('/wallpapers/{CatID?}', [TemplatesController::class, 'showWallpapers']);
             Route::get('/category/wallpapers/{CatID?}', [TemplatesController::class, 'showCategoriesWallpapers']);
         });
@@ -57,12 +61,23 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/destroy/{ID}', [LetterHeadController::class, 'destroy']);
     });
 
+    Route::prefix('resume')->group(function () {
+        Route::post('/create', [ResumeController::class, 'create']);
+        Route::post('/edit/{ID}', [ResumeController::class, 'edit']);
+        Route::post('/destroy/{ID}', [ResumeController::class, 'destroy']);
+    });
+
     Route::prefix('wallpaper')->group(function () {
         Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
+        Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
     });
 
-    Route::get('collections-testing', [LetterHeadController::class, 'collectionsTestCode']);
+    Route::prefix('cache')->group(function () {
+        Route::post('/destroy', [CacheController::class, 'destroy']);
+    });
+
+    Route::get('testing', [LetterHeadController::class, 'TestingMethod'])->withoutMiddleware('auth.api.reqs');
 });
 
 

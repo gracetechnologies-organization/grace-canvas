@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Wallpaper>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Resume>
  */
-class WallpaperFactory extends Factory
+class ResumeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +18,8 @@ class WallpaperFactory extends Factory
     {
         return [
             'front_image' => $this->faker->unique()->word() . '.jpg',
-            'thumbnail' => $this->faker->unique()->word() . '.webp',
-            'cat_id' => Category::inRandomOrder()->first()->id
+            'front_svg' => '1/1_',
+            'version' => 0
         ];
     }
 }

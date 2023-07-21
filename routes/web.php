@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\BusinessCardController;
+use App\Http\Controllers\FrontEndController;
+use App\Http\Livewire\EditingForms\CreateResumeForm;
+use App\Http\Livewire\Pages\HomePage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', HomePage::class)->name('home');
+
+Route::prefix('edit')->group(function () {
+    Route::get('resume/{ID}', CreateResumeForm::class)->name('edit.resume.form');
 });
+
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+// Route::middleware('admin.guard')->prefix('admin')->group(function () {
+//     Route::get('/dashboard', Dashboard::class)->name('admin.index');
+//     Route::get('/employees', ManageEmployees::class)->name('admin.employees');
+// });
