@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 
 class CustomHelpers
 {
@@ -30,6 +32,22 @@ class CustomHelpers
         */
         Storage::disk('public')->putFileAs('wallpapers', $Img, $ImgName);
         return $ImgName;
+    }
+    /**
+     * @param string $Path e.g $Path = 'wallpapers/thumbnails/'
+     */
+    public static function saveCompressReturnImgName(object $Img, string $Path, string $Extention)
+    {
+        $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME));
+        Storage::disk('public')->putFileAs($Path, $Img, $ImgName . '.' . $Img->getClientOriginalExtension());
+
+        Image::load(storage_path('app/public/') . $Path . $ImgName . '.' . $Img->getClientOriginalExtension())
+        ->optimize()
+        ->quality(70)
+        ->format(Manipulations::FORMAT_WEBP)
+        ->save(storage_path('app/public/') . $Path . $ImgName . '.webp');
+        
+        return $ImgName . '.' . $Extention;
     }
 
     public static function getImgNameWithID(object $Img, int $ID, string $Side = null)

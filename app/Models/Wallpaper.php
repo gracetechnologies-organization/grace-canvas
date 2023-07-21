@@ -12,6 +12,7 @@ class Wallpaper extends Model
 
     protected $fillable = [
         'front_image',
+        'thumbnail',
         'type',
         'cat_id'
     ];
@@ -35,10 +36,11 @@ class Wallpaper extends Model
         return Wallpaper::orderByDesc('id')->first()->id ?? 0;
     }
 
-    public static function insertWallpaper(string $FrontImage, int $Type, int $CatID)
+    public static function insertWallpaper(string $FrontImage, string $Thumbnail, int $Type, int $CatID)
     {
         return Wallpaper::create([
             'front_image' => $FrontImage,
+            'thumbnail' => $Thumbnail,
             'type' => $Type,
             'cat_id' => $CatID
         ]);
