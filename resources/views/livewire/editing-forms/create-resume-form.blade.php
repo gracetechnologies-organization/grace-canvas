@@ -28,7 +28,7 @@
     <div class="container-fluid px-5 px-md-4 px-lg-5">
         <div class="row">
             <!-- Form column -->
-            <div class="col-12 col-md-5 col-lg-4 border border-danger">
+            <div class="col-12 col-md-5 col-lg-4 ">
                 <form>
                     <div class="row">
                         <div class="col-10 py-1 mt-1 ">
@@ -473,8 +473,8 @@
                 </form>
             </div>
             <!-- Resume template column -->
-            <div class="col-12 col-md-7 col-lg-8 border border-danger">
-                <div class="row border border-danger">
+            <div class="col-12 col-md-7 col-lg-8 ">
+                <div class="row ">
                     <div class="col-6">
                         <button type="button" class="btn btn-primary" onclick="printDiv('resume-template-container')">Print Now</button>
                     </div>
@@ -483,12 +483,215 @@
                     </div>
                 </div>
                 <!-- Resume template design -->
-                <div class="container border border-danger" id="resume-template-container">
-                    <div class="row">
-                        <div class="col-4 bg-secondary">
-                            <h1>Pic</h1>
+                <div class="container " id="resume-template-container">
+                    <style>
+                        .custom-row div {
+                            float: left;
+                        }
+
+                        .left-col {
+                            background: #464646;
+                            width: 200px;
+                            height: 842px;
+                        }
+
+                        .right-col {
+                            background: white;
+                            width: 386px;
+                            height: 842px;
+                        }
+
+                        .resume-photo {
+                            border: 2px solid white;
+                            border-radius: 100%;
+                            overflow: hidden;
+                            width: 142px;
+                            height: 142px;
+                            margin: auto;
+                            position: relative;
+                            top: 20px;
+                        }
+
+                        .personal-info-container {
+                            position: relative;
+                            top: 40px;
+                            left: 20px;
+                            width: 120px;
+                            padding-top: 10px;
+                        }
+
+                        .personal-info-container h2 {
+                            color: #FFF;
+                            font-family: Poppins;
+                            font-size: 13.17px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 0px;
+                            text-transform: uppercase;
+                            text-align: center;
+                        }
+
+                        .left-col-divider {
+                            background-color: white;
+                            width: 120px;
+                            height: 1.17px;
+                        }
+
+                        .personal-info-details {
+                            padding: 10px 0px 0px 7px;
+                            height: 39px;
+                        }
+
+                        .personal-info-details p {
+                            color: #FFF;
+                            font-family: Poppins;
+                            font-size: 10px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 0px;
+                        }
+
+                        .languages-container {
+                            position: relative;
+                            top: 47px;
+                            left: 20px;
+                            width: 120px;
+                            padding-top: 10px;
+                        }
+
+                        .languages-container h2 {
+                            color: #FFF;
+                            font-family: Poppins;
+                            font-size: 13.17px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 0px;
+                            text-transform: uppercase;
+                            text-align: center;
+                        }
+
+                        .languages-details {
+                            padding: 20px 0px 0px 7px;
+                            height: 29px;
+                        }
+
+                        .languages-details p {
+                            color: #FFF;
+                            font-family: Poppins;
+                            font-size: 12px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 0px;
+                            text-transform: uppercase;
+                        }
+
+                        .skills-container {
+                            position: relative;
+                            top: 55px;
+                            left: 20px;
+                            width: 120px;
+                            padding-top: 10px;
+                        }
+
+                        .skills-container h2 {
+                            color: #FFF;
+                            font-family: Poppins;
+                            font-size: 13.17px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 0px;
+                            text-transform: uppercase;
+                            text-align: center;
+                        }
+
+                        .skills-details {
+                            padding: 20px 0px 0px 7px;
+                            height: 29px;
+                            border: 1px solid red;
+                        }
+
+                        .skills-details p {
+                            color: #FFF;
+                            font-family: Poppins;
+                            font-size: 10.8px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 0px;
+                            text-transform: uppercase;
+                        }
+                    </style>
+                    <div class="row border border-success border-1">
+                        <div class="left-col border border-info">
+                            <div class="resume-photo">
+                                <img src="{{ asset('storage/images/Asset 11.png') }}" width="220px">
+                            </div>
+                            <div class="personal-info-container border border-info">
+                                <h2> Personal Info </h2>
+                                <div class="left-col-divider"></div>
+                                <div class="personal-info-details ">
+                                    <p>PHONE</p>
+                                    <p>+92 317 0155625</p>
+                                </div>
+                                <div class="personal-info-details ">
+                                    <p>EMAIL</p>
+                                    <p>mirza@gmail.com</p>
+                                </div>
+                                <div class="personal-info-details ">
+                                    <p>ID CARD</p>
+                                    <p>37405-7659127-0</p>
+                                </div>
+                                <div class="personal-info-details ">
+                                    <p>DATE OF BIRTH</p>
+                                    <p>15.06.2003</p>
+                                </div>
+                                <div class="personal-info-details ">
+                                    <p>GENDER</p>
+                                    <p>Male</p>
+                                </div>
+                                <div class="personal-info-details ">
+                                    <p>MARITAL STATUS</p>
+                                    <p>Single</p>
+                                </div>
+                                <div class="personal-info-details ">
+                                    <p>NATIONALITY</p>
+                                    <p>Pakistan</p>
+                                </div>
+                                <div class="personal-info-details ">
+                                    <p>ADDRESS</p>
+                                    <p>Bahria, Rawalpindi</p>
+                                </div>
+                            </div>
+
+                            <div class="languages-container border border-info">
+                                <h2> Languages </h2>
+                                <div class="left-col-divider"></div>
+                                <div class="languages-details">
+                                    <p>Urdu</p>
+                                </div>
+                                <div class="languages-details">
+                                    <p>English</p>
+                                </div>
+                                <div class="languages-details">
+                                    <p>Chinese</p>
+                                </div>
+                                <div class="languages-details">
+                                    <p>Spanish</p>
+                                </div>
+                            </div>
+
+                            <div class="skills-container border border-info">
+                                <h2> Skills </h2>
+                                <div class="left-col-divider"></div>
+                                <div class="skills-details">
+                                    <p>Photoshop</p>
+                                </div>
+                                <div class="skills-details">
+                                    <p>Illutrator</p>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="col-8 bg-light">
+                        <div class="right-col">
                             <h1>objective</h1>
                         </div>
                     </div>
