@@ -12651,6 +12651,24 @@ fieldset:disabled .btn {
   background: white;
 }
 
+.fixed-btn-container {
+  position: fixed;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px 0px 0px 10px;
+  width: 60px;
+}
+
+.fixed-btn {
+  background-color: #ffffff;
+  border: none;
+  padding: 10px 15px 10px 0px;
+  cursor: pointer;
+}
+
 /* To render all the CSS colors in the print preview */
 @media print {
   html {
@@ -12662,6 +12680,12 @@ fieldset:disabled .btn {
 /* General media queries */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .icons-size {
-    font-size: 1rem !important;
+    font-size: 1.8rem !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .contianer-customs {
+    overflow: scroll;
   }
 }
