@@ -18,4 +18,6 @@
          // Restore the original document content after printing is done
          document.body.innerHTML = originalContents;
      }
+
+     const renderTxt = (id, value) => document.getElementById(id).innerHTML = value;
  </script>

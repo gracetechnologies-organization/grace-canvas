@@ -1,6 +1,4 @@
 <div>
-    {{-- <button onclick="window.print()">Print</button> --}}
-
     <!-- Offcanvas for detail customization -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
@@ -46,33 +44,33 @@
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter first name">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter first name" onkeyup="renderTxt('FName', this.value)">
                                 <label for="floatingInputGrid">First Name</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last name">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last name" onkeyup="renderTxt('LName', this.value)">
                                 <label for="floatingInputGrid">Last Name</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 my-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Profession">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Profession" onkeyup="renderTxt('Profession', this.value)">
                             <label for="floatingInputGrid">Enter Your Profession</label>
                         </div>
                     </div>
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-8">
                             <div class="form-floating">
-                                <input type="number" class="form-control" id="floatingInputGrid" placeholder="Enter Your Phone">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Phone" onkeyup="renderTxt('Phone', this.value)">
                                 <label for="floatingInputGrid">Enter Your Phone</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect" aria-label="Select Your Gender">
+                                <select class="form-select" id="floatingSelect" aria-label="Select Your Gender" onchange="renderTxt('Gender', this.value)">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -83,7 +81,7 @@
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-3">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect" aria-label="Marital Status">
+                                <select class="form-select" id="floatingSelect" aria-label="Marital Status" onchange="renderTxt('MaritalStatus', this.value)">
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
                                 </select>
@@ -92,7 +90,7 @@
                         </div>
                         <div class="col-12 col-md-12 col-lg-9">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="Enter Your Email">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="Enter Your Email" onkeyup="renderTxt('Email', this.value)">
                                 <label for="floatingInputGrid">Enter Your Email</label>
                             </div>
                         </div>
@@ -100,37 +98,34 @@
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-3">
                             <div class="form-floating">
-                                <input type="date" class="form-control" id="floatingInputGrid" placeholder="Date Of Birth">
+                                <input type="date" class="form-control" id="floatingInputGrid" placeholder="Date Of Birth" onchange="renderTxt('DOB', this.value)">
                                 <label for="floatingInputGrid">Date Of Birth</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-9">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="CNIC">
-                                <label for="floatingInputGrid">CNIC</label>
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="CNIC" onkeyup="renderTxt('Cnic', this.value)">
+                                <label for="floatingInputGrid">CNIC xxxxx-xxxxxxx-x</label>
                             </div>
                         </div>
                     </div>
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect" aria-label="Marital Status">
-                                    <option value="Single">Pakistan</option>
-                                    <option value="Married">UAE</option>
-                                </select>
+                                @include('components.countries')
                                 <label for="floatingSelect">Nationality</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-8">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Address">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Address" onkeyup="renderTxt('Address', this.value)">
                                 <label for="floatingInputGrid">Enter Your Address</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 my-3">
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Describe Your Objective" id="floatingTextarea2" style="height: 120px"></textarea>
+                            <textarea class="form-control" placeholder="Describe Your Objective" id="floatingTextarea2" style="height: 120px" onkeyup="renderTxt('Objective', this.value)"></textarea>
                             <label for="floatingTextarea2">Describe Your Objective</label>
                         </div>
                     </div>
@@ -143,55 +138,72 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Experience" class="accordion-collapse collapse show">
-                                    <div class="accordion-body">
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-6">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization">
-                                                    <label for="floatingInputGrid">Organization</label>
+                                    @foreach ($ExperienceForm as $SingleIndex => $Form)
+                                        <div class="accordion-body">
+                                            <div class="row g-2 my-3">
+                                                <div class="col-12 col-md-12 col-lg-6">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization">
+                                                        <label for="floatingInputGrid">Organization</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-12 col-lg-6">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation">
+                                                        <label for="floatingInputGrid">Designation</label>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-12 col-lg-6">
+                                            <div class="col-12 my-3">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation">
-                                                    <label for="floatingInputGrid">Designation</label>
+                                                    <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px"></textarea>
+                                                    <label for="floatingTextarea2">Your Job Description</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 my-3">
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Your Job Description" id="floatingTextarea2" style="height: 120px"></textarea>
-                                                <label for="floatingTextarea2">Your Job Description</label>
-                                            </div>
-                                        </div>
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-6">
-                                                <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date">
-                                                    <label for="floatingInputGrid">Joining Date</label>
+                                            <div class="row g-2 my-3">
+                                                <div class="col-12 col-md-12 col-lg-6">
+                                                    <div class="form-floating">
+                                                        <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date">
+                                                        <label for="floatingInputGrid">Joining Date</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-12 col-lg-6">
+                                                    <div class="form-floating">
+                                                        <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date">
+                                                        <label for="floatingInputGrid">Ending Date</label>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-12 col-lg-6">
-                                                <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date">
-                                                    <label for="floatingInputGrid">Ending Date</label>
+                                            @if ($SingleIndex === 0)
+                                                <div class="row g-2 my-3 px-1">
+                                                    <button type="button" wire:click="addNewExperience" class="btn btn-secondary" title="Add experience">
+                                                        <i class='bx bxs-plus-circle icons-size'></i>
+                                                    </button>
                                                 </div>
+                                            @else
+                                                <div class="row g-0 my-3 input-group">
+                                                    <button type="button" wire:click="addNewExperience" class="btn btn-secondary col-6" title="Add experience">
+                                                        <i class='bx bxs-plus-circle icons-size'></i>
+                                                    </button>
+                                                    <button type="button" wire:click="delForm('ExperienceForm',{{ $SingleIndex }})" class="btn btn-outline-danger col-6" title="Remove experience">
+                                                        <i class='bx bxs-minus-circle icons-size'></i>
+                                                    </button>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                    @if (session()->has('ExperienceForm'))
+                                        <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                            <div class="toast-header">
+                                                <i class="bx bx-bell me-2"></i>
+                                                <div class="me-auto fw-semibold">Warning</div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                            </div>
+                                            <div class="toast-body">
+                                                {{ session()->get('ExperienceForm') }}
                                             </div>
                                         </div>
-                                        <div class="row g-2 my-3 px-1">
-                                            <button type="button" class="btn btn-secondary" title="Add experience">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                        </div>
-                                        <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add experience">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove experience">
-                                                <i class='bx bxs-minus-circle icons-size'></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -201,47 +213,64 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Qualification" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <div class="col-12 my-3">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your institute">
-                                                <label for="floatingInputGrid">Educational Institute</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 my-3">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your degree">
-                                                <label for="floatingInputGrid">Degree</label>
-                                            </div>
-                                        </div>
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-6">
+                                    @foreach ($QualificationForm as $SingleIndex => $Form)
+                                        <div class="accordion-body">
+                                            <div class="col-12 my-3">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your score">
-                                                    <label for="floatingInputGrid">Score</label>
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your institute">
+                                                    <label for="floatingInputGrid">Educational Institute</label>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-12 col-lg-6">
+                                            <div class="col-12 my-3">
                                                 <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Your completion date">
-                                                    <label for="floatingInputGrid">Completion Date</label>
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your degree">
+                                                    <label for="floatingInputGrid">Degree</label>
                                                 </div>
                                             </div>
+                                            <div class="row g-2 my-3">
+                                                <div class="col-12 col-md-12 col-lg-6">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your score">
+                                                        <label for="floatingInputGrid">Score</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-12 col-lg-6">
+                                                    <div class="form-floating">
+                                                        <input type="date" class="form-control" id="floatingInputGrid" placeholder="Your completion date">
+                                                        <label for="floatingInputGrid">Completion Date</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @if ($SingleIndex === 0)
+                                                <div class="row g-2 my-3 px-1">
+                                                    <button type="button" wire:click="addNewQualification" class="btn btn-secondary" title="Add qualification">
+                                                        <i class='bx bxs-plus-circle icons-size'></i>
+                                                    </button>
+                                                </div>
+                                            @else
+                                                <div class="row g-0 my-3 input-group">
+                                                    <button type="button" wire:click="addNewQualification" class="btn btn-secondary col-6" title="Add qualification">
+                                                        <i class='bx bxs-plus-circle icons-size'></i>
+                                                    </button>
+                                                    <button type="button" wire:click="delForm('QualificationForm',{{ $SingleIndex }})" class="btn btn-outline-danger col-6" title="Remove qualification">
+                                                        <i class='bx bxs-minus-circle icons-size'></i>
+                                                    </button>
+                                                </div>
+                                            @endif
                                         </div>
-                                        <div class="row g-2 my-3 px-1">
-                                            <button type="button" class="btn btn-secondary" title="Add qualification">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
+                                    @endforeach
+                                    @if (session()->has('QualificationForm'))
+                                        <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                            <div class="toast-header">
+                                                <i class="bx bx-bell me-2"></i>
+                                                <div class="me-auto fw-semibold">Warning</div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                            </div>
+                                            <div class="toast-body">
+                                                {{ session()->get('QualificationForm') }}
+                                            </div>
                                         </div>
-                                        <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add qualification">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove qualification">
-                                                <i class='bx bxs-minus-circle icons-size'></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -491,7 +520,7 @@
 
                             .right-col {
                                 background: white;
-                                width: 386px;
+                                width: 517px;
                                 height: 1040px;
                                 padding: 0px;
                             }
@@ -672,16 +701,19 @@
                             }
 
                             .name-container h2 {
+                                line-height: 5px;
+                            }
+
+                            .name-container h2 span {
                                 color: #464646;
                                 font-family: Poppins;
                                 font-size: 40.21px;
                                 font-style: normal;
                                 font-weight: 700;
-                                line-height: 5px;
                                 text-transform: uppercase;
                             }
 
-                            .name-container span {
+                            .name-container .profession {
                                 color: #59595B;
                                 font-size: 11px;
                                 font-style: normal;
@@ -914,44 +946,44 @@
                                 line-height: 0px;
                             }
                         </style>
-                        <div class="left-col ">
+                        <div class="left-col">
                             <div class="resume-photo">
                                 <img src="{{ asset('storage/images/Asset 11.png') }}" width="220px">
                             </div>
                             <div class="personal-info-container ">
                                 <h2> Personal Info </h2>
                                 <div class="left-col-divider"></div>
-                                <div class="personal-info-details ">
+                                <div class="personal-info-details">
                                     <p>PHONE</p>
-                                    <p>+92 317 0155625</p>
+                                    <p id="Phone">+92 317 0155625</p>
                                 </div>
                                 <div class="personal-info-details ">
                                     <p>EMAIL</p>
-                                    <p>mirza@gmail.com</p>
+                                    <p id="Email">mirza@gmail.com</p>
                                 </div>
                                 <div class="personal-info-details ">
                                     <p>ID CARD</p>
-                                    <p>37405-7659127-0</p>
+                                    <p id="Cnic">47605-7659127-0</p>
                                 </div>
                                 <div class="personal-info-details ">
                                     <p>DATE OF BIRTH</p>
-                                    <p>15.06.2003</p>
+                                    <p id="DOB">1990-07-01</p>
                                 </div>
                                 <div class="personal-info-details ">
                                     <p>GENDER</p>
-                                    <p>Male</p>
+                                    <p id="Gender">Male</p>
                                 </div>
                                 <div class="personal-info-details ">
                                     <p>MARITAL STATUS</p>
-                                    <p>Single</p>
+                                    <p id="MaritalStatus">Single</p>
                                 </div>
                                 <div class="personal-info-details ">
                                     <p>NATIONALITY</p>
-                                    <p>Pakistan</p>
+                                    <p id="Nationality">Pakistan</p>
                                 </div>
                                 <div class="personal-info-details ">
                                     <p>ADDRESS</p>
-                                    <p>Bahria, Rawalpindi</p>
+                                    <p id="Address">Bahria, Rawalpindi</p>
                                 </div>
                             </div>
                             <div class="languages-container ">
@@ -1003,14 +1035,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="right-col " style="width:517px;">
-                            <div class="name-container ">
-                                <h2>Name Surname</h2>
-                                <span>Graphic Designer</span>
+                        <div class="right-col">
+                            <div class="name-container">
+                                <h2> <span id="FName">FName</span> <span id="LName">LName</span> </h2>
+                                <span class="profession" id="Profession">Graphic Designer</span>
                             </div>
                             <div class="objective-container ">
                                 <h2>Objective</h2>
-                                <p>
+                                <p id="Objective">
                                     Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position to utilize my expertise in front-end and back-end technologies, as well as my problem-solving and collaboration skills, to contribute to the development user experiences.
                                 </p>
                                 <div class="right-col-divider"></div>
@@ -1096,7 +1128,7 @@
             </div>
             <!-- Fixed buttons -->
             <div class="fixed-btn-container">
-                <button class="fixed-btn" onclick="printDiv('resume-template-container')" title="Download PDF or print">
+                <button class="fixed-btn" onclick="printDiv('resume-template-container')" title="Download as PDF or print">
                     <i class='bx bx-cloud-download icons-size'></i>
                 </button>
             </div>

@@ -12669,6 +12669,10 @@ fieldset:disabled .btn {
   cursor: pointer;
 }
 
+.toast-custom-width {
+  width: 96%;
+}
+
 /* To render all the CSS colors in the print preview */
 @media print {
   html {
