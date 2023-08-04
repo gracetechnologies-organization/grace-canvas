@@ -22,6 +22,9 @@ Route::prefix('edit')->group(function () {
     Route::get('resume/{ID}', CreateResumeForm::class)->name('edit.resume.form');
 });
 
+Route::get('smart-resume-maker/terms-of-services', function(){
+    return view('terms_of_services.smart-resume-maker-terms-of-use');
+});
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', function () {

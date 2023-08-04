@@ -1,5 +1,5 @@
 <!-- Country names with values -->
-<select class="form-select" id="floatingSelect" aria-label="Nationality" onchange="renderTxt('Nationality', this.value)">
+<select class="form-select" id="floatingSelect" aria-label="Nationality" onchange="CreateResumeForm.renderTxt('Nationality', this.value)">
     <option value="">Select</option>
     <option value="Afghanistan">Afghanistan</option>
     <option value="Aland Islands">Aland Islands</option>

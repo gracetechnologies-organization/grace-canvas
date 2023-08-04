@@ -44,33 +44,33 @@
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter first name" onkeyup="renderTxt('FName', this.value)">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter first name" onkeyup="CreateResumeForm.renderTxt('FName', this.value)">
                                 <label for="floatingInputGrid">First Name</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last name" onkeyup="renderTxt('LName', this.value)">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last name" onkeyup="CreateResumeForm.renderTxt('LName', this.value)">
                                 <label for="floatingInputGrid">Last Name</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 my-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Profession" onkeyup="renderTxt('Profession', this.value)">
+                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Profession" onkeyup="CreateResumeForm.renderTxt('Profession', this.value)">
                             <label for="floatingInputGrid">Enter Your Profession</label>
                         </div>
                     </div>
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-8">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Phone" onkeyup="renderTxt('Phone', this.value)">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Phone" onkeyup="CreateResumeForm.renderTxt('Phone', this.value)">
                                 <label for="floatingInputGrid">Enter Your Phone</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-4">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect" aria-label="Select Your Gender" onchange="renderTxt('Gender', this.value)">
+                                <select class="form-select" id="floatingSelect" aria-label="Select Your Gender" onchange="CreateResumeForm.renderTxt('Gender', this.value)">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -81,7 +81,7 @@
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-3">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect" aria-label="Marital Status" onchange="renderTxt('MaritalStatus', this.value)">
+                                <select class="form-select" id="floatingSelect" aria-label="Marital Status" onchange="CreateResumeForm.renderTxt('MaritalStatus', this.value)">
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
                                 </select>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-12 col-md-12 col-lg-9">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="Enter Your Email" onkeyup="renderTxt('Email', this.value)">
+                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="Enter Your Email" onkeyup="CreateResumeForm.renderTxt('Email', this.value)">
                                 <label for="floatingInputGrid">Enter Your Email</label>
                             </div>
                         </div>
@@ -98,13 +98,13 @@
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-3">
                             <div class="form-floating">
-                                <input type="date" class="form-control" id="floatingInputGrid" placeholder="Date Of Birth" onchange="renderTxt('DOB', this.value)">
+                                <input type="date" class="form-control" id="floatingInputGrid" placeholder="Date Of Birth" onchange="CreateResumeForm.renderTxt('DOB', this.value)">
                                 <label for="floatingInputGrid">Date Of Birth</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-9">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="CNIC" onkeyup="renderTxt('Cnic', this.value)">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="CNIC" onkeyup="CreateResumeForm.renderTxt('Cnic', this.value)">
                                 <label for="floatingInputGrid">CNIC xxxxx-xxxxxxx-x</label>
                             </div>
                         </div>
@@ -118,14 +118,14 @@
                         </div>
                         <div class="col-12 col-md-12 col-lg-8">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Address" onkeyup="renderTxt('Address', this.value)">
+                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Address" onkeyup="CreateResumeForm.renderTxt('Address', this.value)">
                                 <label for="floatingInputGrid">Enter Your Address</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 my-3">
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Describe Your Objective" id="floatingTextarea2" style="height: 120px" onkeyup="renderTxt('Objective', this.value)"></textarea>
+                            <textarea class="form-control" placeholder="Describe Your Objective" id="floatingTextarea2" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('Objective', this.value)"></textarea>
                             <label for="floatingTextarea2">Describe Your Objective</label>
                         </div>
                     </div>
@@ -138,7 +138,86 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Experience" class="accordion-collapse collapse show">
-                                    @foreach ($ExperienceForm as $SingleIndex => $Form)
+                                    {{--  --}}
+                                    <button type="button" onclick="CreateResumeForm.addNewExperience()">
+                                        Click Me & See The Magic
+                                    </button>
+                                    <div id="Experience-Container">
+                                        <div class="container bg-primary first-child">
+                                            <div>
+                                                Child Div
+                                            </div>
+                                            <button type="button" onclick="CreateResumeForm.delForm(this)">
+                                                Remove
+                                            </button>
+                                        </div>
+
+                                        <div class="container bg-primary first-child">
+                                            <div>
+                                                Child Div
+                                            </div>
+                                            <div>
+                                                <button type="button" onclick="CreateResumeForm.delForm(this)">
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--  --}}
+                                    <div class="accordion-body" id="ExperienceForm1">
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization1', this.value)">
+                                                    <label for="floatingInputGrid">Organization</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation">
+                                                    <label for="floatingInputGrid">Designation</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 my-3">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px"></textarea>
+                                                <label for="floatingTextarea2">Your Job Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date">
+                                                    <label for="floatingInputGrid">Joining Date</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date">
+                                                    <label for="floatingInputGrid">Ending Date</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 my-3 px-1">
+                                            <button type="button" class="btn btn-secondary" title="Add experience" onclick="CreateResumeForm.addNewExperience()">
+                                                <i class='bx bxs-plus-circle icons-size'></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="ExperienceFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                        <div class="toast-header">
+                                            <i class="bx bx-bell me-2"></i>
+                                            <div class="me-auto fw-semibold">Warning</div>
+                                            {{-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('ExperienceFormWarning')"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ config('messages.EXPERIENCES_LIMIT_REACHED') }}
+                                        </div>
+                                    </div>
+
+                                    {{-- @foreach ($ExperienceForm as $SingleIndex => $Form)
                                         <div class="accordion-body">
                                             <div class="row g-2 my-3">
                                                 <div class="col-12 col-md-12 col-lg-6">
@@ -203,7 +282,7 @@
                                                 {{ session()->get('ExperienceForm') }}
                                             </div>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -1050,9 +1129,9 @@
                             <div class="experience-container ">
                                 <h2>Experience</h2>
                                 <div class="experience-details">
-                                    <h3>Job Position</h3>
-                                    <h3>Company Name 2020 | 2021</h3>
-                                    <p>
+                                    <h3 id="Designation1">Job Position</h3>
+                                    <h3><span id="Organization1">Company Name</span> <span id="JoiningDate1">2020</span> | <span id="EndDate1">2021</span></h3>
+                                    <p id="JobDescription1">
                                         Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
                                     </p>
                                 </div>
@@ -1128,7 +1207,7 @@
             </div>
             <!-- Fixed buttons -->
             <div class="fixed-btn-container">
-                <button class="fixed-btn" onclick="printDiv('resume-template-container')" title="Download as PDF or print">
+                <button class="fixed-btn" title="Download as PDF or print" onclick="printDiv('resume-template-container')">
                     <i class='bx bx-cloud-download icons-size'></i>
                 </button>
             </div>
