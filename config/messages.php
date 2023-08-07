@@ -49,6 +49,8 @@ return [
     'ARRAYS_NOT_EQUAL' => 'Thumbnails & FrontImages should be equal in number.',
     'TYPE_NA' => 'The "Type" which you have entered is not available in our system',
     'EXPERIENCES_LIMIT_REACHED' => 'You can only add 2 experiences',
+    'QUALIFICATIONS_LIMIT_REACHED' => 'You can only add 2 qualifications',
+    'SKILLS_LIMIT_REACHED' => 'You can only add 4 skills',
     /* HTTP Codes Constants */
     'HTTP_SUCCESS_CODE' => 200,
     'HTTP_SERVER_ERROR_CODE' => 500,

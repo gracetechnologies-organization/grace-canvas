@@ -138,151 +138,61 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Experience" class="accordion-collapse collapse show">
-                                    {{--  --}}
-                                    <button type="button" onclick="CreateResumeForm.addNewExperience()">
-                                        Click Me & See The Magic
-                                    </button>
-                                    <div id="Experience-Container">
-                                        <div class="container bg-primary first-child">
-                                            <div>
-                                                Child Div
-                                            </div>
-                                            <button type="button" onclick="CreateResumeForm.delForm(this)">
-                                                Remove
-                                            </button>
-                                        </div>
-
-                                        <div class="container bg-primary first-child">
-                                            <div>
-                                                Child Div
-                                            </div>
-                                            <div>
-                                                <button type="button" onclick="CreateResumeForm.delForm(this)">
-                                                    Remove
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{--  --}}
-                                    <div class="accordion-body" id="ExperienceForm1">
+                                    <div class="accordion-body" id="ExperienceForm0">
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization1', this.value)">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization0', this.value)">
                                                     <label for="floatingInputGrid">Organization</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation" onkeyup="CreateResumeForm.renderTxt('Designation0', this.value)">
                                                     <label for="floatingInputGrid">Designation</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-12 my-3">
                                             <div class="form-floating">
-                                                <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px"></textarea>
+                                                <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('JobDescription0', this.value)"></textarea>
                                                 <label for="floatingTextarea2">Your Job Description</label>
                                             </div>
                                         </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date">
+                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date" onchange="CreateResumeForm.renderTxt('JoiningDate0', this.value)">
                                                     <label for="floatingInputGrid">Joining Date</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date">
+                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date" onchange="CreateResumeForm.renderTxt('EndDate0', this.value)">
                                                     <label for="floatingInputGrid">Ending Date</label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row g-2 my-3 px-1">
-                                            <button type="button" class="btn btn-secondary" title="Add experience" onclick="CreateResumeForm.addNewExperience()">
+                                        <div class="row g-0 my-3 input-group">
+                                            <button type="button" class="btn btn-secondary col-6" title="Add experience" onclick="CreateResumeForm.addNewExperience()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove experience" onclick="CreateResumeForm.delForm('panelsStayOpen-Experience', 'experiences-section', 'div.experience-details')">
+                                                <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
                                         </div>
                                     </div>
+                                    {{-- ExperienceFormWarning Toast Msg --}}
                                     <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="ExperienceFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
                                         <div class="toast-header">
                                             <i class="bx bx-bell me-2"></i>
                                             <div class="me-auto fw-semibold">Warning</div>
-                                            {{-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
                                             <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('ExperienceFormWarning')"></button>
                                         </div>
                                         <div class="toast-body">
                                             {{ config('messages.EXPERIENCES_LIMIT_REACHED') }}
                                         </div>
                                     </div>
-
-                                    {{-- @foreach ($ExperienceForm as $SingleIndex => $Form)
-                                        <div class="accordion-body">
-                                            <div class="row g-2 my-3">
-                                                <div class="col-12 col-md-12 col-lg-6">
-                                                    <div class="form-floating">
-                                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization">
-                                                        <label for="floatingInputGrid">Organization</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-12 col-lg-6">
-                                                    <div class="form-floating">
-                                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation">
-                                                        <label for="floatingInputGrid">Designation</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 my-3">
-                                                <div class="form-floating">
-                                                    <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px"></textarea>
-                                                    <label for="floatingTextarea2">Your Job Description</label>
-                                                </div>
-                                            </div>
-                                            <div class="row g-2 my-3">
-                                                <div class="col-12 col-md-12 col-lg-6">
-                                                    <div class="form-floating">
-                                                        <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date">
-                                                        <label for="floatingInputGrid">Joining Date</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-12 col-lg-6">
-                                                    <div class="form-floating">
-                                                        <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date">
-                                                        <label for="floatingInputGrid">Ending Date</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @if ($SingleIndex === 0)
-                                                <div class="row g-2 my-3 px-1">
-                                                    <button type="button" wire:click="addNewExperience" class="btn btn-secondary" title="Add experience">
-                                                        <i class='bx bxs-plus-circle icons-size'></i>
-                                                    </button>
-                                                </div>
-                                            @else
-                                                <div class="row g-0 my-3 input-group">
-                                                    <button type="button" wire:click="addNewExperience" class="btn btn-secondary col-6" title="Add experience">
-                                                        <i class='bx bxs-plus-circle icons-size'></i>
-                                                    </button>
-                                                    <button type="button" wire:click="delForm('ExperienceForm',{{ $SingleIndex }})" class="btn btn-outline-danger col-6" title="Remove experience">
-                                                        <i class='bx bxs-minus-circle icons-size'></i>
-                                                    </button>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    @endforeach
-                                    @if (session()->has('ExperienceForm'))
-                                        <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-                                            <div class="toast-header">
-                                                <i class="bx bx-bell me-2"></i>
-                                                <div class="me-auto fw-semibold">Warning</div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                                            </div>
-                                            <div class="toast-body">
-                                                {{ session()->get('ExperienceForm') }}
-                                            </div>
-                                        </div>
-                                    @endif --}}
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -292,64 +202,53 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Qualification" class="accordion-collapse collapse">
-                                    @foreach ($QualificationForm as $SingleIndex => $Form)
-                                        <div class="accordion-body">
-                                            <div class="col-12 my-3">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your institute">
-                                                    <label for="floatingInputGrid">Educational Institute</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 my-3">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your degree">
-                                                    <label for="floatingInputGrid">Degree</label>
-                                                </div>
-                                            </div>
-                                            <div class="row g-2 my-3">
-                                                <div class="col-12 col-md-12 col-lg-6">
-                                                    <div class="form-floating">
-                                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your score">
-                                                        <label for="floatingInputGrid">Score</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-12 col-lg-6">
-                                                    <div class="form-floating">
-                                                        <input type="date" class="form-control" id="floatingInputGrid" placeholder="Your completion date">
-                                                        <label for="floatingInputGrid">Completion Date</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @if ($SingleIndex === 0)
-                                                <div class="row g-2 my-3 px-1">
-                                                    <button type="button" wire:click="addNewQualification" class="btn btn-secondary" title="Add qualification">
-                                                        <i class='bx bxs-plus-circle icons-size'></i>
-                                                    </button>
-                                                </div>
-                                            @else
-                                                <div class="row g-0 my-3 input-group">
-                                                    <button type="button" wire:click="addNewQualification" class="btn btn-secondary col-6" title="Add qualification">
-                                                        <i class='bx bxs-plus-circle icons-size'></i>
-                                                    </button>
-                                                    <button type="button" wire:click="delForm('QualificationForm',{{ $SingleIndex }})" class="btn btn-outline-danger col-6" title="Remove qualification">
-                                                        <i class='bx bxs-minus-circle icons-size'></i>
-                                                    </button>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    @endforeach
-                                    @if (session()->has('QualificationForm'))
-                                        <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-                                            <div class="toast-header">
-                                                <i class="bx bx-bell me-2"></i>
-                                                <div class="me-auto fw-semibold">Warning</div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                                            </div>
-                                            <div class="toast-body">
-                                                {{ session()->get('QualificationForm') }}
+                                    <div class="accordion-body" id="QualificationForm0">
+                                        <div class="col-12 my-3">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your institute" onkeyup="CreateResumeForm.renderTxt('EducationalOrganization0', this.value)">
+                                                <label for="floatingInputGrid">Educational Institute</label>
                                             </div>
                                         </div>
-                                    @endif
+                                        <div class="col-12 my-3">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your degree" onkeyup="CreateResumeForm.renderTxt('Degree0', this.value)">
+                                                <label for="floatingInputGrid">Degree</label>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your score" onkeyup="CreateResumeForm.renderTxt('Score0', this.value)">
+                                                    <label for="floatingInputGrid">Score</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Your completion date" onchange="CreateResumeForm.renderTxt('CompletionDate0', this.value)">
+                                                    <label for="floatingInputGrid">Completion Date</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0 my-3 input-group">
+                                            <button type="button" class="btn btn-secondary col-6" title="Add experience" onclick="CreateResumeForm.addNewQualification()">
+                                                <i class='bx bxs-plus-circle icons-size'></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove experience" onclick="CreateResumeForm.delForm('panelsStayOpen-Qualification', 'qualifications-section', 'div.education-details')">
+                                                <i class='bx bxs-minus-circle icons-size'></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {{-- QualificationFormWarning Toast Msg --}}
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="QualificationFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                        <div class="toast-header">
+                                            <i class="bx bx-bell me-2"></i>
+                                            <div class="me-auto fw-semibold">Warning</div>
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('QualificationFormWarning')"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ config('messages.QUALIFICATIONS_LIMIT_REACHED') }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -359,31 +258,31 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Skills" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" id="SkillsForm0">
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('Skill0', this.value)">
                                                     <label for="floatingInputGrid">Enter Your Skill Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary col-lg-4" title="Add skill">
+                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add skill" onclick="CreateResumeForm.addNewSkill()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                        </div>
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-8">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills">
-                                                    <label for="floatingInputGrid">Enter Your Skill Title</label>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add skill">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove skill">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove skill" onclick="CreateResumeForm.delForm('panelsStayOpen-Skills', 'skills-section', 'div.skills-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
+                                        </div>
+                                    </div>
+                                    {{-- SkillFormWarning Toast Msg --}}
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="SkillFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                        <div class="toast-header">
+                                            <i class="bx bx-bell me-2"></i>
+                                            <div class="me-auto fw-semibold">Warning</div>
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('SkillFormWarning')"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ config('messages.SKILLS_LIMIT_REACHED') }}
                                         </div>
                                     </div>
                                 </div>
@@ -1084,16 +983,12 @@
                             <div class="skills-container ">
                                 <h2> Skills </h2>
                                 <div class="left-col-divider"></div>
-                                <div class="skills-details">
-                                    <p>Photoshop</p>
-                                    <div class="progress-bar-container">
-                                        <div class="custom-progress-bar" style="width: 65%;"></div>
-                                    </div>
-                                </div>
-                                <div class="skills-details">
-                                    <p>Illutrator</p>
-                                    <div class="progress-bar-container">
-                                        <div class="custom-progress-bar" style="width: 80%;"></div>
+                                <div id="skills-section">
+                                    <div class="skills-details">
+                                        <p id="Skill0">Photoshop</p>
+                                        <div class="progress-bar-container">
+                                            <div class="custom-progress-bar" style="width: 65%;"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1126,35 +1021,27 @@
                                 </p>
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="experience-container ">
+                            <div class="experience-container">
                                 <h2>Experience</h2>
-                                <div class="experience-details">
-                                    <h3 id="Designation1">Job Position</h3>
-                                    <h3><span id="Organization1">Company Name</span> <span id="JoiningDate1">2020</span> | <span id="EndDate1">2021</span></h3>
-                                    <p id="JobDescription1">
-                                        Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
-                                    </p>
-                                </div>
-                                <div class="experience-details">
-                                    <h3>Job Position</h3>
-                                    <h3>Company Name 2020 | 2021</h3>
-                                    <p>
-                                        Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
-                                    </p>
+                                <div id="experiences-section">
+                                    <div class="experience-details">
+                                        <h3 id="Designation0">Job Position</h3>
+                                        <h3><span id="Organization0">Company Name</span> <span id="JoiningDate0">2020</span> | <span id="EndDate0">2021</span></h3>
+                                        <p id="JobDescription0">
+                                            Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="education-container ">
+                            <div class="education-container">
                                 <h2>Education</h2>
-                                <div class="education-details">
-                                    <h3>University Name or School Name</h3>
-                                    <p>Write your degree name here</p>
-                                    <p>3.2 CGPA 2010 - 2015</p>
-                                </div>
-                                <div class="education-details">
-                                    <h3>University Name or School Name</h3>
-                                    <p>Write your degree name here</p>
-                                    <p>3.2 CGPA 2010 - 2015</p>
+                                <div id="qualifications-section">
+                                    <div class="education-details">
+                                        <h3 id="EducationalOrganization0">University Name or School Name</h3>
+                                        <p id="Degree0">Write your degree name here</p>
+                                        <p><span id="Score0">3.2 CGPA</span> <span id="CompletionDate0">2015</span></p>
+                                    </div>
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
