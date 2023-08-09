@@ -51,6 +51,8 @@ return [
     'EXPERIENCES_LIMIT_REACHED' => 'You can only add 2 experiences',
     'QUALIFICATIONS_LIMIT_REACHED' => 'You can only add 2 qualifications',
     'SKILLS_LIMIT_REACHED' => 'You can only add 4 skills',
+    'ACHIEVEMENTS_LIMIT_REACHED' => 'You can only add 4 achievements',
+    'PROJECTS_LIMIT_REACHED' => 'You can only add 4 projects',
     /* HTTP Codes Constants */
     'HTTP_SUCCESS_CODE' => 200,
     'HTTP_SERVER_ERROR_CODE' => 500,

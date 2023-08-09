@@ -25,7 +25,8 @@
          | Properties
          |--------------------------------------------------------------------------
          */
-         //  static ExperienceFormNumber = 1;
+         static AchievementNumber;
+         static ProjectNumber;
 
          /*
          |--------------------------------------------------------------------------
@@ -154,7 +155,7 @@
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('Skill` + ChildDivsLength + `', this.value)">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('SkillName` + ChildDivsLength + `', this.value)">
                                                     <label for="floatingInputGrid">Enter Your Skill Title</label>
                                                 </div>
                                             </div>
@@ -162,7 +163,7 @@
                                     </div>`;
 
              const NewSkill = `<div class="skills-details">
-                                <p id="Skill` + ChildDivsLength + `">Illustrator</p>
+                                <p id="SkillName` + ChildDivsLength + `">Illustrator</p>
                                 <div class="progress-bar-container">
                                     <div class="custom-progress-bar" style="width: 80%;"></div>
                                 </div>
@@ -182,6 +183,68 @@
              }
          };
 
+         static addNewAchievement = () => {
+             const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Achievements > div.accordion-body').length;
+             const NewForm = `<div class="accordion-body" id="AchievementForm` + ChildDivsLength + `">
+                                <div class="row g-2 my-3">
+                                    <div class="col-12 col-md-12 col-lg-8">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your achievements" onkeyup="CreateResumeForm.renderTxt('AchievementTitle` + ChildDivsLength + `', this.value)">
+                                            <label for="floatingInputGrid">Enter Your Achievement Title</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+             CreateResumeForm.AchievementNumber = ChildDivsLength + 1;
+             const NewAchievement = `<p id="AchievementTitle` + ChildDivsLength + `">Your achivement ` + CreateResumeForm.AchievementNumber + `</p>`;
+
+             /*
+             |--------------------------------------------------------------------------
+             | The following code will show an error message
+             | Otherwise it will add a new form   
+             |--------------------------------------------------------------------------
+             */
+             if (ChildDivsLength === 4) {
+                 document.getElementById('AchievementFormWarning').classList.remove('d-none');
+             } else {
+                 const InnerDivs = document.querySelectorAll('.achievement-container > div.achievement-section > div.achievement-details');
+                 document.getElementById('panelsStayOpen-Achievements').insertAdjacentHTML('beforeend', NewForm);
+                 (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewAchievement): InnerDivs[0].insertAdjacentHTML('beforeend', NewAchievement);
+             }
+         };
+
+         static addNewProject = () => {
+             const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Projects > div.accordion-body').length;
+             const NewForm = `<div class="accordion-body" id="ProjectForm` + ChildDivsLength + `">
+                                    <div class="row g-2 my-3">
+                                        <div class="col-12 col-md-12 col-lg-8">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your projects" onkeyup="CreateResumeForm.renderTxt('ProjectTitle` + ChildDivsLength + `', this.value)">
+                                                <label for="floatingInputGrid">Enter Your Project Title</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+             CreateResumeForm.ProjectNumber = ChildDivsLength + 1;
+             const NewProject = `<p id="ProjectTitle` + ChildDivsLength + `">Your project ` + CreateResumeForm.ProjectNumber +  `</p>`;
+
+             /*
+             |--------------------------------------------------------------------------
+             | The following code will show an error message
+             | Otherwise it will add a new form   
+             |--------------------------------------------------------------------------
+             */
+             if (ChildDivsLength === 4) {
+                 document.getElementById('ProjectFormWarning').classList.remove('d-none');
+             } else {
+                 const InnerDivs = document.querySelectorAll('.project-container > div.project-section > div.project-details');
+                 document.getElementById('panelsStayOpen-Projects').insertAdjacentHTML('beforeend', NewForm);
+                 (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewProject): InnerDivs[0].insertAdjacentHTML('beforeend', NewProject);
+             }
+         };
+
          static delForm = (FormID, ResumeSectionID, InnerDiv) => {
              const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
              const ResumeSectionChildElements = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
@@ -190,6 +253,22 @@
                  const ResumeSectionLastChild = ResumeSectionChildElements[ResumeSectionChildElements.length - 1];
                  FormLastChild.parentNode.removeChild(FormLastChild);
                  ResumeSectionLastChild.parentNode.removeChild(ResumeSectionLastChild);
+             }
+         };
+
+         static delTwoColumnForm = (FormID, ResumeSectionID, InnerDiv) => {
+             const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
+             const ResumeSectionChildCols = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
+             if (FormChildElements.length > 1) {
+                 if (ResumeSectionChildCols[1].children.length > 0) {
+                     const ResumeColLastChild = ResumeSectionChildCols[1].children[ResumeSectionChildCols[1].children.length - 1];
+                     ResumeColLastChild.parentNode.removeChild(ResumeColLastChild);
+                 } else {
+                     const ResumeColLastChild = ResumeSectionChildCols[0].children[ResumeSectionChildCols[0].children.length - 1];
+                     ResumeColLastChild.parentNode.removeChild(ResumeColLastChild);
+                 }
+                 const FormLastChild = FormChildElements[FormChildElements.length - 1];
+                 FormLastChild.parentNode.removeChild(FormLastChild);
              }
          };
      }

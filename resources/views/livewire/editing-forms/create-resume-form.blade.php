@@ -262,7 +262,7 @@
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('Skill0', this.value)">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('SkillName0', this.value)">
                                                     <label for="floatingInputGrid">Enter Your Skill Title</label>
                                                 </div>
                                             </div>
@@ -294,31 +294,31 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Achievements" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" id="AchievementForm0">
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your achievements">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your achievements" onkeyup="CreateResumeForm.renderTxt('AchievementTitle0', this.value)">
                                                     <label for="floatingInputGrid">Enter Your Achievement Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary col-lg-4" title="Add achievement">
+                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add achievement" onclick="CreateResumeForm.addNewAchievement()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                        </div>
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-8">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your achievements">
-                                                    <label for="floatingInputGrid">Enter Your Achievement Title</label>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add achievement">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove achievement">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove achievement" onclick="CreateResumeForm.delTwoColumnForm('panelsStayOpen-Achievements', 'achievement-section', 'div.achievement-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
+                                        </div>
+                                    </div>
+                                    {{-- AchievementFormWarning Toast Msg --}}
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="AchievementFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                        <div class="toast-header">
+                                            <i class="bx bx-bell me-2"></i>
+                                            <div class="me-auto fw-semibold">Warning</div>
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('AchievementFormWarning')"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ config('messages.ACHIEVEMENTS_LIMIT_REACHED') }}
                                         </div>
                                     </div>
                                 </div>
@@ -330,31 +330,31 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Projects" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" id="ProjectForm0">
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your projects">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your projects" onkeyup="CreateResumeForm.renderTxt('ProjectTitle0', this.value)">
                                                     <label for="floatingInputGrid">Enter Your Project Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary col-lg-4" title="Add project">
+                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add project" onclick="CreateResumeForm.addNewProject()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                        </div>
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-8">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your projects">
-                                                    <label for="floatingInputGrid">Enter Your Project Title</label>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add project">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove project">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove project" onclick="CreateResumeForm.delTwoColumnForm('panelsStayOpen-Projects', 'project-section', 'div.project-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
+                                        </div>
+                                    </div>
+                                    {{-- ProjectFormWarning Toast Msg --}}
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="ProjectFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                        <div class="toast-header">
+                                            <i class="bx bx-bell me-2"></i>
+                                            <div class="me-auto fw-semibold">Warning</div>
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('ProjectFormWarning')"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ config('messages.PROJECTS_LIMIT_REACHED') }}
                                         </div>
                                     </div>
                                 </div>
@@ -366,18 +366,7 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Interests" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-8">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your interests">
-                                                    <label for="floatingInputGrid">Enter Your Interest</label>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-secondary col-lg-4" title="Add interest">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                        </div>
+                                    <div class="accordion-body" id="InterestForm0">
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
@@ -402,18 +391,7 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-Languages" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
-                                        <div class="row g-2 my-3">
-                                            <div class="col-12 col-md-12 col-lg-8">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your languages">
-                                                    <label for="floatingInputGrid">Your Known Language</label>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn btn-secondary col-lg-4" title="Add language">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
-                                        </div>
+                                    <div class="accordion-body" id="LanguageForm0">
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
@@ -438,7 +416,7 @@
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-References" class="accordion-collapse collapse">
-                                    <div class="accordion-body">
+                                    <div class="accordion-body" id="ReferenceForm0">
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
@@ -458,11 +436,6 @@
                                                 <textarea class="form-control" placeholder="Enter Reference Description" id="floatingTextarea2" style="height: 120px"></textarea>
                                                 <label for="floatingTextarea2">Reference Description</label>
                                             </div>
-                                        </div>
-                                        <div class="row g-2 my-3 px-1">
-                                            <button type="button" class="btn btn-secondary" title="Add reference">
-                                                <i class='bx bxs-plus-circle icons-size'></i>
-                                            </button>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
                                             <button type="button" class="btn btn-secondary col-6" title="Add reference">
@@ -833,12 +806,12 @@
                                 margin-bottom: 10px;
                             }
 
-                            .achievement-details div {
+                            .achievement-section div {
                                 height: 47px;
                                 width: 50%;
                             }
 
-                            .achievement-details div p {
+                            .achievement-section div p {
                                 color: #000;
                                 font-family: Montserrat;
                                 font-size: 13px;
@@ -868,12 +841,12 @@
                                 margin-bottom: 10px;
                             }
 
-                            .project-details div {
+                            .project-section div {
                                 height: 47px;
                                 width: 50%;
                             }
 
-                            .project-details div p {
+                            .project-section div p {
                                 color: #000;
                                 font-family: Montserrat;
                                 font-size: 13px;
@@ -985,7 +958,7 @@
                                 <div class="left-col-divider"></div>
                                 <div id="skills-section">
                                     <div class="skills-details">
-                                        <p id="Skill0">Photoshop</p>
+                                        <p id="SkillName0">Photoshop</p>
                                         <div class="progress-bar-container">
                                             <div class="custom-progress-bar" style="width: 65%;"></div>
                                         </div>
@@ -1045,30 +1018,26 @@
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="achievement-container ">
+                            <div class="achievement-container">
                                 <h2>Achievement</h2>
-                                <div class="row achievement-details">
-                                    <div>
-                                        <p>Your achivement 1</p>
-                                        <p>Your achivement 2</p>
+                                <div class="row achievement-section" id="achievement-section">
+                                    <div class="achievement-details">
+                                        <p id="AchievementTitle0">Your achivement 1</p>
                                     </div>
-                                    <div>
-                                        <p>Your achivement 3</p>
-                                        <p>Your achivement 4</p>
+                                    <div class="achievement-details">
+                                        {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="project-container ">
+                            <div class="project-container">
                                 <h2>Project</h2>
-                                <div class="row project-details">
-                                    <div>
-                                        <p>Your project 1</p>
-                                        <p>Your project 2</p>
+                                <div class="row project-section" id="project-section">
+                                    <div class="project-details">
+                                        <p id="ProjectTitle0">Your project 1</p>
                                     </div>
-                                    <div>
-                                        <p>Your project 3</p>
-                                        <p>Your project 4</p>
+                                    <div class="project-details">
+                                       {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
                                 <div class="right-col-divider"></div>
