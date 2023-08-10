@@ -27,6 +27,7 @@
          */
          static AchievementNumber;
          static ProjectNumber;
+         static ReferenceNumber;
 
          /*
          |--------------------------------------------------------------------------
@@ -228,7 +229,7 @@
                                 </div>`;
 
              CreateResumeForm.ProjectNumber = ChildDivsLength + 1;
-             const NewProject = `<p id="ProjectTitle` + ChildDivsLength + `">Your project ` + CreateResumeForm.ProjectNumber +  `</p>`;
+             const NewProject = `<p id="ProjectTitle` + ChildDivsLength + `">Your project ` + CreateResumeForm.ProjectNumber + `</p>`;
 
              /*
              |--------------------------------------------------------------------------
@@ -245,6 +246,120 @@
              }
          };
 
+         static addNewInterest = () => {
+             const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Interests > div.accordion-body').length;
+             const NewForm = `<div class="accordion-body" id="InterestForm` + ChildDivsLength + `">
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-8">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your interests" onkeyup="CreateResumeForm.renderTxt('Interest` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Enter Your Interest</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+             const NewInterest = `<div class="interests-details">
+                                        <p id="Interest` + ChildDivsLength + `">Swimming</p>
+                                        <div class="progress-bar-container">
+                                            <div class="custom-progress-bar" style="width: 80%;"></div>
+                                        </div>
+                                     </div>`;
+
+             /*
+             |--------------------------------------------------------------------------
+             | The following code will show an error message
+             | Otherwise it will add a new form   
+             |--------------------------------------------------------------------------
+             */
+             if (ChildDivsLength === 3) {
+                 document.getElementById('InterestFormWarning').classList.remove('d-none');
+             } else {
+                 document.getElementById('panelsStayOpen-Interests').insertAdjacentHTML('beforeend', NewForm);
+                 document.getElementById('interests-section').insertAdjacentHTML('beforeend', NewInterest)
+             }
+         };
+
+         static addNewLanguage = () => {
+             const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Languages > div.accordion-body').length;
+             const NewForm = `<div class="accordion-body" id="LanguageForm` + ChildDivsLength + `">
+                                <div class="row g-2 my-3">
+                                    <div class="col-12 col-md-12 col-lg-8">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your languages" onkeyup="CreateResumeForm.renderTxt('Language` + ChildDivsLength + `', this.value)">
+                                            <label for="floatingInputGrid">Your Known Language</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+             const NewLanguage = `<div class="languages-details">
+                                     <p id="Language` + ChildDivsLength + `">Urdu</p>
+                                  </div>`;
+
+             /*
+             |--------------------------------------------------------------------------
+             | The following code will show an error message
+             | Otherwise it will add a new form   
+             |--------------------------------------------------------------------------
+             */
+             if (ChildDivsLength === 4) {
+                 document.getElementById('LanguageFormWarning').classList.remove('d-none');
+             } else {
+                 document.getElementById('panelsStayOpen-Languages').insertAdjacentHTML('beforeend', NewForm);
+                 document.getElementById('languages-section').insertAdjacentHTML('beforeend', NewLanguage)
+             }
+         };
+
+         static addNewReference = () => {
+             const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-References > div.accordion-body').length;
+             const NewForm = `<div class="accordion-body" id="ReferenceForm` + ChildDivsLength + `">
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Enter Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Enter Designation</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 my-3">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Enter Reference Description" id="floatingTextarea2" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription` + ChildDivsLength + `', this.value)"></textarea>
+                                                <label for="floatingTextarea2">Reference Description</label>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+             CreateResumeForm.ReferenceNumber = ChildDivsLength + 1;
+             const NewReference = `<div>
+                                    <h3 id="ReferenceName` + ChildDivsLength + `">Reference ` + CreateResumeForm.ReferenceNumber + `</h3>
+                                    <p id="ReferenceDesignation` + ChildDivsLength + `">Designation</p>
+                                    <p id="ReferenceDescription` + ChildDivsLength + `">project manager</p>
+                                  </div>`;
+
+             /*
+             |--------------------------------------------------------------------------
+             | The following code will show an error message
+             | Otherwise it will add a new form   
+             |--------------------------------------------------------------------------
+             */
+             if (ChildDivsLength === 2) {
+                 document.getElementById('ReferenceFormWarning').classList.remove('d-none');
+             } else {
+                 const InnerDivs = document.querySelectorAll('.reference-container > div.reference-section > div.reference-details');
+                 document.getElementById('panelsStayOpen-References').insertAdjacentHTML('beforeend', NewForm);
+                 InnerDivs[1].insertAdjacentHTML('beforeend', NewReference)
+                //  (InnerDivs[0].children.length > 0) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewReference): InnerDivs[0].insertAdjacentHTML('beforeend', NewReference);
+                
+            }
+         };
+
          static delForm = (FormID, ResumeSectionID, InnerDiv) => {
              const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
              const ResumeSectionChildElements = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
@@ -256,16 +371,28 @@
              }
          };
 
-         static delTwoColumnForm = (FormID, ResumeSectionID, InnerDiv) => {
+         static delFormAndTwoColumnsData = (FormID, ResumeSectionID, InnerDiv) => {
              const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
              const ResumeSectionChildCols = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
              if (FormChildElements.length > 1) {
+                 /*
+                 |--------------------------------------------------------------------------
+                 | This code is for 2 columns sections of a resume template
+                 | If the 2nd col have child HTML elements then we will remove its last child
+                 |--------------------------------------------------------------------------
+                 */
                  if (ResumeSectionChildCols[1].children.length > 0) {
-                     const ResumeColLastChild = ResumeSectionChildCols[1].children[ResumeSectionChildCols[1].children.length - 1];
-                     ResumeColLastChild.parentNode.removeChild(ResumeColLastChild);
-                 } else {
-                     const ResumeColLastChild = ResumeSectionChildCols[0].children[ResumeSectionChildCols[0].children.length - 1];
-                     ResumeColLastChild.parentNode.removeChild(ResumeColLastChild);
+                     const SecondColLastChild = ResumeSectionChildCols[1].children[ResumeSectionChildCols[1].children.length - 1];
+                     SecondColLastChild.parentNode.removeChild(SecondColLastChild);
+                 }
+                 /*
+                 |--------------------------------------------------------------------------
+                 | Otherwise 1st col's last child will be removed
+                 |--------------------------------------------------------------------------
+                 */
+                 else {
+                     const FirstColLastChild = ResumeSectionChildCols[0].children[ResumeSectionChildCols[0].children.length - 1];
+                     FirstColLastChild.parentNode.removeChild(FirstColLastChild);
                  }
                  const FormLastChild = FormChildElements[FormChildElements.length - 1];
                  FormLastChild.parentNode.removeChild(FormLastChild);

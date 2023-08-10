@@ -305,7 +305,7 @@
                                             <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add achievement" onclick="CreateResumeForm.addNewAchievement()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove achievement" onclick="CreateResumeForm.delTwoColumnForm('panelsStayOpen-Achievements', 'achievement-section', 'div.achievement-details')">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove achievement" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Achievements', 'achievement-section', 'div.achievement-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
                                         </div>
@@ -341,7 +341,7 @@
                                             <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add project" onclick="CreateResumeForm.addNewProject()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove project" onclick="CreateResumeForm.delTwoColumnForm('panelsStayOpen-Projects', 'project-section', 'div.project-details')">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove project" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Projects', 'project-section', 'div.project-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
                                         </div>
@@ -370,16 +370,27 @@
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your interests">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your interests" onkeyup="CreateResumeForm.renderTxt('Interest0', this.value)">
                                                     <label for="floatingInputGrid">Enter Your Interest</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add interest">
+                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add interest" onclick="CreateResumeForm.addNewInterest()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove interest">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove interest" onclick="CreateResumeForm.delForm('panelsStayOpen-Interests', 'interests-section', 'div.interests-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
+                                        </div>
+                                        {{-- InterestFormWarning Toast Msg --}}
+                                        <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="InterestFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                            <div class="toast-header">
+                                                <i class="bx bx-bell me-2"></i>
+                                                <div class="me-auto fw-semibold">Warning</div>
+                                                <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('InterestFormWarning')"></button>
+                                            </div>
+                                            <div class="toast-body">
+                                                {{ config('messages.INTERESTS_LIMIT_REACHED') }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -395,16 +406,27 @@
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your interests">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your languages" onkeyup="CreateResumeForm.renderTxt('Language0', this.value)">
                                                     <label for="floatingInputGrid">Your Known Language</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add language">
+                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add language" onclick="CreateResumeForm.addNewLanguage()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove language">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove language" onclick="CreateResumeForm.delForm('panelsStayOpen-Languages', 'languages-section', 'div.languages-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
+                                        </div>
+                                    </div>
+                                    {{-- LanguageFormWarning Toast Msg --}}
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="LanguageFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                        <div class="toast-header">
+                                            <i class="bx bx-bell me-2"></i>
+                                            <div class="me-auto fw-semibold">Warning</div>
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('LanguageFormWarning')"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ config('messages.LANGUAGES_LIMIT_REACHED') }}
                                         </div>
                                     </div>
                                 </div>
@@ -420,30 +442,41 @@
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference name">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName0', this.value)">
                                                     <label for="floatingInputGrid">Enter Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference designation">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation0', this.value)">
                                                     <label for="floatingInputGrid">Enter Designation</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-12 my-3">
                                             <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Enter Reference Description" id="floatingTextarea2" style="height: 120px"></textarea>
+                                                <textarea class="form-control" placeholder="Enter Reference Description" id="floatingTextarea2" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription0', this.value)"></textarea>
                                                 <label for="floatingTextarea2">Reference Description</label>
                                             </div>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add reference">
+                                            <button type="button" class="btn btn-secondary col-6" title="Add reference" onclick="CreateResumeForm.addNewReference()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove reference">
+                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove reference" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-References', 'reference-section', 'div.reference-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
+                                        </div>
+                                    </div>
+                                    {{-- ReferenceFormWarning Toast Msg --}}
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="ReferenceFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                        <div class="toast-header">
+                                            <i class="bx bx-bell me-2"></i>
+                                            <div class="me-auto fw-semibold">Warning</div>
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('ReferenceFormWarning')"></button>
+                                        </div>
+                                        <div class="toast-body">
+                                            {{ config('messages.REFERENCES_LIMIT_REACHED') }}
                                         </div>
                                     </div>
                                 </div>
@@ -630,12 +663,12 @@
                                 text-align: center;
                             }
 
-                            .interest-details {
+                            .interests-details {
                                 padding: 20px 0px 0px 7px;
                                 height: auto;
                             }
 
-                            .interest-details p {
+                            .interests-details p {
                                 color: #FFF;
                                 font-family: Poppins;
                                 font-size: 10.8px;
@@ -875,12 +908,12 @@
                                 padding: 0px 3px 0px 5px;
                             }
 
-                            .reference-details div {
+                            .reference-section div {
                                 height: 47px;
                                 width: 50%;
                             }
 
-                            .reference-details div h3 {
+                            .reference-section div h3 {
                                 color: #000;
                                 font-family: Montserrat;
                                 font-size: 13px;
@@ -889,7 +922,7 @@
                                 line-height: normal;
                             }
 
-                            .reference-details div p {
+                            .reference-section div p {
                                 color: #000;
                                 font-family: Montserrat;
                                 font-size: 11px;
@@ -901,7 +934,7 @@
                             <div class="resume-photo">
                                 <img src="{{ asset('storage/images/Asset 11.png') }}" width="220px">
                             </div>
-                            <div class="personal-info-container ">
+                            <div class="personal-info-container">
                                 <h2> Personal Info </h2>
                                 <div class="left-col-divider"></div>
                                 <div class="personal-info-details">
@@ -937,23 +970,16 @@
                                     <p id="Address">Bahria, Rawalpindi</p>
                                 </div>
                             </div>
-                            <div class="languages-container ">
+                            <div class="languages-container">
                                 <h2> Languages </h2>
                                 <div class="left-col-divider"></div>
-                                <div class="languages-details">
-                                    <p>Urdu</p>
-                                </div>
-                                <div class="languages-details">
-                                    <p>English</p>
-                                </div>
-                                <div class="languages-details">
-                                    <p>Chinese</p>
-                                </div>
-                                <div class="languages-details">
-                                    <p>Spanish</p>
+                                <div id="languages-section">
+                                    <div class="languages-details">
+                                        <p id="Language0">Urdu</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="skills-container ">
+                            <div class="skills-container">
                                 <h2> Skills </h2>
                                 <div class="left-col-divider"></div>
                                 <div id="skills-section">
@@ -965,19 +991,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="interest-container ">
+                            <div class="interest-container">
                                 <h2> Interest </h2>
                                 <div class="left-col-divider"></div>
-                                <div class="interest-details">
-                                    <p>Hiking</p>
-                                    <div class="progress-bar-container">
-                                        <div class="custom-progress-bar" style="width: 65%;"></div>
-                                    </div>
-                                </div>
-                                <div class="interest-details">
-                                    <p>Swimming</p>
-                                    <div class="progress-bar-container">
-                                        <div class="custom-progress-bar" style="width: 80%;"></div>
+                                <div id="interests-section">
+                                    <div class="interests-details">
+                                        <p id="Interest0">Hiking</p>
+                                        <div class="progress-bar-container">
+                                            <div class="custom-progress-bar" style="width: 65%;"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1037,23 +1059,23 @@
                                         <p id="ProjectTitle0">Your project 1</p>
                                     </div>
                                     <div class="project-details">
-                                       {{-- This area is for JavaScript Baby --}}
+                                        {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="reference-container ">
+                            <div class="reference-container">
                                 <h2>Reference</h2>
-                                <div class="row reference-details">
-                                    <div>
-                                        <h3>Reference Name</h3>
-                                        <p>Designation</p>
-                                        <p>He was a project manager their</p>
+                                <div class="row reference-section" id="reference-section">
+                                    <div class="reference-details">
+                                        <div>
+                                            <h3 id="ReferenceName0">Reference 1</h3>
+                                            <p id="ReferenceDesignation0">Designation</p>
+                                            <p id="ReferenceDescription0">project manager</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3>Reference Name</h3>
-                                        <p>Designation</p>
-                                        <p>He was a project manager their</p>
+                                    <div class="reference-details">
+                                        {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
                             </div>

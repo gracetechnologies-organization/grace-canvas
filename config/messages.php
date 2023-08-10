@@ -53,6 +53,9 @@ return [
     'SKILLS_LIMIT_REACHED' => 'You can only add 4 skills',
     'ACHIEVEMENTS_LIMIT_REACHED' => 'You can only add 4 achievements',
     'PROJECTS_LIMIT_REACHED' => 'You can only add 4 projects',
+    'INTERESTS_LIMIT_REACHED' => 'You can only add 3 interests',
+    'LANGUAGES_LIMIT_REACHED' => 'You can only add 4 languages',
+    'REFERENCES_LIMIT_REACHED' => 'You can only add 2 references',
     /* HTTP Codes Constants */
     'HTTP_SUCCESS_CODE' => 200,
     'HTTP_SERVER_ERROR_CODE' => 500,
