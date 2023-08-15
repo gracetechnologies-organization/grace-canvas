@@ -496,19 +496,21 @@
                 <div class="container contianer-customs mt-2" id="resume-template-container">
                     <div class="row custom-border" style="width:720px;">
                         <style>
+                            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+                            
                             .left-col {
-                                background: #464646;
+                                background: rgb(23, 23, 214);
                                 width: 200px;
                                 height: 1040px;
                             }
-
+        
                             .right-col {
                                 background: white;
                                 width: 517px;
                                 height: 1040px;
                                 padding: 0px;
                             }
-
+        
                             .resume-photo {
                                 border: 2px solid white;
                                 border-radius: 100%;
@@ -519,86 +521,57 @@
                                 position: relative;
                                 top: 45px;
                             }
-
+        
                             .personal-info-container {
                                 position: relative;
                                 top: 90px;
                                 left: 20px;
                                 width: 120px;
                                 padding-top: 10px;
+                                margin: -10px 10px 0px 0px;
+                                
                             }
-
+        
                             .personal-info-container h2 {
                                 color: #FFF;
+                                background-color: #000;
                                 font-family: Poppins;
                                 font-size: 13.17px;
                                 font-style: normal;
-                                font-weight: 700;
-                                line-height: 0px;
+                                font-weight: 400;
                                 text-transform: uppercase;
-                                text-align: center;
+                                height: 25px;
+                                width: 200px;
+                                margin: 30px 0px 0px -40px;
+                                padding-top: 5px;
+                                padding-left: 45px;
                             }
-
+        
                             .left-col-divider {
                                 background-color: white;
                                 width: 120px;
                                 height: 1.17px;
                             }
-
+        
                             .right-col-divider {
                                 background-color: #464646;
                                 width: 452.2px;
-                                height: 2.17px;
+                                height: 2px;
                             }
-
+        
                             .personal-info-details {
-                                padding: 10px 0px 0px 7px;
+                                padding: 25px 0px 0px 7px;
                                 height: 39px;
                             }
-
+        
                             .personal-info-details p {
-                                color: #FFF;
-                                font-family: Poppins;
-                                font-size: 10px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: 0px;
-                            }
-
-                            .languages-container {
-                                position: relative;
-                                top: 105px;
-                                left: 20px;
-                                width: 120px;
-                                padding-top: 10px;
-                            }
-
-                            .languages-container h2 {
-                                color: #FFF;
-                                font-family: Poppins;
-                                font-size: 13.17px;
-                                font-style: normal;
-                                font-weight: 700;
-                                line-height: 0px;
-                                text-transform: uppercase;
-                                text-align: center;
-                            }
-
-                            .languages-details {
-                                padding: 20px 0px 0px 7px;
-                                height: 29px;
-                            }
-
-                            .languages-details p {
                                 color: #FFF;
                                 font-family: Poppins;
                                 font-size: 12px;
                                 font-style: normal;
-                                font-weight: 600;
-                                line-height: 0px;
-                                text-transform: uppercase;
+                                font-weight: 400;
+                                line-height: 1px;
                             }
-
                             .skills-container {
                                 position: relative;
                                 top: 135px;
@@ -606,44 +579,51 @@
                                 width: 120px;
                                 padding-top: 10px;
                             }
-
+        
                             .skills-container h2 {
                                 color: #FFF;
+                                background-color: #000;
                                 font-family: Poppins;
-                                font-size: 13.17px;
+                                font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
-                                line-height: 0px;
+                                font-weight: 400;
                                 text-transform: uppercase;
-                                text-align: center;
+                                height: 25px;
+                                width: 200px;
+                                margin: 0px 0px 0px -40px;
+                                padding-top: 5px;
+                                padding-left: 45px;
                             }
-
+        
                             .skills-details {
                                 padding: 20px 0px 0px 7px;
                                 height: auto;
-
+        
                             }
-
+        
                             .skills-details p {
                                 color: #FFF;
                                 font-family: Poppins;
-                                font-size: 10.8px;
+                                font-size: 10px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 0px;
                                 text-transform: uppercase;
                                 margin-bottom: 9px;
                             }
-
+        
                             .progress-bar-container {
-                                background-color: #8A8A8A;
+                                background-color: #a8a8a8;
+                                border-radius: 100px;
+        
                             }
-
+        
                             .progress-bar-container .custom-progress-bar {
                                 padding: 3px;
                                 background-color: white;
+                                border-radius: 100px;
                             }
-
+        
                             .interest-container {
                                 position: relative;
                                 top: 170px;
@@ -651,156 +631,170 @@
                                 width: 120px;
                                 padding-top: 10px;
                             }
-
+        
                             .interest-container h2 {
                                 color: #FFF;
+                                background-color: #000;
                                 font-family: Poppins;
-                                font-size: 13.17px;
+                                font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
-                                line-height: 0px;
+                                font-weight: 400;
                                 text-transform: uppercase;
-                                text-align: center;
+                                height: 25px;
+                                width: 200px;
+                                margin: 0px 0px 0px -40px;
+                                padding-top: 5px;
+                                padding-left: 60px;
                             }
-
-                            .interests-details {
+        
+                            .interest-details {
                                 padding: 20px 0px 0px 7px;
                                 height: auto;
                             }
-
-                            .interests-details p {
+        
+                            .interest-details p {
                                 color: #FFF;
                                 font-family: Poppins;
-                                font-size: 10.8px;
+                                font-size: 10px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 0px;
                                 text-transform: uppercase;
                                 margin-bottom: 9px;
                             }
-
+        
                             .name-container {
                                 width: 100%;
-                                padding: 80px 30px 0px 30px;
+                                padding: 40px 30px 0px 30px;
                             }
-
+        
                             .name-container h2 {
                                 line-height: 5px;
+                                font-size: 15px;
+        
                             }
-
+        
                             .name-container h2 span {
-                                color: #464646;
+                                color: black;
                                 font-family: Poppins;
-                                font-size: 40.21px;
+                                font-size: 30.21px;
                                 font-style: normal;
                                 font-weight: 700;
                                 text-transform: uppercase;
                             }
-
+        
                             .name-container .profession {
-                                color: #59595B;
-                                font-size: 11px;
+                                background-color: rgb(23, 23, 214);
+                                color: white;
+                                width: 220px;
+                                height: 22px;
+                                margin-top: 20px;
+                                padding-left: 20px;
+                                font-size: 15px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: normal;
                                 text-transform: uppercase;
+                                margin: 15px 0px 0px 0px;
+        
                             }
-
+        
+        
                             .objective-container {
                                 width: 100%;
-                                padding: 25px 30px 0px 30px
+                                padding: 12px 30px 0px 30px
                             }
-
+        
                             .objective-container h2 {
-                                color: #464646;
+                                background-color: rgb(23, 23, 214);
+                                color: white;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 400;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 101.1px;
+                                border-radius: 0px;
+                                width: 170px;
                                 padding: 0px 3px 0px 5px;
                             }
-
+        
                             .objective-container p {
-                                color: #302E30;
+                                color: black;
                                 font-family: Poppins;
-                                font-size: 13px;
+                                font-size: 10px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 16px;
                             }
-
+        
                             .experience-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 0px 30px 0px 30px
                             }
-
+        
                             .experience-container h2 {
-                                color: #464646;
+                                background-color:  rgb(23, 23, 214);
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 15px;
+                                font-size: 16px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 400;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 104.1px;
+                                width: 170px;
                                 padding: 0px 3px 0px 5px;
-                                margin-bottom: 15px;
+                                margin-bottom: 10px;
                             }
-
+        
                             .experience-details h3 {
                                 color: #000;
-                                font-family: Montserrat;
-                                font-size: 15px;
+                                font-family: Poppins;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: 10px;
                                 text-transform: uppercase;
                             }
-
+        
                             .experience-details p {
-                                color: #302E30;
+                                color: #7D818C;
                                 font-family: Poppins;
-                                font-size: 13px;
+                                font-size: 10px;
                                 font-style: normal;
                                 font-weight: 400;
-                                margin-top: 15px;
+                                margin-top: 10px;
                                 line-height: 16px;
+                                margin-bottom: 8px;
                             }
-
+        
                             .education-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px
                             }
-
+        
                             .education-container h2 {
-                                color: #464646;
+                                background-color:  rgb(23, 23, 214);
+                                color: white;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 400;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 102.1px;
+                                border-radius: 0px;
+                                width: 170px;
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 15px;
                             }
-
+        
                             .education-details {
                                 margin-bottom: 25px;
                             }
-
+        
                             .education-details h3 {
-                                color: #000;
-                                font-family: Montserrat;
+                                color: #464646;
+                                font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
@@ -808,7 +802,7 @@
                                 text-transform: uppercase;
                                 margin-bottom: 17px;
                             }
-
+        
                             .education-details p {
                                 color: #302E30;
                                 font-family: Poppins;
@@ -818,125 +812,185 @@
                                 margin-top: 15px;
                                 line-height: 3px;
                             }
-
+        
                             .achievement-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px
                             }
-
+        
                             .achievement-container h2 {
-                                color: #464646;
+                                background-color: rgb(23, 23, 214);
+                                color: white;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 400;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 120px;
+                                border-radius: 0px;
+                                width: 170px;
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 10px;
                             }
-
-                            .achievement-section div {
+        
+                            .achievement-details div {
                                 height: 47px;
                                 width: 50%;
                             }
-
-                            .achievement-section div p {
-                                color: #000;
-                                font-family: Montserrat;
+        
+                            .achievement-details div p {
+                                color: #464646;
+                                font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
                                 font-weight: 700;
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
-
+        
                             .project-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px
                             }
-
+        
                             .project-container h2 {
-                                color: #464646;
+                                background-color: rgb(23, 23, 214) ;
+                                color: white;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 400;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 82px;
+                                border-radius: 0px;
+                                width: 170px;
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 10px;
                             }
-
-                            .project-section div {
+        
+                            .project-details div {
                                 height: 47px;
                                 width: 50%;
                             }
-
-                            .project-section div p {
-                                color: #000;
-                                font-family: Montserrat;
+        
+                            .project-details div p {
+                                color: #464646;
+                                font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
                                 font-weight: 700;
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
-
+        
                             .reference-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px
                             }
-
+        
                             .reference-container h2 {
-                                color: #464646;
+                                background-color: rgb(23, 23, 214);
+                                color: white;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 400;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 98px;
+                                border-radius: 0px;
+                                width: 170px;
                                 padding: 0px 3px 0px 5px;
                             }
-
-                            .reference-section div {
+        
+                            .reference-details div {
                                 height: 47px;
                                 width: 50%;
                             }
-
-                            .reference-section div h3 {
-                                color: #000;
-                                font-family: Montserrat;
+        
+                            .reference-details div h3 {
+                                color: #464646;
+                                font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
                             }
-
-                            .reference-section div p {
-                                color: #000;
-                                font-family: Montserrat;
+        
+                            .reference-details div p {
+                                color: #7E808B;
+                                font-family: Poppins;
                                 font-size: 11px;
                                 font-style: normal;
                                 line-height: 0px;
                             }
+        
+                            
+        
+                            .languages-container {
+                                width: 100%;
+                                padding: 10px 30px 0px 30px;
+                            }
+        
+                            .languages-container h2 {
+                                background-color: rgb(23, 23, 214);
+                                color: white;
+                                font-family: Poppins;
+                                font-size: 15px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: normal;
+                                text-transform: uppercase;
+                                border-radius: 0px;
+                                width: 170px;
+                                padding: 0px 3px 0px 5px;
+                                margin-bottom: 10px;
+                            }
+        
+                            .languages-details div {
+                                height: 100px;
+                                width: 50%;
+                            }
+        
+                            .languages-details div p {
+                                color: #7D818C;
+                                font-family: Poppins;
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 400;
+                                margin-top: 5px;
+                                line-height: 5px;
+                            }
+        
+                            .dot {
+                                height: 8px;
+                                width: 8px;
+                                background-color: rgb(23, 23, 214);
+                                border-radius: 50%;
+                                display: inline-block;
+                            }
+        
+                            .dot-grey {
+                                height: 7px;
+                                width: 7px;
+                                background-color: #E7E7E6;;
+                                border-radius: 50%;
+                                display: inline-block;
+                            }
+        
+                            .right-col-divider{
+        
+                                width: 450px;
+                                margin: 10px 0px 0px 0px;
+                               
+                            }
+        
                         </style>
                         <div class="left-col">
                             <div class="resume-photo">
-                                <img src="{{ asset('storage/images/Asset 11.png') }}" width="220px">
+                                <img src="#" width="220px">
                             </div>
                             <div class="personal-info-container">
                                 <h2> Personal Info </h2>
-                                <div class="left-col-divider"></div>
                                 <div class="personal-info-details">
                                     <p>PHONE</p>
                                     <p id="Phone">+92 317 0155625</p>
@@ -970,54 +1024,67 @@
                                     <p id="Address">Bahria, Rawalpindi</p>
                                 </div>
                             </div>
-                            <div class="languages-container">
-                                <h2> Languages </h2>
-                                <div class="left-col-divider"></div>
-                                <div id="languages-section">
-                                    <div class="languages-details">
-                                        <p id="Language0">Urdu</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skills-container">
+                            
+                            <div class="skills-container ">
                                 <h2> Skills </h2>
-                                <div class="left-col-divider"></div>
                                 <div id="skills-section">
                                     <div class="skills-details">
                                         <p id="SkillName0">Photoshop</p>
                                         <div class="progress-bar-container">
+                                            <div class="custom-progress-bar" style="width: 85%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skills-details">
+                                        <p id="SkillName1">Illustrator</p>
+                                        <div class="progress-bar-container">
+                                            <div class="custom-progress-bar" style="width: 85%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skills-details">
+                                        <p id="SkillName2">Indesign</p>
+                                        <div class="progress-bar-container">
                                             <div class="custom-progress-bar" style="width: 65%;"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="interest-container">
+                            <div class="interest-container ">
                                 <h2> Interest </h2>
-                                <div class="left-col-divider"></div>
-                                <div id="interests-section">
-                                    <div class="interests-details">
-                                        <p id="Interest0">Hiking</p>
-                                        <div class="progress-bar-container">
-                                            <div class="custom-progress-bar" style="width: 65%;"></div>
-                                        </div>
+                                <div class="interest-details">
+                                    <p>Gaming</p>
+                                    <div class="progress-bar-container">
+                                        <div class="custom-progress-bar" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                <div class="interest-details">
+                                    <p>Vfx Video Editing</p>
+                                    <div class="progress-bar-container">
+                                        <div class="custom-progress-bar" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                <div class="interest-details">
+                                    <p>UI UX Designing</p>
+                                    <div class="progress-bar-container">
+                                        <div class="custom-progress-bar" style="width: 65%;"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="right-col">
                             <div class="name-container">
-                                <h2> <span id="FName">FName</span> <span id="LName">LName</span> </h2>
-                                <span class="profession" id="Profession">Graphic Designer</span>
+                                <h2> <span id="FName">Name</span> <span id="LName">Surname</span> </h2>
+                                <p class="profession" id="Profession">Your Profession</p>
+                                <div class="right-col-divider"></div>
                             </div>
+                            
                             <div class="objective-container ">
                                 <h2>Objective</h2>
                                 <p id="Objective">
                                     Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position to utilize my expertise in front-end and back-end technologies, as well as my problem-solving and collaboration skills, to contribute to the development user experiences.
                                 </p>
-                                <div class="right-col-divider"></div>
                             </div>
                             <div class="experience-container">
-                                <h2>Experience</h2>
+                                <h2>Work Experience</h2>
                                 <div id="experiences-section">
                                     <div class="experience-details">
                                         <h3 id="Designation0">Job Position</h3>
@@ -1026,6 +1093,13 @@
                                             Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
                                         </p>
                                     </div>
+                                    {{-- <div class="experience-details">
+                                        <h3 id="Designation0">Job Position</h3>
+                                        <h3><span id="Organization1">Company Name</span> <span id="JoiningDate1">2020</span> | <span id="EndDate1">2021</span></h3>
+                                        <p id="JobDescription0">
+                                            Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
+                                        </p>
+                                    </div> --}}
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
@@ -1037,45 +1111,110 @@
                                         <p id="Degree0">Write your degree name here</p>
                                         <p><span id="Score0">3.2 CGPA</span> <span id="CompletionDate0">2015</span></p>
                                     </div>
+                                    {{-- <div class="education-details">
+                                        <h3 id="EducationalOrganization0">University Name or School Name</h3>
+                                        <p id="Degree0">Write your degree name here</p>
+                                        <p><span id="Score1">3.2 CGPA</span> <span id="CompletionDate1">2015</span></p>
+                                    </div> --}}
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
                             <div class="achievement-container">
                                 <h2>Achievement</h2>
-                                <div class="row achievement-section" id="achievement-section">
-                                    <div class="achievement-details">
-                                        <p id="AchievementTitle0">Your achivement 1</p>
+                                <div class="row achievement-details">
+                                    <div>
+                                        <p id="AchievementTitle0">Your Title Here</p>
                                     </div>
-                                    <div class="achievement-details">
+                                    <div>
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
+                                
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="project-container">
+                            <div class="project-container ">
                                 <h2>Project</h2>
-                                <div class="row project-section" id="project-section">
-                                    <div class="project-details">
+                                <div class="row project-details">
+                                    <div>
                                         <p id="ProjectTitle0">Your project 1</p>
                                     </div>
-                                    <div class="project-details">
+                                    <div>
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="reference-container">
+                            <div class="reference-container ">
                                 <h2>Reference</h2>
-                                <div class="row reference-section" id="reference-section">
-                                    <div class="reference-details">
-                                        <div>
-                                            <h3 id="ReferenceName0">Reference 1</h3>
-                                            <p id="ReferenceDesignation0">Designation</p>
-                                            <p id="ReferenceDescription0">project manager</p>
-                                        </div>
+                                <div class="row reference-details">
+                                    <div>
+                                        <h3>Reference Name</h3>
+                                        <p>Designation</p>
+                                        <p>Number</p>
                                     </div>
-                                    <div class="reference-details">
-                                        {{-- This area is for JavaScript Baby --}}
+                                    <div>
+                                        <h3>Reference Name</h3>
+                                        <p>Designation</p>
+                                        <p>Number</p>
+                                    </div>
+        
+                                </div>
+                                <div class="right-col-divider"></div>
+                            </div>
+                            <div class="languages-container">
+                                <h2>Language</h2>
+                                <div class="row languages-details">
+                                    <div>
+                                        <p id="LanguageTitle0">Your Title 
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                        </p>
+                                        <p id="LanguageTitle1">Your Title
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p id="LanguageTitle2">Your Title
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                        </p>
+                                        <p id="LanguageTitle3">Your Title
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                            <span class="dot-grey"></span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
