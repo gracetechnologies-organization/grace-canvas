@@ -1,8 +1,8 @@
 <!-- Hero section -->
-<section class="hero-section ">
+<section class="hero-section">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 col-sm-3 mt-5 hero-section-left-column">
+            <div class="col-12 col-md-6 col-sm-3 mt-5 hero-section-left-column d-flax">
                 <h2>
                     <b>
                         Pick A Template
@@ -18,14 +18,14 @@
                 <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button>
                 <button>Let's Create</button><br><br>
             </div>
-            <div class="col-12 col-md-6 col-sm-3 mt-5">
-                <img src="{{ asset('storage/images/resumes/Group.svg') }}" class="img-fluid w-100" alt="">
+            <div class="col-12 col-md-6 col-sm-3 mt-5 d-flax flex-row-reverse">
+                <img src="{{ asset('web-images/Group.svg') }}" class="img-fluid w-100" alt="">
             </div>
         </div>
     </div>
 </section>
 <!-- simple resume template -->
-<section class="mt-5 text-center secound-section">
+<section class="mt-5 text-center simple-section">
     <h2>
         <b>
             Resume Templates
@@ -38,7 +38,7 @@
 <!-- resume card section  -->
 <section class="mt-5">
     <div class="container">
-        <div class="row resume-card-section">
+        <div class="row resume-card-section row1">
             @for($i = 1; $i <= 6; $i++) <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                 <div class="card">
                     <img src="{{ asset('storage/images/resumes/1-B-01.webp') }}" loading="lazy" class="img-fluid p-3"
@@ -57,7 +57,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-sm-3 mt-5">
-                <img src="{{ asset('storage/images/resumes/Frame.svg') }}" class="img-fluid w-75" alt=""
+                <img src="{{ asset('web-images/Frame.svg') }}" class="img-fluid w-75" alt=""
                     style="float:left">
             </div>
             <div class="col-12 col-md-6 col-sm-3 mt-5 hero-section-left-column">
@@ -80,7 +80,7 @@
 <section class="mt-5 mb-5">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 col-sm-3 mt-5 hero-section-left-column">
+            <div class="col-12 col-md-6 col-sm-3 mt-5 print-ready-section">
                 <p style="color: #F60;">Print Ready Design</p>
                 <h2>
                     <b>
@@ -93,7 +93,7 @@
                 <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button><br><br>
             </div>
             <div class="col-12 col-md-6 col-sm-3 mt-5">
-                <img src="{{ asset('storage/images/resumes/Group43.svg') }}" class="img-fluid w-75 " alt=""
+                <img src="{{ asset('web-images/Group43.svg') }}" class="img-fluid w-90 " alt=""
                     style="float:right">
             </div>
         </div>
@@ -113,11 +113,11 @@
 <!-- port folio section  -->
 <section class="mt-5">
     <div class="container-fluid">
-        <div class="row port-folio-section">
+        <div class="row port-folio-section row1">
             @for ($i = 0 ; $i < 3 ; $i++) <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:8rem">
                 <div class="card">
                     <div class="card1">
-                        <img src="{{ asset('storage/images/resumes/download.png') }}" class="mx-auto d-block">
+                        <img src="{{ asset('web-images/download.png') }}" class="mx-auto d-block">
                         <div class="card-body">
                             <h2 class="text-center">
                                 Rana Waseem Rajpoot
@@ -179,8 +179,6 @@
         font-family: 'Poppins';
         font-size: 20px;
     }
-
-
     /* hero-section */
     .hero-section {
         background-color: rgba(255, 102, 0, 0.10);
@@ -227,8 +225,8 @@
         text-decoration: none;
         color: #fff;
     }
-
-    .secound-section h2 b {
+    /* simple section */
+    .simple-section h2 b {
         color: #F60;
         text-align: justify;
         font-family: 'Poppins';
@@ -239,7 +237,7 @@
 
     }
 
-    .secound-section p {
+    .simple-section p {
         margin: 2% 0px 3% 0px;
         color: #000;
         font-family: 'Poppins';
@@ -248,9 +246,49 @@
         font-weight: 500;
 
     }
+    /* print ready design */
+    .print-ready-section h2 b {
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 3.125rem;
+        font-style: normal;
+        font-weight: 700;
+        text-align: justify;
+        /* line-height: normal; */
+    }
 
+    .print-ready-section p {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        text-align: justify;
+        color: #000;
+        text-align: justify;
+        font-family: 'Poppins';
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+    }
+
+    .print-ready-section button {
+        font-family: 'Poppins';
+        margin: 10px;
+        width: 16rem;
+        height: 5rem;
+        flex-shrink: 0;
+        margin: 30px 0px 0px 0px;
+        padding: 10px;
+        border: 2px solid #FF6600;
+        border-radius: 10px;
+
+    }
+
+    .print-ready-section button a {
+        font-family: 'Poppins';
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #fff;
+    }
     /* resume card  */
-
     .resume-card-section .card {
         background-color: #f5ceb4;
         border-radius: 30px;
@@ -342,13 +380,43 @@
         color:white;
         font-size:1.5rem;
     }
-    .footers-section .learn-more .a{
-
+    /* responsive css */
+    @media only screen and (min-width:1024px) and (max-width:2560px) {
+        .hero-section img{
+            float:right;
+        }
+    }
+    @media only screen and (min-width:1024px) and (max-width:1440px) {
+    }
+    @media only screen and (min-width:1024px) and (max-width:1024px) {
+    }
+    @media only screen and (min-width:768px) and (max-width:951px) {
+    }
+    @media only screen and (min-width:425px) and (max-width:951px) {
+    }
+    @media only screen and (min-width:375px) and (max-width:951px) {
+    }
+    @media only screen and (min-width:320px) and (max-width:951px) {
+        /* port folio section */
+        .port-folio-section .card{
+            margin-top:-3rem;
+        }
+        .port-folio-section .card .card1 img{
+            margin-top:-4rem;
+            width:8rem;
+            height:auto;
+        }
+        .port-folio-section .card .card1 p{
+            padding:0.20rem;
+            font-size:1rem;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
     }
 
 
     /* row responsive */
-    .row {
+    .row1 {
         --bs-gutter-x: 1.5rem;
         --bs-gutter-y: 0;
         display: flex;
