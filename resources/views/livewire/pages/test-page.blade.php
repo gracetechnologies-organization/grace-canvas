@@ -1,26 +1,21 @@
 <!-- Hero section -->
 <section class="hero-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6 col-sm-3 mt-5 hero-section-left-column d-flax">
-                <h2>
-                    <b>
-                        Pick A Template
-                    </b><br>
-                </h2>
-                <h2>
-                    <b>
-                        For Your Next Dream Job
-                    </b>
-                </h2>
-                <p class="w-80 text-left">Quickly design and customize responsive mobile-first sites with Bootstrap, the
-                    world’s most popular front-end open source toolkit!</p>
-                <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button>
-                <button>Let's Create</button><br><br>
-            </div>
-            <div class="col-12 col-md-6 col-sm-3 mt-5 d-flax flex-row-reverse">
-                <img src="{{ asset('web-images/Group.svg') }}" class="img-fluid w-100" alt="">
-            </div>
+    <div class="row row1">
+        <div class="col-lg-7 col-md-6 col-sm-3 mt-5 hero-section-column hero-left-section">
+            <h2>
+                Pick A Template
+            </h2>
+            <h2 class="mt-2">
+                For Your Next Dream Job
+            </h2>
+            <p>Quickly design and customize responsive mobile-first sites with Bootstrap, the
+                world’s most popular front-end open source toolkit!</p>
+            <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create
+                </a></button>
+            <button style=" background-color: Transparent;">Go Premium</button><br><br>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-3 mt-5 mb-4">
+            <img src="{{asset('web-images/Group.svg')}}" class="img-fluid w-90 pt-2" alt="">
         </div>
     </div>
 </section>
@@ -37,7 +32,7 @@
 </section>
 <!-- resume card section  -->
 <section class="mt-5">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row resume-card-section row1">
             @for($i = 1; $i <= 6; $i++) <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                 <div class="card">
@@ -57,8 +52,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-sm-3 mt-5">
-                <img src="{{ asset('web-images/Frame.svg') }}" class="img-fluid w-75" alt=""
-                    style="float:left">
+                <img src="{{ asset('web-images/Frame.svg') }}" class="img-fluid w-75" alt="" style="float:left">
             </div>
             <div class="col-12 col-md-6 col-sm-3 mt-5 hero-section-left-column">
                 <p style="color: #F60;">How it's works</p>
@@ -87,14 +81,14 @@
                         Finished With Your Information, Just Click The Print Button
                     </b><br>
                 </h2>
-                <p class="w-80 text-left">Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque
+                <p class="w-80 text-left responsive-print-ready-section">Lorem ipsum dolor sit amet consectetur. Nulla
+                    vel risus adipiscing quisque
                     vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
                     commodo tempor vestibulum sed erat mollis.</p>
                 <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button><br><br>
             </div>
             <div class="col-12 col-md-6 col-sm-3 mt-5">
-                <img src="{{ asset('web-images/Group43.svg') }}" class="img-fluid w-90 " alt=""
-                    style="float:right">
+                <img src="{{ asset('web-images/Group43.svg') }}" class="img-fluid w-90 " alt="" style="float:right">
             </div>
         </div>
     </div>
@@ -137,28 +131,30 @@
     </div>
 </section>
 <!-- footer section -->
-<section class="mt-2" style="background-color:#FF6600; ">
+<footer class="mt-2" style="background-color:#FF6600; ">
     <div class="container">
         <div class="row footers-section pb-5">
             <div class="col-lg-6 col-md-6 col-sm-12 mt-5">
-                <h2><a class="navbar-brand text-light" href="#" style="font-size:2.25rem;">{{ config('app.name') }}</a></h2>
-                <p class="w-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nulla ipsum iste maiores, ducimus hic
+                <h2><a class="navbar-brand text-light" href="#" style="font-size:2.25rem;">{{ config('app.name') }}</a>
+                </h2><br>
+                <p class="w-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nulla ipsum iste maiores,
+                    ducimus hic
                     iure vitae consequatur esse sed.</p><br>
-                    <h2>Social Media</h2>
+
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 mt-5 learn-more">
-                <h2>Lear</h2>
-                <a href="#">Career Blog</a>
-                <a href="#">How to write a Resume</a>
-                <a href="#">How to write a CV</a>
-                <a href="#">How to write a Cover Letter</a>
-                <a href="#">Resume Example</a>
-                <a href="#">Cover Letter Example</a>
+                <h2>Lear</h2><br>
+                <a href="#">Career Blog</a><br>
+                <a href="#">How to write a Resume</a><br>
+                <a href="#">How to write a CV</a><br>
+                <a href="#">How to write a Cover Letter</a><br>
+                <a href="#">Resume Example</a><br>
+                <a href="#">Cover Letter Example</a><br>
 
 
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 mt-5">
-                <h2>Other</h2>
+                <h2>Other</h2><br>
                 <a href="#">Pricing</a><br>
                 <a href="#">About Us</a><br>
                 <a href="#">E-book: How to Get a job in 2023</a><br>
@@ -169,62 +165,58 @@
     </div>
 
 
-</section>
+</footer>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     body {
         box-sizing: border-box;
         font-family: 'Poppins';
         font-size: 20px;
     }
+
     /* hero-section */
     .hero-section {
         background-color: rgba(255, 102, 0, 0.10);
     }
 
-    .hero-section-left-column h2 b {
+    .hero-section-column h2 {
         color: #000;
-        font-family: 'Poppins';
-        font-size: 3.125rem;
+        font-family: Poppins;
+        font-size: 3.751rem;
         font-style: normal;
         font-weight: 700;
-        text-align: justify;
-        /* line-height: normal; */
+        line-height: normal;
     }
 
-    .hero-section-left-column p {
-        margin-top: 5%;
-        margin-bottom: 5%;
-        text-align: justify;
+    .hero-section-column p {
+        width:85%;
         color: #000;
         text-align: justify;
-        font-family: 'Poppins';
+        font-family: Poppins;
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 500;
+        line-height: normal;
     }
 
-    .hero-section-left-column button {
-        font-family: 'Poppins';
-        margin: 10px;
-        width: 16rem;
-        height: 5rem;
-        flex-shrink: 0;
-        margin: 30px 0px 0px 0px;
+    .hero-section-column button {
+        width: 15.375rem;
+        height: 4.938rem;
+        margin: 50px 0px 0px 0px;
         padding: 10px;
         border: 2px solid #FF6600;
-        border-radius: 10px;
+        border-radius: 0.625rem;
 
     }
 
-    .hero-section-left-column button a {
-        font-family: 'Poppins';
+    .hero-section-column button a {
         margin-bottom: 10px;
         text-decoration: none;
         color: #fff;
     }
+
     /* simple section */
     .simple-section h2 b {
         color: #F60;
@@ -246,6 +238,7 @@
         font-weight: 500;
 
     }
+
     /* print ready design */
     .print-ready-section h2 b {
         color: #000;
@@ -288,9 +281,10 @@
         text-decoration: none;
         color: #fff;
     }
+
     /* resume card  */
     .resume-card-section .card {
-        background-color: #f5ceb4;
+        background-color: rgba(255, 102, 0, 0.10);
         border-radius: 30px;
     }
 
@@ -333,6 +327,27 @@
         background-color: rgba(255, 102, 0, 0.10);
     }
 
+    .how-its-work button {
+        font-family: 'Poppins';
+        margin: 10px;
+        width: 16rem;
+        height: 5rem;
+        flex-shrink: 0;
+        margin: 30px 0px 0px 0px;
+        padding: 10px;
+        border: 2px solid #FF6600;
+        border-radius: 10px;
+
+    }
+
+    .how-its-work button a {
+        font-family: 'Poppins';
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #fff;
+    }
+
+
     /* port Folio section */
     .port-folio-section .card {
         background-color: rgba(255, 102, 0, 0.10);
@@ -342,7 +357,7 @@
     .port-folio-section .card .card1 img {
         margin-top: -6rem;
         background-color: none;
-        width: 15rem;
+        width: 12rem;
         border-radius: 50%;
         border: 3px solid #F60;
     }
@@ -357,6 +372,7 @@
     }
 
     .port-folio-section .card .card1 p {
+        padding: 2rem;
         text-align: justify;
         font-size: 1.25rem;
         font-family: 'Poppins';
@@ -365,50 +381,140 @@
     }
 
     /* footer section */
-    .footers-section h2{
-        color:#FFF;
-        font-size:2.25rem;
+    .footers-section h2 {
+        color: #FFF;
+        font-size: 2.25rem;
     }
-    .footers-section p{
-        font-size:1rem;
-        color:#FFF;
-        text-align:justify;
-    }
-    .footers-section a{
 
-        text-decoration:none;
-        color:white;
-        font-size:1.5rem;
+    .footers-section p {
+        font-size: 1rem;
+        color: #FFF;
+        text-align: justify;
     }
+
+    .footers-section a {
+
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+
     /* responsive css */
-    @media only screen and (min-width:1024px) and (max-width:2560px) {
-        .hero-section img{
-            float:right;
+    @media only screen and (max-width:2560px) and (min-width:951px) {
+
+        /* navbar */
+        .navbar-brand {
+            margin-left: -6rem;
+        }
+
+        .navbar-nav {
+            margin-right: -9rem;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            /* margin-right:-3rem; */
+            padding: 0rem 3.5rem 0rem 1rem;
+        }
+
+        /* hero section */
+        .hero-section {
+            width: 100%;
+            height: 45.75rem;
+
+        }
+
+        .hero-left-section {
+            padding-left: 10%;
+            padding-top: 5%;
+        }
+
+        .hero-section-column h2 {
+            color: #000;
+            font-family: Poppins;
+            font-size: 60.008px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .hero-section img {
+            padding-left: 1%;
         }
     }
-    @media only screen and (min-width:1024px) and (max-width:1440px) {
+
+    @media only screen and (max-width:1440px) and (min-width:951px) {
+
+        /* nav bar */
+        .navbar-brand {
+            margin-left: 0rem;
+        }
+
+        .navbar-nav {
+            margin-right: 0rem;
+        }
+
+        /* hero section */
+        .hero-left-section {
+            padding-left: 5%;
+            padding-top: 3%;
+        }
+
+        .hero-section img {
+            padding-right: 15%;
+            padding-top: 5%;
+        }
     }
+
     @media only screen and (min-width:1024px) and (max-width:1024px) {
+
+        /* navbar  */
+        .navbar-nav .nav-item .nav-link {
+            /* margin-right:-3rem; */
+            padding: 0rem 1.5rem 0rem 1rem;
+        }
     }
-    @media only screen and (min-width:768px) and (max-width:951px) {
-    }
-    @media only screen and (min-width:425px) and (max-width:951px) {
-    }
-    @media only screen and (min-width:375px) and (max-width:951px) {
-    }
+
+    @media only screen and (min-width:768px) and (max-width:951px) {}
+
+    @media only screen and (min-width:425px) and (max-width:951px) {}
+
+    @media only screen and (min-width:375px) and (max-width:951px) {}
+
     @media only screen and (min-width:320px) and (max-width:951px) {
+        /* hero section */
+
+        /* how it's work */
+        .how-its-work .text-left {
+            padding: 0.20rem;
+            word-wrap: break-word;
+        }
+
+        /* print ready file */
+        .print-ready-section .responsive-print-ready-section {
+            padding: 0.30rem;
+            word-wrap: break-word;
+            line-height: 1.5em;
+        }
+
+
+        .print-ready-section img {
+            float: none;
+        }
+
         /* port folio section */
-        .port-folio-section .card{
-            margin-top:-3rem;
+        .port-folio-section .card {
+            margin-top: -3rem;
         }
-        .port-folio-section .card .card1 img{
-            margin-top:-4rem;
-            width:8rem;
-            height:auto;
+
+        .port-folio-section .card .card1 img {
+            margin-top: -4rem;
+            width: 8rem;
+            height: auto;
         }
-        .port-folio-section .card .card1 p{
-            padding:0.20rem;
-            font-size:1rem;
+
+        .port-folio-section .card .card1 p {
+            padding: 0.20rem;
+            font-size: 1rem;
             word-wrap: break-word;
             line-height: 1.5;
         }
