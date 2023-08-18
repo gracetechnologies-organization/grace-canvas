@@ -22,6 +22,61 @@
         </div>
     </div>
 
+    {{-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Crop Your Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+    <!-- BS-5 Modal -->
+    <div class="modal fade" id="crop-image-modal" tabindex="-1" aria-labelledby="crop-image-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label">Crop Your Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <img id="image">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                </div>
+                {{-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="crop">Crop</button>
+        </div> --}}
+            </div>
+        </div>
+    </div>
+
     <!-- Editing form & preview section -->
     <div class="container-fluid px-5 px-md-4 px-lg-5">
         <div class="row">
@@ -31,7 +86,8 @@
                     <div class="row">
                         <div class="col-10 py-1 mt-1 ">
                             <div class="input-group mt-0">
-                                <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="inputGroupFile02">
+                                <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control image" id="inputGroupFile02">
+                                {{-- <input type="file" name="image" class="image"> --}}
                                 <label class="input-group-text" for="inputGroupFile02">Upload Pic</label>
                             </div>
                         </div>
@@ -497,20 +553,20 @@
                     <div class="row custom-border" style="width:720px;">
                         <style>
                             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-                            
+
                             .left-col {
                                 background: rgb(23, 23, 214);
                                 width: 200px;
                                 height: 1040px;
                             }
-        
+
                             .right-col {
                                 background: white;
                                 width: 517px;
                                 height: 1040px;
                                 padding: 0px;
                             }
-        
+
                             .resume-photo {
                                 border: 2px solid white;
                                 border-radius: 100%;
@@ -521,7 +577,7 @@
                                 position: relative;
                                 top: 45px;
                             }
-        
+
                             .personal-info-container {
                                 position: relative;
                                 top: 90px;
@@ -529,9 +585,8 @@
                                 width: 120px;
                                 padding-top: 10px;
                                 margin: -10px 10px 0px 0px;
-                                
                             }
-        
+
                             .personal-info-container h2 {
                                 color: #FFF;
                                 background-color: #000;
@@ -546,24 +601,24 @@
                                 padding-top: 5px;
                                 padding-left: 45px;
                             }
-        
+
                             .left-col-divider {
                                 background-color: white;
                                 width: 120px;
                                 height: 1.17px;
                             }
-        
+
                             .right-col-divider {
                                 background-color: #464646;
                                 width: 452.2px;
                                 height: 2px;
                             }
-        
+
                             .personal-info-details {
                                 padding: 25px 0px 0px 7px;
                                 height: 39px;
                             }
-        
+
                             .personal-info-details p {
                                 color: #FFF;
                                 font-family: Poppins;
@@ -572,6 +627,7 @@
                                 font-weight: 400;
                                 line-height: 1px;
                             }
+
                             .skills-container {
                                 position: relative;
                                 top: 135px;
@@ -579,7 +635,7 @@
                                 width: 120px;
                                 padding-top: 10px;
                             }
-        
+
                             .skills-container h2 {
                                 color: #FFF;
                                 background-color: #000;
@@ -594,13 +650,12 @@
                                 padding-top: 5px;
                                 padding-left: 45px;
                             }
-        
+
                             .skills-details {
                                 padding: 20px 0px 0px 7px;
                                 height: auto;
-        
                             }
-        
+
                             .skills-details p {
                                 color: #FFF;
                                 font-family: Poppins;
@@ -611,19 +666,18 @@
                                 text-transform: uppercase;
                                 margin-bottom: 9px;
                             }
-        
+
                             .progress-bar-container {
                                 background-color: #a8a8a8;
                                 border-radius: 100px;
-        
                             }
-        
+
                             .progress-bar-container .custom-progress-bar {
                                 padding: 3px;
                                 background-color: white;
                                 border-radius: 100px;
                             }
-        
+
                             .interest-container {
                                 position: relative;
                                 top: 170px;
@@ -631,7 +685,7 @@
                                 width: 120px;
                                 padding-top: 10px;
                             }
-        
+
                             .interest-container h2 {
                                 color: #FFF;
                                 background-color: #000;
@@ -646,12 +700,12 @@
                                 padding-top: 5px;
                                 padding-left: 60px;
                             }
-        
+
                             .interest-details {
                                 padding: 20px 0px 0px 7px;
                                 height: auto;
                             }
-        
+
                             .interest-details p {
                                 color: #FFF;
                                 font-family: Poppins;
@@ -662,18 +716,17 @@
                                 text-transform: uppercase;
                                 margin-bottom: 9px;
                             }
-        
+
                             .name-container {
                                 width: 100%;
                                 padding: 40px 30px 0px 30px;
                             }
-        
+
                             .name-container h2 {
                                 line-height: 5px;
                                 font-size: 15px;
-        
                             }
-        
+
                             .name-container h2 span {
                                 color: black;
                                 font-family: Poppins;
@@ -682,7 +735,7 @@
                                 font-weight: 700;
                                 text-transform: uppercase;
                             }
-        
+
                             .name-container .profession {
                                 background-color: rgb(23, 23, 214);
                                 color: white;
@@ -696,15 +749,13 @@
                                 line-height: normal;
                                 text-transform: uppercase;
                                 margin: 15px 0px 0px 0px;
-        
                             }
-        
-        
+
                             .objective-container {
                                 width: 100%;
-                                padding: 12px 30px 0px 30px
+                                padding: 12px 30px 0px 30px;
                             }
-        
+
                             .objective-container h2 {
                                 background-color: rgb(23, 23, 214);
                                 color: white;
@@ -718,7 +769,7 @@
                                 width: 170px;
                                 padding: 0px 3px 0px 5px;
                             }
-        
+
                             .objective-container p {
                                 color: black;
                                 font-family: Poppins;
@@ -727,14 +778,14 @@
                                 font-weight: 400;
                                 line-height: 16px;
                             }
-        
+
                             .experience-container {
                                 width: 100%;
-                                padding: 0px 30px 0px 30px
+                                padding: 0px 30px 0px 30px;
                             }
-        
+
                             .experience-container h2 {
-                                background-color:  rgb(23, 23, 214);
+                                background-color: rgb(23, 23, 214);
                                 color: white;
                                 font-family: Poppins;
                                 font-size: 16px;
@@ -746,7 +797,7 @@
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 10px;
                             }
-        
+
                             .experience-details h3 {
                                 color: #000;
                                 font-family: Poppins;
@@ -756,7 +807,7 @@
                                 line-height: 10px;
                                 text-transform: uppercase;
                             }
-        
+
                             .experience-details p {
                                 color: #7D818C;
                                 font-family: Poppins;
@@ -767,14 +818,14 @@
                                 line-height: 16px;
                                 margin-bottom: 8px;
                             }
-        
+
                             .education-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
                             }
-        
+
                             .education-container h2 {
-                                background-color:  rgb(23, 23, 214);
+                                background-color: rgb(23, 23, 214);
                                 color: white;
                                 font-family: Poppins;
                                 font-size: 15px;
@@ -787,11 +838,11 @@
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 15px;
                             }
-        
+
                             .education-details {
                                 margin-bottom: 25px;
                             }
-        
+
                             .education-details h3 {
                                 color: #464646;
                                 font-family: Poppins;
@@ -802,7 +853,7 @@
                                 text-transform: uppercase;
                                 margin-bottom: 17px;
                             }
-        
+
                             .education-details p {
                                 color: #302E30;
                                 font-family: Poppins;
@@ -812,12 +863,12 @@
                                 margin-top: 15px;
                                 line-height: 3px;
                             }
-        
+
                             .achievement-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
                             }
-        
+
                             .achievement-container h2 {
                                 background-color: rgb(23, 23, 214);
                                 color: white;
@@ -832,13 +883,13 @@
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 10px;
                             }
-        
-                            .achievement-details div {
+
+                            .achievement-section div {
                                 height: 47px;
                                 width: 50%;
                             }
-        
-                            .achievement-details div p {
+
+                            .achievement-details p {
                                 color: #464646;
                                 font-family: Poppins;
                                 font-size: 13px;
@@ -847,14 +898,14 @@
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
-        
+
                             .project-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
                             }
-        
+
                             .project-container h2 {
-                                background-color: rgb(23, 23, 214) ;
+                                background-color: rgb(23, 23, 214);
                                 color: white;
                                 font-family: Poppins;
                                 font-size: 15px;
@@ -867,13 +918,13 @@
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 10px;
                             }
-        
-                            .project-details div {
+
+                            .project-section div {
                                 height: 47px;
                                 width: 50%;
                             }
-        
-                            .project-details div p {
+
+                            .project-details p {
                                 color: #464646;
                                 font-family: Poppins;
                                 font-size: 13px;
@@ -882,12 +933,12 @@
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
-        
+
                             .reference-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
                             }
-        
+
                             .reference-container h2 {
                                 background-color: rgb(23, 23, 214);
                                 color: white;
@@ -901,12 +952,12 @@
                                 width: 170px;
                                 padding: 0px 3px 0px 5px;
                             }
-        
-                            .reference-details div {
+
+                            .reference-section div {
                                 height: 47px;
                                 width: 50%;
                             }
-        
+
                             .reference-details div h3 {
                                 color: #464646;
                                 font-family: Poppins;
@@ -915,7 +966,7 @@
                                 font-weight: 700;
                                 line-height: normal;
                             }
-        
+
                             .reference-details div p {
                                 color: #7E808B;
                                 font-family: Poppins;
@@ -923,14 +974,12 @@
                                 font-style: normal;
                                 line-height: 0px;
                             }
-        
-                            
-        
+
                             .languages-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px;
                             }
-        
+
                             .languages-container h2 {
                                 background-color: rgb(23, 23, 214);
                                 color: white;
@@ -945,12 +994,12 @@
                                 padding: 0px 3px 0px 5px;
                                 margin-bottom: 10px;
                             }
-        
+
                             .languages-details div {
                                 height: 100px;
                                 width: 50%;
                             }
-        
+
                             .languages-details div p {
                                 color: #7D818C;
                                 font-family: Poppins;
@@ -960,7 +1009,7 @@
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
-        
+
                             .dot {
                                 height: 8px;
                                 width: 8px;
@@ -968,26 +1017,24 @@
                                 border-radius: 50%;
                                 display: inline-block;
                             }
-        
+
                             .dot-grey {
                                 height: 7px;
                                 width: 7px;
-                                background-color: #E7E7E6;;
+                                background-color: #E7E7E6;
                                 border-radius: 50%;
                                 display: inline-block;
                             }
-        
-                            .right-col-divider{
-        
+
+                            .right-col-divider {
                                 width: 450px;
                                 margin: 10px 0px 0px 0px;
-                               
+
                             }
-        
                         </style>
                         <div class="left-col">
                             <div class="resume-photo">
-                                <img src="#" width="220px">
+                                <img id="resume-photo" width="142px">
                             </div>
                             <div class="personal-info-container">
                                 <h2> Personal Info </h2>
@@ -1024,7 +1071,7 @@
                                     <p id="Address">Bahria, Rawalpindi</p>
                                 </div>
                             </div>
-                            
+
                             <div class="skills-container ">
                                 <h2> Skills </h2>
                                 <div id="skills-section">
@@ -1032,18 +1079,6 @@
                                         <p id="SkillName0">Photoshop</p>
                                         <div class="progress-bar-container">
                                             <div class="custom-progress-bar" style="width: 85%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="skills-details">
-                                        <p id="SkillName1">Illustrator</p>
-                                        <div class="progress-bar-container">
-                                            <div class="custom-progress-bar" style="width: 85%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="skills-details">
-                                        <p id="SkillName2">Indesign</p>
-                                        <div class="progress-bar-container">
-                                            <div class="custom-progress-bar" style="width: 65%;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1056,18 +1091,6 @@
                                         <div class="custom-progress-bar" style="width: 85%;"></div>
                                     </div>
                                 </div>
-                                <div class="interest-details">
-                                    <p>Vfx Video Editing</p>
-                                    <div class="progress-bar-container">
-                                        <div class="custom-progress-bar" style="width: 85%;"></div>
-                                    </div>
-                                </div>
-                                <div class="interest-details">
-                                    <p>UI UX Designing</p>
-                                    <div class="progress-bar-container">
-                                        <div class="custom-progress-bar" style="width: 65%;"></div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="right-col">
@@ -1076,7 +1099,7 @@
                                 <p class="profession" id="Profession">Your Profession</p>
                                 <div class="right-col-divider"></div>
                             </div>
-                            
+
                             <div class="objective-container ">
                                 <h2>Objective</h2>
                                 <p id="Objective">
@@ -1093,13 +1116,6 @@
                                             Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
                                         </p>
                                     </div>
-                                    {{-- <div class="experience-details">
-                                        <h3 id="Designation0">Job Position</h3>
-                                        <h3><span id="Organization1">Company Name</span> <span id="JoiningDate1">2020</span> | <span id="EndDate1">2021</span></h3>
-                                        <p id="JobDescription0">
-                                            Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
-                                        </p>
-                                    </div> --}}
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
@@ -1111,31 +1127,25 @@
                                         <p id="Degree0">Write your degree name here</p>
                                         <p><span id="Score0">3.2 CGPA</span> <span id="CompletionDate0">2015</span></p>
                                     </div>
-                                    {{-- <div class="education-details">
-                                        <h3 id="EducationalOrganization0">University Name or School Name</h3>
-                                        <p id="Degree0">Write your degree name here</p>
-                                        <p><span id="Score1">3.2 CGPA</span> <span id="CompletionDate1">2015</span></p>
-                                    </div> --}}
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
                             <div class="achievement-container">
                                 <h2>Achievement</h2>
-                                <div class="row achievement-details">
-                                    <div>
-                                        <p id="AchievementTitle0">Your Title Here</p>
+                                <div class="row achievement-section" id="achievement-section">
+                                    <div class="achievement-details">
+                                        <p id="AchievementTitle0">Your achivement 1</p>
                                     </div>
-                                    <div>
+                                    <div class="achievement-details">
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
-                                
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="project-container ">
+                            <div class="project-container">
                                 <h2>Project</h2>
-                                <div class="row project-details">
-                                    <div>
+                                <div class="row project-section" id="project-section">
+                                    <div class="project-details">
                                         <p id="ProjectTitle0">Your project 1</p>
                                     </div>
                                     <div>
@@ -1144,20 +1154,19 @@
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
-                            <div class="reference-container ">
+                            <div class="reference-container">
                                 <h2>Reference</h2>
-                                <div class="row reference-details">
-                                    <div>
-                                        <h3>Reference Name</h3>
-                                        <p>Designation</p>
-                                        <p>Number</p>
+                                <div class="row reference-section" id="reference-section">
+                                    <div class="reference-details">
+                                        <div>
+                                            <h3 id="ReferenceName0">Reference 1</h3>
+                                            <p id="ReferenceDesignation0">Designation</p>
+                                            <p id="ReferenceDescription0">Number</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3>Reference Name</h3>
-                                        <p>Designation</p>
-                                        <p>Number</p>
+                                    <div class="reference-details">
+                                        {{-- This area is for JavaScript Baby --}}
                                     </div>
-        
                                 </div>
                                 <div class="right-col-divider"></div>
                             </div>
@@ -1165,19 +1174,7 @@
                                 <h2>Language</h2>
                                 <div class="row languages-details">
                                     <div>
-                                        <p id="LanguageTitle0">Your Title 
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                        </p>
-                                        <p id="LanguageTitle1">Your Title
+                                        <p id="Language0">Your Title
                                             <span class="dot"></span>
                                             <span class="dot"></span>
                                             <span class="dot"></span>
@@ -1191,30 +1188,7 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <p id="LanguageTitle2">Your Title
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                        </p>
-                                        <p id="LanguageTitle3">Your Title
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                        </p>
+                                        {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
                             </div>
@@ -1230,4 +1204,88 @@
             </div>
         </div>
     </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+
+    <script>
+        // var $modal = $('#modal');
+        var $modal = $('#crop-image-modal');
+        var image = document.getElementById('image');
+        var cropper;
+
+        $("body").on("change", ".image", function(e) {
+            var files = e.target.files;
+            var done = function(url) {
+                image.src = url;
+                $modal.modal('show');
+            };
+            var reader;
+            var file;
+            var url;
+
+            if (files && files.length > 0) {
+                file = files[0];
+
+                if (URL) {
+                    done(URL.createObjectURL(file));
+                } else if (FileReader) {
+                    reader = new FileReader();
+                    reader.onload = function(e) {
+                        done(reader.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+        $modal.on('shown.bs.modal', function() {
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 3,
+                // preview: '.preview'
+            });
+        }).on('hidden.bs.modal', function() {
+            cropper.destroy();
+            cropper = null;
+        });
+
+        $("#crop").click(function() {
+            canvas = cropper.getCroppedCanvas({
+                width: 142,
+                height: 142,
+            });
+
+            canvas.toBlob(function(blob) {
+                url = URL.createObjectURL(blob);
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+
+                // console.log(url);
+                // return;
+                reader.onloadend = function() {
+                    var base64data = reader.result;
+                    // console.log(base64data);
+                    // return;
+                    document.getElementById('resume-photo').src = base64data;
+
+                    var modal = document.querySelector('#crop-image-modal');
+                    var modalBackdrop = document.querySelector('.modal-backdrop');
+
+                    // Remove the 'show' class from modal and modal-backdrop
+                    modal.classList.remove('show');
+                    modalBackdrop.classList.remove('show');
+
+                    cropper.destroy();
+                    cropper = null;
+                }
+            });
+        })
+    </script>
+
+
 </div>
