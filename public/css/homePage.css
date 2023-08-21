@@ -36,6 +36,7 @@ body {
     padding: 10px;
     border: 2px solid #FF6600;
     border-radius: 0.625rem;
+
 }
 
 .hero-section-column .lets-created {
@@ -77,6 +78,7 @@ body {
     font-style: normal;
     font-weight: 600;
     /* line-height: normal; */
+
 }
 
 .simple-section p {
@@ -162,7 +164,7 @@ body {
     color: #fff;
 }
 
-/* review section */
+/* review setiojn */
 .review-section h2 b {
     font-family: 'Poppins';
     color: #F60;
@@ -178,7 +180,8 @@ body {
 
 /* section how-its-work */
 .how-its-work {
-    height: 830px;
+
+    height: 51.875rem;
     flex-shrink: 0;
     background-color: rgba(255, 102, 0, 0.10);
 }
@@ -214,14 +217,13 @@ body {
     line-height: normal;
     margin-bottom:2rem;
 }
-
 .how-its-work img{
     margin-top:6rem;
 }
-
 .how-its-work .left-side{
     margin-top: 5rem;
 }
+
 
 .how-its-work button {
     font-family: 'Poppins';
@@ -233,6 +235,7 @@ body {
     padding: 10px;
     border: 2px solid #FF6600;
     border-radius: 10px;
+
 }
 
 .how-its-work button a {
@@ -241,6 +244,7 @@ body {
     text-decoration: none;
     color: #fff;
 }
+
 
 /* port Folio section */
 .port-folio-section .card {
@@ -300,6 +304,7 @@ body {
 .footers-section .navbar-nav .nav-item .nav-link {
     padding-bottom: 1rem;
     padding-left: 0rem;
+
 }
 
 .footers-section h2 {
@@ -505,6 +510,7 @@ body {
     .footers-section .navbar-nav .nav-item .nav-link {
         padding-bottom: 0.4rem;
         padding-left: 0rem;
+
     }
 
 }
@@ -522,6 +528,7 @@ body {
 
     .resume-card-section .card .p-5 {
         padding: 1rem !important;
+
     }
 
     /* footer responsive */
@@ -547,6 +554,7 @@ body {
     .footers-section .navbar-nav .nav-item .nav-link {
         padding-bottom: 0rem;
         padding-left: 0rem;
+
     }
 
 }
@@ -564,6 +572,7 @@ body {
 
     .resume-card-section .card .p-5 {
         padding: 1rem !important;
+
     }
 
     /* footer responsive */
@@ -607,6 +616,7 @@ body {
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 500;
+
     }
 
     /* resume section */
@@ -620,6 +630,7 @@ body {
 
     .resume-card-section .card .p-5 {
         padding: 1rem !important;
+
     }
 
     /* footer responsive */
@@ -661,6 +672,21 @@ body {
     }
 
     /* how it's work */
+    .how-its-work {
+
+        height: 85.875rem;
+        flex-shrink: 0;
+    }
+    .how-its-work h2 {
+        word-spacing:-5px;
+        color: #000;
+        text-align: justify;
+        font-family: Poppins;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom:1.5rem;
+    }
     .how-its-work .text-left {
         padding: 0.20rem;
         word-wrap: break-word;
@@ -719,4 +745,3 @@ body {
     }
 
 }
-
