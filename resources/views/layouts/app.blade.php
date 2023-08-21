@@ -19,6 +19,7 @@
     <!-- Core theme CSS (includes Bootstrap v5.2.3)-->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
+    <!-- remove this comment in next comment -->
     <!-- Boxicons -->
     <link href="{{ asset('fonts/boxicons.css') }}" rel="stylesheet">
     <!-- Fonts -->

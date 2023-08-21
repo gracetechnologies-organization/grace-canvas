@@ -471,7 +471,7 @@ body {
         padding: 0rem 1.5rem 0rem 1rem;
     }
 
-    /* resume section */
+    /* resume section css */
     .resume-card-section {
         padding: 1rem;
     }
@@ -484,7 +484,12 @@ body {
         padding: 1rem !important;
 
     }
-
+    /* port folio css */
+    /* .port-folio-section .card .card1 img {
+        margin-top: -4rem;
+        width: 10rem;
+        height: auto;
+    } */
     /* social media icons */
     .fa-facebook {
         background: #3B5998;
