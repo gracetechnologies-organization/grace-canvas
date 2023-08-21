@@ -20,7 +20,7 @@
                 Only For Pro Users...!
             </div>
             <div class="dropdown mt-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                <button class="btn btn-secondary standard-bg-color standard-border-color dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                     Download Now
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                    <button type="button" class="btn btn-primary standard-bg-color standard-border-color" id="crop">Crop</button>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-2 py-1 text-end">
                             <button type="button" class="custom-btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" title="Settings & options">
-                                <i class='bx bx-cog icons-size'></i>
+                                <i class='bx bx-cog icons-size standard-txt-color'></i>
                             </button>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                                             </div>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add experience" onclick="CreateResumeForm.addNewExperience()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add experience" onclick="CreateResumeForm.addNewExperience()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger col-6" title="Remove experience" onclick="CreateResumeForm.delForm('panelsStayOpen-Experience', 'experiences-section', 'div.experience-details')">
@@ -261,7 +261,7 @@
                                             </div>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add experience" onclick="CreateResumeForm.addNewQualification()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add experience" onclick="CreateResumeForm.addNewQualification()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger col-6" title="Remove experience" onclick="CreateResumeForm.delForm('panelsStayOpen-Qualification', 'qualifications-section', 'div.education-details')">
@@ -297,7 +297,7 @@
                                                     <label for="floatingInputGrid">Enter Your Skill Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add skill" onclick="CreateResumeForm.addNewSkill()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add skill" onclick="CreateResumeForm.addNewSkill()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove skill" onclick="CreateResumeForm.delForm('panelsStayOpen-Skills', 'skills-section', 'div.skills-details')">
@@ -333,7 +333,7 @@
                                                     <label for="floatingInputGrid">Enter Your Achievement Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add achievement" onclick="CreateResumeForm.addNewAchievement()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add achievement" onclick="CreateResumeForm.addNewAchievement()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove achievement" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Achievements', 'achievement-section', 'div.achievement-details')">
@@ -369,7 +369,7 @@
                                                     <label for="floatingInputGrid">Enter Your Project Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add project" onclick="CreateResumeForm.addNewProject()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add project" onclick="CreateResumeForm.addNewProject()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove project" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Projects', 'project-section', 'div.project-details')">
@@ -405,10 +405,10 @@
                                                     <label for="floatingInputGrid">Enter Your Interest</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add interest" onclick="CreateResumeForm.addNewInterest()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add interest" onclick="CreateResumeForm.addNewInterest()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove interest" onclick="CreateResumeForm.delForm('panelsStayOpen-Interests', 'interests-section', 'div.interests-details')">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove interest" onclick="CreateResumeForm.delForm('panelsStayOpen-Interests', 'interests-section', 'div.interest-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
                                         </div>
@@ -441,7 +441,7 @@
                                                     <label for="floatingInputGrid">Your Known Language</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add language" onclick="CreateResumeForm.addNewLanguage()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add language" onclick="CreateResumeForm.addNewLanguage()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove language" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Languages', 'languages-section', 'div.languages-details')">
@@ -491,7 +491,7 @@
                                             </div>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add reference" onclick="CreateResumeForm.addNewReference()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add reference" onclick="CreateResumeForm.addNewReference()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger col-6" title="Remove reference" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-References', 'reference-section', 'div.reference-details')">
@@ -1145,28 +1145,11 @@
                                 <h2>Language</h2>
                                 <div class="row languages-section" id="languages-section">
                                     <div class="languages-details">
-                                        {{-- <div class="row">
-                                            <div>
-                                                <p id="Language0">Your Language</p>
-                                            </div>
-                                            <div>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot-grey"></span>
-                                                <span class="dot-grey"></span>
-                                                <span class="dot-grey"></span>
-                                                <span class="dot-grey"></span>
-                                            </div>
-                                        </div> --}}
-                                        <div class="row col-12 border border-danger">
-                                            <div class="col-6 border border-danger">
+                                        <div class="row col-12">
+                                            <div class="col-6">
                                                 <p id="Language0">Language</p>
                                             </div>
-                                            <div class="col-6 border border-danger">
+                                            <div class="col-6">
                                                 <span class="dot"></span>
                                                 <span class="dot"></span>
                                                 <span class="dot"></span>
@@ -1189,7 +1172,7 @@
             <!-- Fixed buttons -->
             <div class="fixed-btn-container">
                 <button class="fixed-btn" title="Download as PDF or print" onclick="printDiv('resume-template-container')">
-                    <i class='bx bx-cloud-download icons-size'></i>
+                    <i class='bx bx-cloud-download icons-size standard-txt-color'></i>
                 </button>
             </div>
         </div>
@@ -1434,12 +1417,12 @@
                                         </div>
                                     </div>`;
 
-                const NewInterest = `<div class="interests-details">
-                                        <p id="Interest` + ChildDivsLength + `">Swimming</p>
+                const NewInterest = `<div class="interest-details">
+                                        <p id="Interest` + ChildDivsLength + `">Hiking</p>
                                         <div class="progress-bar-container">
-                                            <div class="custom-progress-bar" style="width: 80%;"></div>
+                                            <div class="custom-progress-bar" style="width: 85%;"></div>
                                         </div>
-                                     </div>`;
+                                    </div>`;
 
                 /*
                 |--------------------------------------------------------------------------
@@ -1468,11 +1451,11 @@
                                 </div>
                             </div>`;
 
-                const NewLanguage = `<div class="row col-12 border border-danger">
-                                            <div class="col-6 border border-danger">
+                const NewLanguage = `<div class="row col-12">
+                                            <div class="col-6">
                                                 <p id="Language` + ChildDivsLength + `">Language</p>
                                             </div>
-                                            <div class="col-6 border border-danger">
+                                            <div class="col-6">
                                                 <span class="dot"></span>
                                                 <span class="dot"></span>
                                                 <span class="dot"></span>

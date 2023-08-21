@@ -12612,6 +12612,18 @@ fieldset:disabled .btn {
 /* **************************************Custom CSS************************************** */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+.standard-bg-color{
+  background-color: #FF6600 !important;
+}
+
+.standard-txt-color{
+  color: #FF6600 !important;
+}
+
+.standard-border-color{
+  border-color: #FF6600 !important;
+}
+
 body {
     box-sizing: border-box;
     font-family: 'Poppins';
