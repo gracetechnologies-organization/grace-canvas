@@ -1,4 +1,14 @@
 <div>
+    <style>
+        .img-container {
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .custom-border {
+            border: 1px solid rgb(54, 54, 54);
+        }
+    </style>
     <!-- Offcanvas for detail customization -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
@@ -22,37 +32,7 @@
         </div>
     </div>
 
-    {{-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Crop Your Image</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="img-container">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
-                            </div>
-                            <div class="col-md-4">
-                                <div class="preview"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-
-    <!-- BS-5 Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="crop-image-modal" tabindex="-1" aria-labelledby="crop-image-modal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -62,17 +42,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="img-container">
-                        <img id="image">
+                        <img id="image" width="500px">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary" id="crop">Crop</button>
                 </div>
-                {{-- <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" id="crop">Crop</button>
-        </div> --}}
             </div>
         </div>
     </div>
@@ -86,9 +62,8 @@
                     <div class="row">
                         <div class="col-10 py-1 mt-1 ">
                             <div class="input-group mt-0">
-                                <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control image" id="inputGroupFile02">
-                                {{-- <input type="file" name="image" class="image"> --}}
-                                <label class="input-group-text" for="inputGroupFile02">Upload Pic</label>
+                                <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control image" id="upload-resume-photo">
+                                <label class="input-group-text" for="upload-resume-photo">Upload Pic</label>
                             </div>
                         </div>
                         <div class="col-2 py-1 text-end">
@@ -469,7 +444,7 @@
                                             <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add language" onclick="CreateResumeForm.addNewLanguage()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove language" onclick="CreateResumeForm.delForm('panelsStayOpen-Languages', 'languages-section', 'div.languages-details')">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove language" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Languages', 'languages-section', 'div.languages-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
                                         </div>
@@ -544,11 +519,6 @@
             <!-- Resume template column -->
             <div class="col-12 col-md-7 col-lg-8 ">
                 <!-- Resume template design -->
-                <style>
-                    .custom-border {
-                        border: 1px solid rgb(54, 54, 54);
-                    }
-                </style>
                 <div class="container contianer-customs mt-2" id="resume-template-container">
                     <div class="row custom-border" style="width:720px;">
                         <style>
@@ -995,12 +965,11 @@
                                 margin-bottom: 10px;
                             }
 
-                            .languages-details div {
-                                height: 100px;
+                            .languages-section .languages-details {
                                 width: 50%;
                             }
 
-                            .languages-details div p {
+                            /* .languages-details div p {
                                 color: #7D818C;
                                 font-family: Poppins;
                                 font-size: 13px;
@@ -1008,7 +977,7 @@
                                 font-weight: 400;
                                 margin-top: 5px;
                                 line-height: 5px;
-                            }
+                            } */
 
                             .dot {
                                 height: 8px;
@@ -1083,12 +1052,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="interest-container ">
+                            <div class="interest-container">
                                 <h2> Interest </h2>
-                                <div class="interest-details">
-                                    <p>Gaming</p>
-                                    <div class="progress-bar-container">
-                                        <div class="custom-progress-bar" style="width: 85%;"></div>
+                                <div id="interests-section">
+                                    <div class="interest-details">
+                                        <p id="Interest0">Gaming</p>
+                                        <div class="progress-bar-container">
+                                            <div class="custom-progress-bar" style="width: 85%;"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1148,7 +1119,7 @@
                                     <div class="project-details">
                                         <p id="ProjectTitle0">Your project 1</p>
                                     </div>
-                                    <div>
+                                    <div class="project-details">
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
@@ -1172,22 +1143,41 @@
                             </div>
                             <div class="languages-container">
                                 <h2>Language</h2>
-                                <div class="row languages-details">
-                                    <div>
-                                        <p id="Language0">Your Title
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                        </p>
+                                <div class="row languages-section" id="languages-section">
+                                    <div class="languages-details">
+                                        {{-- <div class="row">
+                                            <div>
+                                                <p id="Language0">Your Language</p>
+                                            </div>
+                                            <div>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot-grey"></span>
+                                                <span class="dot-grey"></span>
+                                                <span class="dot-grey"></span>
+                                                <span class="dot-grey"></span>
+                                            </div>
+                                        </div> --}}
+                                        <div class="row col-12 border border-danger">
+                                            <div class="col-6 border border-danger">
+                                                <p id="Language0">Language</p>
+                                            </div>
+                                            <div class="col-6 border border-danger">
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot-grey"></span>
+                                                <span class="dot-grey"></span>  
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
+                                    <div class="languages-details">
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
@@ -1204,88 +1194,397 @@
             </div>
         </div>
     </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
-
     <script>
-        // var $modal = $('#modal');
-        var $modal = $('#crop-image-modal');
-        var image = document.getElementById('image');
-        var cropper;
+        class CreateResumeForm {
+            /*
+            |--------------------------------------------------------------------------
+            | Properties
+            |--------------------------------------------------------------------------
+            */
+            static AchievementNumber;
+            static ProjectNumber;
+            static ReferenceNumber;
+            /*
+            |--------------------------------------------------------------------------
+            | Methods
+            |--------------------------------------------------------------------------
+            */
+            static renderTxt = (id, value) => document.getElementById(id).innerHTML = value;
 
-        $("body").on("change", ".image", function(e) {
-            var files = e.target.files;
-            var done = function(url) {
-                image.src = url;
-                $modal.modal('show');
+            static closeWarning = (id) => document.getElementById(id).classList.add('d-none');
+
+            static addNewExperience = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Experience > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="ExperienceForm` + ChildDivsLength + `">
+                                      <div class="row g-2 my-3">
+                                          <div class="col-12 col-md-12 col-lg-6">
+                                              <div class="form-floating">
+                                                  <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization` + ChildDivsLength + `', this.value)">
+                                                  <label for="floatingInputGrid">Organization</label>
+                                              </div>
+                                          </div>
+                                          <div class="col-12 col-md-12 col-lg-6">
+                                              <div class="form-floating">
+                                                  <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation" onkeyup="CreateResumeForm.renderTxt('Designation` + ChildDivsLength + `', this.value)">
+                                                  <label for="floatingInputGrid">Designation</label>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-12 my-3">
+                                          <div class="form-floating">
+                                              <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('JobDescription` + ChildDivsLength + `', this.value)"></textarea>
+                                              <label for="floatingTextarea2">Your Job Description</label>
+                                          </div>
+                                      </div>
+                                      <div class="row g-2 my-3">
+                                          <div class="col-12 col-md-12 col-lg-6">
+                                              <div class="form-floating">
+                                                  <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date" onchange="CreateResumeForm.renderTxt('JoiningDate` + ChildDivsLength + `', this.value)">
+                                                  <label for="floatingInputGrid">Joining Date</label>
+                                              </div>
+                                          </div>
+                                          <div class="col-12 col-md-12 col-lg-6">
+                                              <div class="form-floating">
+                                                  <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date" onchange="CreateResumeForm.renderTxt('EndDate` + ChildDivsLength + `', this.value)">
+                                                  <label for="floatingInputGrid">Ending Date</label>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>`;
+
+                const NewExperience = `<div class="experience-details">
+                                      <h3 id="Designation` + ChildDivsLength + `">Job Position</h3>
+                                      <h3><span id="Organization` + ChildDivsLength + `">Company Name</span> <span id="JoiningDate` + ChildDivsLength + `">2020</span> | <span id="EndDate` + ChildDivsLength + `">2021</span></h3>
+                                      <p id="JobDescription` + ChildDivsLength + `">
+                                          Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
+                                      </p>
+                                  </div>`;
+
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 2) {
+                    document.getElementById('ExperienceFormWarning').classList.remove('d-none');
+                } else {
+                    document.getElementById('panelsStayOpen-Experience').insertAdjacentHTML('beforeend', NewForm);
+                    document.getElementById('experiences-section').insertAdjacentHTML('beforeend', NewExperience)
+                }
             };
-            var reader;
-            var file;
-            var url;
 
-            if (files && files.length > 0) {
-                file = files[0];
+            static addNewQualification = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Qualification > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="QualificationForm` + ChildDivsLength + `">
+                                        <div class="col-12 my-3">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your institute" onkeyup="CreateResumeForm.renderTxt('EducationalOrganization` + ChildDivsLength + `', this.value)">
+                                                <label for="floatingInputGrid">Educational Institute</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 my-3">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your degree" onkeyup="CreateResumeForm.renderTxt('Degree` + ChildDivsLength + `', this.value)">
+                                                <label for="floatingInputGrid">Degree</label>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your score" onkeyup="CreateResumeForm.renderTxt('Score` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Score</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Your completion date" onchange="CreateResumeForm.renderTxt('CompletionDate` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Completion Date</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
 
-                if (URL) {
-                    done(URL.createObjectURL(file));
-                } else if (FileReader) {
-                    reader = new FileReader();
-                    reader.onload = function(e) {
-                        done(reader.result);
-                    };
-                    reader.readAsDataURL(file);
+                const NewQualification = `<div class="education-details">
+                                        <h3 id="EducationalOrganization` + ChildDivsLength + `">University Name or School Name</h3>
+                                        <p id="Degree` + ChildDivsLength + `">Write your degree name here</p>
+                                        <p><span id="Score` + ChildDivsLength + `">3.2 CGPA</span> <span id="CompletionDate` + ChildDivsLength + `">2015</span></p>
+                                    </div>`;
+
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 2) {
+                    document.getElementById('QualificationFormWarning').classList.remove('d-none');
+                } else {
+                    document.getElementById('panelsStayOpen-Qualification').insertAdjacentHTML('beforeend', NewForm);
+                    document.getElementById('qualifications-section').insertAdjacentHTML('beforeend', NewQualification)
                 }
-            }
-        });
+            };
 
-        $modal.on('shown.bs.modal', function() {
-            cropper = new Cropper(image, {
-                aspectRatio: 1,
-                viewMode: 3,
-                // preview: '.preview'
-            });
-        }).on('hidden.bs.modal', function() {
-            cropper.destroy();
-            cropper = null;
-        });
+            static addNewSkill = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Skills > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="SkillsForm` + ChildDivsLength + `">
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-8">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('SkillName` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Enter Your Skill Title</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
 
-        $("#crop").click(function() {
-            canvas = cropper.getCroppedCanvas({
-                width: 142,
-                height: 142,
-            });
+                const NewSkill = `<div class="skills-details">
+                                <p id="SkillName` + ChildDivsLength + `">Illustrator</p>
+                                <div class="progress-bar-container">
+                                    <div class="custom-progress-bar" style="width: 80%;"></div>
+                                </div>
+                            </div>`;
 
-            canvas.toBlob(function(blob) {
-                url = URL.createObjectURL(blob);
-                var reader = new FileReader();
-                reader.readAsDataURL(blob);
-
-                // console.log(url);
-                // return;
-                reader.onloadend = function() {
-                    var base64data = reader.result;
-                    // console.log(base64data);
-                    // return;
-                    document.getElementById('resume-photo').src = base64data;
-
-                    var modal = document.querySelector('#crop-image-modal');
-                    var modalBackdrop = document.querySelector('.modal-backdrop');
-
-                    // Remove the 'show' class from modal and modal-backdrop
-                    modal.classList.remove('show');
-                    modalBackdrop.classList.remove('show');
-
-                    cropper.destroy();
-                    cropper = null;
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 4) {
+                    document.getElementById('SkillFormWarning').classList.remove('d-none');
+                } else {
+                    document.getElementById('panelsStayOpen-Skills').insertAdjacentHTML('beforeend', NewForm);
+                    document.getElementById('skills-section').insertAdjacentHTML('beforeend', NewSkill)
                 }
-            });
-        })
+            };
+
+            static addNewAchievement = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Achievements > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="AchievementForm` + ChildDivsLength + `">
+                                <div class="row g-2 my-3">
+                                    <div class="col-12 col-md-12 col-lg-8">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your achievements" onkeyup="CreateResumeForm.renderTxt('AchievementTitle` + ChildDivsLength + `', this.value)">
+                                            <label for="floatingInputGrid">Enter Your Achievement Title</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                CreateResumeForm.AchievementNumber = ChildDivsLength + 1;
+                const NewAchievement = `<p id="AchievementTitle` + ChildDivsLength + `">Your achivement ` + CreateResumeForm.AchievementNumber + `</p>`;
+
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 4) {
+                    document.getElementById('AchievementFormWarning').classList.remove('d-none');
+                } else {
+                    const InnerDivs = document.querySelectorAll('.achievement-container > div.achievement-section > div.achievement-details');
+                    document.getElementById('panelsStayOpen-Achievements').insertAdjacentHTML('beforeend', NewForm);
+                    (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewAchievement): InnerDivs[0].insertAdjacentHTML('beforeend', NewAchievement);
+                }
+            };
+
+            static addNewProject = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Projects > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="ProjectForm` + ChildDivsLength + `">
+                                    <div class="row g-2 my-3">
+                                        <div class="col-12 col-md-12 col-lg-8">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your projects" onkeyup="CreateResumeForm.renderTxt('ProjectTitle` + ChildDivsLength + `', this.value)">
+                                                <label for="floatingInputGrid">Enter Your Project Title</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+                CreateResumeForm.ProjectNumber = ChildDivsLength + 1;
+                const NewProject = `<p id="ProjectTitle` + ChildDivsLength + `">Your project ` + CreateResumeForm.ProjectNumber + `</p>`;
+
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 4) {
+                    document.getElementById('ProjectFormWarning').classList.remove('d-none');
+                } else {
+                    const InnerDivs = document.querySelectorAll('.project-container > div.project-section > div.project-details');
+                    document.getElementById('panelsStayOpen-Projects').insertAdjacentHTML('beforeend', NewForm);
+                    (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewProject): InnerDivs[0].insertAdjacentHTML('beforeend', NewProject);
+                }
+            };
+
+            static addNewInterest = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Interests > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="InterestForm` + ChildDivsLength + `">
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-8">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your interests" onkeyup="CreateResumeForm.renderTxt('Interest` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Enter Your Interest</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                const NewInterest = `<div class="interests-details">
+                                        <p id="Interest` + ChildDivsLength + `">Swimming</p>
+                                        <div class="progress-bar-container">
+                                            <div class="custom-progress-bar" style="width: 80%;"></div>
+                                        </div>
+                                     </div>`;
+
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 3) {
+                    document.getElementById('InterestFormWarning').classList.remove('d-none');
+                } else {
+                    document.getElementById('panelsStayOpen-Interests').insertAdjacentHTML('beforeend', NewForm);
+                    document.getElementById('interests-section').insertAdjacentHTML('beforeend', NewInterest)
+                }
+            };
+
+            static addNewLanguage = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Languages > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="LanguageForm` + ChildDivsLength + `">
+                                <div class="row g-2 my-3">
+                                    <div class="col-12 col-md-12 col-lg-8">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your languages" onkeyup="CreateResumeForm.renderTxt('Language` + ChildDivsLength + `', this.value)">
+                                            <label for="floatingInputGrid">Your Known Language</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                const NewLanguage = `<div class="row col-12 border border-danger">
+                                            <div class="col-6 border border-danger">
+                                                <p id="Language` + ChildDivsLength + `">Language</p>
+                                            </div>
+                                            <div class="col-6 border border-danger">
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot"></span>
+                                                <span class="dot-grey"></span>
+                                                <span class="dot-grey"></span>  
+                                            </div>
+                                        </div>`;
+
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 4) {
+                    document.getElementById('LanguageFormWarning').classList.remove('d-none');
+                } else { 
+                    const InnerDivs = document.querySelectorAll('.languages-container > div.languages-section > div.languages-details');
+                    console.log(InnerDivs[0].children.length);
+
+                    document.getElementById('panelsStayOpen-Languages').insertAdjacentHTML('beforeend', NewForm);
+                    (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewLanguage): InnerDivs[0].insertAdjacentHTML('beforeend', NewLanguage);
+                }
+            };
+
+            static addNewReference = () => {
+                const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-References > div.accordion-body').length;
+                const NewForm = `<div class="accordion-body" id="ReferenceForm` + ChildDivsLength + `">
+                                        <div class="row g-2 my-3">
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Enter Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-12 col-lg-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation` + ChildDivsLength + `', this.value)">
+                                                    <label for="floatingInputGrid">Enter Designation</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 my-3">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Enter Reference Description" id="floatingTextarea2" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription` + ChildDivsLength + `', this.value)"></textarea>
+                                                <label for="floatingTextarea2">Reference Description</label>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                CreateResumeForm.ReferenceNumber = ChildDivsLength + 1;
+                const NewReference = `<div>
+                                    <h3 id="ReferenceName` + ChildDivsLength + `">Reference ` + CreateResumeForm.ReferenceNumber + `</h3>
+                                    <p id="ReferenceDesignation` + ChildDivsLength + `">Designation</p>
+                                    <p id="ReferenceDescription` + ChildDivsLength + `">project manager</p>
+                                  </div>`;
+
+                /*
+                |--------------------------------------------------------------------------
+                | The following code will show an error message
+                | Otherwise it will add a new form   
+                |--------------------------------------------------------------------------
+                */
+                if (ChildDivsLength === 2) {
+                    document.getElementById('ReferenceFormWarning').classList.remove('d-none');
+                } else {
+                    const InnerDivs = document.querySelectorAll('.reference-container > div.reference-section > div.reference-details');
+                    document.getElementById('panelsStayOpen-References').insertAdjacentHTML('beforeend', NewForm);
+                    InnerDivs[1].insertAdjacentHTML('beforeend', NewReference)
+                }
+            };
+
+            static delForm = (FormID, ResumeSectionID, InnerDiv) => {
+                const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
+                const ResumeSectionChildElements = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
+                if (FormChildElements.length > 1) {
+                    const FormLastChild = FormChildElements[FormChildElements.length - 1];
+                    const ResumeSectionLastChild = ResumeSectionChildElements[ResumeSectionChildElements.length - 1];
+                    FormLastChild.parentNode.removeChild(FormLastChild);
+                    ResumeSectionLastChild.parentNode.removeChild(ResumeSectionLastChild);
+                }
+            };
+
+            static delFormAndTwoColumnsData = (FormID, ResumeSectionID, InnerDiv) => {
+                const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
+                const ResumeSectionChildCols = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
+                if (FormChildElements.length > 1) {
+                    /*
+                    |--------------------------------------------------------------------------
+                    | This code is for 2 columns sections of a resume template
+                    | If the 2nd col have child HTML elements then we will remove its last child
+                    |--------------------------------------------------------------------------
+                    */
+                    if (ResumeSectionChildCols[1].children.length > 0) {
+                        const SecondColLastChild = ResumeSectionChildCols[1].children[ResumeSectionChildCols[1].children.length - 1];
+                        SecondColLastChild.parentNode.removeChild(SecondColLastChild);
+                    }
+                    /*
+                    |--------------------------------------------------------------------------
+                    | Otherwise 1st col's last child will be removed
+                    |--------------------------------------------------------------------------
+                    */
+                    else {
+                        const FirstColLastChild = ResumeSectionChildCols[0].children[ResumeSectionChildCols[0].children.length - 1];
+                        FirstColLastChild.parentNode.removeChild(FirstColLastChild);
+                    }
+                    const FormLastChild = FormChildElements[FormChildElements.length - 1];
+                    FormLastChild.parentNode.removeChild(FormLastChild);
+                }
+            };
+        }
     </script>
-
-
 </div>
