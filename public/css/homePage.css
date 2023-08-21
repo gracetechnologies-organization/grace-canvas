@@ -180,8 +180,50 @@ body {
 
 /* section how-its-work */
 .how-its-work {
+
+    height: 830px;
+    flex-shrink: 0;
     background-color: rgba(255, 102, 0, 0.10);
 }
+
+.how-its-work .p1 {
+    color: #F60;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.how-its-work h2 {
+    word-spacing:-5px;
+    color: #000;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom:1.5rem;
+}
+
+.how-its-work .p2 {
+    color: #000;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom:2rem;
+}
+.how-its-work img{
+    margin-top:6rem;
+}
+.how-its-work .left-side{
+    margin-top: 5rem;
+}
+
 
 .how-its-work button {
     font-family: 'Poppins';
@@ -586,6 +628,7 @@ body {
         background: #3B5998;
         margin-left: 4.5rem !important;
     }
+
     .footer-copy-right {
         font-family: Poppins;
         font-size: 1.15rem;
@@ -632,7 +675,7 @@ body {
 
     /* port folio section */
     .port-folio-section .card {
-        margin-top: -3rem;
+        margin-top: -1rem !important;
     }
 
     .port-folio-section .card .card1 img {
@@ -659,6 +702,7 @@ body {
         background: #3B5998;
         margin-left: 4rem !important;
     }
+
     .footer-copy-right {
         font-family: Poppins;
         font-size: 1rem;
@@ -666,7 +710,7 @@ body {
         font-weight: 300;
         line-height: normal;
         color: #000;
-        margin-left:-1rem;
+        margin-left: -1rem;
     }
 
 }

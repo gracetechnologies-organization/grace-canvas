@@ -1,182 +1,129 @@
-<div>
-    <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2">Pick A Template For Your Next Job</h1>
-                        <p class="lead text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
-                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#">Let's Create</a>
-                            <a class="btn btn-warning btn-lg px-4" href="#">Go Premium</a>
-                        </div>
+<!-- Hero section -->
+<section class="hero-section">
+    <div class="row row1">
+        <div class="col-lg-7 col-md-6 col-sm-3 mt-5 hero-section-column hero-left-section">
+            <h2>
+                Pick A Template
+            </h2>
+            <h2 class="mt-2">
+                For Your Next Dream Job
+            </h2>
+            <p>Quickly design and customize responsive mobile-first sites with Bootstrap, the
+                world’s most popular front-end open source toolkit!</p>
+            <button class="lets-created"><a href=""> Let's Create</a></button>
+            <button class="go-premium"> <a href="">Go Premium </a></button><br><br>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-3 mt-5 mb-4">
+            <img src="{{asset('web-images/Group.svg')}}" class="img-fluid w-90 pt-2" alt="">
+        </div>
+    </div>
+</section>
+<!-- simple resume template -->
+<section class="mt-5 text-center simple-section">
+    <h2>
+        <b>
+            Resume Templates
+        </b>
+    </h2>
+    <p>
+        Let's create something better
+    </p>
+</section>
+<!-- resume card section  -->
+<section class="mt-5">
+    <div class="container-fluid">
+        <div class="row resume-card-section row1">
+            @for($i = 1; $i <= 6; $i++) <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                <div class="card">
+                    <img src="{{ asset('storage/images/resumes/1-B-01.webp') }}" loading="lazy" class="img-fluid p-5"
+                        alt="">
+                    <div class="btn-resume-section">
+                        <a href="#">Select Template</a>
                     </div>
                 </div>
-            </div>
         </div>
-    </header>
-    <!-- Templates section-->
-    <section class="bg-light py-5 border-bottom">
-        <div class="container-fluid px-5 my-5">
-            <div class="text-center mb-5">
-                <h2 class="fw-bolder">Resume Templates</h2>
-                <p class="lead mb-0">Let's create something better</p>
+        @endfor
+    </div>
+    </div>
+</section>
+<!-- how it's work -->
+<section class="mt-5 mb-5 how-its-work">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 col-sm-3">
+                <img src="{{ asset('web-images/Frame.svg') }}" class="img-fluid w-75" alt="" style="float:left">
             </div>
-            <div class="row">
-                @for ($i = 0; $i < 18; $i++)
-                    <!-- Template Container-->
-                    <div class="col-sm-6 col-lg-6 col-xl-4 my-4">
-                        <div class="card mb-xl-0 templates-container" {{-- style="background-image:url('{{ url('/storage/images/resumes/1 - B-01.png') }}');" --}}>
-                            <div class="card-body">
-                                <img src="{{ url('/storage/images/resumes/1 - B-01.webp') }}" alt="Resume Templates - 01" width="100%">
-                                <div class="d-grid"><a class="btn btn-dark select-btn" href="{{ route('edit.resume.form', ['ID' => 1]) }}">Select</a></div>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-        </div>
-    </section>
-    <!-- Features section-->
-    <section class="py-5 border-bottom" id="features">
-        <div class="container px-5 my-5">
-            <div class="row gx-5">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                    <h2 class="h4 fw-bolder">Featured title</h2>
-                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                    <a class="text-decoration-none" href="#!">
-                        Call to action
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                    <h2 class="h4 fw-bolder">Featured title</h2>
-                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                    <a class="text-decoration-none" href="#!">
-                        Call to action
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                    <h2 class="h4 fw-bolder">Featured title</h2>
-                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                    <a class="text-decoration-none" href="#!">
-                        Call to action
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testimonials section-->
-    <section class="py-5 border-bottom">
-        <div class="container px-5 my-5 px-5">
-            <div class="text-center mb-5">
-                <h2 class="fw-bolder">Customer testimonials</h2>
-                <p class="lead mb-0">Our customers love working with us</p>
-            </div>
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <!-- Testimonial 1-->
-                    <div class="card mb-4">
-                        <div class="card-body p-4">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
-                                <div class="ms-4">
-                                    <p class="mb-1">Thank you for putting together such a great product. We loved working with you and the whole team, and we will be recommending you to others!</p>
-                                    <div class="small text-muted">- Client Name, Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 2-->
-                    <div class="card">
-                        <div class="card-body p-4">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
-                                <div class="ms-4">
-                                    <p class="mb-1">The whole team was a huge help with putting things together for our company and brand. We will be hiring them again in the near future for additional work!</p>
-                                    <div class="small text-muted">- Client Name, Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contact section-->
-    <section class="bg-light py-5">
-        <div class="container px-5 my-5 px-5">
-            <div class="text-center mb-5">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                <h2 class="fw-bolder">Get in touch</h2>
-                <p class="lead mb-0">We'd love to hear from you</p>
-            </div>
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <!-- Name input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                            <label for="name">Full name</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                        </div>
-                        <!-- Email address input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                            <label for="email">Email address</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                        </div>
-                        <!-- Phone number input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                            <label for="phone">Phone number</label>
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                        </div>
-                        <!-- Message input-->
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                            <label for="message">Message</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                        </div>
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a href="#">Grace Technologies</a>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Error sending message!</div>
-                        </div>
-                        <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="col-12 col-md-6 col-sm-3 left-side">
+                <p class="p1">How it's works</p>
+                <h2>
+                        Select A Template <br>& Fill Your Information
+                </h2>
 
-</div>
+                <p class="text-left p2">Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum commodo tempor vestibulum sed erat mollis.</p>
+                <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button><br><br>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- print ready design -->
+<section class="mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 col-sm-3 mt-5 print-ready-section">
+                <p style="color: #F60;">Print Ready Design</p>
+                <h2>
+                    <b>
+                        Finished With Your Information, Just Click The Print Button
+                    </b><br>
+                </h2>
+                <p class="w-80 text-left responsive-print-ready-section">Lorem ipsum dolor sit amet consectetur. Nulla
+                    vel risus adipiscing quisque
+                    vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                    commodo tempor vestibulum sed erat mollis.</p>
+                <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button><br><br>
+            </div>
+            <div class="col-12 col-md-6 col-sm-3 mt-5">
+                <img src="{{ asset('web-images/Group43.svg') }}" class="img-fluid w-90 " alt="" style="float:right">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- User’s Review section -->
+<section class="mt-5 text-center review-section">
+    <h2>
+        <b style="color:#FF6600;">
+            Our User’s Review About Our Templates
+        </b>
+    </h2>
+    <p>
+        Let's create something better
+    </p>
+</section><br><br><br>
+<!-- port folio section  -->
+<section class="mt-5">
+    <div class="container-fluid ">
+        <div class="row port-folio-section row1">
+            @for ($i = 0 ; $i < 3 ; $i++) <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:6rem">
+                <div class="card">
+                    <div class="card1">
+                        <img src="{{ asset('web-images/download.png') }}" class="mx-auto d-block">
+                        <div class="card-body">
+                            <h2 class="text-center">
+                                Rana Waseem Rajpoot
+                            </h2>
+
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum hic laboriosam
+                                molestiae cum minima sint praesentium magni inventore doloribus recusandae, eveniet iste
+                                doloremque, voluptates necessitatibus nisi similique alias, neque beatae?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        @endfor
+    </div>
+    </div>
+</section>
+
+
