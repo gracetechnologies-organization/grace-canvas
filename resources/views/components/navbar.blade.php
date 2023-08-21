@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light " id="navbarManu">
     <div class="container ">
-        <a class="navbar-brand text-light" href="#">Logo hare</a>
+        <a class="navbar-brand text-light" href="/">Logo Here</a>
         <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbar-supported-content" aria-controls="navbar-supported-content" aria-expanded="false"
             aria-label="Toggle navigation">

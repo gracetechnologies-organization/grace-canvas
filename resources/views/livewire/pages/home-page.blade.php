@@ -38,7 +38,7 @@
                     <img src="{{ asset('storage/images/resumes/1-B-01.webp') }}" loading="lazy" class="img-fluid p-5"
                         alt="">
                     <div class="btn-resume-section">
-                        <a href="#">Select Template</a>
+                        <a href="{{ route('edit.resume.form', ['ID' => 1]) }}">Select Template</a>
                     </div>
                 </div>
         </div>
