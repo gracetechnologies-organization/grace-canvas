@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap v5.2.3)-->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
     <!-- Boxicons -->
     <link href="{{ asset('fonts/boxicons.css') }}" rel="stylesheet">
     <!-- Fonts -->
