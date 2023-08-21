@@ -59,9 +59,9 @@
         <div class="row">
             <div class="col-lg-4 col-md-3 col-sm-12 bg-white"></div>
             <div class="col-lg-4 col-md-6 col-sm-12 bg-white float-center ">
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-linkedin"></a>
-                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="bx bxl-facebook"></a>
+                <a href="#" class="bx bxl-linkedin"></a>
+                <a href="#" class="bx bxl-instagram"></a>
             </div>
             <div class="col-lg-4 col-md-3 col-sm-12 bg-white"></div>
         </div>
