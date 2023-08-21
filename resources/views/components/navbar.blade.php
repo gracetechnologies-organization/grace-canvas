@@ -56,40 +56,4 @@
         </div>
     </div>
 </nav>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-    body {
-        box-sizing: border-box;
-        font-family: 'Poppins';
-        font-size: 20px;
-    }
-
-    .navbar-brand {
-        /* padding: 15px 0px 15px 0px; */
-        color: #FFF;
-        font-family: Poppins;
-        font-size: 2rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-
-    #navbarManu {
-        background-color: #FF6600;
-
-    }
-
-    /* #navbar-supported-content {
-        margin-right: 4rem;
-    } */
-
-    .nav-link {
-        color: #fff;
-        font-style: normal;
-        font-size: 20px;
-    }
-
-
-
-</style>
