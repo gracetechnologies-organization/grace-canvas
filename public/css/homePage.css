@@ -351,31 +351,31 @@ body {
 }
 
 /* social media icons */
-.social-media-icons .fa {
+.social-media-icons .bx {
     width: 3.5rem;
     padding: 1rem;
     font-size: 25px;
     text-align: center;
     text-decoration: none;
     margin: 1rem 0rem 1rem 1rem;
-    color: white;
+    color: #FFF;
     border-radius: 50%
 }
 
-.social-media-icons .fa:hover {
+.social-media-icons .bx:hover {
     opacity: 0.7;
 }
 
-.fa-facebook {
+.bxl-facebook {
     background: #3B5998;
     margin-left: 12rem !important;
 }
 
-.fa-linkedin {
+.bxl-linkedin {
     background: #007bb5;
 }
 
-.fa-instagram {
+.bxl-instagram {
     background: #8a3ab9;
 }
 
