@@ -21,7 +21,7 @@
                     <a class="nav-link" href="#">More Services</a>
                 &nbsp;&nbsp;&nbsp;
                 <li class="nav-item sign-up">
-                    <a class="nav-link" href="#"style="background-color:#F9F9F9;color:black;width:9.125rem;height:3.438rem;border-radius:0.625rem;padding:0.625rem 0rem 1rem 2rem; margin-top:-0.5rem;"> <span style=""> Sign up </span> </a>
+                    <a class="nav-link" href="{{ route('login') }}"style="background-color:#F9F9F9;color:black;width:9.125rem;height:3.438rem;border-radius:0.625rem;padding:0.625rem 0rem 1rem 2rem; margin-top:-0.5rem;"> <span style=""> Sign up </span> </a>
                 </li>
             </ul>
         </div>

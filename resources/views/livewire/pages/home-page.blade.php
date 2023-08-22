@@ -111,8 +111,7 @@
                             <h2 class="text-center">
                                 Rana Waseem Rajpoot
                             </h2>
-                            <h5 class="text-center para-start">UI/UX Designer <i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
-
+                            <h5 class="text-center para-start">UI/UX Designer <i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></h5>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum hic laboriosam
                                 molestiae cum minima sint praesentium magni inventore doloribus recusandae, eveniet iste
