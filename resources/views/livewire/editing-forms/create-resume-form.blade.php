@@ -543,27 +543,45 @@
                             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
                             .left-col {
-                                background: #3A3A3A;
-                                width: 200px;
+                                background: #1E1E1E;
+                                width: 236px;
                                 height: 1040px;
                             }
 
                             .right-col {
                                 background: white;
-                                width: 517px;
+                                width: 480px;
                                 height: 1040px;
                                 padding: 0px;
                             }
 
-                            .resume-photo {
-                                border: 2px solid white;
-                                background-color: white;
+                            .resume-photo-border1 {
+                                border: 10px solid black;
+                                background-color: #3A3A3A;
                                 overflow: hidden;
-                                width: 142px;
-                                height: 142px;
+                                width: 160px;
+                                height: 160px;
                                 margin: auto;
                                 position: relative;
-                                top: 45px;
+                                top: 2px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                z-index: 1;
+
+                            }
+
+                            .resume-photo-border2 {
+                                border: 7px solid #F0AF37;
+                                background-color: #3A3A3A;
+                                overflow: hidden;
+                                width: 175px;
+                                height: 175px;
+                                margin: auto;
+                                position: relative;
+                                top: 15px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                z-index: 1;
                             }
 
                             .personal-info-container {
@@ -572,35 +590,37 @@
                                 left: 20px;
                                 width: 120px;
                                 padding-top: 10px;
-                                margin: -10px 10px 0px 0px;
+                                margin: -25px 10px 0px 0px;
 
                             }
 
                             .personal-info-container h2 {
-                                color: #3A3A3A;
-                                background-color: white;
+                                color: #F0AF37;
+                                background-color: none;
                                 font-family: Poppins;
                                 font-size: 13.17px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 text-transform: uppercase;
                                 height: 25px;
                                 width: 200px;
-                                margin: -25px 0px 0px -35px;
+                                margin: -45px 0px 0px -35px;
                                 padding-top: 5px;
-                                padding-left: 45px;
+                                padding-left: 70px;
                             }
 
                             .left-col-divider {
-                                background-color: white;
-                                width: 120px;
-                                height: 1.17px;
+                                background-color: #F0AF37;
+                                width: 236px;
+                                height: 2px;
+                                margin-left: -32px;
                             }
 
                             .right-col-divider {
-                                background-color: #464646;
-                                width: 452.2px;
+                                background-color: #F0AF37;
+                                width: 452px;
                                 height: 2px;
+                                margin: 10px 0px 10px 0px;
                             }
 
                             .personal-info-details {
@@ -609,37 +629,37 @@
                             }
 
                             .personal-info-details p {
-                                color: #FFF;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 12px;
+                                font-size: 11.7px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 1px;
-                                margin-left: -15px;
+                                margin-left: 0px;
                             }
 
                             .skills-container {
                                 position: relative;
                                 top: 135px;
                                 left: 20px;
-                                width: 120px;
+                                width: 200px;
                                 padding-top: 10px;
-                                margin-top: -40px;
+                                margin-top: 0px;
                             }
 
                             .skills-container h2 {
-                                color: #3A3A3A;
-                                background-color: white;
+                                color: #F0AF37;
+                                background-color: none;
                                 font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 text-transform: uppercase;
                                 height: 25px;
                                 width: 200px;
                                 margin: 0px 0px 0px -35px;
                                 padding-top: 5px;
-                                padding-left: 45px;
+                                padding-left: 90px;
 
                             }
 
@@ -650,15 +670,15 @@
                             }
 
                             .skills-details p {
-                                color: #FFF;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 10px;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 0px;
                                 text-transform: uppercase;
-                                margin-bottom: 9px;
-                                margin-left: -15px;
+                                margin-bottom: 2px;
+                                margin-left: 0px;
                             }
 
                             .progress-bar-container {
@@ -670,7 +690,7 @@
 
                             .progress-bar-container .custom-progress-bar {
                                 padding: 3px;
-                                background-color: white;
+                                background-color: #F0AF37;
                                 border-radius: 100px;
                             }
 
@@ -683,52 +703,52 @@
                                 margin-top: -30px;
                             }
 
-
                             .languages-container {
                                 position: relative;
                                 top: 135px;
                                 left: 20px;
                                 width: 200px;
                                 padding-top: 10px;
-                                margin-top: 0px;
+                                margin-top: -30px;
+
                             }
 
                             .languages-container h2 {
-                                color: #3A3A3A;
-                                background-color: white;
+                                color: #F0AF37;
+                                background-color: none;
                                 font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 text-transform: uppercase;
                                 height: 25px;
                                 width: 200px;
                                 margin: 0px 0px 0px -35px;
                                 padding-top: 5px;
-                                padding-left: 45px;
+                                padding-left: 75px;
                             }
 
                             .languages-details {
-                                padding: 0px 0px 0px 7px;
+                                padding: 20px 0px 0px 7px;
                                 height: auto;
                             }
 
                             .languages-details p {
-                                color: #FFF;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 11px;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 0px;
                                 text-transform: uppercase;
                                 margin-bottom: 2px;
-                                margin-left: -15px;
+                                margin-left: 0px;
                             }
 
                             .dot {
                                 height: 7px;
                                 width: 7px;
-                                background-color: white;
+                                background-color: #3A3A3A;
                                 border-radius: 50%;
                                 display: inline-block;
                             }
@@ -741,11 +761,6 @@
                                 display: inline-block;
                             }
 
-                            .right-col-divider {
-                                width: 450px;
-                                margin: 10px 0px 0px 0px;
-                            }
-
                             .interest-container {
                                 position: relative;
                                 top: 135px;
@@ -756,94 +771,103 @@
                             }
 
                             .interest-container h2 {
-                                color: #3A3A3A;
-                                background-color: white;
+                                color: #F0AF37;
+                                background-color: none;
                                 font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 text-transform: uppercase;
                                 height: 25px;
                                 width: 200px;
                                 margin: 0px 0px 0px -35px;
                                 padding-top: 5px;
-                                padding-left: 45px;
+                                padding-left: 85px;
+
                             }
 
                             .interest-details {
-                                padding: 0px 0px 0px 7px;
+                                padding: 20px 0px 0px 7px;
                                 height: auto;
                             }
 
                             .interest-details p {
-                                color: #FFF;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 11px;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 0px;
                                 text-transform: uppercase;
                                 margin-bottom: 2px;
-                                margin-left: -15px;
+                                margin-left: 0px;
+
                             }
 
                             .name-container {
-                                width: 100%;
-                                padding: 0px 30px 0px 30px;
+                                width: 718px;
+                                height: 110px;
+                                padding: 25px 30px 0px 30px;
+                                background-color: #F0AF37;
+                                ;
+                                margin-left: -236px;
+                                margin-top: 50px;
+                                z-index: 0;
+
                             }
 
                             .name-container h2 {
-                                line-height: 0px;
+                                line-height: 5px;
                                 font-size: 15px;
-                                margin-top: 50px;
+                                margin: 15px 0px 0px 220px;
                             }
 
                             .name-container h2 span {
-                                color: black;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 30.21px;
+                                font-size: 43.51008px;
                                 font-style: normal;
                                 font-weight: 700;
-                                text-transform: uppercase;
                             }
 
                             .name-container .profession {
-                                background-color: white;
-                                color: #413F40;
-                                width: 220px;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
+                                width: 320px;
                                 height: 22px;
                                 margin-top: 20px;
-                                padding-left: 20px;
-                                font-size: 15px;
+                                padding-left: 0px;
+                                font-size: 26px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-family: Poppins;
                                 line-height: normal;
-                                text-transform: uppercase;
-                                margin: 17px 0px 0px 0px;
-                                padding-bottom: 25px;
+                                margin: 10px 0px 0px 220px;
+                                font-weight: bold;
                             }
 
                             .objective-container {
                                 width: 100%;
-                                padding: 22px 30px 0px 30px
+                                padding: 22px 30px 0px 30px;
                             }
 
                             .objective-container h2 {
-                                background-color: #413F40;
-                                color: white;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
                                 border-radius: 0px;
                                 width: 170px;
-                                padding: 0px 3px 0px 5px;
+                                margin-bottom: -12px;
+                                margin-top: -4px;
+                                padding-left: 10px;
                             }
 
                             .objective-container p {
-                                color: black;
+                                color: #302E30;
                                 font-family: Poppins;
                                 font-size: 10px;
                                 font-style: normal;
@@ -857,18 +881,18 @@
                             }
 
                             .experience-container h2 {
-                                background-color: #413F40;
-                                color: white;
+                                background-color: #F0AF37;
+                                color: #302E30;
                                 font-family: Poppins;
-                                font-size: 16px;
+                                font-size: 15px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
                                 width: 170px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 15px;
-                                margin-top: 25px;
+                                margin-bottom: -12px;
+                                margin-top: 10px;
+                                padding-left: 10px;
                             }
 
                             .experience-details h3 {
@@ -876,20 +900,22 @@
                                 font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 line-height: 10px;
                                 text-transform: uppercase;
+
                             }
 
                             .experience-details p {
-                                color: #7D818C;
+                                color: #302E30;
                                 font-family: Poppins;
-                                font-size: 10px;
+                                font-size: 11px;
                                 font-style: normal;
                                 font-weight: 400;
                                 margin-top: 10px;
                                 line-height: 16px;
-                                margin-bottom: 20px;
+                                margin-bottom: 18px;
+
                             }
 
                             .education-container {
@@ -898,34 +924,35 @@
                             }
 
                             .education-container h2 {
-                                background-color: #413F40;
-                                color: white;
-                                font-family: Poppins;
-                                font-size: 15px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: normal;
-                                text-transform: uppercase;
-                                border-radius: 0px;
-                                width: 170px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 27px;
-                                margin-top: 10px;
-                            }
-
-                            .education-details {
-                                margin-bottom: 25px;
-                            }
-
-                            .education-details h3 {
-                                color: #464646;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
+                                line-height: normal;
+                                text-transform: uppercase;
+                                border-radius: 0px;
+                                width: 170px;
+                                margin-top: -10px;
+                                margin-bottom: -12px;
+                                padding-left: 10px;
+                            }
+
+                            .education-details {
+                                margin-bottom: 20px;
+                            }
+
+                            .education-details h3 {
+                                color: #1E1E1E;
+                                font-family: Poppins;
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 500;
                                 line-height: 3px;
                                 text-transform: uppercase;
-                                margin-bottom: 17px;
+                                margin-bottom: 14px;
+                                padding-top: 10px;
                             }
 
                             .education-details p {
@@ -940,23 +967,24 @@
 
                             .achievement-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
+                                margin-bottom: 15px;
                             }
 
                             .achievement-container h2 {
-                                background-color: #413F40;
-                                color: white;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
                                 border-radius: 0px;
                                 width: 170px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 10px;
-                                margin-top: 10px;
+                                margin-bottom: -12px;
+                                margin-top: -15px;
+                                padding-left: 10px;
                             }
 
                             .achievement-section div {
@@ -965,34 +993,35 @@
                             }
 
                             .achievement-details p {
-                                color: #464646;
+                                color: black;
                                 font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
 
                             .project-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
+                                margin-bottom: 15px;
                             }
 
                             .project-container h2 {
-                                background-color: #413F40;
-                                color: white;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
                                 border-radius: 0px;
                                 width: 170px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 10px;
-                                margin-top: 10px;
+                                margin-bottom: -12px;
+                                margin-top: 0px;
+                                padding-left: 10px;
                             }
 
                             .project-section div {
@@ -1001,33 +1030,35 @@
                             }
 
                             .project-details p {
-                                color: #464646;
+                                color: black;
                                 font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
 
                             .reference-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
+                                margin-bottom: 15px;
                             }
 
                             .reference-container h2 {
-                                background-color: #413F40;
-                                color: white;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
                                 border-radius: 0px;
                                 width: 170px;
-                                padding: 0px 3px 0px 5px;
-                                margin-top: 10px;
+                                margin-bottom: -12px;
+                                margin-top: -10px;
+                                padding-left: 10px;
                             }
 
                             .reference-section div {
@@ -1036,16 +1067,16 @@
                             }
 
                             .reference-details div h3 {
-                                color: #464646;
+                                color: black;
                                 font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 line-height: normal;
                             }
 
                             .reference-details div p {
-                                color: #7E808B;
+                                color: black;
                                 font-family: Poppins;
                                 font-size: 11px;
                                 font-style: normal;
@@ -1053,11 +1084,14 @@
                             }
                         </style>
                         <div class="left-col">
-                            <div class="resume-photo">
-                                <img id="resume-photo" width="142px">
+                            <div class="resume-photo-border2">
+                                <div class="resume-photo-border1">
+                                    <img id="resume-photo" width="142px">
+                                </div>
                             </div>
                             <div class="personal-info-container">
                                 <h2> Personal Info </h2>
+                                <div class="left-col-divider"></div>
                                 <div class="personal-info-details">
                                     <p>PHONE</p>
                                     <p id="Phone">+92 317 0155625</p>
@@ -1091,70 +1125,30 @@
                                     <p id="Address">Bahria, Rawalpindi</p>
                                 </div>
                             </div>
-
-                            <div class="skills-container">
-                                <h2> Skills </h2>
-                                <div id="skills-section">
-                                    <div class="skills-details">
-                                        <p id="SkillName0">Photoshop</p>
-                                        <div class="progress-bar-container">
-                                            <div class="custom-progress-bar" style="width: 85%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="languages-container">
-                                <h2> Language</h2>
+                                <h2> Languages</h2>
+                                <div class="left-col-divider"></div>
                                 <div id="languages-section">
                                     <div class="languages-details">
-                                        <div class="row col-10">
-                                            <div class="col-5 py-3">
-                                                <p id="Language0">Language</p>
-                                            </div>
-                                            <div class="col-7 py-1">
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot-grey"></span>
-                                                <span class="dot-grey"></span>
-                                            </div>
-                                        </div>
+                                        <p id="Language0">Language</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="interest-container">
+                            <div class="skills-container">
+                                <h2> Skills</h2>
+                                <div class="left-col-divider"></div>
+                                <div id="skills-section">
+                                    <div class="skills-details">
+                                        <p id="SkillName0">Postman</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="interest-container ">
                                 <h2> Interest </h2>
-                                {{-- <div class="interest-details">
-                                    <p id="InterestTitle0">Your Title
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot"></span>
-                                        <span class="dot-grey"></span>
-                                        <span class="dot-grey"></span>
-                                        <span class="dot-grey"></span>
-                                        <span class="dot-grey"></span>
-                                    </p>
-                                </div> --}}
-
+                                <div class="left-col-divider"></div>
                                 <div id="interests-section">
                                     <div class="interest-details">
-                                        <div class="row col-10">
-                                            <div class="col-5 py-3">
-                                                <p id="Interest0">Gaming</p>
-                                            </div>
-                                            <div class="col-7 py-1">
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot-grey"></span>
-                                                <span class="dot-grey"></span>
-                                            </div>
-                                        </div>
+                                        <p id="Interest0">Hiking</p>
                                     </div>
                                 </div>
                             </div>
@@ -1162,18 +1156,29 @@
                         <div class="right-col">
                             <div class="name-container">
                                 <h2> <span id="FName">Name</span> <span id="LName">Surname</span> </h2>
-                                <p class="profession" id="Profession">Your Profession</p>
-                                <div class="right-col-divider"></div>
+                                <p class="profession" id="Profession">Graphic Designer</p>
                             </div>
-
                             <div class="objective-container ">
                                 <h2>Objective</h2>
+                                <div class="right-col-divider"></div>
                                 <p id="Objective">
                                     Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position to utilize my expertise in front-end and back-end technologies, as well as my problem-solving and collaboration skills, to contribute to the development user experiences.
                                 </p>
                             </div>
+                            <div class="education-container">
+                                <h2>Education</h2>
+                                <div class="right-col-divider"></div>
+                                <div id="educations-section">
+                                    <div class="education-details">
+                                        <h3 id="EducationalOrganization0">University Name or School Name</h3>
+                                        <p id="Degree0">Write your degree name here</p>
+                                        <p><span id="Score0">3.2 CGPA</span> <span id="CompletionDate0">2015</span></p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="experience-container">
-                                <h2>Work Experience</h2>
+                                <h2>Experience</h2>
+                                <div class="right-col-divider"></div>
                                 <div id="experiences-section">
                                     <div class="experience-details">
                                         <h3 id="Designation0">Job Position</h3>
@@ -1183,21 +1188,10 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="right-col-divider"></div>
-                            </div>
-                            <div class="education-container">
-                                <h2>Education</h2>
-                                <div id="educations-section">
-                                    <div class="education-details">
-                                        <h3 id="EducationalOrganization0">University Name or School Name</h3>
-                                        <p id="Degree0">Write your degree name here</p>
-                                        <p><span id="Score0">3.2 CGPA</span> <span id="CompletionDate0">2015</span></p>
-                                    </div>
-                                </div>
-                                <div class="right-col-divider"></div>
                             </div>
                             <div class="achievement-container">
                                 <h2>Achievement</h2>
+                                <div class="right-col-divider"></div>
                                 <div class="row achievement-section" id="achievement-section">
                                     <div class="achievement-details">
                                         <p id="AchievementTitle0">Your achivement 1</p>
@@ -1206,22 +1200,10 @@
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
-                                <div class="right-col-divider"></div>
                             </div>
-                            <div class="project-container">
-                                <h2>Project</h2>
-                                <div class="row project-section" id="project-section">
-                                    <div class="project-details">
-                                        <p id="ProjectTitle0">Your project 1</p>
-                                    </div>
-                                    <div class="project-details">
-                                        {{-- This area is for JavaScript Baby --}}
-                                    </div>
-                                </div>
-                                <div class="right-col-divider"></div>
-                            </div>
-                            <div class="reference-container ">
+                            <div class="reference-container">
                                 <h2>Reference</h2>
+                                <div class="right-col-divider"></div>
                                 <div class="row reference-section" id="reference-section">
                                     <div class="reference-details">
                                         <div>
@@ -1231,6 +1213,18 @@
                                         </div>
                                     </div>
                                     <div class="reference-details">
+                                        {{-- This area is for JavaScript Baby --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-container">
+                                <h2>Project</h2>
+                                <div class="right-col-divider"></div>
+                                <div class="row project-section" id="project-section">
+                                    <div class="project-details">
+                                        <p id="ProjectTitle0">Your project 1</p>
+                                    </div>
+                                    <div class="project-details">
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
@@ -1382,12 +1376,11 @@
                                                     </div>
                                                 </div>`;
 
-                            const NewSkill = `<div class="skills-details">
-                                            <p id="SkillName` + ChildDivsLength + `">Illustrator</p>
-                                            <div class="progress-bar-container">
-                                                <div class="custom-progress-bar" style="width: 80%;"></div>
-                                            </div>
-                                        </div>`;
+                            const NewSkill = `<div id="skills-section">
+                                                <div class="skills-details">
+                                                    <p id="SkillName` + ChildDivsLength + `">Laravel</p>
+                                                </div>
+                                            </div>`;
 
                             /*
                             |--------------------------------------------------------------------------
@@ -1479,19 +1472,7 @@
                                                 </div>`;
 
                             const NewInterest = `<div class="interest-details">
-                                                    <div class="row col-10">
-                                                        <div class="col-5 py-3">
-                                                            <p id="Interest` + ChildDivsLength + `">Gaming</p>
-                                                        </div>
-                                                        <div class="col-7 py-1">
-                                                            <span class="dot"></span>
-                                                            <span class="dot"></span>
-                                                            <span class="dot"></span>
-                                                            <span class="dot"></span>
-                                                            <span class="dot-grey"></span>
-                                                            <span class="dot-grey"></span>
-                                                        </div>
-                                                    </div>
+                                                    <p id="Interest` + ChildDivsLength + `">Trekking</p>
                                                 </div>`;
 
                             /*
@@ -1522,19 +1503,7 @@
                                         </div>`;
 
                             const NewLanguage = `<div class="languages-details">
-                                                    <div class="row col-10">
-                                                        <div class="col-5 py-3">
-                                                            <p id="Language` + ChildDivsLength + `">Language</p>
-                                                        </div>
-                                                        <div class="col-7 py-1">
-                                                            <span class="dot"></span>
-                                                            <span class="dot"></span>
-                                                            <span class="dot"></span>
-                                                            <span class="dot"></span>
-                                                            <span class="dot-grey"></span>
-                                                            <span class="dot-grey"></span>
-                                                        </div>
-                                                    </div>
+                                                    <p id="Language` + ChildDivsLength + `">Language</p>
                                                 </div>`;
 
                             /*
