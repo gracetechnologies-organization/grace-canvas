@@ -9,9 +9,9 @@
     <!-- Core theme CSS (includes Bootstrap v5.2.3) -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
-    @if (Route::current()->uri == '/')
+
         <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
-    @endif
+   
     @if (Route::current()->uri == 'templates/resume')
         <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/resumeTempletes.css') }}" rel="stylesheet" />
