@@ -12711,6 +12711,16 @@ body {
   width: 96%;
 }
 
+/* To render all the CSS colors in the print preview */
+@media print {
+  html {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+/* ----------------General media queries---------------- */
+
 /* responsive css homePage */
 @media only screen and (max-width:2560px) and (min-width:951px) {
 
@@ -12792,7 +12802,6 @@ body {
     margin-left: 9rem !important;
   }
 }
-
 
 @media only screen and (max-width:1024px) and (min-width:951px) {
 
@@ -13009,15 +13018,6 @@ body {
 
 }
 
-/* To render all the CSS colors in the print preview */
-@media print {
-  html {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-}
-
-/* General media queries */
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .icons-size {
     font-size: 1.8rem !important;
