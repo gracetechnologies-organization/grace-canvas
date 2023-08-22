@@ -306,106 +306,6 @@ body {
     line-height: normal;
 }
 
-/* footer section */
-.footer-section {
-    margin-bottom: 5rem !important;
-}
-
-.footers-section .navbar-brand {
-    font-size: 2.25rem;
-    font-weight: 400;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: #FFF;
-    font-family: Poppins;
-}
-
-.footer-section .learn-more {
-    padding-left: 4rem;
-}
-
-.footer-section .other {
-    padding-left: 5rem;
-}
-
-.footers-section .navbar-nav .nav-item .nav-link {
-    padding-bottom: 1rem;
-    padding-left: 0rem;
-
-}
-
-.footers-section h2 {
-    color: #FFF;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.footers-section p {
-    color: #FFF;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.footers-section .p1 {
-    text-align: justify;
-    margin-left: -6rem;
-}
-
-.footers-section a {
-    text-decoration: none;
-    color: #FFF;
-    font-family: Poppins;
-    font-size: 1.60rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.footer-copy-right {
-    background-color: #FF6600;
-    font-family: Poppins;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: #000;
-}
-
-/* social media icons */
-.social-media-icons .bx {
-    width: 3.5rem;
-    padding: 1rem;
-    font-size: 25px;
-    text-align: center;
-    text-decoration: none;
-    margin: 1rem 0rem 1rem 1rem;
-    color: #FFF;
-    border-radius: 50%
-}
-
-.social-media-icons .bx:hover {
-    opacity: 0.7;
-}
-
-.bxl-facebook {
-    background: #3B5998;
-    margin-left: 12rem !important;
-}
-
-.bxl-linkedin {
-    background: #007bb5;
-}
-
-.bxl-instagram {
-    background: #8a3ab9;
-}
 
 /* responsive css homePage */
 @media only screen and (max-width:2560px) and (min-width:951px) {
@@ -448,11 +348,6 @@ body {
     .hero-section img {
         padding-left: 1%;
     }
-
-    /* footer */
-    .footers-section .navbar-nav .nav-item .nav-link {
-        padding-left: -1rem
-    }
 }
 
 @media only screen and (max-width:1440px) and (min-width:951px) {
@@ -482,18 +377,6 @@ body {
         height: 45.875rem;
         flex-shrink: 0;
         background-color: rgba(255, 102, 0, 0.10);
-    }
-
-    /* footers responsive */
-    .footers-section .p1 {
-        text-align: justify;
-        margin-left: 0rem !important;
-    }
-
-    /* social media icons */
-    .bxl-facebook {
-        background: #3B5998;
-        margin-left: 9rem !important;
     }
 }
 
@@ -533,17 +416,6 @@ body {
         width: 10rem;
         height: auto;
     } */
-    /* social media icons */
-    .bxl-facebook {
-        background: #3B5998;
-        margin-left: 4.5rem !important;
-    }
-
-    .footers-section .navbar-nav .nav-item .nav-link {
-        padding-bottom: 0.4rem;
-        padding-left: 0rem;
-
-    }
 
 }
 
@@ -578,32 +450,6 @@ body {
         font-style: normal;
         font-weight: 600;
         margin-bottom: 1.5rem;
-    }
-
-    /* footer responsive */
-    .footers-section .p1 {
-        text-align: justify;
-        margin-left: 0rem !important;
-    }
-
-    /* social media icons */
-    .bxl-facebook {
-        background: #3B5998;
-        margin-left: 4rem !important;
-    }
-
-    .footer-section .learn-more {
-        padding-left: 0rem;
-    }
-
-    .footer-section .other {
-        padding-left: 0rem;
-    }
-
-    .footers-section .navbar-nav .nav-item .nav-link {
-        padding-bottom: 0rem;
-        padding-left: 0rem;
-
     }
 
 }
@@ -678,27 +524,6 @@ body {
         font-weight: 700;
         text-align: justify;
         /* line-height: normal; */
-    }
-
-    /* footer responsive */
-    .footers-section .p1 {
-        text-align: justify;
-        margin-left: 0rem !important;
-    }
-
-    /* social media icons */
-    .bxl-facebook {
-        background: #3B5998;
-        margin-left: 5rem !important;
-    }
-
-    .footer-copy-right {
-        font-family: Poppins;
-        font-size: 1.25rem;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-        color: #000;
     }
 }
 
@@ -791,28 +616,6 @@ body {
     .resume-card-section .card .p-5 {
         padding: 1rem !important;
 
-    }
-
-
-    /* footer responsive */
-    .footers-section .p1 {
-        text-align: justify;
-        margin-left: 0rem !important;
-    }
-
-    /* social media icons */
-    .bxl-facebook {
-        background: #3B5998;
-        margin-left: 4.5rem !important;
-    }
-
-    .footer-copy-right {
-        font-family: Poppins;
-        font-size: 1.15rem;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-        color: #000;
     }
 }
 
@@ -919,28 +722,6 @@ body {
         font-size: 1rem;
         word-wrap: break-word;
         line-height: 1.5;
-    }
-
-    /* footer responsive */
-    .footers-section .p1 {
-        text-align: justify;
-        margin-left: 0rem !important;
-    }
-
-    /* social media icons */
-    .bxl-facebook {
-        background: #3B5998;
-        margin-left: 3rem !important;
-    }
-
-    .footer-copy-right {
-        font-family: Poppins;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-        color: #000;
-        margin-left: -1rem;
     }
 
 }
