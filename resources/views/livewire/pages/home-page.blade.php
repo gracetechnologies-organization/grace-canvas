@@ -54,13 +54,10 @@
                 <img src="{{ asset('web-images/Frame.svg') }}" class="img-fluid w-75" alt="" style="float:left">
             </div>
             <div class="col-12 col-md-6 col-sm-3 left-side">
-                <p class="p1">How it's works</p>
-                <h2>
-                    Select A Template <br>& Fill Your Information
-                </h2>
-
+                <p class="p1">How it works</p>
+                <h2> Select A Template & Fill Your Information </h2>
                 <p class="text-left p2">Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum commodo tempor vestibulum sed erat mollis.</p>
-                <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button><br><br>
+                <button ><a href=""> Let's Create </a></button><br><br>
             </div>
         </div>
     </div>
@@ -70,7 +67,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6 col-sm-3 mt-5 print-ready-section">
-                <p style="color: #F60;">Print Ready Design</p>
+                <p class="print">Print Ready Design</p>
                 <h2>
                     <b>
                         Finished With Your Information, Just Click The Print Button
@@ -91,8 +88,8 @@
 <!-- User’s Review section -->
 <section class="mt-5 text-center review-section">
     <h2>
-        <b style="color:#FF6600;">
-            Our User’s Review About Our Templates
+        <b>
+            Our User’s Reviews About Our Templates
         </b>
     </h2>
     <p>
@@ -101,28 +98,27 @@
 </section><br><br><br>
 <!-- port folio section  -->
 <section class="mt-5">
-    <div class="container-fluid ">
-        <div class="row port-folio-section row1">
-            @for ($i = 0; $i < 3; $i++)
-                <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:6rem">
-                    <div class="card">
-                        <div class="card1">
-                            <img src="{{ asset('web-images/download.png') }}" class="mx-auto d-block">
-                            <div class="card-body">
-                                <h2 class="text-center">
-                                    Rana Waseem Rajpoot
-                                </h2>
-                                <h5 class="text-center para-start">UI/UX Designer <i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></p>
-
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum hic laboriosam
-                                        molestiae cum minima sint praesentium magni inventore doloribus recusandae, eveniet iste
-                                        doloremque, voluptates necessitatibus nisi similique alias, neque beatae?
-                                    </p>
-                            </div>
+    <div class="container-fluid">
+      <div class="row portfolio-section row1">
+            @for ($i = 0 ; $i < 3 ; $i++) 
+            <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:6rem">
+                <div class="card">
+                    <div class="card1">
+                        <img src="{{ asset('web-images/download.png') }}" class="mx-auto d-block">
+                        <div class="card-body">
+                            <h2 class="text-center">
+                                Rana Waseem Rajpoot
+                            </h2>
+                            <h5 class="text-center para-start">UI/UX Designer <i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></h5>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum hic laboriosam
+                                molestiae cum minima sint praesentium magni inventore doloribus recusandae, eveniet iste
+                                doloremque, voluptates necessitatibus nisi similique alias, neque beatae?
+                            </p>
                         </div>
                     </div>
                 </div>
+              </div>
             @endfor
         </div>
     </div>
