@@ -185,6 +185,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Fortify' => Laravel\Fortify\FortifyFacade::class,
     ])->toArray(),
 
 ];

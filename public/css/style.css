@@ -12982,17 +12982,17 @@ body {
     }
 
     /* port folio section */
-    .port-folio-section .card {
+    .portfolio-section .card {
         margin-top: -3rem;
     }
 
-    .port-folio-section .card .card1 img {
+    .portfolio-section .card .card1 img {
         margin-top: -4rem;
         width: 8rem;
         height: auto;
     }
 
-    .port-folio-section .card .card1 p {
+    .portfolio-section .card .card1 p {
         padding: 0.20rem;
         font-size: 1rem;
         word-wrap: break-word;

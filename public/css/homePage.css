@@ -6,7 +6,11 @@ body {
 
 /* hero-section */
 .hero-section {
-    background-color: rgba(255, 102, 0, 0.10);
+    /* background-color: rgba(255, 102, 0, 0.10); */
+    background-image: url('../web-images/Subtract.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .hero-section-column h2 {
@@ -40,6 +44,7 @@ body {
 }
 
 .hero-section-column .lets-created {
+    padding-right: 2rem;
     background-color: #FF6600;
     color: #FFF;
     font-family: Poppins;
@@ -112,6 +117,15 @@ body {
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
+}
+
+.print-ready-section .print {
+    color: #F60;
+    font-family: Poppins;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .print-ready-section button {
@@ -197,14 +211,14 @@ body {
 }
 
 .how-its-work h2 {
-    word-spacing:-5px;
+    word-spacing: -5px;
     color: #000;
-    text-align: justify;
+    text-align: left;
     font-family: Poppins;
     font-size: 48px;
     font-style: normal;
     font-weight: 600;
-    margin-bottom:1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .how-its-work .p2 {
@@ -215,12 +229,14 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-bottom:2rem;
+    margin-bottom: 2rem;
 }
-.how-its-work img{
-    margin-top:6rem;
+
+.how-its-work img {
+    margin-top: 6rem;
 }
-.how-its-work .left-side{
+
+.how-its-work .left-side {
     margin-top: 5rem;
 }
 
@@ -235,6 +251,8 @@ body {
     padding: 10px;
     border: 2px solid #FF6600;
     border-radius: 10px;
+    background-color: #FF6600;
+    color: #fff;
 
 }
 
@@ -247,12 +265,12 @@ body {
 
 
 /* port Folio section */
-.port-folio-section .card {
+.portfolio-section .card {
     background-color: rgba(255, 102, 0, 0.10);
     border-radius: 30px;
 }
 
-.port-folio-section .card .card1 img {
+.portfolio-section .card .card1 img {
     margin-top: -6rem;
     background-color: none;
     width: 12rem;
@@ -260,7 +278,7 @@ body {
     border: 3px solid #F60;
 }
 
-.port-folio-section .card .card1 h2 {
+.portfolio-section .card .card1 h2 {
     text-align: justify;
     color: black;
     font-size: 1.75rem;
@@ -269,13 +287,23 @@ body {
     word-wrap: break-word
 }
 
-.port-folio-section .card .card1 p {
+.portfolio-section .card .card1 p {
     padding: 2rem;
     text-align: justify;
     font-size: 1.25rem;
     font-family: 'Poppins';
     font-weight: 600;
     word-wrap: break-word
+}
+
+.para-start {
+    color: #F60;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 /* footer section */
@@ -391,7 +419,7 @@ body {
         margin-right: -9rem;
     }
 
-    .navbar-nav .nav-item .nav-link {
+    .custom-navbar-nav .nav-item .nav-link {
         /* margin-right:-3rem; */
         padding: 0rem 3.5rem 0rem 1rem;
     }
@@ -449,6 +477,13 @@ body {
         padding-top: 5%;
     }
 
+    /* how it works */
+    .how-its-work {
+        height: 45.875rem;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
     /* footers responsive */
     .footers-section .p1 {
         text-align: justify;
@@ -484,8 +519,16 @@ body {
         padding: 1rem !important;
 
     }
+
+    /* how it works */
+    .how-its-work {
+        height: 50rem;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
     /* port folio css */
-    /* .port-folio-section .card .card1 img {
+    /* .portfolio-section .card .card1 img {
         margin-top: -4rem;
         width: 10rem;
         height: auto;
@@ -520,6 +563,23 @@ body {
 
     }
 
+    /* how it works */
+    .how-its-work {
+        height: 50rem !important;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    .how-its-work h2 {
+        word-spacing: 5px;
+        color: #000;
+        font-family: Poppins;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
     /* footer responsive */
     .footers-section .p1 {
         text-align: justify;
@@ -550,6 +610,23 @@ body {
 
 @media only screen and (min-width:425px) and (max-width:951px) {
 
+    /* hero section */
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 2.751rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 85rem !important;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
     /* resume section */
     .resume-card-section {
         padding: 1rem;
@@ -564,6 +641,45 @@ body {
 
     }
 
+    /* how its work */
+    /* how it works */
+    .how-its-work {
+        height: 30rem;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    .how-its-work h2 {
+        word-spacing: 5px;
+        color: #000;
+        font-family: Poppins;
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    /* print ready section */
+    .print-ready-section .print {
+        color: #F60;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        word-spacing: 7px;
+    }
+
+    .print-ready-section h2 b {
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 700;
+        text-align: justify;
+        /* line-height: normal; */
+    }
+
     /* footer responsive */
     .footers-section .p1 {
         text-align: justify;
@@ -571,7 +687,7 @@ body {
     }
 
     /* social media icons */
-    .bxl-facebook{
+    .bxl-facebook {
         background: #3B5998;
         margin-left: 5rem !important;
     }
@@ -596,6 +712,16 @@ body {
         padding: 0.5rem 0rem 0.5rem 1rem !important;
     }
 
+    /* hero section */
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins !important;
+        font-size: 2.751rem !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        line-height: normal !important;
+    }
+
     /* simple section */
     .simple-section p {
         margin: 2% 0px 3% 0px;
@@ -606,6 +732,51 @@ body {
         font-style: normal;
         font-weight: 500;
 
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 85rem !important;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    .how-its-work h2 {
+        word-spacing: 5px;
+        color: #000;
+        font-family: Poppins;
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    /* print ready section */
+    .print-ready-section .print {
+        color: #F60;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        word-spacing: 7px;
+    }
+
+    .print-ready-section h2 b {
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 700;
+        text-align: justify;
+        /* line-height: normal; */
+    }
+
+    /* users reviews */
+    .review-section h2 b {
+        font-family: 'Poppins';
+        padding: 6px;
+        color: #F60;
     }
 
     /* resume section */
@@ -621,6 +792,7 @@ body {
         padding: 1rem !important;
 
     }
+
 
     /* footer responsive */
     .footers-section .p1 {
@@ -646,6 +818,16 @@ body {
 
 @media only screen and (min-width:320px) and (max-width:951px) {
 
+    /* hero section */
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 2.751rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
     /* resume section */
     .resume-card-section {
         padding: 0.5rem;
@@ -660,28 +842,39 @@ body {
 
     }
 
-    /* how it's work */
+    /* how it works */
+    /* how it works */
     .how-its-work {
-
-        height: 85.875rem;
+        height: 85rem !important;
         flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
     }
+
     .how-its-work h2 {
-        word-spacing:-5px;
+        word-spacing: 5px;
         color: #000;
-        text-align: justify;
         font-family: Poppins;
-        font-size: 48px;
+        font-size: 2.751rem !important;
         font-style: normal;
         font-weight: 600;
-        margin-bottom:1.5rem;
+        margin-bottom: 1.5rem;
     }
+
     .how-its-work .text-left {
         padding: 0.20rem;
         word-wrap: break-word;
     }
 
     /* print ready file */
+    .print-ready-section h2 b {
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 700;
+        text-align: justify;
+    }
+
     .print-ready-section .responsive-print-ready-section {
         padding: 0.30rem;
         word-wrap: break-word;
@@ -693,18 +886,35 @@ body {
         float: none;
     }
 
+    .print-ready-section .print {
+        color: #F60;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        word-spacing: -3px;
+    }
+
+    /* users reviews  */
+    .review-section h2 b {
+        font-family: 'Poppins';
+        padding: 5px;
+        color: #F60;
+    }
+
     /* port folio section */
-    .port-folio-section .card {
+    .portfolio-section .card {
         margin-top: -1rem !important;
     }
 
-    .port-folio-section .card .card1 img {
+    .portfolio-section .card .card1 img {
         margin-top: -4rem;
         width: 8rem;
         height: auto;
     }
 
-    .port-folio-section .card .card1 p {
+    .portfolio-section .card .card1 p {
         padding: 0.20rem;
         font-size: 1rem;
         word-wrap: break-word;
