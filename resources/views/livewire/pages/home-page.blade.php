@@ -14,7 +14,7 @@
             <button class="go-premium"> <a href="">Go Premium </a></button><br><br>
         </div>
         <div class="col-lg-5 col-md-6 col-sm-3 mt-5 mb-4">
-            <img src="{{asset('web-images/Group.svg')}}" class="img-fluid w-90 pt-2" alt="">
+            <img src="{{ asset('web-images/Group.svg') }}" class="img-fluid w-90 pt-2" alt="">
         </div>
     </div>
 </section>
@@ -33,17 +33,17 @@
 <section class="mt-5">
     <div class="container-fluid">
         <div class="row resume-card-section row1">
-            @for($i = 1; $i <= 6; $i++) <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card">
-                    <img src="{{ asset('storage/images/resumes/1-B-01.webp') }}" loading="lazy" class="img-fluid p-5"
-                        alt="">
-                    <div class="btn-resume-section">
-                        <a href="#">Select Template</a>
+            @for ($i = 1; $i <= 6; $i++)
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                    <div class="card">
+                        <img src="{{ asset('storage/images/resumes/1-B-01.webp') }}" loading="lazy" class="img-fluid p-5" alt="">
+                        <div class="btn-resume-section">
+                            <a href="{{ route('edit.resume.form', ['ID' => 1]) }}">Select Template</a>
+                        </div>
                     </div>
                 </div>
+            @endfor
         </div>
-        @endfor
-    </div>
     </div>
 </section>
 <!-- how it's work -->
@@ -55,10 +55,7 @@
             </div>
             <div class="col-12 col-md-6 col-sm-3 left-side">
                 <p class="p1">How it works</p>
-                <h2>
-                    Select A Template & Fill Your Information
-                </h2>
-
+                <h2> Select A Template & Fill Your Information </h2>
                 <p class="text-left p2">Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum commodo tempor vestibulum sed erat mollis.</p>
                 <button ><a href=""> Let's Create </a></button><br><br>
             </div>
@@ -101,9 +98,10 @@
 </section><br><br><br>
 <!-- port folio section  -->
 <section class="mt-5">
-    <div class="container-fluid ">
-        <div class="row portfolio-section row1">
-            @for ($i = 0 ; $i < 3 ; $i++) <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:6rem">
+    <div class="container-fluid">
+      <div class="row portfolio-section row1">
+            @for ($i = 0 ; $i < 3 ; $i++) 
+            <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:6rem">
                 <div class="card">
                     <div class="card1">
                         <img src="{{ asset('web-images/download.png') }}" class="mx-auto d-block">
@@ -120,10 +118,8 @@
                         </div>
                     </div>
                 </div>
+              </div>
+            @endfor
         </div>
-        @endfor
-    </div>
     </div>
 </section>
-
-

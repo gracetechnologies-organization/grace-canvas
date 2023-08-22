@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light " id="navbarManu">
     <div class="container ">
-        <a class="navbar-brand text-light" href="#">Logo hare</a>
+        <a class="navbar-brand text-light" href="/">Logo Here</a>
         <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbar-supported-content" aria-controls="navbar-supported-content" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -59,6 +59,7 @@
         position: relative;
         display: inline-block;
     }
+    
     .dropdown-content {
         border-radius:0px 0px 15px 15px;
         display: none;
@@ -70,9 +71,11 @@
         padding:  20px 10px 10px 20px;
         /* z-index: 1; */
     }
+    
     .dropdown-content li {
         list-style-type: none;
     }
+    
     .dropdown-content li a {
         text-align:center;
         text-decoration: none;
@@ -83,9 +86,11 @@
         font-weight: 500;
         line-height: 2;
     }
+    
     .dropdown:hover .dropdown-content {
         display: block;
         color: blue;
     }
-
 </style>
+
+

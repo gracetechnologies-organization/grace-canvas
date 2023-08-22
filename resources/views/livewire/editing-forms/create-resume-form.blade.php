@@ -1,4 +1,14 @@
 <div>
+    <style>
+        .img-container {
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .custom-border {
+            border: 1px solid rgb(54, 54, 54);
+        }
+    </style>
     <!-- Offcanvas for detail customization -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
@@ -10,7 +20,7 @@
                 Only For Pro Users...!
             </div>
             <div class="dropdown mt-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                <button class="btn btn-secondary standard-bg-color standard-border-color dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                     Download Now
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -22,50 +32,57 @@
         </div>
     </div>
 
+    @include('components.crop-img-modal')
+
+    <!-- Fixed buttons -->
+    <div class="fixed-btn-container">
+        @include('components.print-btn')
+    </div>
+
     <!-- Editing form & preview section -->
     <div class="container-fluid px-5 px-md-4 px-lg-5">
         <div class="row">
             <!-- Form column -->
-            <div class="col-12 col-md-5 col-lg-4 ">
+            <div class="col-12 col-md-5 col-lg-4">
                 <form>
                     <div class="row">
                         <div class="col-10 py-1 mt-1 ">
                             <div class="input-group mt-0">
-                                <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload Pic</label>
+                                <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control image" id="upload-resume-photo">
+                                <label class="input-group-text" for="upload-resume-photo">Upload Pic</label>
                             </div>
                         </div>
                         <div class="col-2 py-1 text-end">
                             <button type="button" class="custom-btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" title="Settings & options">
-                                <i class='bx bx-cog icons-size'></i>
+                                <i class='bx bx-cog icons-size standard-txt-color'></i>
                             </button>
                         </div>
                     </div>
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter first name" onkeyup="CreateResumeForm.renderTxt('FName', this.value)">
-                                <label for="floatingInputGrid">First Name</label>
+                                <input type="text" class="form-control" placeholder="Enter first name" onkeyup="CreateResumeForm.renderTxt('FName', this.value)">
+                                <label>First Name</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last name" onkeyup="CreateResumeForm.renderTxt('LName', this.value)">
-                                <label for="floatingInputGrid">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Enter last name" onkeyup="CreateResumeForm.renderTxt('LName', this.value)">
+                                <label>Last Name</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 my-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Profession" onkeyup="CreateResumeForm.renderTxt('Profession', this.value)">
-                            <label for="floatingInputGrid">Enter Your Profession</label>
+                            <input type="text" class="form-control" placeholder="Enter Your Profession" onkeyup="CreateResumeForm.renderTxt('Profession', this.value)">
+                            <label>Enter Your Profession</label>
                         </div>
                     </div>
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-8">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Phone" onkeyup="CreateResumeForm.renderTxt('Phone', this.value)">
-                                <label for="floatingInputGrid">Enter Your Phone</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Phone" onkeyup="CreateResumeForm.renderTxt('Phone', this.value)">
+                                <label>Enter Your Phone</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-4">
@@ -90,22 +107,22 @@
                         </div>
                         <div class="col-12 col-md-12 col-lg-9">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInputGrid" placeholder="Enter Your Email" onkeyup="CreateResumeForm.renderTxt('Email', this.value)">
-                                <label for="floatingInputGrid">Enter Your Email</label>
+                                <input type="email" class="form-control" placeholder="Enter Your Email" onkeyup="CreateResumeForm.renderTxt('Email', this.value)">
+                                <label>Enter Your Email</label>
                             </div>
                         </div>
                     </div>
                     <div class="row g-2 my-3">
                         <div class="col-12 col-md-12 col-lg-3">
                             <div class="form-floating">
-                                <input type="date" class="form-control" id="floatingInputGrid" placeholder="Date Of Birth" onchange="CreateResumeForm.renderTxt('DOB', this.value)">
-                                <label for="floatingInputGrid">Date Of Birth</label>
+                                <input type="date" class="form-control" placeholder="Date Of Birth" onchange="CreateResumeForm.renderTxt('DOB', this.value)">
+                                <label>Date Of Birth</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-9">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="CNIC" onkeyup="CreateResumeForm.renderTxt('Cnic', this.value)">
-                                <label for="floatingInputGrid">CNIC xxxxx-xxxxxxx-x</label>
+                                <input type="text" class="form-control" placeholder="CNIC" onkeyup="CreateResumeForm.renderTxt('Cnic', this.value)">
+                                <label>CNIC xxxxx-xxxxxxx-x</label>
                             </div>
                         </div>
                     </div>
@@ -118,8 +135,8 @@
                         </div>
                         <div class="col-12 col-md-12 col-lg-8">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter Your Address" onkeyup="CreateResumeForm.renderTxt('Address', this.value)">
-                                <label for="floatingInputGrid">Enter Your Address</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Address" onkeyup="CreateResumeForm.renderTxt('Address', this.value)">
+                                <label>Enter Your Address</label>
                             </div>
                         </div>
                     </div>
@@ -139,17 +156,21 @@
                                 </h2>
                                 <div id="panelsStayOpen-Experience" class="accordion-collapse collapse show">
                                     <div class="accordion-body" id="ExperienceForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-experience" onchange="CreateResumeForm.hideShowContainer('.experience-container')">
+                                            <label class="text-muted" for="hide-experience">Hide Experience</label>
+                                        </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization0', this.value)">
-                                                    <label for="floatingInputGrid">Organization</label>
+                                                    <input type="text" class="form-control" placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization0', this.value)">
+                                                    <label>Organization</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter last designation" onkeyup="CreateResumeForm.renderTxt('Designation0', this.value)">
-                                                    <label for="floatingInputGrid">Designation</label>
+                                                    <input type="text" class="form-control" placeholder="Enter last designation" onkeyup="CreateResumeForm.renderTxt('Designation0', this.value)">
+                                                    <label>Designation</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -162,19 +183,19 @@
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Joining Date" onchange="CreateResumeForm.renderTxt('JoiningDate0', this.value)">
-                                                    <label for="floatingInputGrid">Joining Date</label>
+                                                    <input type="date" class="form-control" placeholder="Joining Date" onchange="CreateResumeForm.renderTxt('JoiningDate0', this.value)">
+                                                    <label>Joining Date</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Ending Date" onchange="CreateResumeForm.renderTxt('EndDate0', this.value)">
-                                                    <label for="floatingInputGrid">Ending Date</label>
+                                                    <input type="date" class="form-control" placeholder="Ending Date" onchange="CreateResumeForm.renderTxt('EndDate0', this.value)">
+                                                    <label>Ending Date</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add experience" onclick="CreateResumeForm.addNewExperience()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add experience" onclick="CreateResumeForm.addNewExperience()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger col-6" title="Remove experience" onclick="CreateResumeForm.delForm('panelsStayOpen-Experience', 'experiences-section', 'div.experience-details')">
@@ -197,56 +218,60 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-Qualification" aria-expanded="false" aria-controls="panelsStayOpen-Qualification">
-                                        Qualification
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-Education" aria-expanded="false" aria-controls="panelsStayOpen-Education">
+                                        Education
                                     </button>
                                 </h2>
-                                <div id="panelsStayOpen-Qualification" class="accordion-collapse collapse">
-                                    <div class="accordion-body" id="QualificationForm0">
+                                <div id="panelsStayOpen-Education" class="accordion-collapse collapse">
+                                    <div class="accordion-body" id="EducationForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-education" onchange="CreateResumeForm.hideShowContainer('.education-container')">
+                                            <label class="text-muted" for="hide-education">Hide Education</label>
+                                        </div>
                                         <div class="col-12 my-3">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your institute" onkeyup="CreateResumeForm.renderTxt('EducationalOrganization0', this.value)">
-                                                <label for="floatingInputGrid">Educational Institute</label>
+                                                <input type="text" class="form-control" placeholder="Enter your institute" onkeyup="CreateResumeForm.renderTxt('EducationalOrganization0', this.value)">
+                                                <label>Educational Institute</label>
                                             </div>
                                         </div>
                                         <div class="col-12 my-3">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter your degree" onkeyup="CreateResumeForm.renderTxt('Degree0', this.value)">
-                                                <label for="floatingInputGrid">Degree</label>
+                                                <input type="text" class="form-control" placeholder="Enter your degree" onkeyup="CreateResumeForm.renderTxt('Degree0', this.value)">
+                                                <label>Degree</label>
                                             </div>
                                         </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your score" onkeyup="CreateResumeForm.renderTxt('Score0', this.value)">
-                                                    <label for="floatingInputGrid">Score</label>
+                                                    <input type="text" class="form-control" placeholder="Your score" onkeyup="CreateResumeForm.renderTxt('Score0', this.value)">
+                                                    <label>Score</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="date" class="form-control" id="floatingInputGrid" placeholder="Your completion date" onchange="CreateResumeForm.renderTxt('CompletionDate0', this.value)">
-                                                    <label for="floatingInputGrid">Completion Date</label>
+                                                    <input type="date" class="form-control" placeholder="Your completion date" onchange="CreateResumeForm.renderTxt('CompletionDate0', this.value)">
+                                                    <label>Completion Date</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add experience" onclick="CreateResumeForm.addNewQualification()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add experience" onclick="CreateResumeForm.addNewEducation()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove experience" onclick="CreateResumeForm.delForm('panelsStayOpen-Qualification', 'qualifications-section', 'div.education-details')">
+                                            <button type="button" class="btn btn-outline-danger col-6" title="Remove education" onclick="CreateResumeForm.delForm('panelsStayOpen-Education', 'educations-section', 'div.education-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
                                         </div>
                                     </div>
-                                    {{-- QualificationFormWarning Toast Msg --}}
-                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="QualificationFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+                                    {{-- EducationFormWarning Toast Msg --}}
+                                    <div class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 end-0 show toast-custom-width d-none" id="EducationFormWarning" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
                                         <div class="toast-header">
                                             <i class="bx bx-bell me-2"></i>
                                             <div class="me-auto fw-semibold">Warning</div>
-                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('QualificationFormWarning')"></button>
+                                            <button type="button" class="btn-close" aria-label="Close" onclick="CreateResumeForm.closeWarning('EducationFormWarning')"></button>
                                         </div>
                                         <div class="toast-body">
-                                            {{ config('messages.QUALIFICATIONS_LIMIT_REACHED') }}
+                                            {{ config('messages.EDUCATIONS_LIMIT_REACHED') }}
                                         </div>
                                     </div>
                                 </div>
@@ -259,14 +284,18 @@
                                 </h2>
                                 <div id="panelsStayOpen-Skills" class="accordion-collapse collapse">
                                     <div class="accordion-body" id="SkillsForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-skills" onchange="CreateResumeForm.hideShowContainer('.skills-container')">
+                                            <label class="text-muted" for="hide-skills">Hide Skills</label>
+                                        </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('SkillName0', this.value)">
-                                                    <label for="floatingInputGrid">Enter Your Skill Title</label>
+                                                    <input type="text" class="form-control" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('SkillName0', this.value)">
+                                                    <label>Enter Your Skill Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add skill" onclick="CreateResumeForm.addNewSkill()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add skill" onclick="CreateResumeForm.addNewSkill()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove skill" onclick="CreateResumeForm.delForm('panelsStayOpen-Skills', 'skills-section', 'div.skills-details')">
@@ -295,14 +324,18 @@
                                 </h2>
                                 <div id="panelsStayOpen-Achievements" class="accordion-collapse collapse">
                                     <div class="accordion-body" id="AchievementForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-achievements" onchange="CreateResumeForm.hideShowContainer('.achievement-container')">
+                                            <label class="text-muted" for="hide-achievements">Hide Achievements</label>
+                                        </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your achievements" onkeyup="CreateResumeForm.renderTxt('AchievementTitle0', this.value)">
-                                                    <label for="floatingInputGrid">Enter Your Achievement Title</label>
+                                                    <input type="text" class="form-control" placeholder="Your achievements" onkeyup="CreateResumeForm.renderTxt('AchievementTitle0', this.value)">
+                                                    <label>Enter Your Achievement Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add achievement" onclick="CreateResumeForm.addNewAchievement()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add achievement" onclick="CreateResumeForm.addNewAchievement()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove achievement" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Achievements', 'achievement-section', 'div.achievement-details')">
@@ -331,14 +364,18 @@
                                 </h2>
                                 <div id="panelsStayOpen-Projects" class="accordion-collapse collapse">
                                     <div class="accordion-body" id="ProjectForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-projects" onchange="CreateResumeForm.hideShowContainer('.project-container')">
+                                            <label class="text-muted" for="hide-projects">Hide Projects</label>
+                                        </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your projects" onkeyup="CreateResumeForm.renderTxt('ProjectTitle0', this.value)">
-                                                    <label for="floatingInputGrid">Enter Your Project Title</label>
+                                                    <input type="text" class="form-control" placeholder="Your projects" onkeyup="CreateResumeForm.renderTxt('ProjectTitle0', this.value)">
+                                                    <label>Enter Your Project Title</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add project" onclick="CreateResumeForm.addNewProject()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add project" onclick="CreateResumeForm.addNewProject()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove project" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-Projects', 'project-section', 'div.project-details')">
@@ -367,17 +404,21 @@
                                 </h2>
                                 <div id="panelsStayOpen-Interests" class="accordion-collapse collapse">
                                     <div class="accordion-body" id="InterestForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-interests" onchange="CreateResumeForm.hideShowContainer('.interest-container')">
+                                            <label class="text-muted" for="hide-interests">Hide Interests</label>
+                                        </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your interests" onkeyup="CreateResumeForm.renderTxt('Interest0', this.value)">
-                                                    <label for="floatingInputGrid">Enter Your Interest</label>
+                                                    <input type="text" class="form-control" placeholder="Your interests" onkeyup="CreateResumeForm.renderTxt('Interest0', this.value)">
+                                                    <label>Enter Your Interest</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add interest" onclick="CreateResumeForm.addNewInterest()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add interest" onclick="CreateResumeForm.addNewInterest()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove interest" onclick="CreateResumeForm.delForm('panelsStayOpen-Interests', 'interests-section', 'div.interests-details')">
+                                            <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove interest" onclick="CreateResumeForm.delForm('panelsStayOpen-Interests', 'interests-section', 'div.interest-details')">
                                                 <i class='bx bxs-minus-circle icons-size'></i>
                                             </button>
                                         </div>
@@ -403,14 +444,18 @@
                                 </h2>
                                 <div id="panelsStayOpen-Languages" class="accordion-collapse collapse">
                                     <div class="accordion-body" id="LanguageForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-languages" onchange="CreateResumeForm.hideShowContainer('.languages-container')">
+                                            <label class="text-muted" for="hide-languages">Hide Languages</label>
+                                        </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-8">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Your languages" onkeyup="CreateResumeForm.renderTxt('Language0', this.value)">
-                                                    <label for="floatingInputGrid">Your Known Language</label>
+                                                    <input type="text" class="form-control" placeholder="Your languages" onkeyup="CreateResumeForm.renderTxt('Language0', this.value)">
+                                                    <label>Your Known Language</label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-secondary custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add language" onclick="CreateResumeForm.addNewLanguage()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2" title="Add language" onclick="CreateResumeForm.addNewLanguage()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2" title="Remove language" onclick="CreateResumeForm.delForm('panelsStayOpen-Languages', 'languages-section', 'div.languages-details')">
@@ -439,28 +484,32 @@
                                 </h2>
                                 <div id="panelsStayOpen-References" class="accordion-collapse collapse">
                                     <div class="accordion-body" id="ReferenceForm0">
+                                        <div>
+                                            <input type="checkbox" id="hide-references" onchange="CreateResumeForm.hideShowContainer('.reference-container')">
+                                            <label class="text-muted" for="hide-references">Hide References</label>
+                                        </div>
                                         <div class="row g-2 my-3">
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName0', this.value)">
-                                                    <label for="floatingInputGrid">Enter Name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName0', this.value)">
+                                                    <label>Enter Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 col-lg-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation0', this.value)">
-                                                    <label for="floatingInputGrid">Enter Designation</label>
+                                                    <input type="text" class="form-control" placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation0', this.value)">
+                                                    <label>Enter Designation</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-12 my-3">
                                             <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Enter Reference Description" id="floatingTextarea2" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription0', this.value)"></textarea>
-                                                <label for="floatingTextarea2">Reference Description</label>
+                                                <input type="text" class="form-control" placeholder="Enter reference contact" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription0', this.value)">
+                                                <label for="floatingTextarea2">Reference Contact</label>
                                             </div>
                                         </div>
                                         <div class="row g-0 my-3 input-group">
-                                            <button type="button" class="btn btn-secondary col-6" title="Add reference" onclick="CreateResumeForm.addNewReference()">
+                                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add reference" onclick="CreateResumeForm.addNewReference()">
                                                 <i class='bx bxs-plus-circle icons-size'></i>
                                             </button>
                                             <button type="button" class="btn btn-outline-danger col-6" title="Remove reference" onclick="CreateResumeForm.delFormAndTwoColumnsData('panelsStayOpen-References', 'reference-section', 'div.reference-details')">
@@ -486,38 +535,53 @@
                 </form>
             </div>
             <!-- Resume template column -->
-            <div class="col-12 col-md-7 col-lg-8 ">
+            <div class="col-12 col-md-7 col-lg-8">
                 <!-- Resume template design -->
-                <style>
-                    .custom-border {
-                        border: 1px solid rgb(54, 54, 54);
-                    }
-                </style>
                 <div class="container contianer-customs mt-2" id="resume-template-container">
                     <div class="row custom-border" style="width:720px;">
                         <style>
+                            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
                             .left-col {
-                                background: #464646;
-                                width: 200px;
+                                background: #1E1E1E;
+                                width: 236px;
                                 height: 1040px;
                             }
 
                             .right-col {
                                 background: white;
-                                width: 517px;
+                                width: 480px;
                                 height: 1040px;
                                 padding: 0px;
                             }
 
-                            .resume-photo {
-                                border: 2px solid white;
-                                border-radius: 100%;
+                            .resume-photo-border1 {
+                                border: 10px solid black;
+                                background-color: #3A3A3A;
                                 overflow: hidden;
-                                width: 142px;
-                                height: 142px;
+                                width: 160px;
+                                height: 160px;
                                 margin: auto;
                                 position: relative;
-                                top: 45px;
+                                top: 2px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                z-index: 1;
+
+                            }
+
+                            .resume-photo-border2 {
+                                border: 7px solid #F0AF37;
+                                background-color: #3A3A3A;
+                                overflow: hidden;
+                                width: 175px;
+                                height: 175px;
+                                margin: auto;
+                                position: relative;
+                                top: 15px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                z-index: 1;
                             }
 
                             .personal-info-container {
@@ -526,96 +590,77 @@
                                 left: 20px;
                                 width: 120px;
                                 padding-top: 10px;
+                                margin: -25px 10px 0px 0px;
+
                             }
 
                             .personal-info-container h2 {
-                                color: #FFF;
+                                color: #F0AF37;
+                                background-color: none;
                                 font-family: Poppins;
                                 font-size: 13.17px;
                                 font-style: normal;
                                 font-weight: 700;
-                                line-height: 0px;
                                 text-transform: uppercase;
-                                text-align: center;
+                                height: 25px;
+                                width: 200px;
+                                margin: -45px 0px 0px -35px;
+                                padding-top: 5px;
+                                padding-left: 70px;
                             }
 
                             .left-col-divider {
-                                background-color: white;
-                                width: 120px;
-                                height: 1.17px;
+                                background-color: #F0AF37;
+                                width: 236px;
+                                height: 2px;
+                                margin-left: -32px;
                             }
 
                             .right-col-divider {
-                                background-color: #464646;
-                                width: 452.2px;
-                                height: 2.17px;
+                                background-color: #F0AF37;
+                                width: 452px;
+                                height: 2px;
+                                margin: 10px 0px 10px 0px;
                             }
 
                             .personal-info-details {
-                                padding: 10px 0px 0px 7px;
+                                padding: 25px 0px 0px 7px;
                                 height: 39px;
                             }
 
                             .personal-info-details p {
-                                color: #FFF;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 10px;
+                                font-size: 11.7px;
                                 font-style: normal;
                                 font-weight: 400;
-                                line-height: 0px;
-                            }
-
-                            .languages-container {
-                                position: relative;
-                                top: 105px;
-                                left: 20px;
-                                width: 120px;
-                                padding-top: 10px;
-                            }
-
-                            .languages-container h2 {
-                                color: #FFF;
-                                font-family: Poppins;
-                                font-size: 13.17px;
-                                font-style: normal;
-                                font-weight: 700;
-                                line-height: 0px;
-                                text-transform: uppercase;
-                                text-align: center;
-                            }
-
-                            .languages-details {
-                                padding: 20px 0px 0px 7px;
-                                height: 29px;
-                            }
-
-                            .languages-details p {
-                                color: #FFF;
-                                font-family: Poppins;
-                                font-size: 12px;
-                                font-style: normal;
-                                font-weight: 600;
-                                line-height: 0px;
-                                text-transform: uppercase;
+                                line-height: 1px;
+                                margin-left: 0px;
                             }
 
                             .skills-container {
                                 position: relative;
                                 top: 135px;
                                 left: 20px;
-                                width: 120px;
+                                width: 200px;
                                 padding-top: 10px;
+                                margin-top: 0px;
                             }
 
                             .skills-container h2 {
-                                color: #FFF;
+                                color: #F0AF37;
+                                background-color: none;
                                 font-family: Poppins;
-                                font-size: 13.17px;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 700;
-                                line-height: 0px;
                                 text-transform: uppercase;
-                                text-align: center;
+                                height: 25px;
+                                width: 200px;
+                                margin: 0px 0px 0px -35px;
+                                padding-top: 5px;
+                                padding-left: 90px;
+
                             }
 
                             .skills-details {
@@ -625,23 +670,28 @@
                             }
 
                             .skills-details p {
-                                color: #FFF;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 10.8px;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 0px;
                                 text-transform: uppercase;
-                                margin-bottom: 9px;
+                                margin-bottom: 2px;
+                                margin-left: 0px;
                             }
 
                             .progress-bar-container {
-                                background-color: #8A8A8A;
+                                background-color: #a8a8a8;
+                                border-radius: 100px;
+                                margin-left: -15px;
+
                             }
 
                             .progress-bar-container .custom-progress-bar {
                                 padding: 3px;
-                                background-color: white;
+                                background-color: #F0AF37;
+                                border-radius: 100px;
                             }
 
                             .interest-container {
@@ -650,85 +700,176 @@
                                 left: 20px;
                                 width: 120px;
                                 padding-top: 10px;
+                                margin-top: -30px;
                             }
 
-                            .interest-container h2 {
-                                color: #FFF;
+                            .languages-container {
+                                position: relative;
+                                top: 135px;
+                                left: 20px;
+                                width: 200px;
+                                padding-top: 10px;
+                                margin-top: -30px;
+
+                            }
+
+                            .languages-container h2 {
+                                color: #F0AF37;
+                                background-color: none;
                                 font-family: Poppins;
-                                font-size: 13.17px;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 700;
-                                line-height: 0px;
                                 text-transform: uppercase;
-                                text-align: center;
+                                height: 25px;
+                                width: 200px;
+                                margin: 0px 0px 0px -35px;
+                                padding-top: 5px;
+                                padding-left: 75px;
                             }
 
-                            .interests-details {
+                            .languages-details {
                                 padding: 20px 0px 0px 7px;
                                 height: auto;
                             }
 
-                            .interests-details p {
-                                color: #FFF;
+                            .languages-details p {
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 10.8px;
+                                font-size: 13px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 0px;
                                 text-transform: uppercase;
-                                margin-bottom: 9px;
+                                margin-bottom: 2px;
+                                margin-left: 0px;
+                            }
+
+                            .dot {
+                                height: 7px;
+                                width: 7px;
+                                background-color: #3A3A3A;
+                                border-radius: 50%;
+                                display: inline-block;
+                            }
+
+                            .dot-grey {
+                                height: 7px;
+                                width: 7px;
+                                background-color: grey;
+                                border-radius: 50%;
+                                display: inline-block;
+                            }
+
+                            .interest-container {
+                                position: relative;
+                                top: 135px;
+                                left: 20px;
+                                width: 200px;
+                                padding-top: 10px;
+                                margin-top: 0px;
+                            }
+
+                            .interest-container h2 {
+                                color: #F0AF37;
+                                background-color: none;
+                                font-family: Poppins;
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 700;
+                                text-transform: uppercase;
+                                height: 25px;
+                                width: 200px;
+                                margin: 0px 0px 0px -35px;
+                                padding-top: 5px;
+                                padding-left: 85px;
+
+                            }
+
+                            .interest-details {
+                                padding: 20px 0px 0px 7px;
+                                height: auto;
+                            }
+
+                            .interest-details p {
+                                color: white;
+                                font-family: Poppins;
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 0px;
+                                text-transform: uppercase;
+                                margin-bottom: 2px;
+                                margin-left: 0px;
+
                             }
 
                             .name-container {
-                                width: 100%;
-                                padding: 80px 30px 0px 30px;
+                                width: 718px;
+                                height: 110px;
+                                padding: 25px 30px 0px 30px;
+                                background-color: #F0AF37;
+                                ;
+                                margin-left: -236px;
+                                margin-top: 50px;
+                                z-index: 0;
+
                             }
 
                             .name-container h2 {
                                 line-height: 5px;
+                                font-size: 15px;
+                                margin: 15px 0px 0px 220px;
                             }
 
                             .name-container h2 span {
-                                color: #464646;
+                                color: white;
                                 font-family: Poppins;
-                                font-size: 40.21px;
+                                font-size: 43.51008px;
                                 font-style: normal;
                                 font-weight: 700;
-                                text-transform: uppercase;
                             }
 
                             .name-container .profession {
-                                color: #59595B;
-                                font-size: 11px;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
+                                width: 320px;
+                                height: 22px;
+                                margin-top: 20px;
+                                padding-left: 0px;
+                                font-size: 26px;
                                 font-style: normal;
-                                font-weight: 400;
+                                font-family: Poppins;
                                 line-height: normal;
-                                text-transform: uppercase;
+                                margin: 10px 0px 0px 220px;
+                                font-weight: bold;
                             }
 
                             .objective-container {
                                 width: 100%;
-                                padding: 25px 30px 0px 30px
+                                padding: 22px 30px 0px 30px;
                             }
 
                             .objective-container h2 {
-                                color: #464646;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 101.1px;
-                                padding: 0px 3px 0px 5px;
+                                border-radius: 0px;
+                                width: 170px;
+                                margin-bottom: -12px;
+                                margin-top: -4px;
+                                padding-left: 10px;
                             }
 
                             .objective-container p {
                                 color: #302E30;
                                 font-family: Poppins;
-                                font-size: 13px;
+                                font-size: 10px;
                                 font-style: normal;
                                 font-weight: 400;
                                 line-height: 16px;
@@ -736,42 +877,45 @@
 
                             .experience-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 0px 30px 0px 30px
                             }
 
                             .experience-container h2 {
-                                color: #464646;
+                                background-color: #F0AF37;
+                                color: #302E30;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 104.1px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 15px;
+                                width: 170px;
+                                margin-bottom: -12px;
+                                margin-top: 10px;
+                                padding-left: 10px;
                             }
 
                             .experience-details h3 {
                                 color: #000;
-                                font-family: Montserrat;
-                                font-size: 15px;
+                                font-family: Poppins;
+                                font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 line-height: 10px;
                                 text-transform: uppercase;
+
                             }
 
                             .experience-details p {
                                 color: #302E30;
                                 font-family: Poppins;
-                                font-size: 13px;
+                                font-size: 11px;
                                 font-style: normal;
                                 font-weight: 400;
-                                margin-top: 15px;
+                                margin-top: 10px;
                                 line-height: 16px;
+                                margin-bottom: 18px;
+
                             }
 
                             .education-container {
@@ -780,33 +924,35 @@
                             }
 
                             .education-container h2 {
-                                color: #464646;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 102.1px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 15px;
+                                border-radius: 0px;
+                                width: 170px;
+                                margin-top: -10px;
+                                margin-bottom: -12px;
+                                padding-left: 10px;
                             }
 
                             .education-details {
-                                margin-bottom: 25px;
+                                margin-bottom: 20px;
                             }
 
                             .education-details h3 {
-                                color: #000;
-                                font-family: Montserrat;
-                                font-size: 15px;
+                                color: #1E1E1E;
+                                font-family: Poppins;
+                                font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 line-height: 3px;
                                 text-transform: uppercase;
-                                margin-bottom: 17px;
+                                margin-bottom: 14px;
+                                padding-top: 10px;
                             }
 
                             .education-details p {
@@ -821,22 +967,24 @@
 
                             .achievement-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
+                                margin-bottom: 15px;
                             }
 
                             .achievement-container h2 {
-                                color: #464646;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 120px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 10px;
+                                border-radius: 0px;
+                                width: 170px;
+                                margin-bottom: -12px;
+                                margin-top: -15px;
+                                padding-left: 10px;
                             }
 
                             .achievement-section div {
@@ -844,34 +992,36 @@
                                 width: 50%;
                             }
 
-                            .achievement-section div p {
-                                color: #000;
-                                font-family: Montserrat;
+                            .achievement-details p {
+                                color: black;
+                                font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
 
                             .project-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
+                                margin-bottom: 15px;
                             }
 
                             .project-container h2 {
-                                color: #464646;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 82px;
-                                padding: 0px 3px 0px 5px;
-                                margin-bottom: 10px;
+                                border-radius: 0px;
+                                width: 170px;
+                                margin-bottom: -12px;
+                                margin-top: 0px;
+                                padding-left: 10px;
                             }
 
                             .project-section div {
@@ -879,33 +1029,36 @@
                                 width: 50%;
                             }
 
-                            .project-section div p {
-                                color: #000;
-                                font-family: Montserrat;
+                            .project-details p {
+                                color: black;
+                                font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 margin-top: 5px;
                                 line-height: 5px;
                             }
 
                             .reference-container {
                                 width: 100%;
-                                padding: 10px 30px 0px 30px
+                                padding: 10px 30px 0px 30px;
+                                margin-bottom: 15px;
                             }
 
                             .reference-container h2 {
-                                color: #464646;
+                                background-color: #F0AF37;
+                                color: #1E1E1E;
                                 font-family: Poppins;
                                 font-size: 15px;
                                 font-style: normal;
                                 font-weight: 700;
                                 line-height: normal;
                                 text-transform: uppercase;
-                                border: 2px solid #464646;
-                                border-radius: 100px;
-                                width: 98px;
-                                padding: 0px 3px 0px 5px;
+                                border-radius: 0px;
+                                width: 170px;
+                                margin-bottom: -12px;
+                                margin-top: -10px;
+                                padding-left: 10px;
                             }
 
                             .reference-section div {
@@ -913,26 +1066,28 @@
                                 width: 50%;
                             }
 
-                            .reference-section div h3 {
-                                color: #000;
-                                font-family: Montserrat;
+                            .reference-details div h3 {
+                                color: black;
+                                font-family: Poppins;
                                 font-size: 13px;
                                 font-style: normal;
-                                font-weight: 700;
+                                font-weight: 500;
                                 line-height: normal;
                             }
 
-                            .reference-section div p {
-                                color: #000;
-                                font-family: Montserrat;
+                            .reference-details div p {
+                                color: black;
+                                font-family: Poppins;
                                 font-size: 11px;
                                 font-style: normal;
                                 line-height: 0px;
                             }
                         </style>
                         <div class="left-col">
-                            <div class="resume-photo">
-                                <img src="{{ asset('storage/images/Asset 11.png') }}" width="220px">
+                            <div class="resume-photo-border2">
+                                <div class="resume-photo-border1">
+                                    <img id="resume-photo" width="142px">
+                                </div>
                             </div>
                             <div class="personal-info-container">
                                 <h2> Personal Info </h2>
@@ -971,53 +1126,59 @@
                                 </div>
                             </div>
                             <div class="languages-container">
-                                <h2> Languages </h2>
+                                <h2> Languages</h2>
                                 <div class="left-col-divider"></div>
                                 <div id="languages-section">
                                     <div class="languages-details">
-                                        <p id="Language0">Urdu</p>
+                                        <p id="Language0">Language</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="skills-container">
-                                <h2> Skills </h2>
+                                <h2> Skills</h2>
                                 <div class="left-col-divider"></div>
                                 <div id="skills-section">
                                     <div class="skills-details">
-                                        <p id="SkillName0">Photoshop</p>
-                                        <div class="progress-bar-container">
-                                            <div class="custom-progress-bar" style="width: 65%;"></div>
-                                        </div>
+                                        <p id="SkillName0">Postman</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="interest-container">
+                            <div class="interest-container ">
                                 <h2> Interest </h2>
                                 <div class="left-col-divider"></div>
                                 <div id="interests-section">
-                                    <div class="interests-details">
+                                    <div class="interest-details">
                                         <p id="Interest0">Hiking</p>
-                                        <div class="progress-bar-container">
-                                            <div class="custom-progress-bar" style="width: 65%;"></div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="right-col">
                             <div class="name-container">
-                                <h2> <span id="FName">FName</span> <span id="LName">LName</span> </h2>
-                                <span class="profession" id="Profession">Graphic Designer</span>
+                                <h2> <span id="FName">Name</span> <span id="LName">Surname</span> </h2>
+                                <p class="profession" id="Profession">Graphic Designer</p>
                             </div>
                             <div class="objective-container ">
                                 <h2>Objective</h2>
+                                <div class="right-col-divider"></div>
                                 <p id="Objective">
                                     Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position to utilize my expertise in front-end and back-end technologies, as well as my problem-solving and collaboration skills, to contribute to the development user experiences.
                                 </p>
+                            </div>
+                            <div class="education-container">
+                                <h2>Education</h2>
                                 <div class="right-col-divider"></div>
+                                <div id="educations-section">
+                                    <div class="education-details">
+                                        <h3 id="EducationalOrganization0">University Name or School Name</h3>
+                                        <p id="Degree0">Write your degree name here</p>
+                                        <p><span id="Score0">3.2 CGPA</span> <span id="CompletionDate0">2015</span></p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="experience-container">
                                 <h2>Experience</h2>
+                                <div class="right-col-divider"></div>
                                 <div id="experiences-section">
                                     <div class="experience-details">
                                         <h3 id="Designation0">Job Position</h3>
@@ -1027,21 +1188,10 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="right-col-divider"></div>
-                            </div>
-                            <div class="education-container">
-                                <h2>Education</h2>
-                                <div id="qualifications-section">
-                                    <div class="education-details">
-                                        <h3 id="EducationalOrganization0">University Name or School Name</h3>
-                                        <p id="Degree0">Write your degree name here</p>
-                                        <p><span id="Score0">3.2 CGPA</span> <span id="CompletionDate0">2015</span></p>
-                                    </div>
-                                </div>
-                                <div class="right-col-divider"></div>
                             </div>
                             <div class="achievement-container">
                                 <h2>Achievement</h2>
+                                <div class="right-col-divider"></div>
                                 <div class="row achievement-section" id="achievement-section">
                                     <div class="achievement-details">
                                         <p id="AchievementTitle0">Your achivement 1</p>
@@ -1050,10 +1200,26 @@
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
+                            </div>
+                            <div class="reference-container">
+                                <h2>Reference</h2>
                                 <div class="right-col-divider"></div>
+                                <div class="row reference-section" id="reference-section">
+                                    <div class="reference-details">
+                                        <div>
+                                            <h3 id="ReferenceName0">Reference 1</h3>
+                                            <p id="ReferenceDesignation0">Designation</p>
+                                            <p id="ReferenceDescription0">Number</p>
+                                        </div>
+                                    </div>
+                                    <div class="reference-details">
+                                        {{-- This area is for JavaScript Baby --}}
+                                    </div>
+                                </div>
                             </div>
                             <div class="project-container">
                                 <h2>Project</h2>
+                                <div class="right-col-divider"></div>
                                 <div class="row project-section" id="project-section">
                                     <div class="project-details">
                                         <p id="ProjectTitle0">Your project 1</p>
@@ -1062,33 +1228,392 @@
                                         {{-- This area is for JavaScript Baby --}}
                                     </div>
                                 </div>
-                                <div class="right-col-divider"></div>
-                            </div>
-                            <div class="reference-container">
-                                <h2>Reference</h2>
-                                <div class="row reference-section" id="reference-section">
-                                    <div class="reference-details">
-                                        <div>
-                                            <h3 id="ReferenceName0">Reference 1</h3>
-                                            <p id="ReferenceDesignation0">Designation</p>
-                                            <p id="ReferenceDescription0">project manager</p>
-                                        </div>
-                                    </div>
-                                    <div class="reference-details">
-                                        {{-- This area is for JavaScript Baby --}}
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Fixed buttons -->
-            <div class="fixed-btn-container">
-                <button class="fixed-btn" title="Download as PDF or print" onclick="printDiv('resume-template-container')">
-                    <i class='bx bx-cloud-download icons-size'></i>
-                </button>
+                <script>
+                    class CreateResumeForm {
+                        /*
+                        |--------------------------------------------------------------------------
+                        | Properties
+                        |--------------------------------------------------------------------------
+                        */
+                        static AchievementNumber;
+                        static ProjectNumber;
+                        static ReferenceNumber;
+                        /*
+                        |--------------------------------------------------------------------------
+                        | Methods
+                        |--------------------------------------------------------------------------
+                        */
+                        static renderTxt = (id, value) => document.getElementById(id).innerHTML = value;
+
+                        static closeWarning = (id) => document.getElementById(id).classList.add('d-none');
+
+                        static addNewExperience = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Experience > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="ExperienceForm` + ChildDivsLength + `">
+                                                  <div class="row g-2 my-3">
+                                                      <div class="col-12 col-md-12 col-lg-6">
+                                                          <div class="form-floating">
+                                                              <input type="text" class="form-control"  placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization` + ChildDivsLength + `', this.value)">
+                                                              <label >Organization</label>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-12 col-md-12 col-lg-6">
+                                                          <div class="form-floating">
+                                                              <input type="text" class="form-control"  placeholder="Enter last designation" onkeyup="CreateResumeForm.renderTxt('Designation` + ChildDivsLength + `', this.value)">
+                                                              <label >Designation</label>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-12 my-3">
+                                                      <div class="form-floating">
+                                                          <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('JobDescription` + ChildDivsLength + `', this.value)"></textarea>
+                                                          <label for="floatingTextarea2">Your Job Description</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row g-2 my-3">
+                                                      <div class="col-12 col-md-12 col-lg-6">
+                                                          <div class="form-floating">
+                                                              <input type="date" class="form-control"  placeholder="Joining Date" onchange="CreateResumeForm.renderTxt('JoiningDate` + ChildDivsLength + `', this.value)">
+                                                              <label >Joining Date</label>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-12 col-md-12 col-lg-6">
+                                                          <div class="form-floating">
+                                                              <input type="date" class="form-control"  placeholder="Ending Date" onchange="CreateResumeForm.renderTxt('EndDate` + ChildDivsLength + `', this.value)">
+                                                              <label >Ending Date</label>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>`;
+
+                            const NewExperience = `<div class="experience-details">
+                                                  <h3 id="Designation` + ChildDivsLength + `">Job Position</h3>
+                                                  <h3><span id="Organization` + ChildDivsLength + `">Company Name</span> <span id="JoiningDate` + ChildDivsLength + `">2020</span> | <span id="EndDate` + ChildDivsLength + `">2021</span></h3>
+                                                  <p id="JobDescription` + ChildDivsLength + `">
+                                                      Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.
+                                                  </p>
+                                              </div>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 2) {
+                                document.getElementById('ExperienceFormWarning').classList.remove('d-none');
+                            } else {
+                                document.getElementById('panelsStayOpen-Experience').insertAdjacentHTML('beforeend', NewForm);
+                                document.getElementById('experiences-section').insertAdjacentHTML('beforeend', NewExperience)
+                            }
+                        };
+
+                        static addNewEducation = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Education > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="EducationForm` + ChildDivsLength + `">
+                                                    <div class="col-12 my-3">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control"  placeholder="Enter your institute" onkeyup="CreateResumeForm.renderTxt('EducationalOrganization` + ChildDivsLength + `', this.value)">
+                                                            <label >Educational Institute</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-3">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control"  placeholder="Enter your degree" onkeyup="CreateResumeForm.renderTxt('Degree` + ChildDivsLength + `', this.value)">
+                                                            <label >Degree</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row g-2 my-3">
+                                                        <div class="col-12 col-md-12 col-lg-6">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"  placeholder="Your score" onkeyup="CreateResumeForm.renderTxt('Score` + ChildDivsLength + `', this.value)">
+                                                                <label >Score</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-12 col-lg-6">
+                                                            <div class="form-floating">
+                                                                <input type="date" class="form-control"  placeholder="Your completion date" onchange="CreateResumeForm.renderTxt('CompletionDate` + ChildDivsLength + `', this.value)">
+                                                                <label >Completion Date</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>`;
+
+                            const NewEducation = `<div class="education-details">
+                                                    <h3 id="EducationalOrganization` + ChildDivsLength + `">University Name or School Name</h3>
+                                                    <p id="Degree` + ChildDivsLength + `">Write your degree name here</p>
+                                                    <p><span id="Score` + ChildDivsLength + `">3.2 CGPA</span> <span id="CompletionDate` + ChildDivsLength + `">2015</span></p>
+                                                </div>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 2) {
+                                document.getElementById('EducationFormWarning').classList.remove('d-none');
+                            } else {
+                                document.getElementById('panelsStayOpen-Education').insertAdjacentHTML('beforeend', NewForm);
+                                document.getElementById('educations-section').insertAdjacentHTML('beforeend', NewEducation)
+                            }
+                        };
+
+                        static addNewSkill = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Skills > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="SkillsForm` + ChildDivsLength + `">
+                                                    <div class="row g-2 my-3">
+                                                        <div class="col-12 col-md-12 col-lg-8">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"  placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('SkillName` + ChildDivsLength + `', this.value)">
+                                                                <label >Enter Your Skill Title</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>`;
+
+                            const NewSkill = `<div id="skills-section">
+                                                <div class="skills-details">
+                                                    <p id="SkillName` + ChildDivsLength + `">Laravel</p>
+                                                </div>
+                                            </div>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 4) {
+                                document.getElementById('SkillFormWarning').classList.remove('d-none');
+                            } else {
+                                document.getElementById('panelsStayOpen-Skills').insertAdjacentHTML('beforeend', NewForm);
+                                document.getElementById('skills-section').insertAdjacentHTML('beforeend', NewSkill)
+                            }
+                        };
+
+                        static addNewAchievement = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Achievements > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="AchievementForm` + ChildDivsLength + `">
+                                            <div class="row g-2 my-3">
+                                                <div class="col-12 col-md-12 col-lg-8">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control"  placeholder="Your achievements" onkeyup="CreateResumeForm.renderTxt('AchievementTitle` + ChildDivsLength + `', this.value)">
+                                                        <label >Enter Your Achievement Title</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`;
+
+                            CreateResumeForm.AchievementNumber = ChildDivsLength + 1;
+                            const NewAchievement = `<p id="AchievementTitle` + ChildDivsLength + `">Your achivement ` + CreateResumeForm.AchievementNumber + `</p>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 4) {
+                                document.getElementById('AchievementFormWarning').classList.remove('d-none');
+                            } else {
+                                const InnerDivs = document.querySelectorAll('.achievement-container > div.achievement-section > div.achievement-details');
+                                document.getElementById('panelsStayOpen-Achievements').insertAdjacentHTML('beforeend', NewForm);
+                                (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewAchievement): InnerDivs[0].insertAdjacentHTML('beforeend', NewAchievement);
+                            }
+                        };
+
+                        static addNewProject = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Projects > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="ProjectForm` + ChildDivsLength + `">
+                                                <div class="row g-2 my-3">
+                                                    <div class="col-12 col-md-12 col-lg-8">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control"  placeholder="Your projects" onkeyup="CreateResumeForm.renderTxt('ProjectTitle` + ChildDivsLength + `', this.value)">
+                                                            <label >Enter Your Project Title</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>`;
+
+                            CreateResumeForm.ProjectNumber = ChildDivsLength + 1;
+                            const NewProject = `<p id="ProjectTitle` + ChildDivsLength + `">Your project ` + CreateResumeForm.ProjectNumber + `</p>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 4) {
+                                document.getElementById('ProjectFormWarning').classList.remove('d-none');
+                            } else {
+                                const InnerDivs = document.querySelectorAll('.project-container > div.project-section > div.project-details');
+                                document.getElementById('panelsStayOpen-Projects').insertAdjacentHTML('beforeend', NewForm);
+                                (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewProject): InnerDivs[0].insertAdjacentHTML('beforeend', NewProject);
+                            }
+                        };
+
+                        static addNewInterest = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Interests > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="InterestForm` + ChildDivsLength + `">
+                                                    <div class="row g-2 my-3">
+                                                        <div class="col-12 col-md-12 col-lg-8">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"  placeholder="Your interests" onkeyup="CreateResumeForm.renderTxt('Interest` + ChildDivsLength + `', this.value)">
+                                                                <label >Enter Your Interest</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>`;
+
+                            const NewInterest = `<div class="interest-details">
+                                                    <p id="Interest` + ChildDivsLength + `">Trekking</p>
+                                                </div>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 3) {
+                                document.getElementById('InterestFormWarning').classList.remove('d-none');
+                            } else {
+                                document.getElementById('panelsStayOpen-Interests').insertAdjacentHTML('beforeend', NewForm);
+                                document.getElementById('interests-section').insertAdjacentHTML('beforeend', NewInterest)
+                            }
+                        };
+
+                        static addNewLanguage = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-Languages > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="LanguageForm` + ChildDivsLength + `">
+                                            <div class="row g-2 my-3">
+                                                <div class="col-12 col-md-12 col-lg-8">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control"  placeholder="Your languages" onkeyup="CreateResumeForm.renderTxt('Language` + ChildDivsLength + `', this.value)">
+                                                        <label >Your Known Language</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`;
+
+                            const NewLanguage = `<div class="languages-details">
+                                                    <p id="Language` + ChildDivsLength + `">Language</p>
+                                                </div>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 4) {
+                                document.getElementById('LanguageFormWarning').classList.remove('d-none');
+                            } else {
+                                document.getElementById('panelsStayOpen-Languages').insertAdjacentHTML('beforeend', NewForm);
+                                document.getElementById('languages-section').insertAdjacentHTML('beforeend', NewLanguage);
+                            }
+                        };
+
+                        static addNewReference = () => {
+                            const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-References > div.accordion-body').length;
+                            const NewForm = `<div class="accordion-body" id="ReferenceForm` + ChildDivsLength + `">
+                                                    <div class="row g-2 my-3">
+                                                        <div class="col-12 col-md-12 col-lg-6">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"  placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName` + ChildDivsLength + `', this.value)">
+                                                                <label >Enter Name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-12 col-lg-6">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"  placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation` + ChildDivsLength + `', this.value)">
+                                                                <label >Enter Designation</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-3">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" placeholder="Enter reference contact" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription` + ChildDivsLength + `', this.value)">
+                                                            <label for="floatingTextarea2">Reference Contact</label>
+                                                        </div>
+                                                    </div>
+                                                </div>`;
+
+                            CreateResumeForm.ReferenceNumber = ChildDivsLength + 1;
+                            const NewReference = `<div>
+                                                <h3 id="ReferenceName` + ChildDivsLength + `">Reference ` + CreateResumeForm.ReferenceNumber + `</h3>
+                                                <p id="ReferenceDesignation` + ChildDivsLength + `">Designation</p>
+                                                <p id="ReferenceDescription` + ChildDivsLength + `">Number</p>
+                                              </div>`;
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | The following code will show an error message
+                            | Otherwise it will add a new form   
+                            |--------------------------------------------------------------------------
+                            */
+                            if (ChildDivsLength === 2) {
+                                document.getElementById('ReferenceFormWarning').classList.remove('d-none');
+                            } else {
+                                const InnerDivs = document.querySelectorAll('.reference-container > div.reference-section > div.reference-details');
+                                document.getElementById('panelsStayOpen-References').insertAdjacentHTML('beforeend', NewForm);
+                                InnerDivs[1].insertAdjacentHTML('beforeend', NewReference)
+                            }
+                        };
+
+                        static delForm = (FormID, ResumeSectionID, InnerDiv) => {
+                            const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
+                            const ResumeSectionChildElements = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
+                            if (FormChildElements.length > 1) {
+                                const FormLastChild = FormChildElements[FormChildElements.length - 1];
+                                const ResumeSectionLastChild = ResumeSectionChildElements[ResumeSectionChildElements.length - 1];
+                                FormLastChild.parentNode.removeChild(FormLastChild);
+                                ResumeSectionLastChild.parentNode.removeChild(ResumeSectionLastChild);
+                            }
+                        };
+
+                        static delFormAndTwoColumnsData = (FormID, ResumeSectionID, InnerDiv) => {
+                            const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
+                            const ResumeSectionChildCols = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
+                            if (FormChildElements.length > 1) {
+                                /*
+                                |--------------------------------------------------------------------------
+                                | This code is for 2 columns sections of a resume template
+                                | If the 2nd col have child HTML elements then we will remove its last child
+                                |--------------------------------------------------------------------------
+                                */
+                                if (ResumeSectionChildCols[1].children.length > 0) {
+                                    const SecondColLastChild = ResumeSectionChildCols[1].children[ResumeSectionChildCols[1].children.length - 1];
+                                    SecondColLastChild.parentNode.removeChild(SecondColLastChild);
+                                }
+                                /*
+                                |--------------------------------------------------------------------------
+                                | Otherwise 1st col's last child will be removed
+                                |--------------------------------------------------------------------------
+                                */
+                                else {
+                                    const FirstColLastChild = ResumeSectionChildCols[0].children[ResumeSectionChildCols[0].children.length - 1];
+                                    FirstColLastChild.parentNode.removeChild(FirstColLastChild);
+                                }
+                                const FormLastChild = FormChildElements[FormChildElements.length - 1];
+                                FormLastChild.parentNode.removeChild(FormLastChild);
+                            }
+                        };
+
+                        static hideShowContainer = (ContainerClass) => {
+                            let Container = document.querySelector(ContainerClass);
+                            (Container.classList.contains('d-none')) ? Container.classList.remove('d-none'): Container.classList.add('d-none');
+                        };
+                    }
+                </script>
             </div>
         </div>
     </div>
+
 </div>

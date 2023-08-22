@@ -67,6 +67,6 @@
         </div>
     </div>
     <div class="container-fluid px-5 p-3 footer-copy-right">
-        <p class="m-0 text-center text-white"> Copyright&copy;gracetechnoglogiespk </p>
+        <p class="m-0 text-center text-white"> Copyright©gracetechnoglogiespk </p>
     </div>
 </footer>
