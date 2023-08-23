@@ -45,7 +45,7 @@
                 <!-- If the user is not authenticated, you can display a Login or Register link -->
                 <li class="nav-item ">
                     <a class="nav-link my-account-custom-css" href="{{ route('login') }}">
-                        <span style=""> Sign up </span> </a>
+                        <span> Sign up </span> </a>
                 </li>
                 @endif
             </ul>
