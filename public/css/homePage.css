@@ -1,0 +1,737 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: Poppins;
+}
+
+/* hero-section */
+.hero-section {
+    /* background-color: rgba(255, 102, 0, 0.10); */
+    background-image: url('../web-images/Subtract.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.hero-section-column h2 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 3.751rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.hero-section-column p {
+    width: 85%;
+    color: #000;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.hero-section-column button {
+    width: 15.375rem;
+    height: 4.938rem;
+    margin: 50px 0px 0px 0px;
+    padding: 10px;
+    border: 2px solid #FF6600;
+    border-radius: 0.625rem;
+
+}
+
+.hero-section-column .lets-created {
+    padding-right: 2rem;
+    background-color: #FF6600;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.hero-section-column .go-premium {
+    background-color: Transparent;
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.hero-section-column .go-premium a {
+    color: #000;
+}
+
+.hero-section-column button a {
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* simple section */
+
+.simple-section p {
+    margin: 2% 0px 3% 0px;
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+
+}
+
+/* print ready design */
+.print-ready-section h2 b {
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 3.125rem;
+    font-style: normal;
+    font-weight: 700;
+    text-align: justify;
+    /* line-height: normal; */
+}
+
+.print-ready-section p {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: justify;
+    color: #000;
+    text-align: justify;
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.print-ready-section .print {
+    color: #F60;
+    font-family: Poppins;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.print-ready-section button {
+    font-family: 'Poppins';
+    margin: 10px;
+    width: 16rem;
+    height: 5rem;
+    flex-shrink: 0;
+    margin: 30px 0px 0px 0px;
+    padding: 10px;
+    border: 2px solid #FF6600;
+    border-radius: 10px;
+
+}
+
+.print-ready-section button a {
+    font-family: 'Poppins';
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* resume card  */
+.resume-card-section {
+    padding: 4rem;
+}
+
+.resume-card-section .card {
+    background-color: rgba(255, 102, 0, 0.10);
+    border-radius: 30px;
+}
+
+.resume-card-section .card .img-fluid {
+    border-radius: 4.5rem;
+}
+
+.btn-resume-section {
+    margin-top: 2%;
+    background-color: #FF6600;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 25px 0px 25px 0px;
+    border-radius: 0px 0px 30px 30px;
+}
+
+.btn-resume-section a {
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: #fff;
+}
+
+/* review setiojn */
+.review-section h2 b {
+    font-family: 'Poppins';
+    color: #F60;
+}
+
+.review-section p {
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: black;
+}
+
+/* section how-its-work */
+.how-its-work {
+
+    height: 51.875rem;
+    flex-shrink: 0;
+    background-color: rgba(255, 102, 0, 0.10);
+}
+
+.how-its-work .p1 {
+    color: #F60;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.how-its-work h2 {
+    word-spacing: -5px;
+    color: #000;
+    text-align: left;
+    font-family: Poppins;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.how-its-work .p2 {
+    color: #000;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 2rem;
+}
+
+.how-its-work img {
+    margin-top: 6rem;
+}
+
+.how-its-work .left-side {
+    margin-top: 5rem;
+}
+
+
+.how-its-work button {
+    font-family: 'Poppins';
+    margin: 10px;
+    width: 16rem;
+    height: 5rem;
+    flex-shrink: 0;
+    margin: 30px 0px 0px 0px;
+    padding: 10px;
+    border: 2px solid #FF6600;
+    border-radius: 10px;
+    background-color: #FF6600;
+    color: #fff;
+
+}
+
+.how-its-work button a {
+    font-family: 'Poppins';
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+/* port Folio section */
+.portfolio-section .card {
+    background-color: rgba(255, 102, 0, 0.10);
+    border-radius: 30px;
+}
+
+.portfolio-section .card .card1 img {
+    margin-top: -6rem;
+    background-color: none;
+    width: 12rem;
+    border-radius: 50%;
+    border: 3px solid #F60;
+}
+
+.portfolio-section .card .card1 h2 {
+    text-align: justify;
+    color: black;
+    font-size: 1.75rem;
+    font-family: 'Poppins';
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.portfolio-section .card .card1 p {
+    padding: 2rem;
+    text-align: justify;
+    font-size: 1.25rem;
+    font-family: 'Poppins';
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.para-start {
+    color: #F60;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+/* row responsive */
+.row1 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(1 * var(--bs-gutter-y));
+    margin-right: calc(0.5 * var(--bs-gutter-x));
+    margin-left: calc(0.5 * var(--bs-gutter-x));
+}
+
+/* responsive css homePage */
+@media only screen and (max-width:2560px) and (min-width:951px) {
+
+    /* navbar */
+    .navbar-brand {
+        margin-left: -6rem;
+    }
+
+    .navbar-nav {
+        margin-right: -9rem;
+    }
+
+    .custom-navbar-nav .nav-item .nav-link {
+        /* margin-right:-3rem; */
+        padding: 0rem 3.5rem 0rem 1rem;
+    }
+
+    /* hero section */
+    .hero-section {
+        width: 100%;
+        height: 45.75rem;
+
+    }
+
+    .hero-left-section {
+        padding-left: 10%;
+        padding-top: 5%;
+    }
+
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 60.008px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .hero-section img {
+        padding-left: 1%;
+    }
+}
+
+@media only screen and (max-width:1440px) and (min-width:951px) {
+
+    /* nav bar */
+    .navbar-brand {
+        margin-left: 0rem;
+    }
+
+    .navbar-nav {
+        margin-right: 0rem;
+    }
+
+    /* hero section */
+    .hero-left-section {
+        padding-left: 5%;
+        padding-top: 3%;
+    }
+
+    .hero-section img {
+        padding-right: 15%;
+        padding-top: 5%;
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 45.875rem;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+}
+
+
+@media only screen and (max-width:1024px) and (min-width:951px) {
+
+    /* navbar  */
+    .navbar-nav .nav-item .nav-link {
+        /* margin-right:-3rem; */
+        padding: 0rem 1.5rem 0rem 1rem;
+    }
+
+    /* resume section css */
+    .resume-card-section {
+        padding: 1rem;
+    }
+
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
+
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 50rem;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    /* port folio css */
+    /* .portfolio-section .card .card1 img {
+        margin-top: -4rem;
+        width: 10rem;
+        height: auto;
+    } */
+
+}
+
+@media only screen and (min-width:768px) and (max-width:951px) {
+
+    /* resume section */
+    .resume-card-section {
+        padding: 1rem;
+    }
+
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
+
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 50rem !important;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    .how-its-work h2 {
+        word-spacing: 5px;
+        color: #000;
+        font-family: Poppins;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+}
+
+@media only screen and (min-width:425px) and (max-width:951px) {
+
+    /* hero section */
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 2.751rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 85rem !important;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    /* resume section */
+    .resume-card-section {
+        padding: 1rem;
+    }
+
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
+
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+
+    }
+
+    /* how its work */
+    /* how it works */
+    .how-its-work {
+        height: 30rem;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    .how-its-work h2 {
+        word-spacing: 5px;
+        color: #000;
+        font-family: Poppins;
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    /* print ready section */
+    .print-ready-section .print {
+        color: #F60;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        word-spacing: 7px;
+    }
+
+    .print-ready-section h2 b {
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 700;
+        text-align: justify;
+        /* line-height: normal; */
+    }
+}
+
+@media only screen and (min-width:375px) and (max-width:951px) {
+
+    /* navbar */
+    .sign-up a {
+        width: 7rem !important;
+        height: 3rem !important;
+        border-radius: 0.625rem !important;
+        padding: 0.5rem 0rem 0.5rem 1rem !important;
+    }
+
+    /* hero section */
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins !important;
+        font-size: 2.751rem !important;
+        font-style: normal !important;
+        font-weight: 700 !important;
+        line-height: normal !important;
+    }
+
+    /* simple section */
+    .simple-section p {
+        margin: 2% 0px 3% 0px;
+        padding: 0rem 0.7rem 0rem 0.7rem;
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 500;
+
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 85rem !important;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    .how-its-work h2 {
+        word-spacing: 5px;
+        color: #000;
+        font-family: Poppins;
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    /* print ready section */
+    .print-ready-section .print {
+        color: #F60;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        word-spacing: 7px;
+    }
+
+    .print-ready-section h2 b {
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 700;
+        text-align: justify;
+        /* line-height: normal; */
+    }
+
+    /* users reviews */
+    .review-section h2 b {
+        font-family: 'Poppins';
+        padding: 6px;
+        color: #F60;
+    }
+
+    /* resume section */
+    .resume-card-section {
+        padding: 1rem;
+    }
+
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
+
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:951px) {
+
+    /* hero section */
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 2.751rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    /* resume section */
+    .resume-card-section {
+        padding: 0.5rem;
+    }
+
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
+
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+
+    }
+
+    /* how it works */
+    .how-its-work {
+        height: 85rem !important;
+        flex-shrink: 0;
+        background-color: rgba(255, 102, 0, 0.10);
+    }
+
+    .how-its-work h2 {
+        word-spacing: 5px;
+        color: #000;
+        font-family: Poppins;
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+  
+    .how-its-work .text-left {
+        padding: 0.20rem;
+        word-wrap: break-word;
+    }
+
+    /* print ready file */
+    .print-ready-section h2 b {
+        color: #000;
+        font-family: 'Poppins';
+        font-size: 2.751rem !important;
+        font-style: normal;
+        font-weight: 700;
+        text-align: justify;
+    }
+
+    .print-ready-section .responsive-print-ready-section {
+        padding: 0.30rem;
+        word-wrap: break-word;
+        line-height: 1.5em;
+    }
+
+    .print-ready-section img {
+        float: none;
+    }
+
+    .print-ready-section .print {
+        color: #F60;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        word-spacing: -3px;
+    }
+
+    /* users reviews  */
+    .review-section h2 b {
+        font-family: 'Poppins';
+        padding: 5px;
+        color: #F60;
+    }
+
+    /* port folio section */
+    .portfolio-section .card {
+        margin-top: -1rem !important;
+    }
+
+    .portfolio-section .card .card1 img {
+        margin-top: -4rem;
+        width: 8rem;
+        height: auto;
+    }
+
+    .portfolio-section .card .card1 p {
+        padding: 0.20rem;
+        font-size: 1rem;
+        word-wrap: break-word;
+        line-height: 1.5;
+    }
+  
+  /* row responsive */
+  .row1 {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: calc(1 * var(--bs-gutter-y));
+      margin-right: calc(0.5 * var(--bs-gutter-x));
+      margin-left: calc(0.5 * var(--bs-gutter-x));
+  }
+  
+}

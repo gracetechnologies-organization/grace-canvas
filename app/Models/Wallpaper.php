@@ -46,6 +46,11 @@ class Wallpaper extends Model
         ]);
     }
 
+    public static function insertBulkWallpapers(array $Data)
+    {
+        return Wallpaper::insert($Data);
+    }
+
     public static function updateWallpaper(int $ID, string $FrontImage = null, int $Type = null, int $CatID = null)
     {
         $Wallpaper = Wallpaper::findOrFail($ID);

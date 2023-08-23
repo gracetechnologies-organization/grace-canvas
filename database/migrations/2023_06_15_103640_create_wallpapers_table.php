@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('wallpapers', function (Blueprint $table) {
             $table->id();
             $table->text('front_image');
+            $table->text('thumbnail')->nullable();
+            $table->tinyInteger('type')->default(1)->index()->comment('1: wallpaper, 2: preview');
             $table->foreignId('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletesTz();
