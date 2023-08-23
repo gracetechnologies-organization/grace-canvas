@@ -168,8 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
-        App\Providers\JetstreamServiceProvider::class,
+        // App\Providers\FortifyServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -185,7 +184,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'Fortify' => Laravel\Fortify\FortifyFacade::class,
+        // 'Fortify' => Laravel\Fortify\FortifyFacade::class,
     ])->toArray(),
 
 ];
