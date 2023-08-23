@@ -21,7 +21,7 @@
 <!-- simple resume template -->
 <section class="mt-5 text-center simple-section">
     <h2>
-        <b>
+        <b class="standard-heading-css">
             Resume Templates
         </b>
     </h2>
@@ -88,7 +88,7 @@
 <!-- User’s Review section -->
 <section class="mt-5 text-center review-section">
     <h2>
-        <b>
+        <b class="standard-heading-css">
             Our User’s Reviews About Our Templates
         </b>
     </h2>
