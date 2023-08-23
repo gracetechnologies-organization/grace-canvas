@@ -49,7 +49,7 @@ return [
     'ARRAYS_NOT_EQUAL' => 'Thumbnails & FrontImages should be equal in number.',
     'TYPE_NA' => 'The "Type" which you have entered is not available in our system',
     'EXPERIENCES_LIMIT_REACHED' => 'You can only add 2 experiences',
-    'QUALIFICATIONS_LIMIT_REACHED' => 'You can only add 2 qualifications',
+    'EDUCATIONS_LIMIT_REACHED' => 'You can only add 2 qualifications',
     'SKILLS_LIMIT_REACHED' => 'You can only add 4 skills',
     'ACHIEVEMENTS_LIMIT_REACHED' => 'You can only add 4 achievements',
     'PROJECTS_LIMIT_REACHED' => 'You can only add 4 projects',

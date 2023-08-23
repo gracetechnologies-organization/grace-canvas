@@ -21,10 +21,6 @@ Route::prefix('edit')->group(function () {
     Route::get('resume/{ID}', CreateResumeForm::class)->name('edit.resume.form');
 });
 
-Route::get('smart-resume-maker/terms-of-services', function () {
-    return view('terms_of_services.smart-resume-maker-terms-of-use');
-});
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -39,4 +35,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require_once __DIR__ . '/terms-of-services.php';
+require_once __DIR__.'/auth.php';

@@ -297,6 +297,17 @@ body {
 }
 
 
+/* row responsive */
+.row1 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(1 * var(--bs-gutter-y));
+    margin-right: calc(0.5 * var(--bs-gutter-x));
+    margin-left: calc(0.5 * var(--bs-gutter-x));
+}
+
 /* responsive css homePage */
 @media only screen and (max-width:2560px) and (min-width:951px) {
 
@@ -636,7 +647,6 @@ body {
     }
 
     /* how it works */
-    /* how it works */
     .how-its-work {
         height: 85rem !important;
         flex-shrink: 0;
@@ -652,7 +662,7 @@ body {
         font-weight: 600;
         margin-bottom: 1.5rem;
     }
-
+  
     .how-its-work .text-left {
         padding: 0.20rem;
         word-wrap: break-word;
@@ -673,7 +683,6 @@ body {
         word-wrap: break-word;
         line-height: 1.5em;
     }
-
 
     .print-ready-section img {
         float: none;
@@ -713,16 +722,16 @@ body {
         word-wrap: break-word;
         line-height: 1.5;
     }
-
-}
-
-/* row responsive */
-.row1 {
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: calc(1 * var(--bs-gutter-y));
-    margin-right: calc(0.5 * var(--bs-gutter-x));
-    margin-left: calc(0.5 * var(--bs-gutter-x));
+  
+  /* row responsive */
+  .row1 {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: calc(1 * var(--bs-gutter-y));
+      margin-right: calc(0.5 * var(--bs-gutter-x));
+      margin-left: calc(0.5 * var(--bs-gutter-x));
+  }
+  
 }
