@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light " id="navbarManu">
-    <div class="container ">
-        <a class="navbar-brand text-light" href="/">Logo Here</a>
+    <div class="container pb-3">
+        <a class="navbar-brand text-light" href="{{route('home')}}">Logo Here</a>
         <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbar-supported-content" aria-controls="navbar-supported-content" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -9,20 +9,21 @@
         <div class="collapse navbar-collapse text-light" id="navbar-supported-content">
             <ul class="navbar-nav ms-auto mt-4 custom-navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{route('home')}}">Home</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Templates</a>
+                    <a class="nav-link" href="{{route('templates.resume')}}">Resume Templates</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#">More Services</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <!-- Check if the user is authenticated  -->
-                    @if(Auth::check())
-                        <!-- If the user is authenticated, display the Logout button  -->
+                </li> --}}
+
+                <!-- Check if the user is authenticated  -->
+                @if(Auth::check())
+                <!-- If the user is authenticated, display the My Account button  -->
                 <li class="nav-item custom-dropdown ">
                     <a class="nav-link my-account-custom-css" href="#" style="">
                         <span> My Account </span> </a>

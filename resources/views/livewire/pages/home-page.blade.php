@@ -57,7 +57,7 @@
                 <p class="p1">How it works</p>
                 <h2> Select A Template & Fill Your Information </h2>
                 <p class="text-left p2">Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum commodo tempor vestibulum sed erat mollis.</p>
-                <button ><a href=""> Let's Create </a></button><br><br>
+                <button class="custom-button-css"><a href=""> Let's Create </a></button><br><br>
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
                     vel risus adipiscing quisque
                     vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
                     commodo tempor vestibulum sed erat mollis.</p>
-                <button style="background-color: #FF6600;color: #fff;"><a href=""> Let's Create </a></button><br><br>
+                <button class="custom-button-css"><a href=""> Let's Create </a></button><br><br>
             </div>
             <div class="col-12 col-md-6 col-sm-3 mt-5">
                 <img src="{{ asset('web-images/Group43.svg') }}" class="img-fluid w-90 " alt="" style="float:right">
@@ -100,7 +100,7 @@
 <section class="mt-5">
     <div class="container-fluid">
       <div class="row portfolio-section row1">
-            @for ($i = 0 ; $i < 3 ; $i++) 
+            @for ($i = 0 ; $i < 3 ; $i++)
             <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:6rem">
                 <div class="card">
                     <div class="card1">
