@@ -75,16 +75,6 @@ body {
 }
 
 /* simple section */
-.simple-section h2 b {
-    color: #F60;
-    text-align: justify;
-    font-family: 'Poppins';
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 600;
-    /* line-height: normal; */
-
-}
 
 .simple-section p {
     margin: 2% 0px 3% 0px;
