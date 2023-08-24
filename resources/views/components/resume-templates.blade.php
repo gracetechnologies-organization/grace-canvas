@@ -39,6 +39,6 @@
     </div>
 </section>
 <div class="custom-pagenator-page d-flex justify-content-center">
-    {{$Resumes->links('vendor.livewire.simple-bootstrap') }}
+    {{$Resumes->links() }}
 </div>
 </div>

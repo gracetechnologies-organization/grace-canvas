@@ -12,7 +12,7 @@ class ResumeTemplates extends Component
 
     public function render()
     {
-        $Resumes = Resume::getResumes()->paginate(10);
+        $Resumes = Resume::getResumes()->paginate(12);
         return view('livewire.pages.resume-templates',compact('Resumes'));
     }
 }
