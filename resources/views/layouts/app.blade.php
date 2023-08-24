@@ -3,6 +3,7 @@
 
 <head>
     @include('components.header-link')
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
