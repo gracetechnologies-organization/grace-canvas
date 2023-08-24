@@ -12613,40 +12613,40 @@ fieldset:disabled .btn {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .standard-bg-color {
-  background-color: #FF6600 !important;
+    background-color: #FF6600 !important;
 }
 
 .standard-txt-color {
-  color: #FF6600 !important;
+    color: #FF6600 !important;
 }
 
 .standard-border-color {
-  border-color: #FF6600 !important;
+    border-color: #FF6600 !important;
 }
 
 body {
-  box-sizing: border-box;
-  font-family: 'Poppins';
+    box-sizing: border-box;
+    font-family: 'Poppins';
 }
 
 /* navbar css */
 .navbar-brand {
-  color: #FFF;
-  font-family: Poppins;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 #navbarManu {
-  background-color: #FF6600;
+    background-color: #FF6600;
 }
 
 .nav-link {
-  color: #fff;
-  font-style: normal;
-  font-size: 20px;
+    color: #fff;
+    font-style: normal;
+    font-size: 20px;
 }
 
 .my-account-custom-css span {
@@ -12719,24 +12719,6 @@ body {
     color: blue;
 }
 
-/* register css */
-.form-container {
-    width: 50%;
-    margin: auto;
-    margin-top: 200px;
-    margin-bottom: 200px;
-}
-
-.standard-heading-css {
-    color: #F60;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
 .feature {
     display: inline-flex;
     align-items: center;
@@ -12747,7 +12729,7 @@ body {
 }
 
 .templates-container {
-height: auto;
+    height: auto;
 }
 
 .templates-container div .select-btn {
@@ -12776,23 +12758,23 @@ height: auto;
 }
 
 .fixed-btn-container {
-  position: fixed;
-  top: 50%;
-  right: -1px;
-  transform: translateY(-50%);
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px 0px 0px 10px;
-  width: 60px;
-  overflow: hidden;
-  z-index: 1;
+    position: fixed;
+    top: 50%;
+    right: -1px;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px 0px 0px 10px;
+    width: 60px;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .fixed-btn {
-  background-color: #ffffff;
-  border: none;
-  padding: 10px 15px 10px 15px;
-  cursor: pointer;
+    background-color: #ffffff;
+    border: none;
+    padding: 10px 15px 10px 15px;
+    cursor: pointer;
 }
 
 .toast-custom-width {
@@ -12901,116 +12883,70 @@ height: auto;
 
 /* To render all the CSS colors in the print preview */
 @media print {
-  html {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
+    html {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
 }
+
 /* ----------------General media queries---------------- */
 
 /* responsive css homePage */
 @media only screen and (max-width:2560px) and (min-width:951px) {
 
-  /* navbar */
-  .navbar-brand {
-    margin-left: -6rem;
-  }
+    /* navbar */
+    .navbar-brand {
+        margin-left: -6rem;
+    }
 
-   .navbar-nav {
-    margin-right: -9rem;
-  }
+    .navbar-nav {
+        margin-right: -9rem;
+    }
 
     .navbar-nav .nav-item .nav-link {
         /* margin-right:-3rem; */
         padding: 0rem 3.5rem 0rem 1rem;
     }
-  
-    /*  register css */
-    .custom-login-signup-css {
-        background-color: #FF6600;
-        float: right;
-        color: #fff;
-        width: 8.125rem;
-        height: 3rem;
-        border: none;
-        border-radius: 0.625rem;
-        padding: 0.525rem 1rem 0.525rem 1rem;
-        margin-top: -2.5rem;
-        margin-left: 1rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1.30rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
-  
+
     /* hero section */
     .hero-section {
         width: 100%;
         height: 45.75rem;
-  }
+    }
 
-  .hero-left-section {
-    padding-left: 10%;
-    padding-top: 5%;
-  }
+    .hero-left-section {
+        padding-left: 10%;
+        padding-top: 5%;
+    }
 
-  .hero-section-column h2 {
-    color: #000;
-    font-family: Poppins;
-    font-size: 60.008px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+    .hero-section-column h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 60.008px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
 
-  .hero-section img {
-    padding-left: 1%;
-  }
+    .hero-section img {
+        padding-left: 1%;
+    }
 
-  /* footer */
-  .footers-section .navbar-nav .nav-item .nav-link {
-    padding-left: -1rem
-  }
+    /* footer */
+    .footers-section .navbar-nav .nav-item .nav-link {
+        padding-left: -1rem
+    }
 }
 
 @media only screen and (max-width:1440px) and (min-width:951px) {
 
-  /* nav bar */
-  .navbar-brand {
-    margin-left: 0rem;
-  }
-
-  .navbar-nav {
-    margin-right: 0rem;
-  }
-  
-   /* register css */
-    .standard-heading-css {
-        color: #F60;
-        text-align: justify;
-        font-family: Poppins;
-        font-size: 2.5rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
+    /* nav bar */
+    .navbar-brand {
+        margin-left: 0rem;
     }
-    .custom-login-signup-css {
-        background-color: #FF6600;
-        float: right;
-        color: #fff;
-        width: 8.125rem;
-        height: 3rem;
-        border: none;
-        border-radius: 0.625rem;
-        padding: 0.525rem 1rem 0.525rem 1rem;
-        margin-top: -2.5rem;
-        margin-left: 1rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1.30rem;
-        font-weight: 500;
-        font-family: Poppins;
+
+    .navbar-nav {
+        margin-right: 0rem;
     }
 
     /* hero section */
@@ -13019,48 +12955,30 @@ height: auto;
         padding-top: 3%;
     }
 
-  .hero-section img {
-    padding-right: 15%;
-    padding-top: 5%;
-  }
+    .hero-section img {
+        padding-right: 15%;
+        padding-top: 5%;
+    }
 
-  /* footers responsive */
-  .footers-section .p1 {
-    text-align: justify;
-    margin-left: 0rem !important;
-  }
+    /* footers responsive */
+    .footers-section .p1 {
+        text-align: justify;
+        margin-left: 0rem !important;
+    }
 
-  /* social media icons */
-  .fa-facebook {
-    background: #3B5998;
-    margin-left: 9rem !important;
-  }
+    /* social media icons */
+    .fa-facebook {
+        background: #3B5998;
+        margin-left: 9rem !important;
+    }
 }
 
 @media only screen and (max-width:1024px) and (min-width:951px) {
 
-/* navbar  */
+    /* navbar  */
     .navbar-nav .nav-item .nav-link {
         /* margin-right:-3rem; */
         padding: 0rem 1.5rem 0rem 1rem;
-    }
-  
-    /* register css */
-    .form-container {
-        width: 80%;
-        margin: auto;
-        margin-top: 200px;
-        margin-bottom: 200px;
-    }
-
-    .standard-heading-css {
-        color: #F60;
-        text-align: justify;
-        font-family: Poppins;
-        font-size: 2rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
     }
 
     /* resume section */
@@ -13072,16 +12990,16 @@ height: auto;
         border-radius: 2rem !important;
     }
 
-  /* resume section */
-  .resume-card-section {
-    padding: 1rem;
-  }
+    /* resume section */
+    .resume-card-section {
+        padding: 1rem;
+    }
 
-  .resume-card-section .card .img-fluid {
-    border-radius: 2rem !important;
-  }
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
 
- /* footers section */
+    /* footers section */
     .footers-section .navbar-nav .nav-item .nav-link {
         padding-bottom: 0.4rem;
         padding-left: 0rem;
@@ -13097,7 +13015,7 @@ height: auto;
 
 @media only screen and (min-width:768px) and (max-width:951px) {
 
- /* navbar css */
+    /* navbar css */
     .dropdown-content {
         border-radius: 0px 0px 15px 15px;
         display: none;
@@ -13110,17 +13028,6 @@ height: auto;
         /* z-index: 1; */
     }
 
-    /* register css */
-    .standard-heading-css {
-        color: #F60;
-        text-align: justify;
-        font-family: Poppins;
-        font-size: 2rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-    }
-
     /* resume section */
     .resume-card-section {
         padding: 1rem;
@@ -13130,44 +13037,44 @@ height: auto;
         border-radius: 2rem !important;
     }
 
-  .resume-card-section .card .img-fluid {
-    border-radius: 2rem !important;
-  }
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
 
-  .resume-card-section .card .p-5 {
-    padding: 1rem !important;
-  }
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+    }
 
-   /* social media icons */
+    /* social media icons */
     .bxl-facebook {
         background: #3B5998;
         margin-left: 4rem !important;
     }
 
-   /* footer responsive */
-  .footers-section .p1 {
-    text-align: justify;
-    margin-left: 0rem !important;
-  }
-  
-  .footer-section .learn-more {
-    padding-left: 0rem;
-  }
+    /* footer responsive */
+    .footers-section .p1 {
+        text-align: justify;
+        margin-left: 0rem !important;
+    }
 
-  .footer-section .other {
-    padding-left: 0rem;
-  }
+    .footer-section .learn-more {
+        padding-left: 0rem;
+    }
 
-  .footers-section .navbar-nav .nav-item .nav-link {
-    padding-bottom: 0rem;
-    padding-left: 0rem;
-  }
+    .footer-section .other {
+        padding-left: 0rem;
+    }
+
+    .footers-section .navbar-nav .nav-item .nav-link {
+        padding-bottom: 0rem;
+        padding-left: 0rem;
+    }
 
 }
 
 @media only screen and (min-width:425px) and (max-width:951px) {
 
-/* navbar css */
+    /* navbar css */
     .dropdown-content {
         border-radius: 0px 0px 15px 15px;
         display: none;
@@ -13180,50 +13087,6 @@ height: auto;
         /* z-index: 1; */
     }
 
-    /* register css */
-    .form-container {
-        width: 80%;
-        margin: auto;
-        margin-top: 100px;
-        margin-bottom: 100px;
-    }
-    .standard-heading-css {
-        color: #F60;
-        text-align: justify;
-        font-family: Poppins;
-        font-size: 1.5rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-    }
-    .custom-login-signup-css {
-
-        background-color: #FF6600;
-        float: right;
-        color: #fff;
-        width: 5.125rem;
-        height: 2.438rem;
-        border: none;
-        border-radius: 0.625rem;
-        padding: 0.325rem 1rem 0.625rem 1rem;
-        margin-top: -2rem;
-        margin-left: 1rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
-    .custom-login-signup-css a{
-        margin-left: -0.5rem;
-        padding: 0rem 1rem 0rem 0rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
-
     /* resume section */
     .resume-card-section {
         padding: 1rem;
@@ -13233,21 +13096,21 @@ height: auto;
         border-radius: 2rem !important;
     }
 
-  .resume-card-section .card .img-fluid {
-    border-radius: 2rem !important;
-  }
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
 
-  .resume-card-section .card .p-5 {
-    padding: 1rem !important;
-  }
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+    }
 
-  /* footer responsive */
-  .footers-section .p1 {
-    text-align: justify;
-    margin-left: 0rem !important;
-  }
+    /* footer responsive */
+    .footers-section .p1 {
+        text-align: justify;
+        margin-left: 0rem !important;
+    }
 
-/* social media icons */
+    /* social media icons */
     .bxl-facebook {
         background: #3B5998;
         margin-left: 5rem !important;
@@ -13264,6 +13127,7 @@ height: auto;
 }
 
 @media only screen and (min-width:375px) and (max-width:951px) {
+
     /* navbar */
     .sign-up a {
         width: 7rem !important;
@@ -13285,59 +13149,6 @@ height: auto;
         /* z-index: 1; */
     }
 
-    /* register css */
-    .form-container {
-        width: 85%;
-        margin: auto;
-        margin-top: 100px;
-        margin-bottom: 100px;
-    }
-
-    .standard-heading-css {
-        color: #F60;
-        text-align: justify;
-        font-family: Poppins;
-        font-size: 1.5rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-    }
-    .custom-login-signup-css {
-
-        background-color: #FF6600;
-        float: right;
-        color: #fff;
-        width: 5.125rem;
-        height: 2.438rem;
-        border: none;
-        border-radius: 0.625rem;
-        padding: 0.325rem 1rem 0.625rem 1rem;
-        margin-top: -2.2rem;
-        margin-left: 0.2rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
-    .custom-login-signup-css a{
-        margin-left: -0.5rem;
-        padding: 0rem 1rem 0rem 0rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
-    .custom-login-signup-css span{
-        margin-left: -0.5rem;
-        padding: 0rem 1rem 0rem 0rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
     /* simple section */
     .simple-section p {
         margin: 2% 0px 3% 0px;
@@ -13384,10 +13195,10 @@ height: auto;
         line-height: normal;
         color: #000;
     }
-}
 
-  /* simple section */
-  .simple-section p {
+
+/* simple section */
+.simple-section p {
     margin: 2% 0px 3% 0px;
     padding: 0rem 0.7rem 0rem 0.7rem;
     color: #000;
@@ -13395,114 +13206,117 @@ height: auto;
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
-  }
+}
 
-    /* navbar css */
-    .dropdown-content {
-        border-radius: 0px 0px 15px 15px;
-        display: none;
-        margin: 0rem 0rem 0rem 0rem;
-        position: absolute;
-        background-color: #F9F9F9;
-        min-width: 180px;
-        /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
-        padding: 20px 10px 10px 27px;
-        /* z-index: 1; */
-    }
+/* navbar css */
+.dropdown-content {
+    border-radius: 0px 0px 15px 15px;
+    display: none;
+    margin: 0rem 0rem 0rem 0rem;
+    position: absolute;
+    background-color: #F9F9F9;
+    min-width: 180px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    padding: 20px 10px 10px 27px;
+    /* z-index: 1; */
+}
 
-    /* register css */
-    .form-container {
-        width: 90%;
-        margin: auto;
-        margin-top: 100px;
-        margin-bottom: 100px;
-    }
+/* register css */
+.form-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
 
-    .standard-heading-css {
-        color: #F60;
-        text-align: justify;
-        font-family: Poppins;
-        font-size: 1.5rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-    }
-    .custom-login-signup-css {
+.standard-heading-css {
+    color: #F60;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
 
-        background-color: #FF6600;
-        float: right;
-        color: #fff;
-        width: 5.125rem;
-        height: 2.438rem;
-        border: none;
-        border-radius: 0.625rem;
-        padding: 0.325rem 1rem 0.625rem 1rem;
-        /* margin-top: -2.rem; */
-        margin-left: 0.2rem;
-        margin-top: 0.5rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
-    .custom-login-signup-css a{
-        margin-left: -0.5rem;
-        padding: 0rem 1rem 0rem 0rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
-    .custom-login-signup-css span{
-        margin-left: -0.5rem;
-        padding: 0rem 1rem 0rem 0rem;
-        line-height: normal;
-        font-style: normal;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: Poppins;
-    }
+.custom-login-signup-css {
 
+    background-color: #FF6600;
+    float: right;
+    color: #fff;
+    width: 5.125rem;
+    height: 2.438rem;
+    border: none;
+    border-radius: 0.625rem;
+    padding: 0.325rem 1rem 0.625rem 1rem;
+    /* margin-top: -2.rem; */
+    margin-left: 0.2rem;
+    margin-top: 0.5rem;
+    line-height: normal;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: Poppins;
+}
+
+.custom-login-signup-css a {
+    margin-left: -0.5rem;
+    padding: 0rem 1rem 0rem 0rem;
+    line-height: normal;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: Poppins;
+}
+
+.custom-login-signup-css span {
+    margin-left: -0.5rem;
+    padding: 0rem 1rem 0rem 0rem;
+    line-height: normal;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: Poppins;
+}
+
+/* resume section */
+.resume-card-section {
+    padding: 0.5rem;
+}
+
+.resume-card-section .card .img-fluid {
+    border-radius: 2rem !important;
+}
+
+.resume-card-section .card .p-5 {
+    padding: 1rem !important;
+}
+
+/* footer responsive */
+.footers-section .p1 {
+    text-align: justify;
+    margin-left: 0rem !important;
+}
+
+/* social media icons */
+.fa-facebook {
+    background: #3B5998;
+    margin-left: 4.5rem !important;
+}
+}
+
+@media only screen and (min-width:320px) and (max-width:951px) {
+   
     /* resume section */
     .resume-card-section {
         padding: 0.5rem;
     }
 
-  .resume-card-section .card .img-fluid {
-    border-radius: 2rem !important;
-  }
+    .resume-card-section .card .img-fluid {
+        border-radius: 2rem !important;
+    }
 
-  .resume-card-section .card .p-5 {
-    padding: 1rem !important;
-  }
-
-  /* footer responsive */
-  .footers-section .p1 {
-    text-align: justify;
-    margin-left: 0rem !important;
-  }
-
-  /* social media icons */
-  .fa-facebook {
-    background: #3B5998;
-    margin-left: 4.5rem !important;
-  }
-}
-
-@media only screen and (min-width:320px) and (max-width:951px) {
-
-  /* resume section */
-  .resume-card-section {
-    padding: 0.5rem;
-  }
-
-  .resume-card-section .card .img-fluid {
-    border-radius: 2rem !important;
-  }
-
- /* port folio section */
+    /* port folio section */
     .portfolio-section .card {
         margin-top: -3rem;
     }
@@ -13519,27 +13333,27 @@ height: auto;
         word-wrap: break-word;
         line-height: 1.5;
     }
-  
-  .resume-card-section .card .p-5 {
-    padding: 1rem !important;
-  }
+
+    .resume-card-section .card .p-5 {
+        padding: 1rem !important;
+    }
 
     /* how it's work */
-  .how-its-work .text-left {
-    padding: 0.20rem;
-    word-wrap: break-word;
-  }
+    .how-its-work .text-left {
+        padding: 0.20rem;
+        word-wrap: break-word;
+    }
 
-  /* print ready file */
-  .print-ready-section .responsive-print-ready-section {
-    padding: 0.30rem;
-    word-wrap: break-word;
-    line-height: 1.5em;
-  }
+    /* print ready file */
+    .print-ready-section .responsive-print-ready-section {
+        padding: 0.30rem;
+        word-wrap: break-word;
+        line-height: 1.5em;
+    }
 
-  .print-ready-section img {
-    float: none;
-  }
+    .print-ready-section img {
+        float: none;
+    }
 
     /* social media icons */
     .bxl-facebook {
@@ -13557,6 +13371,7 @@ height: auto;
         margin-left: -1rem;
     }
 
+}
 
 /* To render all the CSS colors in the print preview */
 @media print {
@@ -13573,7 +13388,7 @@ height: auto;
 }
 
 @media only screen and (max-width: 1024px) {
- .contianer-customs {
+    .contianer-customs {
         overflow: scroll;
     }
 }

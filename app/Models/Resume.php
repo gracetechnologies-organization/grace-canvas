@@ -27,6 +27,10 @@ class Resume extends Model
     | Helpers
     |--------------------------------------------------------------------------
     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class ,'cat_id');
+    }
     public static function getLastInsertedID()
     {
         return Resume::orderByDesc('id')->first()->id ?? 0;
@@ -61,6 +65,6 @@ class Resume extends Model
 
     public static function getResumes()
     {
-        return Resume::paginate(10);
+        return Resume::with('category');
     }
 }

@@ -10,12 +10,12 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('storage/icons/canvas_icon.webp') }}" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
     <!-- Core theme CSS (includes Bootstrap v5.2.3)-->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
-    <!-- remove this comment in next comment -->
+    <link href="{{ asset('css/loginSignUp.css') }}" rel="stylesheet" />
+    @if (Route::current()->uri == '/') <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" /> @endif
+    @if (Route::current()->uri == 'templates/resume')<link href="{{ asset('css/homePage.css') }}" rel="stylesheet" /> <link href="{{ asset('css/resumeTempletes.css') }}" rel="stylesheet" /> @endif
     <!-- Boxicons -->
     <link href="{{ asset('fonts/boxicons.css') }}" rel="stylesheet">
     <!-- Fonts -->
