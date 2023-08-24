@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 .custom-margin-css{
     margin-top: -5rem;
     margin-bottom:5rem;
@@ -8,7 +8,13 @@
     margin: 20px auto;
     text-align: center;
 }
-
+.frame a{
+    text-decoration: none;
+    color: #fff;
+}
+.frame .resumes:hover{
+    color: red;
+}
 button {
     margin: 1.25rem;
 }

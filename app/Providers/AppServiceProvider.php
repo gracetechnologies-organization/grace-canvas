@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,5 +41,7 @@ class AppServiceProvider extends ServiceProvider
         Response::macro('macroView', function (string $View, int $HttpCode = 500, array $ContentType) {
             return Response::make($View, $HttpCode, $ContentType);
         });
+
+        // Paginator::useBootstrap();
     }
 }
