@@ -8,7 +8,6 @@
 
 <body class="font-sans antialiased">
     {{-- <x-banner /> --}}
-    @include('components.section-border')
     @include('components.navbar')
 
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
