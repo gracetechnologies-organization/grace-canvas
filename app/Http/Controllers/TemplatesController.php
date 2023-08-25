@@ -17,7 +17,7 @@ class TemplatesController extends Controller
 {
     public function index()
     {
-        // 
+        //
     }
 
     public function create()
@@ -224,9 +224,9 @@ class TemplatesController extends Controller
     public function storeResume(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
-            'FrontImage' => 'required|mimes:png,jpg|max:500',
-            'FrontSvg' => 'required|mimes:svg',
-            'Version' => 'required|integer'
+            'FrontImage' => 'required|mimes:webp|max:500',
+            'Version' => 'required|integer',
+            'CatID' => 'required|integer'
         ]);
         if ($Validator->fails()) {
             return response()->macroJson(
@@ -238,9 +238,9 @@ class TemplatesController extends Controller
         }
         $LastInsertedId =  Resume::getLastInsertedID();
         $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-        $FrontImage = CustomHelpers::getImgNameWithID($Req->FrontImage, $LastInsertedId);
-        $FrontSvg = CustomHelpers::getViewPathWithID($Req->FrontSvg, $Req->Type, $LastInsertedId);
-        $Inserted = Resume::insertResume($FrontImage, $FrontSvg, $Req->Version);
+        $FrontImage = CustomHelpers::getResumeImgNameWithID($Req->FrontImage, $LastInsertedId);
+        $FrontSvg = CustomHelpers::getViewPathWithID($Req->HtmlFile, $Req->Type, $LastInsertedId);
+        $Inserted = Resume::insertResume($FrontImage, $Req->Version,$Req->CatID);
         if ($Inserted) {
             return response()->macroJson(
                 [],
@@ -259,7 +259,7 @@ class TemplatesController extends Controller
 
     public function show()
     {
-        // 
+        //
     }
 
     public function showBusinessCards()

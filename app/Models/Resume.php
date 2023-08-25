@@ -12,16 +12,18 @@ class Resume extends Model
 
     protected $fillable = [
         'front_image',
-        'front_svg',
-        'version'
+        'version',
+        'cat_id'
     ];
-
     /*
     |--------------------------------------------------------------------------
     | Relations
     |--------------------------------------------------------------------------
     */
-
+    public function category()
+    {
+        return $this->belongsTo(Category::class ,'cat_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | Helpers
@@ -32,12 +34,12 @@ class Resume extends Model
         return Resume::orderByDesc('id')->first()->id ?? 0;
     }
 
-    public static function insertResume(string $FrontImage, string $FrontSvg, int $Version)
+    public static function insertResume(string $FrontImage, int $Version , int $CatID)
     {
         return Resume::create([
             'front_image' => $FrontImage,
-            'front_svg' => $FrontSvg,
-            'version' => $Version
+            'version' => $Version,
+            'cat_id' => $CatID ,
         ]);
     }
 
@@ -61,6 +63,6 @@ class Resume extends Model
 
     public static function getResumes()
     {
-        return Resume::paginate(10);
+        return Resume::with('category');
     }
 }

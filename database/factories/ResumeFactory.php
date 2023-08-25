@@ -1,7 +1,8 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\Category;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,9 @@ class ResumeFactory extends Factory
     public function definition(): array
     {
         return [
-            'front_image' => $this->faker->unique()->word() . '.jpg',
-            'front_svg' => '1/1_',
-            'version' => 0
+            'front_image' => '1-B-01.webp',
+            'version' => 0,
+            'cat_id' => Category::inRandomOrder()->first()->id,
         ];
     }
 }

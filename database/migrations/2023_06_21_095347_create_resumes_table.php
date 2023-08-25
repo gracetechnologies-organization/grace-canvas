@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
             $table->text('front_image');
-            $table->text('front_svg');
             $table->tinyInteger('version')->comment('0: free, 1: premium');
+            $table->foreignId('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletesTz();
         });
