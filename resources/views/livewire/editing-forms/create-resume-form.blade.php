@@ -54,21 +54,21 @@
                         <style>
                             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
                             @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-        
+
                             .right-col {
                                 background: #2D2D2D;
                                 width: 230px;
                                 height: 1040px;
                                 margin-left: 22.5px;
                             }
-        
+
                             .left-col {
                                 background: white;
                                 width: 465px;
                                 height: 1040px;
                                 padding: 0px;
                             }
-        
+
                             .image-div {
                                 background-color: grey;
                                 margin-top: 20px;
@@ -76,7 +76,7 @@
                                 width: 215px;
                                 height: 206px;
                             }
-        
+
                             .resume-photo {
                                 border-radius: 50%;
                                 background-color: #FFF;
@@ -87,7 +87,7 @@
                                 position: relative;
                                 top: 7.5px;
                             }
-        
+
                             .left-inner {
                                 background-color: #333333;
                                 width: 160px;
@@ -97,7 +97,7 @@
                                 margin-top: 30px;
                                 border-radius: 5px;
                             }
-        
+
                             .personal-info-container {
                                 position: relative;
                                 top: 90px;
@@ -105,7 +105,7 @@
                                 width: 150px;
                                 padding-top: 10px;
                             }
-        
+
                             .personal-info-container h2 {
                                 color: #FFF;
                                 background-color: #F40000;
@@ -125,7 +125,7 @@
                                 padding-top: 13.5px;
                                 padding-left: 4px;
                             }
-        
+
                             .right-col-divider {
                                 background-color: #1F1E68;
                                 width: 423px;
@@ -134,12 +134,12 @@
                                 margin-bottom: 5px;
                                 margin-left: -5px;
                             }
-        
+
                             .personal-info-details {
                                 padding: 10px 0px 0px 7px;
                                 height: 39px;
                             }
-        
+
                             .personal-info-details p {
                                 color: #FFF;
                                 font-family: Montserrat;
@@ -149,15 +149,15 @@
                                 line-height: 0px;
                                 margin-left: 5px;
                             }
-        
+
                             .languages-container {
                                 position: relative;
-                                top: 105px;
+                                top: 135px;
                                 left: 20px;
                                 width: 180px;
                                 padding-top: 10px;
                             }
-        
+
                             .languages-container h2 {
                                 color: #FFF;
                                 background-color: #F40000;
@@ -168,7 +168,7 @@
                                 line-height: 0px;
                                 text-transform: uppercase;
                                 text-align: center;
-                                margin-top: 25px;
+                                /* margin-top: 25px; */
                                 margin-left: -32px;
                                 width: 214px;
                                 height: 23px;
@@ -176,20 +176,24 @@
                                 padding-top: 13.5px;
                                 margin-bottom: 78px;
                             }
-        
+
+                            #languages-section{
+                                margin-top: -77px;
+                            }
+
                             .languages-details {
                                 padding: 0px 0px 0px 7px;
                                 height: auto;
-                                margin-top: -78px;
+                                margin-top: 0px;
                             }
-        
+
                             .languages-details p {
                                 color: #FFF;
                                 font-family: Montserrat;
                                 font-size: 10.5px;
                                 font-style: normal;
                                 font-weight: 300;
-                                line-height: 0px;
+                                /* line-height: 0px; */
                                 text-transform: uppercase;
                                 word-spacing: 2px;
                                 height: 20px;
@@ -197,13 +201,13 @@
                                 width: 45px;
                                 margin-left: -5px;
                             }
-        
+
                             .dot-div-Lan {
                                 display: inline-block;
                                 height: 20px;
                                 margin-left: 15px;
                             }
-        
+
                             .skills-container {
                                 position: relative;
                                 top: 135px;
@@ -211,7 +215,7 @@
                                 width: 180px;
                                 padding-top: 10px;
                             }
-        
+
                             .skills-container h2 {
                                 color: #FFF;
                                 background-color: #F40000;
@@ -230,20 +234,24 @@
                                 margin-top: -50px;
                                 margin-bottom: 20px;
                             }
-        
+
+                            #skills-section {
+                                margin-bottom: -17px;
+                            }
+
                             .skills-details {
                                 padding: 20px 0px 0px 7px;
                                 height: auto;
-                                margin-top: -42px;
+                                margin-top: -39px;
+                                margin-bottom: 17px;
                             }
-        
+
                             .skills-details p {
                                 color: #FFF;
                                 font-family: Montserrat;
                                 font-size: 10.5px;
                                 font-style: normal;
                                 font-weight: 300;
-                                line-height: 0px;
                                 height: 20px;
                                 text-transform: uppercase;
                                 margin-bottom: 0px;
@@ -251,31 +259,31 @@
                                 display: inline-block;
                                 margin-left: -5px;
                             }
-        
+
                             .dot-div {
                                 display: inline-block;
                                 height: 20px;
                                 width: 80px;
-                                margin-left: 10px;
+                                margin-left: -10px;
                             }
-        
+
                             .progress-bar-container {
                                 background-color: #8A8A8A;
                             }
-        
+
                             .progress-bar-container .custom-progress-bar {
                                 padding: 3px;
                                 background-color: white;
                             }
-        
+
                             .interest-container {
                                 position: relative;
-                                top: 213px;
+                                top: 267px;
                                 left: 20px;
                                 width: 180px;
                                 padding-top: 0px;
                             }
-        
+
                             .interest-container h2 {
                                 color: #FFF;
                                 background-color: #F40000;
@@ -294,20 +302,25 @@
                                 margin-top: -120px;
                                 margin-bottom: 30px;
                             }
-        
+
+                            #interests-section{
+                                margin-bottom: -17px;
+                                margin-top: -36px;
+                            }
+
                             .interest-details {
                                 padding: 5px 0px 0px 7px;
                                 height: auto;
-                                margin-top: -35px;
+                                margin-top: -6px;
                             }
-        
+
                             .interest-details p {
                                 color: #FFF;
                                 font-family: Montserrat;
                                 font-size: 10.5px;
                                 font-style: normal;
                                 font-weight: 300;
-                                line-height: 0px;
+                                /* line-height: 0px; */
                                 text-transform: uppercase;
                                 margin-bottom: 9px;
                                 word-spacing: 2px;
@@ -315,13 +328,13 @@
                                 margin-left: -5px;
                                 display: inline-block;
                             }
-        
+
                             .dot-div-int {
                                 display: inline-block;
                                 height: 20px;
                                 margin-left: 10px;
                             }
-        
+
                             .name-container {
                                 width: 100%;
                                 padding: 45px 0px 15px 0px;
@@ -329,13 +342,13 @@
                                 margin-top: 10px;
                                 margin-left: 38px;
                             }
-        
+
                             .name-container h2 {
                                 line-height: 5px;
                                 margin-bottom: 10px;
                                 margin-left: 10px;
                             }
-        
+
                             .name-container h2 span {
                                 color: #2D2D2D;
                                 font-family: Poppins;
@@ -347,7 +360,7 @@
                                 height: 49px;
                                 margin-bottom: 5px;
                             }
-        
+
                             .name-container .profession {
                                 color: #606060;
                                 font-family: Poppins;
@@ -358,13 +371,13 @@
                                 text-transform: none;
                                 margin-left: 10px;
                             }
-        
+
                             .objective-container {
                                 width: 100%;
                                 padding: 25px 30px 0px 30px;
                                 margin-top: 6px;
                             }
-        
+
                             .objective-container h2 {
                                 color: white;
                                 background-color: #F40000;
@@ -383,7 +396,7 @@
                                 margin-top: -20px;
                                 margin-bottom: 15px;
                             }
-        
+
                             .objective-container p {
                                 color: black;
                                 font-family: Montserrat;
@@ -393,12 +406,12 @@
                                 line-height: 16px;
                                 margin-left: 10px;
                             }
-        
+
                             .experience-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px
                             }
-        
+
                             .experience-container h2 {
                                 color: white;
                                 background-color: #F40000;
@@ -417,7 +430,7 @@
                                 margin-top: -15px;
                                 margin-bottom: 15px;
                             }
-        
+
                             .experience-details h3 {
                                 color: #000;
                                 font-family: Poppins;
@@ -428,7 +441,7 @@
                                 text-transform: uppercase;
                                 margin-left: 10px;
                             }
-        
+
                             .experience-details p {
                                 color: black;
                                 font-family: Montserrat;
@@ -439,12 +452,12 @@
                                 line-height: 16px;
                                 margin-left: 10px;
                             }
-        
+
                             .education-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px
                             }
-        
+
                             .education-container h2 {
                                 color: white;
                                 background-color: #F40000;
@@ -463,11 +476,11 @@
                                 margin-bottom: 20px;
                                 margin-top: -3px;
                             }
-        
+
                             .education-details {
                                 margin-bottom: 22px;
                             }
-        
+
                             .education-details h3 {
                                 color: #000;
                                 font-family: Poppins;
@@ -479,7 +492,7 @@
                                 margin-bottom: 17px;
                                 margin-left: 10px;
                             }
-        
+
                             .education-details p {
                                 color: black;
                                 font-family: Montserrat;
@@ -490,12 +503,12 @@
                                 line-height: 3px;
                                 margin-left: 10px;
                             }
-        
+
                             .achievement-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px
                             }
-        
+
                             .achievement-container h2 {
                                 color: white;
                                 background-color: #F40000;
@@ -514,12 +527,12 @@
                                 margin-bottom: 15px;
                                 margin-top: -15px;
                             }
-        
+
                             .achievement-section div {
                                 height: 47px;
                                 width: 50%;
                             }
-        
+
                             .achievement-details p {
                                 color: #000;
                                 font-family: Montserrat;
@@ -530,12 +543,12 @@
                                 line-height: 5px;
                                 margin-left: 10px;
                             }
-        
+
                             .project-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px;
                             }
-        
+
                             .project-container h2 {
                                 color: white;
                                 background-color: #F40000;
@@ -554,12 +567,12 @@
                                 margin-bottom: 10px;
                                 margin-top: 5px;
                             }
-        
+
                             .project-section div {
                                 height: 47px;
                                 width: 50%;
                             }
-        
+
                             .project-details p {
                                 color: #000;
                                 font-family: Montserrat;
@@ -570,12 +583,12 @@
                                 line-height: 5px;
                                 margin-left: 10px;
                             }
-        
+
                             .reference-container {
                                 width: 100%;
                                 padding: 10px 30px 0px 30px;
                             }
-        
+
                             .reference-container h2 {
                                 color: white;
                                 background-color: #F40000;
@@ -594,12 +607,12 @@
                                 margin-top: -16px;
                                 margin-bottom: 8px;
                             }
-        
+
                             .reference-section div {
                                 height: 47px;
                                 width: 50%;
                             }
-        
+
                             .reference-details div h3 {
                                 color: #000;
                                 font-family: Poppins;
@@ -609,7 +622,7 @@
                                 line-height: normal;
                                 margin-left: 10px;
                             }
-        
+
                             .reference-details div p {
                                 color: #000;
                                 font-family: Montserrat;
@@ -618,7 +631,7 @@
                                 line-height: 0px;
                                 margin-left: 10px;
                             }
-        
+
                             .dot {
                                 height: 9px;
                                 width: 9px;
@@ -626,13 +639,23 @@
                                 border-radius: 50%;
                                 display: inline-block;
                             }
-        
+
                             .dot-grey {
                                 height: 9px;
                                 width: 9px;
                                 background-color: grey;
                                 border-radius: 50%;
                                 display: inline-block;
+                            }
+
+                            .custom-col-left {
+                                width: 90px;
+                                padding: 0px;
+                                height: 26px;
+                            }
+
+                            .custom-col-right {
+                                width: 80px;
                             }
                         </style>
                         <div class="left-col">
@@ -659,13 +682,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="experience-container border border-danger">
+                            <div class="experience-container">
                                 <h2>Experience</h2>
                                 <div id="experiences-section">
                                     <div class="experience-details">
                                         <h3 id="Designation0">Job Position</h3>
                                         <h3><span id="Organization0">Company Name</span> <span id="JoiningDate0">2020</span> |
-                                            <span id="EndDate0">2021</span></h3>
+                                            <span id="EndDate0">2021</span>
+                                        </h3>
                                         <p id="JobDescription0">
                                             Highly skilled and motivated web developer with a passion for creating innovative
                                             and user-friendly web applications. Seeking a challenging position.
@@ -673,7 +697,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="achievement-container border border-danger">
+                            <div class="achievement-container ">
                                 <h2>Achievement</h2>
                                 <div class="row achievement-section" id="achievement-section">
                                     <div class="achievement-details">
@@ -684,7 +708,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="reference-container border border-danger">
+                            <div class="reference-container ">
                                 <h2>Reference</h2>
                                 <div class="row reference-section" id="reference-section">
                                     <div class="reference-details">
@@ -752,26 +776,13 @@
                             </div>
                             <div class="skills-container">
                                 <h2> Skills </h2>
-                                {{-- <div id="skills-section">
-                                    <div class="skills-details">
-                                        <p id="SkillName0">Skills 01</p>
-                                        <div class="dot-div">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
-                                        </div>
-                                    </div>
-                                </div> --}}
                                 <div id="skills-section">
                                     <div class="skills-details">
-                                        <div class="row col-10">
-                                            <div class="col-8 border border-danger">
+                                        <div class="row col-12">
+                                            <div class="custom-col-left">
                                                 <p id="SkillName0">Skills 1</p>
                                             </div>
-                                            <div class="col-4 border border-danger">
+                                            <div class="custom-col-right col-4">
                                                 <div class="dot-div">
                                                     <span class="dot"></span>
                                                     <span class="dot"></span>
@@ -784,20 +795,25 @@
                                         </div>
                                     </div>
                                 </div>
-                               
                             </div>
                             <div class="languages-container">
                                 <h2> Languages </h2>
                                 <div id="languages-section">
                                     <div class="languages-details">
-                                        <p id="Language0">English</p>
-                                        <div class="dot-div-Lan">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
+                                        <div class="row col-12">
+                                            <div class="custom-col-left">
+                                                <p id="Language0">Lang 1</p>
+                                            </div>
+                                            <div class="custom-col-right col-4">
+                                                <div class="dot-div">
+                                                    <span class="dot"></span>
+                                                    <span class="dot"></span>
+                                                    <span class="dot"></span>
+                                                    <span class="dot"></span>
+                                                    <span class="dot-grey"></span>
+                                                    <span class="dot-grey"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -806,14 +822,20 @@
                                 <h2> Interest </h2>
                                 <div id="interests-section">
                                     <div class="interest-details">
-                                        <p id="Interest0">Interest</p>
-                                        <div class="dot-div-int">
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot"></span>
-                                            <span class="dot-grey"></span>
-                                            <span class="dot-grey"></span>
+                                        <div class="row col-12">
+                                            <div class="custom-col-left">
+                                                <p id="Interest0">Interest 1</p>
+                                            </div>
+                                            <div class="custom-col-right col-4">
+                                                <div class="dot-div">
+                                                    <span class="dot"></span>
+                                                    <span class="dot"></span>
+                                                    <span class="dot"></span>
+                                                    <span class="dot"></span>
+                                                    <span class="dot-grey"></span>
+                                                    <span class="dot-grey"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -966,14 +988,20 @@
                                                 </div>`;
 
                             const NewSkill = `<div class="skills-details">
-                                                <p id="SkillName` + ChildDivsLength + `">Skill ` + ChildDivsLength + `</p>
-                                                <div class="dot-div">
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot-grey"></span>
-                                                    <span class="dot-grey"></span>
+                                                <div class="row col-12">
+                                                    <div class="custom-col-left">
+                                                        <p id="SkillName` + ChildDivsLength + `">Skills 1</p>
+                                                    </div>
+                                                    <div class="custom-col-right col-4">
+                                                        <div class="dot-div">
+                                                            <span class="dot"></span>
+                                                            <span class="dot"></span>
+                                                            <span class="dot"></span>
+                                                            <span class="dot"></span>
+                                                            <span class="dot-grey"></span>
+                                                            <span class="dot-grey"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>`;
 
@@ -1067,14 +1095,20 @@
                                                 </div>`;
 
                             const NewInterest = `<div class="interest-details">
-                                                    <p id="Interest` + ChildDivsLength + `">Interest</p>
-                                                    <div class="dot-div-int">
-                                                        <span class="dot"></span>
-                                                        <span class="dot"></span>
-                                                        <span class="dot"></span>
-                                                        <span class="dot"></span>
-                                                        <span class="dot-grey"></span>
-                                                        <span class="dot-grey"></span>
+                                                    <div class="row col-12">
+                                                        <div class="custom-col-left">
+                                                            <p id="Interest` + ChildDivsLength + `">Interest ` + ChildDivsLength + `</p>
+                                                        </div>
+                                                        <div class="custom-col-right col-4">
+                                                            <div class="dot-div">
+                                                                <span class="dot"></span>
+                                                                <span class="dot"></span>
+                                                                <span class="dot"></span>
+                                                                <span class="dot"></span>
+                                                                <span class="dot-grey"></span>
+                                                                <span class="dot-grey"></span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>`;
 
@@ -1106,16 +1140,22 @@
                                         </div>`;
 
                             const NewLanguage = `<div class="languages-details">
-                                                    <p id="Language` + ChildDivsLength + `">English</p>
-                                                    <div class="dot-div-Lan">
-                                                        <span class="dot"></span>
-                                                        <span class="dot"></span>
-                                                        <span class="dot"></span>
-                                                        <span class="dot"></span>
-                                                        <span class="dot-grey"></span>
-                                                        <span class="dot-grey"></span>
-                                                    </div>
-                                                </div>`;
+                                                        <div class="row col-12">
+                                                            <div class="custom-col-left">
+                                                                <p id="Language` + ChildDivsLength + `">Lang ` + ChildDivsLength + `</p>
+                                                            </div>
+                                                            <div class="custom-col-right col-4">
+                                                                <div class="dot-div">
+                                                                    <span class="dot"></span>
+                                                                    <span class="dot"></span>
+                                                                    <span class="dot"></span>
+                                                                    <span class="dot"></span>
+                                                                    <span class="dot-grey"></span>
+                                                                    <span class="dot-grey"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>`;
 
                             /*
                             |--------------------------------------------------------------------------
