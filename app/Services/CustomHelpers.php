@@ -46,7 +46,7 @@ class CustomHelpers
         ->quality(70)
         ->format(Manipulations::FORMAT_WEBP)
         ->save(storage_path('app/public/') . $Path . $ImgName . '.webp');
-        
+
         return $ImgName . '.' . $Extention;
     }
 
@@ -62,11 +62,23 @@ class CustomHelpers
         Storage::disk('public')->putFileAs('images', $Img, $ImgName);
         return $ImgName;
     }
+    public static function getResumeImgNameWithID(object $Img, int $ID, string $Side = null)
+    {
+        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        if (!is_null($Side)) $ImgName = $Side . '_' . $ImgName;
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('images/resumes', $Img, $ImgName);
+        return $ImgName;
+    }
 
-    public static function getViewPathWithID(object $Svg, string $Type, int $ID, string $Side = null)
+    public static function getViewPathWithID(object $File, string $Type, int $ID, string $Side = null)
     {
         // Get the SVG content
-        $SvgContent = $Svg->getContent();
+        $FileContent = $File->getContent();
         // Generate directory name
         $DirectoryPath = resource_path('views/' . $Type . '/' . $ID);
         // Create the directory if it doesn't exist
@@ -76,7 +88,7 @@ class CustomHelpers
         // Set the file path
         $FilePath = $DirectoryPath . '/' . $FileName;
         // Write the SVG content into the blade file
-        File::put($FilePath, $SvgContent);
+        File::put($FilePath, $FileContent);
         // Returning the final path where the view file is generated
         return $ID . '/' . $ID . '_';
     }
@@ -116,7 +128,7 @@ class CustomHelpers
         if (count($Words) <= 4)  return $Address;
         // Join the first 4 words into a string
         $Line1 = implode(' ', array_slice($Words, 0, 4));
-        // Join the remaining words into a string 
+        // Join the remaining words into a string
         $Line2 = implode(' ', array_slice($Words, 4));
         return [$Line1, $Line2];
     }
