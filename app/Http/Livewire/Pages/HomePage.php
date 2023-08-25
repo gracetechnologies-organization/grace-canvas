@@ -13,7 +13,7 @@ class HomePage extends Component
 
     public function render()
     {
-        $Resumes = Resume::getResumes()->paginate(6);
+        $Resumes = Resume::getResumes()->inRandomOrder()->limit(6)->get();
         return view('livewire.pages.home-page',compact('Resumes'));
     }
 }

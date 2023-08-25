@@ -1,5 +1,5 @@
 <div>
-   <!-- categories section  -->
+<!-- categories section  -->
 <section class="category-section">
     <div class="container-fluid">
         <div class="ml-5 row custome-background">
