@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BirthdayTempletesController;
 use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CategoryController;
@@ -45,6 +46,7 @@ Route::middleware('auth.api.reqs')->group(function () {
             Route::get('/resumes', [TemplatesController::class, 'showResumes']);
             Route::get('/wallpapers/{CatID?}', [TemplatesController::class, 'showWallpapers']);
             Route::get('/category/wallpapers/{CatID?}', [TemplatesController::class, 'showCategoriesWallpapers']);
+            Route::get('/birthday-templetes/{ID?}', [TemplatesController::class, 'birthdayTempletes']);
         });
     });
 
@@ -70,6 +72,12 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
         Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
+    });
+    Route::prefix('birthday-templete')->group(function(){
+        Route::post('/create', [BirthdayTempletesController::class, 'create']);
+        Route::post('/upload', [BirthdayTempletesController::class, 'upload']);
+        Route::post('/edit/{ID}', [BirthdayTempletesController::class, 'edit']);
+        Route::post('/destroy/{ID}', [BirthdayTempletesController::class, 'destroy']);
     });
 
     Route::prefix('cache')->group(function () {
