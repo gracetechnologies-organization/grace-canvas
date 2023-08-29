@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('birthday_templetes', function (Blueprint $table) {
+        Schema::create('birthday_templates', function (Blueprint $table) {
             $table->id();
             $table->string('front_image')->nullable();
             $table->string('svg')->nullable()->nullable();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('birthday_templetes');
+        Schema::dropIfExists('birthday_templates');
     }
 };

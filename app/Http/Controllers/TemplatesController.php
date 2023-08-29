@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BirthdayTemplates;
 use App\Models\BirthdayTempletes;
 use App\Models\BusinessCard;
 use App\Models\Category;
@@ -227,7 +228,8 @@ class TemplatesController extends Controller
         $Validator = Validator::make($Req->all(), [
             'FrontImage' => 'required|mimes:webp|max:500',
             'Version' => 'required|integer',
-            'CatID' => 'required|integer'
+            'CatID' => 'required|integer',
+            'HtmlFile' => 'required'
         ]);
         if ($Validator->fails()) {
             return response()->macroJson(
@@ -520,13 +522,13 @@ class TemplatesController extends Controller
         //
     }
 
-    public function birthdayTempletes(Request $Req)
+    public function birthdayTemplates(Request $Req)
     {
         try {
             if ($Req->ID) {
 
-                $Data = Cache::remember('birthdayTempletes' . $Req->ID, now()->addDays(30), function () use ($Req) {
-                   return  BirthdayTempletes::getBirthdayTempletesByID($Req->ID);
+                $Data = Cache::remember('birthdayTemplates' . $Req->ID, now()->addDays(30), function () use ($Req) {
+                   return  BirthdayTemplates::getBirthdayTempletesByID($Req->ID);
                 });
                 return response()->macroJson(
                     $Data,
@@ -535,8 +537,8 @@ class TemplatesController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            $Data = Cache::remember('birthdayTempletes', now()->addDays(30), function () {
-                $BirthdayTempletes = BirthdayTempletes::getbirthdayTempletes();
+            $Data = Cache::remember('birthdayTemplates', now()->addDays(30), function () {
+                $BirthdayTempletes = BirthdayTemplates::getbirthdayTempletes();
                 // dd($BirthdayTempletes);die ;
                 $Data = [];
                 foreach ($BirthdayTempletes as $BirthdayTemplete) {

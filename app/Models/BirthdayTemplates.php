@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BirthdayTempletes extends Model
+class BirthdayTemplates extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory , SoftDeletes;
 
     protected $dates = ['deleted_at'];
     protected $fillable = [
@@ -21,7 +21,7 @@ class BirthdayTempletes extends Model
 
     public static function getBirthdayTempletesByID(int $ID)
     {
-        $birthdayTempletes = BirthdayTempletes::findOrFail($ID);
+        $birthdayTempletes = BirthdayTemplates::findOrFail($ID);
         return [
             "id" => $birthdayTempletes->id,
             "front_image" => $birthdayTempletes->front_image,
@@ -36,17 +36,17 @@ class BirthdayTempletes extends Model
 
     public static function getbirthdayTempletes()
     {
-        return BirthdayTempletes::all();
+        return BirthdayTemplates::inRandomOrder()->paginate(4);
     }
 
     public static function getLastInsertedID()
     {
-        return BirthdayTempletes::orderByDesc('id')->first()->id ?? 0;
+        return BirthdayTemplates::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertBirthdayTempletes(string $FrontImage, string $FrontSvg , int $version = 0 , int $default = 0 )
     {
-        return BirthdayTempletes::create([
+        return BirthdayTemplates::create([
             'front_image' => $FrontImage,
             'svg' => $FrontSvg,
             'version' => $version,
@@ -56,18 +56,35 @@ class BirthdayTempletes extends Model
 
     public static function updateBirthdayTempletes(int $ID , string $FrontImage = null , string $FrontSvg = null ,int $version = null ,int $default = null)
     {
-        // return BirthdayTempletes::where('id', $ID)->update([
-        //     'front_image' => $FrontImage ,
-        //     'svg' => $FrontSvg ,
-        //     'version' => $version ,
-        //     'default' => $default ,
-        // ]);
-        $BirthdayTemplete = BirthdayTempletes::findOrFail($ID);
+        $BirthdayTemplete = BirthdayTemplates::findOrFail($ID);
         if (!is_null($FrontImage)) $BirthdayTemplete->front_image = $FrontImage;
         if (!is_null($FrontSvg)) $BirthdayTemplete->svg =  $FrontSvg ;
         if (!is_null($version)) $BirthdayTemplete->version = $version;
         if (!is_null($default)) $BirthdayTemplete->default = $default;
         return $BirthdayTemplete->save();
+
+    }
+
+    public static function deleteBirthdayTemplete(int $ID)
+    {
+        return BirthdayTemplates::where('id',$ID)->delete();
+    }
+
+    public static function deleteAllBirthdayTempletes()
+    {
+        return BirthdayTemplates::query()->update(['deleted_at' => now()]);
+
+
+    }
+    public static function restoreBirthdayTemplete(int $ID)
+    {
+        return BirthdayTemplates::where('id',$ID)->restore();
+    }
+
+    public static function restoreAllBirthdayTempletes()
+    {
+         return BirthdayTemplates::query()->restore();
+
 
     }
 }
