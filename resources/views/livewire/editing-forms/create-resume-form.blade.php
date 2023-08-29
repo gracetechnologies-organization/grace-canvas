@@ -46,7 +46,7 @@
             <div class="col-12 col-md-5 col-lg-4">
                 @include('components.resume-form')
             </div>
-           <!-- Resume template will render here -->
+            <!-- Resume template will render here -->
             @include($ResumeFile)
         </div>
     </div>

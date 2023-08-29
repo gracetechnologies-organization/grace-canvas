@@ -63,7 +63,9 @@ Route::middleware('auth.api.reqs')->group(function () {
     Route::prefix('resume')->group(function () {
         Route::post('/create', [ResumeController::class, 'create']);
         Route::post('/edit/{ID}', [ResumeController::class, 'edit']);
-        Route::post('/destroy/{ID}', [ResumeController::class, 'destroy']);
+        Route::post('/destroy', [ResumeController::class, 'destroy']);
+        Route::post('/destroy/all', [ResumeController::class, 'destroyAll']);
+        Route::post('/restore/{ID?}', [ResumeController::class, 'restore']);
     });
 
     Route::prefix('wallpaper')->group(function () {
