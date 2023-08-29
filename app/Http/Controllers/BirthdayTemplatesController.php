@@ -65,7 +65,6 @@ class BirthdayTemplatesController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            // dd($Req->ID);
             $FrontImage = (!is_null($Req->FrontImage)) ? CustomHelpers::getBirthdayTemplateWithID($Req->FrontImage, $Req->ID) : null;
             $FrontSvg = (!is_null($Req->svg)) ? CustomHelpers::getViewPathWithIDBirthday($Req->svg, $Req->ID) : null;
             $Updated = BirthdayTemplates::updateBirthdayTempletes($Req->ID, $FrontImage, $FrontSvg, $Req->version, $Req->default);
@@ -94,13 +93,12 @@ class BirthdayTemplatesController extends Controller
         }
     }
 
-    public function destroy( $ID = null)
+    public function destroy(Request $Req)
     {
         try {
-            if ($ID) {
-                // ID is provided, soft delete the specific record
-                $item = BirthdayTemplates::deleteBirthdayTemplete($ID);
-                if (!$item) {
+            if ($Req->ID) {
+                $Destroy = BirthdayTemplates::deleteBirthdayTemplete($Req->ID);
+                if (!$Destroy) {
                     return response()->macroJson(
                         [],
                         config('messages.FAILED_CODE'),
@@ -115,7 +113,6 @@ class BirthdayTemplatesController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            // ID is not provided, soft delete all records by setting 'deleted_at' column
             BirthdayTemplates::deleteAllBirthdayTempletes();
             return response()->macroJson(
                 [],
@@ -133,11 +130,12 @@ class BirthdayTemplatesController extends Controller
             );
         }
     }
-    public function restore($ID = null){
+
+    public function restore(Request $Req)
+    {
         try {
-            if ($ID) {
-                // ID is provided, soft delete the specific record
-                $item = BirthdayTemplates::restoreBirthdayTemplete($ID);
+            if ($Req->ID) {
+                $item = BirthdayTemplates::restoreBirthdayTemplete($Req->ID);
                 if (!$item) {
                     return response()->macroJson(
                         [],
@@ -146,7 +144,6 @@ class BirthdayTemplatesController extends Controller
                         config('messages.HTTP_SUCCESS_CODE')
                     );
                 }
-                // $item->delete();
                 return response()->macroJson(
                     [],
                     config('messages.SUCCESS_CODE'),
@@ -154,7 +151,6 @@ class BirthdayTemplatesController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            // ID is not provided, soft delete all records by setting 'deleted_at' column
             BirthdayTemplates::restoreAllBirthdayTempletes();
             return response()->macroJson(
                 [],

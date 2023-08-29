@@ -11,13 +11,13 @@ class BirthdayTemplates extends Model
     use HasFactory , SoftDeletes;
 
     protected $dates = ['deleted_at'];
+    
     protected $fillable = [
         'front_image',
         'svg',
         'version',
         'default',
     ];
-
 
     public static function getBirthdayTempletesByID(int $ID)
     {
@@ -62,7 +62,6 @@ class BirthdayTemplates extends Model
         if (!is_null($version)) $BirthdayTemplete->version = $version;
         if (!is_null($default)) $BirthdayTemplete->default = $default;
         return $BirthdayTemplete->save();
-
     }
 
     public static function deleteBirthdayTemplete(int $ID)
@@ -73,9 +72,8 @@ class BirthdayTemplates extends Model
     public static function deleteAllBirthdayTempletes()
     {
         return BirthdayTemplates::query()->update(['deleted_at' => now()]);
-
-
     }
+
     public static function restoreBirthdayTemplete(int $ID)
     {
         return BirthdayTemplates::where('id',$ID)->restore();
@@ -84,7 +82,5 @@ class BirthdayTemplates extends Model
     public static function restoreAllBirthdayTempletes()
     {
          return BirthdayTemplates::query()->restore();
-
-
     }
 }
