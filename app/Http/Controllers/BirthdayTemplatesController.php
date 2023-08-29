@@ -140,14 +140,14 @@ class BirthdayTemplatesController extends Controller
                     return response()->macroJson(
                         [],
                         config('messages.FAILED_CODE'),
-                        config('messages.DELETION_FAILED'),
+                        config('messages.RESTORE_FAILED'),
                         config('messages.HTTP_SUCCESS_CODE')
                     );
                 }
                 return response()->macroJson(
                     [],
                     config('messages.SUCCESS_CODE'),
-                    config('messages.DELETION_RESTORE'),
+                    config('messages.RESTORE_SUCCESS'),
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
@@ -155,14 +155,14 @@ class BirthdayTemplatesController extends Controller
             return response()->macroJson(
                 [],
                 config('messages.SUCCESS_CODE'),
-                config('messages.DELETION_RESTORE'),
+                config('messages.RESTORE_SUCCESS'),
                 config('messages.HTTP_SUCCESS_CODE')
             );
         } catch (Exception $error) {
             report($error);
             return response()->macroJson(
                 [],
-                config('messages.FAILED_CODE'),
+                config('messages.RESTORE_FAILED'),
                 $error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
