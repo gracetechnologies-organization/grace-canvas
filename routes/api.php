@@ -64,7 +64,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/create', [ResumeController::class, 'create']);
         Route::post('/edit/{ID}', [ResumeController::class, 'edit']);
         Route::post('/destroy', [ResumeController::class, 'destroy']);
-        Route::post('/destroy/all', [ResumeController::class, 'destroyAll']);
+        Route::get('/destroy/all', [ResumeController::class, 'destroy']);
         Route::post('/restore/{ID?}', [ResumeController::class, 'restore']);
     });
 

@@ -184,14 +184,7 @@ class ResumeController extends Controller
     public function destroy(Request $Req)
     {
         try {
-            // if($Req->ID) $Deleted = Resume::deleteResume($Req->ID);
-
-            // if($Req->) $Deleted = Resume::deleteResume($Req->ID);
-
-            // if($Req->ID) $Deleted = Resume::deleteResume($Req->ID);
-            // (int $ID = null,  int $CatID = null, int $Version = null)
-            dd($Req->ID);
-            $Deleted = Resume::deleteResumesByID($Req->ID, $Req->CatID, $Req->Version);
+            $Deleted = Resume::deleteResumesByGivenParams($Req->ID, $Req->CatID, $Req->Version);
             if ($Deleted) {
                 return response()->macroJson(
                     [],

@@ -51,37 +51,16 @@ class Resume extends Model
         if (!is_null($CatID)) $Resume->cat_id = $CatID;
         return $Resume->save();
     }
-
-    // public static function deleteResume(int $ID)
-    // {
-    //     return Resume::where('id', $ID)->delete();
-    // }
-
-    // public static function deleteResumesByVersion(int $Version)
-    // {
-    //     return Resume::where('version', $Version)->delete();
-    // }
-
-    // public static function deleteResumesByCatID(int $CatID)
-    // {
-    //     return Resume::where('cat_id', $CatID)->delete();
-    // }
-    public static function deleteResumesByID(int $ID = null,  int $CatID = null, int $Version = null)
+    // If no params are provided this function will delete all records
+    public static function deleteResumesByGivenParams(int $ID = null,  int $CatID = null, int $Version = null)
     {
-        // return Resume::where('cat_id', $CatID)->delete();
-
-        // $Categories = Category::with('wallpapers')->when($ID, function ($query, $ID) {
-        //     return $query->where('id', $ID);
-        // })->get();
-
         return Resume::when($ID, function ($Query, $ID) {
             return $Query->where('id', $ID);
         })->when($CatID, function ($Query, $CatID) {
             return $Query->where('cat_id', $CatID);
         })->when($Version, function ($Query, $Version) {
             return $Query->where('version', $Version);
-        })
-            ->delete();
+        })->delete();
     }
 
     public static function deleteAllResumes(int $ID)
