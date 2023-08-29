@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BirthdayTemplates;
+use App\Models\BirthdayTempletes;
 use App\Models\BusinessCard;
 use App\Models\Category;
 use App\Models\LetterHead;
@@ -226,7 +228,8 @@ class TemplatesController extends Controller
         $Validator = Validator::make($Req->all(), [
             'FrontImage' => 'required|mimes:webp|max:500',
             'Version' => 'required|integer',
-            'CatID' => 'required|integer'
+            'CatID' => 'required|integer',
+            'HtmlFile' => 'required'
         ]);
         if ($Validator->fails()) {
             return response()->macroJson(
@@ -240,7 +243,7 @@ class TemplatesController extends Controller
         $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
         $FrontImage = CustomHelpers::getResumeImgNameWithID($Req->FrontImage, $LastInsertedId);
         $FrontSvg = CustomHelpers::getViewPathWithID($Req->HtmlFile, $Req->Type, $LastInsertedId);
-        $Inserted = Resume::insertResume($FrontImage, $Req->Version,$Req->CatID);
+        $Inserted = Resume::insertResume($FrontImage, $Req->Version, $Req->CatID);
         if ($Inserted) {
             return response()->macroJson(
                 [],
@@ -517,5 +520,55 @@ class TemplatesController extends Controller
     public function destroy()
     {
         //
+    }
+
+    public function birthdayTemplates(Request $Req)
+    {
+        try {
+            if ($Req->ID) {
+
+                $Data = Cache::remember('birthdayTemplates' . $Req->ID, now()->addDays(30), function () use ($Req) {
+                   return  BirthdayTemplates::getBirthdayTempletesByID($Req->ID);
+                });
+                return response()->macroJson(
+                    $Data,
+                    config('messages.SUCCESS_CODE'),
+                    (empty($Data)) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            $Data = Cache::remember('birthdayTemplates', now()->addDays(30), function () {
+                $BirthdayTempletes = BirthdayTemplates::getbirthdayTempletes();
+                // dd($BirthdayTempletes);die ;
+                $Data = [];
+                foreach ($BirthdayTempletes as $BirthdayTemplete) {
+                    array_push($Data, [
+                        'id' => $BirthdayTemplete->id,
+                        'front_image' => url('/storage') . '/' . $BirthdayTemplete->front_image,
+                        'svg' => $BirthdayTemplete->svg,
+                        'version' => $BirthdayTemplete->version,
+                        'default' => $BirthdayTemplete->default,
+                        'created_at' => $BirthdayTemplete->created_at,
+                        'updated_at' => $BirthdayTemplete->updated_at,
+                        'deleted_at' => $BirthdayTemplete->deleted_at,
+                    ]);
+                }
+                return $Data;
+            });
+            return response()->macroJson(
+                $Data,
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 }
