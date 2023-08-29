@@ -73,8 +73,8 @@ class Category extends Model
 
     public static function getCategoriesWithWallpapers(int $ID = null)
     {
-        $Categories = Category::with('wallpapers')->when($ID, function ($query, $ID) {
-            return $query->where('id', $ID);
+        $Categories = Category::with('wallpapers')->when($ID, function ($Query, $ID) {
+            return $Query->where('id', $ID);
         })->get();
 
         return $Categories->each(function ($Category) {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\EditingForms;
 
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class CreateResumeForm extends Component
@@ -14,19 +15,20 @@ class CreateResumeForm extends Component
         $ProjectForm = [],
         $InterestForm = [],
         $LanguageForm = [],
-        $ReferenceForm = [];
+        $ReferenceForm = [],
+        $RequestResumeID;
 
-
-    public function mount()
+    public function mount(Request $Req)
     {
-        $this->ExperienceForm = [1];
-        $this->QualificationForm = [1];
-        $this->SkillForm = [1];
-        $this->AchievementForm = [1];
-        $this->ProjectForm = [1];
-        $this->InterestForm = [1];
-        $this->LanguageForm = [1];
-        $this->ReferenceForm = [1];
+        // $this->ExperienceForm = [1];
+        // $this->QualificationForm = [1];
+        // $this->SkillForm = [1];
+        // $this->AchievementForm = [1];
+        // $this->ProjectForm = [1];
+        // $this->InterestForm = [1];
+        // $this->LanguageForm = [1];
+        // $this->ReferenceForm = [1];
+        $this->RequestResumeID = $Req->ID;
     }
 
     public function addNewExperience()
@@ -124,6 +126,9 @@ class CreateResumeForm extends Component
 
     public function render()
     {
-        return view('livewire.editing-forms.create-resume-form');
+        $DirectoryName = $this->RequestResumeID;
+        $FileName = $this->RequestResumeID . '_resumes';
+        $ResumeFile = 'resumes.' . $DirectoryName . '.' . $FileName;
+        return view('livewire.editing-forms.create-resume-form', ['ResumeFile' => $ResumeFile]);
     }
 }

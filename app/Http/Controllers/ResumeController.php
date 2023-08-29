@@ -66,7 +66,7 @@ class ResumeController extends Controller
             $Nationality = $Req->Nationality;
             $Objective = $Req->Objective;
             // $Objective = CustomHelpers::convertStringIntoLines($Req->Objective, 67, 5);
-          
+
             $Experience = json_decode($Req->Experience, true);
             // foreach ($Experience as $Index => $Array) $Experience[$Index]['JobDescription'] = CustomHelpers::convertStringIntoLines($Array['JobDescription'], 67, 3);
 
@@ -79,7 +79,7 @@ class ResumeController extends Controller
 
             $References = json_decode($Req->References, true);
             // foreach ($References as $Index => $Array) $References[$Index]['Description'] = CustomHelpers::convertStringIntoLines($Array['Description'], 34, 2);
-            
+
             $Color = ($Req->Color) ? $Req->Color : null;
 
             $Resume = Resume::getResumeByID($Req->ID);
@@ -129,13 +129,130 @@ class ResumeController extends Controller
         //
     }
 
-    public function edit(Resume $resume)
+    public function edit(Request $Req)
     {
-        //
+        try {
+            $Validator = Validator::make($Req->all(), [
+                'FrontImage' => 'mimes:webp|max:400',
+                'Version' => 'integer',
+                'CatID' => 'integer',
+                'Html' => 'mimes:html'
+            ]);
+            if ($Validator->fails()) {
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    $Validator->errors(),
+                    config('messages.HTTP_UNPROCESSABLE_DATA')
+                );
+            }
+            $FrontImage = ($Req->FrontImage) ? CustomHelpers::getResumeImgNameWithID($Req->FrontImage, $Req->ID) : null;
+            /*
+            |--------------------------------------------------------------------------
+            | Here we are using "getViewPathWithID()" function only to update the html 
+            | Content present in the blade file
+            |--------------------------------------------------------------------------
+            */
+            if (!is_null($Req->Html)) CustomHelpers::getViewPathWithID($Req->Html, 'resumes', $Req->ID);
+
+            $Updated = Resume::updateResume($Req->ID, $FrontImage, $Req->Version, $Req->CatID);
+            if ($Updated) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.UPDATION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.UPDATION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 
-    public function destroy(Resume $resume)
+    public function destroy(Request $Req)
     {
-        //
+        try {
+            $Deleted = Resume::deleteResumesByGivenParams($Req->ID, $Req->CatID, $Req->Version);
+            if ($Deleted) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.DELETION_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.DELETION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
+    }
+
+    public function restore(Request $Req)
+    {
+        try {
+            if ($Req->ID) {
+                $Restored = Resume::restoreResume($Req->ID);
+                if ($Restored) {
+                    return response()->macroJson(
+                        [],
+                        config('messages.SUCCESS_CODE'),
+                        config('messages.RESTORE_SUCCESS'),
+                        config('messages.HTTP_SUCCESS_CODE')
+                    );
+                }
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    config('messages.RESTORE_FAILED'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            $Restored = Resume::restoreAllResumes();
+            if ($Restored) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.RESTORE_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.RESTORE_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $error) {
+            report($error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
     }
 }
