@@ -526,7 +526,6 @@ class TemplatesController extends Controller
     {
         try {
             if ($Req->ID) {
-
                 $Data = Cache::remember('birthdayTemplates' . $Req->ID, now()->addDays(30), function () use ($Req) {
                    return  BirthdayTemplates::getBirthdayTempletesByID($Req->ID);
                 });
@@ -539,7 +538,6 @@ class TemplatesController extends Controller
             }
             $Data = Cache::remember('birthdayTemplates', now()->addDays(30), function () {
                 $BirthdayTempletes = BirthdayTemplates::getbirthdayTempletes();
-                // dd($BirthdayTempletes);die ;
                 $Data = [];
                 foreach ($BirthdayTempletes as $BirthdayTemplete) {
                     array_push($Data, [
