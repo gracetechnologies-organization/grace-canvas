@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Livewire\EditingForms\CreateResumeForm;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Route::get('/', function () {
+
+//     dd('hello');
+// })->name('home2');
 
 Route::prefix('edit')->group(function () {
     Route::get('resume/{ID}', CreateResumeForm::class)->name('edit.resume.form');
