@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             WallpaperSeeder::class,
             ResumeSeeder::class,
             UserTableSeeder::class,
+            BirthdayTemplatesSeeder::class
         ]);
     }
 }

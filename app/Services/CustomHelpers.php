@@ -62,6 +62,7 @@ class CustomHelpers
         Storage::disk('public')->putFileAs('images', $Img, $ImgName);
         return $ImgName;
     }
+
     public static function getResumeImgNameWithID(object $Img, int $ID, string $Side = null)
     {
         $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
@@ -75,6 +76,19 @@ class CustomHelpers
         return $ImgName;
     }
 
+    public static function getBirthdayTemplateWithID(object $Img, int $ID, string $Side = null)
+    {
+        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        if (!is_null($Side)) $ImgName = $Side . '_' . $ImgName;
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('images/birthday_templates', $Img, $ImgName);
+        return $ImgName;
+    }
+
     public static function getViewPathWithID(object $File, string $Type, int $ID, string $Side = null)
     {
         // Get the SVG content
@@ -85,6 +99,24 @@ class CustomHelpers
         File::makeDirectory($DirectoryPath, 0755, true, true);
         // Generate the blade file name
         $FileName = (is_null($Side)) ? $ID . '_' . $Type . '.blade.php' : $ID . '_' . $Side . '.blade.php';
+        // Set the file path
+        $FilePath = $DirectoryPath . '/' . $FileName;
+        // Write the SVG content into the blade file
+        File::put($FilePath, $FileContent);
+        // Returning the final path where the view file is generated
+        return $ID . '/' . $ID . '_';
+    }
+
+    public static function getViewPathWithIDBirthday(object $File, int $ID, string $Side = null)
+    {
+        // Get the SVG content
+        $FileContent = $File->getContent();
+        // Generate directory name
+        $DirectoryPath = resource_path('views/' . 'Birthday_Templete'. '/' . $ID);
+        // Create the directory if it doesn't exist
+        File::makeDirectory($DirectoryPath, 0755, true, true);
+        // Generate the blade file name
+        $FileName = (is_null($Side)) ? $ID . '_' . 'Birthday_Templete' . '.blade.php' : $ID . '_' . $Side . '.blade.php';
         // Set the file path
         $FilePath = $DirectoryPath . '/' . $FileName;
         // Write the SVG content into the blade file

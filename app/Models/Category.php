@@ -66,7 +66,6 @@ class Category extends Model
             "deleted_at" => $Category->deleted_at
         ];
     }
-
     public static function getCategories()
     {
         return Category::all();
@@ -74,10 +73,10 @@ class Category extends Model
 
     public static function getCategoriesWithWallpapers(int $ID = null)
     {
-        $Categories = Category::with('wallpapers')->when($ID, function ($query, $ID) {
-            return $query->where('id', $ID);
+        $Categories = Category::with('wallpapers')->when($ID, function ($Query, $ID) {
+            return $Query->where('id', $ID);
         })->get();
-    
+
         return $Categories->each(function ($Category) {
             $Category->wallpapers->each(function ($Wallpaper) {
                 $Wallpaper->front_image = url('/storage/wallpapers') . '/' . $Wallpaper->front_image;
