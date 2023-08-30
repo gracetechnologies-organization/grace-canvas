@@ -133,7 +133,7 @@ class ResumeController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'FrontImage' => 'mimes:webp|max:400',
+                'FrontImage' => 'mimes:webp|max:100',
                 'Version' => 'integer',
                 'CatID' => 'integer',
                 'Html' => 'mimes:html'
