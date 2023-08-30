@@ -107,16 +107,16 @@ class CustomHelpers
         return $ID . '/' . $ID . '_';
     }
 
-    public static function getViewPathWithIDBirthday(object $File, int $ID)
+    public static function getViewPathWithIDBirthdayTemplates(object $File, int $ID)
     {
         // Get the SVG content
         $FileContent = $File->getContent();
         // Generate directory name
-        $DirectoryPath = resource_path('views/' . 'birthday_template'. '/' . $ID);
+        $DirectoryPath = resource_path('views/' . 'birthday_templates'. '/' . $ID);
         // Create the directory if it doesn't exist
         File::makeDirectory($DirectoryPath, 0755, true, true);
         // Generate the blade file name
-        $FileName = $ID . '_' . 'birthday_template' . '.blade.php';
+        $FileName = $ID . '_' . 'birthday_templates' . '.blade.php';
         // Set the file path
         $FilePath = $DirectoryPath . '/' . $FileName;
         // Write the SVG content into the blade file

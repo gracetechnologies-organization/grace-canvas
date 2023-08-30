@@ -18,3 +18,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+resources/views/resumes/
+resources/views/letter_heads/
+resources/views/birthday_templates/

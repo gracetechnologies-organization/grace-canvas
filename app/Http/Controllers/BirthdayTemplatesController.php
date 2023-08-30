@@ -30,7 +30,7 @@ class BirthdayTemplatesController extends Controller
         $LastInsertedId =  BirthdayTemplates::getLastInsertedID();
         $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
         $FrontImage = CustomHelpers::getBirthdayTemplateWithID($Req->FrontImage, $LastInsertedId);
-        $FrontSvg = CustomHelpers::getViewPathWithIDBirthday($Req->svg, $LastInsertedId);
+        $FrontSvg = CustomHelpers::getViewPathWithIDBirthdayTemplates($Req->svg, $LastInsertedId);
         $Inserted = BirthdayTemplates::insertBirthdayTempletes($FrontImage, $FrontSvg);
         if ($Inserted) {
             return response()->macroJson(
@@ -66,7 +66,7 @@ class BirthdayTemplatesController extends Controller
                 );
             }
             $FrontImage = (!is_null($Req->FrontImage)) ? CustomHelpers::getBirthdayTemplateWithID($Req->FrontImage, $Req->ID) : null;
-            $FrontSvg = (!is_null($Req->svg)) ? CustomHelpers::getViewPathWithIDBirthday($Req->svg, $Req->ID) : null;
+            $FrontSvg = (!is_null($Req->svg)) ? CustomHelpers::getViewPathWithIDBirthdayTemplates($Req->svg, $Req->ID) : null;
             $Updated = BirthdayTemplates::updateBirthdayTempletes($Req->ID, $FrontImage, $FrontSvg, $Req->version, $Req->default);
             if ($Updated) {
                 return response()->macroJson(
