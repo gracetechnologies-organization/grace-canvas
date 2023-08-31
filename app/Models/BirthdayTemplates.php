@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BirthdayTemplates extends Model
 {
-    use HasFactory , SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    
+
     protected $fillable = [
         'front_image',
         'svg',
@@ -69,11 +69,11 @@ class BirthdayTemplates extends Model
         ]);
     }
 
-    public static function updateBirthdayTempletes(int $ID , string $FrontImage = null , string $FrontSvg = null ,int $version = null ,int $default = null)
+    public static function updateBirthdayTempletes(int $ID, string $FrontImage = null, string $FrontSvg = null, int $version = null, int $default = null)
     {
         $BirthdayTemplete = BirthdayTemplates::findOrFail($ID);
         if (!is_null($FrontImage)) $BirthdayTemplete->front_image = $FrontImage;
-        if (!is_null($FrontSvg)) $BirthdayTemplete->svg =  $FrontSvg ;
+        if (!is_null($FrontSvg)) $BirthdayTemplete->svg =  $FrontSvg;
         if (!is_null($version)) $BirthdayTemplete->version = $version;
         if (!is_null($default)) $BirthdayTemplete->default = $default;
         return $BirthdayTemplete->save();
@@ -96,6 +96,6 @@ class BirthdayTemplates extends Model
 
     public static function restoreAllBirthdayTempletes()
     {
-         return BirthdayTemplates::query()->restore();
+        return BirthdayTemplates::query()->restore();
     }
 }
