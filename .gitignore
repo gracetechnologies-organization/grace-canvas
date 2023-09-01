@@ -21,3 +21,4 @@ yarn-error.log
 resources/views/resumes/
 resources/views/letter_heads/
 resources/views/birthday_templates/
+resources/views/business_cards/
