@@ -1,5 +1,5 @@
-<!-- Resume template column -->
-<div class="col-12 col-md-7 col-lg-8">
+ <!-- Resume template column -->
+ <div class="col-12 col-md-7 col-lg-8">
     <!-- Resume template design -->
     <div class="container contianer-customs mt-2" id="resume-template-container">
         <div class="row custom-border" style="width:720px;">
@@ -7,7 +7,7 @@
                 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
                 .left-col {
-                    background: #3A3A3A;
+                    background: rgb(23, 23, 214);
                     width: 200px;
                     height: 1040px;
                 }
@@ -21,7 +21,7 @@
 
                 .resume-photo {
                     border: 2px solid white;
-                    background-color: white;
+                    border-radius: 100%;
                     overflow: hidden;
                     width: 142px;
                     height: 142px;
@@ -37,12 +37,11 @@
                     width: 120px;
                     padding-top: 10px;
                     margin: -10px 10px 0px 0px;
-
                 }
 
                 .personal-info-container h2 {
-                    color: #3A3A3A;
-                    background-color: white;
+                    color: #FFF;
+                    background-color: #000;
                     font-family: Poppins;
                     font-size: 13.17px;
                     font-style: normal;
@@ -50,7 +49,7 @@
                     text-transform: uppercase;
                     height: 25px;
                     width: 200px;
-                    margin: -25px 0px 0px -35px;
+                    margin: 30px 0px 0px -40px;
                     padding-top: 5px;
                     padding-left: 45px;
                 }
@@ -79,7 +78,6 @@
                     font-style: normal;
                     font-weight: 400;
                     line-height: 1px;
-                    margin-left: -15px;
                 }
 
                 .skills-container {
@@ -88,12 +86,11 @@
                     left: 20px;
                     width: 120px;
                     padding-top: 10px;
-                    margin-top: -40px;
                 }
 
                 .skills-container h2 {
-                    color: #3A3A3A;
-                    background-color: white;
+                    color: #FFF;
+                    background-color: #000;
                     font-family: Poppins;
                     font-size: 13px;
                     font-style: normal;
@@ -101,16 +98,14 @@
                     text-transform: uppercase;
                     height: 25px;
                     width: 200px;
-                    margin: 0px 0px 0px -35px;
+                    margin: 0px 0px 0px -40px;
                     padding-top: 5px;
                     padding-left: 45px;
-
                 }
 
                 .skills-details {
                     padding: 20px 0px 0px 7px;
                     height: auto;
-
                 }
 
                 .skills-details p {
@@ -122,14 +117,11 @@
                     line-height: 0px;
                     text-transform: uppercase;
                     margin-bottom: 9px;
-                    margin-left: -15px;
                 }
 
                 .progress-bar-container {
                     background-color: #a8a8a8;
                     border-radius: 100px;
-                    margin-left: -15px;
-
                 }
 
                 .progress-bar-container .custom-progress-bar {
@@ -144,83 +136,11 @@
                     left: 20px;
                     width: 120px;
                     padding-top: 10px;
-                    margin-top: -30px;
-                }
-
-                .languages-container {
-                    position: relative;
-                    top: 135px;
-                    left: 20px;
-                    width: 200px;
-                    padding-top: 10px;
-                    margin-top: 0px;
-                }
-
-                .languages-container h2 {
-                    color: #3A3A3A;
-                    background-color: white;
-                    font-family: Poppins;
-                    font-size: 13px;
-                    font-style: normal;
-                    font-weight: 400;
-                    text-transform: uppercase;
-                    height: 25px;
-                    width: 200px;
-                    margin: 0px 0px 0px -35px;
-                    padding-top: 5px;
-                    padding-left: 45px;
-                }
-
-                .languages-details {
-                    padding: 0px 0px 0px 7px;
-                    height: 30px;
-                }
-
-                .languages-details p {
-                    color: #FFF;
-                    font-family: Poppins;
-                    font-size: 11px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 0px;
-                    text-transform: uppercase;
-                    margin-bottom: 2px;
-                    margin-left: -15px;
-                }
-
-                .dot {
-                    height: 7px;
-                    width: 7px;
-                    background-color: white;
-                    border-radius: 50%;
-                    display: inline-block;
-                }
-
-                .dot-grey {
-                    height: 7px;
-                    width: 7px;
-                    background-color: grey;
-                    border-radius: 50%;
-                    display: inline-block;
-                }
-
-                .right-col-divider {
-                    width: 450px;
-                    margin: 10px 0px 0px 0px;
-                }
-
-                .interest-container {
-                    position: relative;
-                    top: 135px;
-                    left: 20px;
-                    width: 200px;
-                    padding-top: 10px;
-                    margin-top: 0px;
                 }
 
                 .interest-container h2 {
-                    color: #3A3A3A;
-                    background-color: white;
+                    color: #FFF;
+                    background-color: #000;
                     font-family: Poppins;
                     font-size: 13px;
                     font-style: normal;
@@ -228,37 +148,35 @@
                     text-transform: uppercase;
                     height: 25px;
                     width: 200px;
-                    margin: 0px 0px 0px -35px;
+                    margin: 0px 0px 0px -40px;
                     padding-top: 5px;
-                    padding-left: 45px;
+                    padding-left: 60px;
                 }
 
                 .interest-details {
-                    padding: 0px 0px 0px 7px;
-                    height: 27px;
+                    padding: 20px 0px 0px 7px;
+                    height: auto;
                 }
 
                 .interest-details p {
                     color: #FFF;
                     font-family: Poppins;
-                    font-size: 11px;
+                    font-size: 10px;
                     font-style: normal;
                     font-weight: 400;
                     line-height: 0px;
                     text-transform: uppercase;
-                    margin-bottom: 2px;
-                    margin-left: -15px;
+                    margin-bottom: 9px;
                 }
 
                 .name-container {
                     width: 100%;
-                    padding: 0px 30px 0px 30px;
+                    padding: 40px 30px 0px 30px;
                 }
 
                 .name-container h2 {
-                    line-height: 0px;
+                    line-height: 5px;
                     font-size: 15px;
-                    margin-top: 50px;
                 }
 
                 .name-container h2 span {
@@ -271,8 +189,8 @@
                 }
 
                 .name-container .profession {
-                    background-color: white;
-                    color: #413F40;
+                    background-color: rgb(23, 23, 214);
+                    color: white;
                     width: 220px;
                     height: 22px;
                     margin-top: 20px;
@@ -282,17 +200,16 @@
                     font-weight: 400;
                     line-height: normal;
                     text-transform: uppercase;
-                    margin: 17px 0px 0px 0px;
-                    padding-bottom: 25px;
+                    margin: 15px 0px 0px 0px;
                 }
 
                 .objective-container {
                     width: 100%;
-                    padding: 22px 30px 0px 30px
+                    padding: 12px 30px 0px 30px;
                 }
 
                 .objective-container h2 {
-                    background-color: #413F40;
+                    background-color: rgb(23, 23, 214);
                     color: white;
                     font-family: Poppins;
                     font-size: 15px;
@@ -316,11 +233,11 @@
 
                 .experience-container {
                     width: 100%;
-                    padding: 0px 30px 0px 30px
+                    padding: 0px 30px 0px 30px;
                 }
 
                 .experience-container h2 {
-                    background-color: #413F40;
+                    background-color: rgb(23, 23, 214);
                     color: white;
                     font-family: Poppins;
                     font-size: 16px;
@@ -330,8 +247,7 @@
                     text-transform: uppercase;
                     width: 170px;
                     padding: 0px 3px 0px 5px;
-                    margin-bottom: 15px;
-                    margin-top: 25px;
+                    margin-bottom: 10px;
                 }
 
                 .experience-details h3 {
@@ -352,16 +268,16 @@
                     font-weight: 400;
                     margin-top: 10px;
                     line-height: 16px;
-                    margin-bottom: 20px;
+                    margin-bottom: 8px;
                 }
 
                 .education-container {
                     width: 100%;
-                    padding: 10px 30px 0px 30px
+                    padding: 10px 30px 0px 30px;
                 }
 
                 .education-container h2 {
-                    background-color: #413F40;
+                    background-color: rgb(23, 23, 214);
                     color: white;
                     font-family: Poppins;
                     font-size: 15px;
@@ -372,8 +288,7 @@
                     border-radius: 0px;
                     width: 170px;
                     padding: 0px 3px 0px 5px;
-                    margin-bottom: 27px;
-                    margin-top: 10px;
+                    margin-bottom: 15px;
                 }
 
                 .education-details {
@@ -403,11 +318,11 @@
 
                 .achievement-container {
                     width: 100%;
-                    padding: 10px 30px 0px 30px
+                    padding: 10px 30px 0px 30px;
                 }
 
                 .achievement-container h2 {
-                    background-color: #413F40;
+                    background-color: rgb(23, 23, 214);
                     color: white;
                     font-family: Poppins;
                     font-size: 15px;
@@ -419,7 +334,6 @@
                     width: 170px;
                     padding: 0px 3px 0px 5px;
                     margin-bottom: 10px;
-                    margin-top: 10px;
                 }
 
                 .achievement-section div {
@@ -439,11 +353,11 @@
 
                 .project-container {
                     width: 100%;
-                    padding: 10px 30px 0px 30px
+                    padding: 10px 30px 0px 30px;
                 }
 
                 .project-container h2 {
-                    background-color: #413F40;
+                    background-color: rgb(23, 23, 214);
                     color: white;
                     font-family: Poppins;
                     font-size: 15px;
@@ -455,7 +369,6 @@
                     width: 170px;
                     padding: 0px 3px 0px 5px;
                     margin-bottom: 10px;
-                    margin-top: 10px;
                 }
 
                 .project-section div {
@@ -475,11 +388,11 @@
 
                 .reference-container {
                     width: 100%;
-                    padding: 10px 30px 0px 30px
+                    padding: 10px 30px 0px 30px;
                 }
 
                 .reference-container h2 {
-                    background-color: #413F40;
+                    background-color: rgb(23, 23, 214);
                     color: white;
                     font-family: Poppins;
                     font-size: 15px;
@@ -490,7 +403,6 @@
                     border-radius: 0px;
                     width: 170px;
                     padding: 0px 3px 0px 5px;
-                    margin-top: 10px;
                 }
 
                 .reference-section div {
@@ -513,6 +425,62 @@
                     font-size: 11px;
                     font-style: normal;
                     line-height: 0px;
+                }
+
+                .languages-container {
+                    width: 100%;
+                    padding: 10px 30px 0px 30px;
+                }
+
+                .languages-container h2 {
+                    background-color: rgb(23, 23, 214);
+                    color: white;
+                    font-family: Poppins;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: uppercase;
+                    border-radius: 0px;
+                    width: 170px;
+                    padding: 0px 3px 0px 5px;
+                    margin-bottom: 10px;
+                }
+
+                .languages-section .languages-details {
+                    width: 50%;
+                }
+
+                /* .languages-details div p {
+                    color: #7D818C;
+                    font-family: Poppins;
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    margin-top: 5px;
+                    line-height: 5px;
+                } */
+
+                .dot {
+                    height: 8px;
+                    width: 8px;
+                    background-color: rgb(23, 23, 214);
+                    border-radius: 50%;
+                    display: inline-block;
+                }
+
+                .dot-grey {
+                    height: 7px;
+                    width: 7px;
+                    background-color: #E7E7E6;
+                    border-radius: 50%;
+                    display: inline-block;
+                }
+
+                .right-col-divider {
+                    width: 450px;
+                    margin: 10px 0px 0px 0px;
+
                 }
             </style>
             <div class="left-col">
@@ -566,42 +534,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="languages-container">
-                    <h2> Language</h2>
-                    <div id="languages-section">
-                        <div class="languages-details">
-                            <div class="row col-10">
-                                <div class="col-5 py-3">
-                                    <p id="Language0">Language</p>
-                                </div>
-                                <div class="col-7 py-1">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot-grey"></span>
-                                    <span class="dot-grey"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="interest-container">
                     <h2> Interest </h2>
                     <div id="interests-section">
                         <div class="interest-details">
-                            <div class="row col-10">
-                                <div class="col-5 py-3">
-                                    <p id="Interest0">Gaming</p>
-                                </div>
-                                <div class="col-7 py-1">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot-grey"></span>
-                                    <span class="dot-grey"></span>
-                                </div>
+                            <p id="Interest0">Gaming</p>
+                            <div class="progress-bar-container">
+                                <div class="custom-progress-bar" style="width: 85%;"></div>
                             </div>
                         </div>
                     </div>
@@ -668,7 +607,7 @@
                     </div>
                     <div class="right-col-divider"></div>
                 </div>
-                <div class="reference-container ">
+                <div class="reference-container">
                     <h2>Reference</h2>
                     <div class="row reference-section" id="reference-section">
                         <div class="reference-details">
@@ -679,6 +618,31 @@
                             </div>
                         </div>
                         <div class="reference-details">
+                            {{-- This area is for JavaScript Baby --}}
+                        </div>
+                    </div>
+                    <div class="right-col-divider"></div>
+                </div>
+                <div class="languages-container">
+                    <h2>Language</h2>
+                    <div class="row languages-section" id="languages-section">
+                        <div class="languages-details">
+                            <div class="row col-12">
+                                <div class="col-6">
+                                    <p id="Language0">Language</p>
+                                </div>
+                                <div class="col-6">
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot-grey"></span>
+                                    <span class="dot-grey"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="languages-details">
                             {{-- This area is for JavaScript Baby --}}
                         </div>
                     </div>
@@ -927,18 +891,9 @@
                         </div>`;
 
                 const NewInterest = `<div class="interest-details">
-                            <div class="row col-10">
-                                <div class="col-5 py-3">
-                                    <p id="Interest` + ChildDivsLength + `">Gaming</p>
-                                </div>
-                                <div class="col-7 py-1">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot-grey"></span>
-                                    <span class="dot-grey"></span>
-                                </div>
+                            <p id="Interest` + ChildDivsLength + `">Hiking</p>
+                            <div class="progress-bar-container">
+                                <div class="custom-progress-bar" style="width: 85%;"></div>
                             </div>
                         </div>`;
 
@@ -969,21 +924,20 @@
                     </div>
                 </div>`;
 
-                const NewLanguage = `<div class="languages-details">
-                            <div class="row col-10">
-                                <div class="col-5 py-3">
+                const NewLanguage = `<div class="row col-12">
+                                <div class="col-6">
                                     <p id="Language` + ChildDivsLength + `">Language</p>
                                 </div>
-                                <div class="col-7 py-1">
+                                <div class="col-6">
+                                    <span class="dot"></span>
                                     <span class="dot"></span>
                                     <span class="dot"></span>
                                     <span class="dot"></span>
                                     <span class="dot"></span>
                                     <span class="dot-grey"></span>
-                                    <span class="dot-grey"></span>
+                                    <span class="dot-grey"></span>  
                                 </div>
-                            </div>
-                        </div>`;
+                            </div>`;
 
                 /*
                 |--------------------------------------------------------------------------
@@ -994,42 +948,45 @@
                 if (ChildDivsLength === 4) {
                     document.getElementById('LanguageFormWarning').classList.remove('d-none');
                 } else {
+                    const InnerDivs = document.querySelectorAll('.languages-container > div.languages-section > div.languages-details');
+                    console.log(InnerDivs[0].children.length);
+
                     document.getElementById('panelsStayOpen-Languages').insertAdjacentHTML('beforeend', NewForm);
-                    document.getElementById('languages-section').insertAdjacentHTML('beforeend', NewLanguage);
+                    (InnerDivs[0].children.length === 2) ? InnerDivs[1].insertAdjacentHTML('beforeend', NewLanguage): InnerDivs[0].insertAdjacentHTML('beforeend', NewLanguage);
                 }
             };
 
             static addNewReference = () => {
                 const ChildDivsLength = document.querySelectorAll('#panelsStayOpen-References > div.accordion-body').length;
                 const NewForm = `<div class="accordion-body" id="ReferenceForm` + ChildDivsLength + `">
-                            <div class="row g-2 my-3">
-                                <div class="col-12 col-md-12 col-lg-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control"  placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName` + ChildDivsLength + `', this.value)">
-                                        <label >Enter Name</label>
+                                    <div class="row g-2 my-3">
+                                        <div class="col-12 col-md-12 col-lg-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"  placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName` + ChildDivsLength + `', this.value)">
+                                                <label >Enter Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-12 col-lg-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control"  placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation` + ChildDivsLength + `', this.value)">
+                                                <label >Enter Designation</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-12 col-lg-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control"  placeholder="Enter reference designation" onkeyup="CreateResumeForm.renderTxt('ReferenceDesignation` + ChildDivsLength + `', this.value)">
-                                        <label >Enter Designation</label>
+                                    <div class="col-12 my-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" placeholder="Enter reference contact" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription` + ChildDivsLength + `', this.value)">
+                                            <label for="floatingTextarea2">Reference Contact</label>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-12 my-3">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" placeholder="Enter reference contact" onkeyup="CreateResumeForm.renderTxt('ReferenceDescription` + ChildDivsLength + `', this.value)">
-                                    <label for="floatingTextarea2">Reference Contact</label>
-                                </div>
-                            </div>
-                        </div>`;
+                                </div>`;
 
                 CreateResumeForm.ReferenceNumber = ChildDivsLength + 1;
                 const NewReference = `<div>
-                        <h3 id="ReferenceName` + ChildDivsLength + `">Reference ` + CreateResumeForm.ReferenceNumber + `</h3>
-                        <p id="ReferenceDesignation` + ChildDivsLength + `">Designation</p>
-                        <p id="ReferenceDescription` + ChildDivsLength + `">Number</p>
-                      </div>`;
+                                        <h3 id="ReferenceName` + ChildDivsLength + `">Reference ` + CreateResumeForm.ReferenceNumber + `</h3>
+                                        <p id="ReferenceDesignation` + ChildDivsLength + `">Designation</p>
+                                        <p id="ReferenceDescription` + ChildDivsLength + `">Number</p>
+                                    </div>`;
 
                 /*
                 |--------------------------------------------------------------------------
@@ -1047,6 +1004,9 @@
             };
 
             static delForm = (FormID, ResumeSectionID, InnerDiv) => {
+                if (FormID === 'panelsStayOpen-Languages') return CreateResumeForm.delFormAndTwoColumnsData(FormID, ResumeSectionID, InnerDiv);
+
+                // For the delete buttom of all other forms
                 const FormChildElements = document.getElementById(FormID).querySelectorAll('div.accordion-body');
                 const ResumeSectionChildElements = document.getElementById(ResumeSectionID).querySelectorAll(InnerDiv);
                 if (FormChildElements.length > 1) {

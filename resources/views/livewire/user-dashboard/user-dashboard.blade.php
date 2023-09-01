@@ -1,87 +1,191 @@
-<div class="border border-danger border-5">
+<div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add links to Bootstrap and Font Awesome here -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>Responsive Sidebar</title>
+
     <style>
-        .sidebar {
-            height: 100%;
+        /* Your existing CSS styles */
+        .custom-user-dashboard-container {
+            margin-top: 10rem;
+            margin-bottom: 10rem;
+            padding-left: 12rem;
+        }
+
+        .custom-sidebar-user-dashboard {
             width: 250px;
-            position: fixed;
+            height: 90%;
+            margin: 10% 0% 10% 0%;
             background-color: rgb(255, 102, 0);
             overflow: hidden;
             transition: 0.3s;
-            padding-top: 60px;
+            padding: 5%;
+            margin-left: -18rem;
         }
 
-        .sidebar a {
-            padding: 10px 8px 10px 16px;
+        .custom-sidebar-user-dashboard a {
             text-decoration: none;
-            font-size: 25px;
+            font-size: 20px;
+            font-family: Poppins;
             color: #fffcfc;
             display: block;
+            overflow: hidden;
             transition: 0.3s;
+            padding:10px;
         }
 
-        .sidebar a:hover {
+        .custom-sidebar-user-dashboard a:hover {
             color: #f1f1f1;
         }
 
-        .sidebar.active {
-            left: 0;
+        .custom-sidebar-user-dashboard.active {
+            width: 250px;
+            /* Keep the width consistent on all screen sizes */
         }
 
-        .sidebar a.active-link {
+        .custom-sidebar-user-dashboard a.active-link {
             background-color: #333;
             color: #fff;
         }
 
-        .sidebar .icon {
+        .custom-sidebar-user-dashboard .icon {
             font-size: 25px;
             margin-right: 10px;
         }
 
         .content {
-            margin-left: 250px;
+            margin-top: 0.8rem;
+            margin-left: -15rem;
+            /* Adjust this margin as needed */
             padding: 15px;
         }
-    </style>
+        .custome-card-border{
+            border: 2px dashed #FF6600 ;
+        }
+        .custom-button-css{
+            width: 11rem !important;
+            height: 4rem !important;
+            border-radius: 1rem;
+            border: none;
+            margin-top: 0px;
+            padding-right: 0rem !important;
+            padding-left: 0rem !important ;
+            background-color: #FF6600;
+            color: #FFF;
+            font-family: Poppins;
+            font-size: 20px !important;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
 
-    <div id="sidebar" class="sidebar">
-        <a href="#" data-content="homeContent">
-            <i class="fas fa-home icon"></i> <!-- Home Icon -->
-            <span class="d-none d-md-inline">Home</span>
-        </a>
-        <a href="#" data-content="settingContent">
-            <i class="fas fa-cog icon"></i> <!-- Setting Icon -->
-            <span class="d-none d-md-inline">Setting</span>
-        </a>
-        <a href="#" data-content="myTemplateContent">
-            <i class="fas fa-file icon"></i> <!-- Template Icon -->
-            <span class="d-none d-md-inline">MY Template</span>
-        </a>
-    </div>
-    <div class="content">
-        <div id="dataContainer">
-            {{-- data displayed here based on click link   --}}
-            <p> {{ $Count }} </p>
-            <button wire:click="incCounter"> + </button>
+        /* Additional CSS for responsive design */
+        @media (max-width: 767px) {
+            .custom-user-dashboard-container {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                padding-left: 1rem;
+            }
+
+            /* Add any additional styles for mobile here */
+            .custom-sidebar-user-dashboard {
+                width: 250px;
+                height: 70%;
+                margin-left: 1rem;
+            }
+
+            .custom-sidebar-user-dashboard.active {
+                width: 250px;
+                /* Keep the width consistent on all screen sizes */
+            }
+
+            .content {
+                margin-left: 0px;
+                /* Adjust this margin as needed */
+            }
+
+            .custome-color {
+                color: #ff6600;
+            }
+            .custom-button-css{
+                width: 8rem !important;
+                height: 3rem !important;
+                border-radius: 0.5rem;
+                border: none;
+                padding-right: 0rem !important;
+                padding-left: 0rem !important ;
+                padding-bottom: 1rem !important ;
+                background-color: #FF6600;
+                color: #FFF;
+                font-family: Poppins;
+                font-size: 1rem !important;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+
+
+        }
+
+        @media only screen and (min-width:768px) and (max-width:1440px) {
+            .custom-sidebar-user-dashboard {
+                margin-left: -10rem;
+            }
+
+            .content {
+                margin-left: -3rem;
+                margin-top: -0.1rem;
+
+            }
+        }
+
+    </style>
+    <div class="container custom-user-dashboard-container">
+        <h2 class="my-4 text-center custome-color">
+            Wellcome To Your Dashboard
+        </h2>
+        <div class="row">
+            <!-- Add Bootstrap classes for responsive design -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div id="sidebar" class="sidebar custom-sidebar-user-dashboard">
+                    <a href="{{route('user.dashboard.home')}}">
+                        <i class='bx bx-home-alt-2'></i> <!-- Home Icon -->
+                        <span class="d-md-inline">Home</span>
+                    </a>
+                    <a href="{{ route('user.dashboard.settings') }}">
+                        <i class='bx bxs-cog'></i><!-- Setting Icon -->
+                        <span class="d-md-inline">Setting</span>
+                    </a>
+                    <a href="{{ route('user.dashboard.templates') }}">
+                        <i class="bx bx-file "></i> <!-- Template Icon -->
+                        <span class="d-md-inline">MY Template</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-6">
+                <div class="content">
+                    <div id="dataContainer">
+                        @yield('user-dashboard')
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    {{-- content divs  --}}
-    <div id="homeContent" style="display: none">
-        {{-- <h2>Home content</h2>
-        <p>this is the content for home section</p> --}}
-
-        <livewire:user-dashboard.user-dashboard-home/>
-    </div>
-    <div id="settingContent" style="display: none">
-        <h2>Setting content</h2>
-        <p>this is the content for Setting section</p>
-    </div>
-    <div id="myTemplateContent" style="display: none">
-        <h2>My Template content</h2>
-        <p>this is the content for Template section</p>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            var sidebar = document.getElementById('sidebar');
+            var sidebarToggle = false;
+
+            sidebar.addEventListener('click', function() {
+                sidebarToggle = !sidebarToggle;
+                if (sidebarToggle) {
+                    sidebar.classList.add('active');
+                } else {
+                    sidebar.classList.remove('active');
+                }
+            });
+
             var sidebarlinks = document.querySelectorAll('.sidebar a');
             var dataContainer = document.getElementById('dataContainer');
 
