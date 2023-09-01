@@ -77,10 +77,9 @@ class CustomHelpers
         return $ImgName;
     }
 
-    public static function getBirthdayTemplateWithID(object $Img, int $ID, string $Side = null)
+    public static function getBirthdayTemplateImgWithID(object $Img, int $ID)
     {
         $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
-        if (!is_null($Side)) $ImgName = $Side . '_' . $ImgName;
         /*
         |--------------------------------------------------------------------------
         | Save the image to the default storage path "storage/app/public/images"
