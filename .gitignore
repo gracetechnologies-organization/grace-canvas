@@ -18,7 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-resources/views/resumes/
-resources/views/letter_heads/
-resources/views/birthday_templates/
-resources/views/business_cards/
+resources/views/resumes
+resources/views/letter_heads
+resources/views/birthday_templates
+resources/views/business_cards

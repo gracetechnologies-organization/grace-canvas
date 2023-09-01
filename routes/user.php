@@ -11,7 +11,7 @@ Route::prefix('user')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', UserDashboard::class)->name('user.dashboard');
         Route::get('/home', UserDashboardHome::class)->name('user.dashboard.home');
-        Route::get('/settings', UserDashboardSettings::class,)->name('user.dashboard.settings');
-        Route::get('/templates',UserDashboardTemplates::class,'userTemplates')->name('user.dashboard.templates');
+        Route::get('/settings', UserDashboardSettings::class)->name('user.dashboard.settings');
+        Route::get('/templates',UserDashboardTemplates::class)->name('user.dashboard.templates');
     });
 });
