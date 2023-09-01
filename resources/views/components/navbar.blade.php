@@ -28,7 +28,7 @@
                         </a>
                         <ul class="dropdown-content">
                             <li>
-                                <a href="{{ route('dashboard') }}">
+                                <a href="{{ route('user.dashboard') }}">
                                     Dashboard
                                 </a>
                                 <form method="POST" action="{{ route('logout') }}">
