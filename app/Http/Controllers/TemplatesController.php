@@ -226,7 +226,7 @@ class TemplatesController extends Controller
     public function storeResume(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
-            'FrontImage' => 'required|mimes:webp|max:500',
+            'FrontImage' => 'required|mimes:webp|max:100',
             'Version' => 'required|integer',
             'CatID' => 'required|integer',
             'HtmlFile' => 'required'

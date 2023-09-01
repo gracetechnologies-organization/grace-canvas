@@ -63,6 +63,7 @@ class CustomHelpers
         return $ImgName;
     }
 
+
     public static function getResumeImgNameWithID(object $Img, int $ID, string $Side = null)
     {
         $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
@@ -73,6 +74,19 @@ class CustomHelpers
         |--------------------------------------------------------------------------
         */
         Storage::disk('public')->putFileAs('images/resumes', $Img, $ImgName);
+        return $ImgName;
+    }
+
+    public static function getBirthdayTemplateWithID(object $Img, int $ID, string $Side = null)
+    {
+        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        if (!is_null($Side)) $ImgName = $Side . '_' . $ImgName;
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('images/birthday_templates', $Img, $ImgName);
         return $ImgName;
     }
 
@@ -107,16 +121,16 @@ class CustomHelpers
         return $ID . '/' . $ID . '_';
     }
 
-    public static function getViewPathWithIDBirthday(object $File, int $ID, string $Side = null)
+    public static function getViewPathWithIDBirthdayTemplates(object $File, int $ID)
     {
         // Get the SVG content
         $FileContent = $File->getContent();
         // Generate directory name
-        $DirectoryPath = resource_path('views/' . 'Birthday_Templete'. '/' . $ID);
+        $DirectoryPath = resource_path('views/' . 'birthday_templates'. '/' . $ID);
         // Create the directory if it doesn't exist
         File::makeDirectory($DirectoryPath, 0755, true, true);
         // Generate the blade file name
-        $FileName = (is_null($Side)) ? $ID . '_' . 'Birthday_Templete' . '.blade.php' : $ID . '_' . $Side . '.blade.php';
+        $FileName = $ID . '_' . 'birthday_templates' . '.blade.php';
         // Set the file path
         $FilePath = $DirectoryPath . '/' . $FileName;
         // Write the SVG content into the blade file
