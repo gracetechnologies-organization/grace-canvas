@@ -455,7 +455,6 @@ class TemplatesController extends Controller
     public function showCategoriesWallpapers(Request $Req)
     {
         try {
-            // dd(Cache::get('showCategoriesWallpapers11'));
             if ($Req->CatID) {
                 $Data = Cache::remember('showCategoriesWallpapers' . $Req->CatID, now()->addDays(30), function () use ($Req) {
                     $Categories = Category::getCategoriesWithWallpapers($Req->CatID);
@@ -526,9 +525,8 @@ class TemplatesController extends Controller
     {
         try {
             if ($Req->ID) {
-
-                $Data = Cache::remember('birthdayTemplates' . $Req->ID, now()->addDays(30), function () use ($Req) {
-                   return  BirthdayTemplates::getBirthdayTempletesByID($Req->ID);
+                $Data = Cache::rememberForever('birthdayTemplates' . $Req->ID, function () use ($Req) {
+                    return  BirthdayTemplates::getBirthdayTemplateByID($Req->ID);
                 });
                 return response()->macroJson(
                     $Data,
@@ -537,14 +535,25 @@ class TemplatesController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            $Data = Cache::remember('birthdayTemplates', now()->addDays(30), function () {
-                $BirthdayTempletes = BirthdayTemplates::getbirthdayTempletes();
-                // dd($BirthdayTempletes);die ;
+            if ($Req->Default) {
+                $Data = Cache::rememberForever('birthdayTemplatesDefault', function () use ($Req) {
+                    return  BirthdayTemplates::getDefaultBirthdayTemplate();
+                });
+                return response()->macroJson(
+                    $Data,
+                    config('messages.SUCCESS_CODE'),
+                    (empty($Data)) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+
+            $BirthdayTempletes = BirthdayTemplates::getBirthdayTemplates();
+            $Data = Cache::rememberForever('birthdayTemplates', function () use ($BirthdayTempletes) {
                 $Data = [];
                 foreach ($BirthdayTempletes as $BirthdayTemplete) {
                     array_push($Data, [
                         'id' => $BirthdayTemplete->id,
-                        'front_image' => url('/storage') . '/' . $BirthdayTemplete->front_image,
+                        'front_image' => url('/storage/images/birthday_templates') . '/' . $BirthdayTemplete->front_image,
                         'svg' => $BirthdayTemplete->svg,
                         'version' => $BirthdayTemplete->version,
                         'default' => $BirthdayTemplete->default,
@@ -555,8 +564,10 @@ class TemplatesController extends Controller
                 }
                 return $Data;
             });
-            return response()->macroJson(
+            return response()->macroJsonExtention(
                 $Data,
+                'pagination',
+                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($BirthdayTempletes)],
                 config('messages.SUCCESS_CODE'),
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')

@@ -22,7 +22,7 @@ class Resume extends Model
     */
     public function category()
     {
-				return $this->belongsTo(Category::class, 'cat_id');
+        return $this->belongsTo(Category::class, 'cat_id');
     }
     /*
     |--------------------------------------------------------------------------
@@ -51,6 +51,7 @@ class Resume extends Model
         if (!is_null($CatID)) $Resume->cat_id = $CatID;
         return $Resume->save();
     }
+
     // If no params are provided this function will delete all records
     public static function deleteResumesByGivenParams(int $ID = null,  int $CatID = null, int $Version = null)
     {

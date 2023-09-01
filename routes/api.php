@@ -76,12 +76,12 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
     });
 
-    Route::prefix('birthday-template')->group(function(){
+    Route::prefix('birthday-template')->group(function () {
         Route::post('/create', [BirthdayTemplatesController::class, 'create']);
         Route::post('/upload', [BirthdayTemplatesController::class, 'upload']);
         Route::post('/edit/{ID}', [BirthdayTemplatesController::class, 'edit']);
         Route::post('/destroy/{ID?}', [BirthdayTemplatesController::class, 'destroy']);
-        Route::post('/restore/{ID?}',[BirthdayTemplatesController::class,'restore']);
+        Route::post('/restore/{ID?}', [BirthdayTemplatesController::class, 'restore']);
     });
 
     Route::prefix('cache')->group(function () {
