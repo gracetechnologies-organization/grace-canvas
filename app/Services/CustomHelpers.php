@@ -90,19 +90,6 @@ class CustomHelpers
         return $ImgName;
     }
 
-    public static function getBirthdayTemplateWithID(object $Img, int $ID, string $Side = null)
-    {
-        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
-        if (!is_null($Side)) $ImgName = $Side . '_' . $ImgName;
-        /*
-        |--------------------------------------------------------------------------
-        | Save the image to the default storage path "storage/app/public/images"
-        |--------------------------------------------------------------------------
-        */
-        Storage::disk('public')->putFileAs('images/birthday_templates', $Img, $ImgName);
-        return $ImgName;
-    }
-
     public static function getViewPathWithID(object $File, string $Type, int $ID, string $Side = null)
     {
         // Get the SVG content
