@@ -7,9 +7,9 @@
             </div>
         </div>
         <div class="col-2 py-1 text-end">
-            <button type="button" class="custom-btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" title="Settings & options">
+            {{-- <button type="button" class="custom-btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" title="Settings & options">
                 <i class='bx bx-cog icons-size standard-txt-color'></i>
-            </button>
+            </button> --}}
         </div>
     </div>
     <div class="row g-2 my-3">
@@ -110,11 +110,11 @@
                 </h2>
                 <div id="panelsStayOpen-Experience" class="accordion-collapse collapse show">
                     <div class="accordion-body" id="ExperienceForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-experience" onchange="CreateResumeForm.hideShowContainer('.experience-container')">
                             <label class="text-muted" for="hide-experience">Hide Experience</label>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2">
                             <div class="col-12 col-md-12 col-lg-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Enter your organization" onkeyup="CreateResumeForm.renderTxt('Organization0', this.value)">
@@ -128,22 +128,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 my-3">
+                        <div class="col-12 mt-3 mb-2">
                             <div class="form-floating">
                                 <textarea class="form-control" id="floatingTextarea2" placeholder="Your Job Description" style="height: 120px" onkeyup="CreateResumeForm.renderTxt('JobDescription0', this.value)"></textarea>
                                 <label for="floatingTextarea2">Your Job Description</label>
                             </div>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2">
                             <div class="col-12 col-md-12 col-lg-6">
-                                <div class="form-floating">
+                                <div class="form-floating date-field-mt">
                                     <input type="date" class="form-control" placeholder="Joining Date" onchange="CreateResumeForm.renderTxt('JoiningDate0', this.value)">
                                     <label>Joining Date</label>
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-6">
+                                <div class="ps-2">
+                                    <input type="checkbox" id="render-continue" onchange="CreateResumeForm.renderContinueTxt('EndDate0', 'EndDateInputField0','Continue')">
+                                    <label class="text-muted" for="render-continue">Continue</label>
+                                </div>
                                 <div class="form-floating">
-                                    <input type="date" class="form-control" placeholder="Ending Date" onchange="CreateResumeForm.renderTxt('EndDate0', this.value)">
+                                    <input type="date" id="EndDateInputField0" class="form-control" placeholder="Ending Date" onchange="CreateResumeForm.renderTxt('EndDate0', this.value)">
                                     <label>Ending Date</label>
                                 </div>
                             </div>
@@ -178,11 +182,11 @@
                 </h2>
                 <div id="panelsStayOpen-Education" class="accordion-collapse collapse">
                     <div class="accordion-body" id="EducationForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-education" onchange="CreateResumeForm.hideShowContainer('.education-container')">
                             <label class="text-muted" for="hide-education">Hide Education</label>
                         </div>
-                        <div class="col-12 my-3">
+                        <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" placeholder="Enter your institute" onkeyup="CreateResumeForm.renderTxt('EducationalOrganization0', this.value)">
                                 <label>Educational Institute</label>
@@ -209,7 +213,7 @@
                             </div>
                         </div>
                         <div class="row g-0 my-3 input-group">
-                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add experience" onclick="CreateResumeForm.addNewEducation()">
+                            <button type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6" title="Add education" onclick="CreateResumeForm.addNewEducation()">
                                 <i class='bx bxs-plus-circle icons-size'></i>
                             </button>
                             <button type="button" class="btn btn-outline-danger col-6" title="Remove education" onclick="CreateResumeForm.delForm('panelsStayOpen-Education', 'educations-section', 'div.education-details')">
@@ -238,11 +242,11 @@
                 </h2>
                 <div id="panelsStayOpen-Skills" class="accordion-collapse collapse">
                     <div class="accordion-body" id="SkillsForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-skills" onchange="CreateResumeForm.hideShowContainer('.skills-container')">
                             <label class="text-muted" for="hide-skills">Hide Skills</label>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2 mb-3">
                             <div class="col-12 col-md-12 col-lg-8">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Your skills" onkeyup="CreateResumeForm.renderTxt('SkillName0', this.value)">
@@ -278,11 +282,11 @@
                 </h2>
                 <div id="panelsStayOpen-Achievements" class="accordion-collapse collapse">
                     <div class="accordion-body" id="AchievementForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-achievements" onchange="CreateResumeForm.hideShowContainer('.achievement-container')">
                             <label class="text-muted" for="hide-achievements">Hide Achievements</label>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2 mb-3">
                             <div class="col-12 col-md-12 col-lg-8">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Your achievements" onkeyup="CreateResumeForm.renderTxt('AchievementTitle0', this.value)">
@@ -318,11 +322,11 @@
                 </h2>
                 <div id="panelsStayOpen-Projects" class="accordion-collapse collapse">
                     <div class="accordion-body" id="ProjectForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-projects" onchange="CreateResumeForm.hideShowContainer('.project-container')">
                             <label class="text-muted" for="hide-projects">Hide Projects</label>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2 mb-3">
                             <div class="col-12 col-md-12 col-lg-8">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Your projects" onkeyup="CreateResumeForm.renderTxt('ProjectTitle0', this.value)">
@@ -358,11 +362,11 @@
                 </h2>
                 <div id="panelsStayOpen-Interests" class="accordion-collapse collapse">
                     <div class="accordion-body" id="InterestForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-interests" onchange="CreateResumeForm.hideShowContainer('.interest-container')">
                             <label class="text-muted" for="hide-interests">Hide Interests</label>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2 mb-3">
                             <div class="col-12 col-md-12 col-lg-8">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Your interests" onkeyup="CreateResumeForm.renderTxt('Interest0', this.value)">
@@ -398,11 +402,11 @@
                 </h2>
                 <div id="panelsStayOpen-Languages" class="accordion-collapse collapse">
                     <div class="accordion-body" id="LanguageForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-languages" onchange="CreateResumeForm.hideShowContainer('.languages-container')">
                             <label class="text-muted" for="hide-languages">Hide Languages</label>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2 mb-3">
                             <div class="col-12 col-md-12 col-lg-8">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Your languages" onkeyup="CreateResumeForm.renderTxt('Language0', this.value)">
@@ -438,11 +442,11 @@
                 </h2>
                 <div id="panelsStayOpen-References" class="accordion-collapse collapse">
                     <div class="accordion-body" id="ReferenceForm0">
-                        <div>
+                        <div class="my-2">
                             <input type="checkbox" id="hide-references" onchange="CreateResumeForm.hideShowContainer('.reference-container')">
                             <label class="text-muted" for="hide-references">Hide References</label>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2">
                             <div class="col-12 col-md-12 col-lg-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Enter reference name" onkeyup="CreateResumeForm.renderTxt('ReferenceName0', this.value)">
