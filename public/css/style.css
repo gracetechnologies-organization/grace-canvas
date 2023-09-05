@@ -12664,23 +12664,6 @@ body {
     font-family: Poppins;
 }
 
-.custom-login-signup-css {
-    background-color: #FF6600;
-    float: right;
-    color: #fff;
-    width: 9.125rem;
-    height: 3.438rem;
-    border: none;
-    border-radius: 0.625rem;
-    padding: 0.625rem 1rem 0.625rem 1rem;
-    margin-top: -0.5rem;
-    margin-left: 1rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1.30rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
 
 .custom-dropdown {
     position: relative;
