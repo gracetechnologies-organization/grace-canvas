@@ -134,9 +134,9 @@
                                 <label for="floatingTextarea2">Your Job Description</label>
                             </div>
                         </div>
-                        <div class="row g-2">
+                        <div class="row g-2 mb-3">
                             <div class="col-12 col-md-12 col-lg-6">
-                                <div class="form-floating date-field-mt">
+                                <div class="form-floating custom-lg-mt-24">
                                     <input type="date" class="form-control" placeholder="Joining Date" onchange="CreateResumeForm.renderTxt('JoiningDate0', this.value)">
                                     <label>Joining Date</label>
                                 </div>
@@ -198,16 +198,20 @@
                                 <label>Degree</label>
                             </div>
                         </div>
-                        <div class="row g-2 my-3">
+                        <div class="row g-2 mb-3">
                             <div class="col-12 col-md-12 col-lg-6">
-                                <div class="form-floating">
+                                <div class="form-floating custom-lg-mt-24">
                                     <input type="text" class="form-control" placeholder="Your score" onkeyup="CreateResumeForm.renderTxt('Score0', this.value)">
                                     <label>Score</label>
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 col-lg-6">
+                                <div class="ps-2">
+                                    <input type="checkbox" id="render-continue" onchange="CreateResumeForm.renderContinueTxt('CompletionDate0', 'CompletionDateInputField0','Continue')">
+                                    <label class="text-muted" for="render-continue">Continue</label>
+                                </div>
                                 <div class="form-floating">
-                                    <input type="date" class="form-control" placeholder="Your completion date" onchange="CreateResumeForm.renderTxt('CompletionDate0', this.value)">
+                                    <input type="date" id="CompletionDateInputField0" class="form-control" placeholder="Your completion date" onchange="CreateResumeForm.renderTxt('CompletionDate0', this.value)">
                                     <label>Completion Date</label>
                                 </div>
                             </div>

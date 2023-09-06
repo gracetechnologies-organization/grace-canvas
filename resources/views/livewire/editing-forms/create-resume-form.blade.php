@@ -8,6 +8,11 @@
         .custom-border {
             border: 1px solid rgb(54, 54, 54);
         }
+
+        .accordion-body {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
     </style>
     <!-- Offcanvas for detail customization -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
@@ -46,7 +51,7 @@
             <div class="col-12 col-md-5 col-lg-4">
                 @include('components.resume-form')
             </div>
-           <!-- Resume template will render here -->
+            <!-- Resume template will render here -->
             @include($ResumeFile)
         </div>
     </div>
