@@ -30,10 +30,22 @@
                 <button type="submit" class="custom-login-signup-css">
                     <a class="nav-link" href="{{ route('login') }}"> Login </a>
                 </button>
-                <button type="submit" class="custom-login-signup-css flex float-end ">
+                <button type="submit" class="flex custom-login-signup-css float-end ">
                     Register
                 </button>
             </form>
+            <div class="text-center custom-google-facrbook-login center-block ">
+                <div class="mb-2">
+                    <a class="" href="{{ route('google.page') }}">
+                        <button type="submit" class="p-2 custom-google-login-signup btn-block"><span class="bi bi-google"></span> Google Login</button>
+                    </a>
+                </div>
+                <div>
+                    <a class="" href="#">
+                        <button type="submit" class="p-2 custom-facebook-login-signup btn-block"><span class="bx bxl-linkedin"></span> LinkdIn login</button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </x-guest-layout>
