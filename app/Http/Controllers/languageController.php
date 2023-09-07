@@ -56,19 +56,19 @@ class languageController extends Controller
         $url = $request->url();
 
         $ch = curl_init();
+        if (strpos($url, '/') !== false) {
 
-        if (strpos($url, 'home') !== false) {
+            curl_setopt($ch, CURLOPT_URL, $url);
+        } elseif (strpos($url, '/register') !== false) {
 
-            curl_setopt($ch, CURLOPT_URL, 'http://127.0.0.1:8000/');
-        } elseif (strpos($url, 'register') !== false) {
+            curl_setopt($ch, CURLOPT_URL,  $url );
+        } elseif (strpos($url, '/login') !== false) {
 
-            curl_setopt($ch, CURLOPT_URL, 'http://127.0.0.1:8000/register');
-        } elseif (strpos($url, 'login') !== false) {
+            curl_setopt($ch, CURLOPT_URL,  $url);
 
-            curl_setopt($ch, CURLOPT_URL, 'http://127.0.0.1:8000/login');
-        } elseif (strpos($url, 'templates/resume') !== false) {
+        } elseif (strpos($url, '/templates/resume') !== false) {
 
-            curl_setopt($ch, CURLOPT_URL, 'http://127.0.0.1:8000/templates/resume');
+            curl_setopt($ch, CURLOPT_URL,  $url);
         } else {
             // Handle other URLs or provide a default URL
             // For example, you can set a default URL:

@@ -10,8 +10,7 @@
         <div class="mb-4 collapse navbar-collapse text-light" id="navbar-supported-content">
             <ul class="mt-4 navbar-nav ms-auto custom-navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">{{ GoogleTranslate::trans('Home', app()->getLocale())
-                        }}</a>
+                    <a class="nav-link" href="{{ route('home') }}">{{ GoogleTranslate::trans('Home', app()->getLocale())}}</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -55,7 +54,7 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-item ">
+                <li class="nav-item custom-select-button">
                     <select class="changeLang my-account-custom-btn" onchange="changeLanguage(this)">
                         <option value=""> Select Language</option>
                         <option value="zh" {{ session()->get('locale') == 'zh' ? 'selected' : '' }}>China</option>
