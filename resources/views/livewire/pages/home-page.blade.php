@@ -11,8 +11,8 @@
                 </h2>
                 <p>Quickly design and customize responsive mobile-first sites with Bootstrap, the
                     world’s most popular front-end open source toolkit!</p>
-                <button class="lets-created"><a href=""> Let's Create</a></button>
-                <button class="go-premium"> <a href="">Go Premium </a></button><br><br>
+                <button class="lets-created"><a href="{{ route('templates.resume') }}"> Let's Create</a></button>
+                <button class="go-premium"> <a href="#">Go Premium </a></button><br><br>
             </div>
             <div class="mt-5 mb-4 col-lg-5 col-md-6 col-sm-3">
                 <img src="{{ asset('web-images/Group.svg') }}" class="pt-2 img-fluid w-90" alt="">
@@ -36,12 +36,22 @@
             <div class="row resume-card-section row1">
                 @foreach ($Resumes as $SingleIndex)
                     <div class="mb-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="card">
-                            <img src="{{ asset('storage/images/resumes/' . $SingleIndex->front_image) }}" loading="lazy" class="p-3 img-fluid" alt="">
-                            <div class="btn-resume-section">
-                                <a href="{{ route('edit.resume.form', $SingleIndex->id) }}">Select Template</a>
+                        <a href="{{ route('edit.resume.form', $SingleIndex->id) }}" class="text-decoration-none" target="_blank">
+                            <div class="card">
+                                {{-- version:1 == Premium template --}}
+                                @if ($SingleIndex->version === 1)
+                                    <div class="top-0 position-absolute end-0">
+                                        <button class="btn btn-secondary my-4 mx-4 py-2" type="button" title="Premium template">
+                                            <i class='bx bxs-crown bx-sm text-warning'></i>
+                                        </button>
+                                    </div>
+                                @endif
+                                <img src="{{ asset('storage/images/resumes/' . $SingleIndex->front_image) }}" loading="lazy" class="p-3 img-fluid" alt="">
+                                <div class="btn-resume-section">
+                                    Select Template
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
                 {{-- <div class="d-flex justify-content-center">
@@ -63,7 +73,7 @@
                     <p class="text-left p2">Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae
                         lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
                         commodo tempor vestibulum sed erat mollis.</p>
-                    <button class="custom-button-css"><a href="{{ route('templates.resume') }}"> Select Template </a></button><br><br>
+                    <button class="custom-button-css"><a href="{{ route('templates.resume') }}"> Choose Template </a></button><br><br>
                 </div>
             </div>
         </div>
@@ -95,11 +105,11 @@
     <section class="mt-5 text-center review-section">
         <h2>
             <b class="standard-heading-css">
-                Our User’s Reviews About Our Templates
+                User’s Reviews
             </b>
         </h2>
         <p>
-            Let's create something better
+            What users says about us
         </p>
     </section><br><br><br>
     <!-- portfolio section  -->
