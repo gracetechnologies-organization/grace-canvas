@@ -15,7 +15,7 @@
     font-weight: 500;
     font-family: Poppins;
 }
-.custom-linkedin-login-signup {
+.custom-facebook-login-signup {
     background-color:#3b5998;
     width: 20rem;
     height: 3.438rem;
@@ -51,6 +51,10 @@
     /* Adjust the width as needed */
 
 }
+
+{
+ background-color:    #3b5998
+}
 .bi-google{
     color:#196eb4;
     width: 2rem;
@@ -59,7 +63,7 @@
     margin-left: -1rem;
     margin-right: 1rem
 }
-.bx-linkedin{
+.bxl-linkedin{
     background-color: #fff;
     color: black;
     width: 2rem;
@@ -73,33 +77,6 @@
     .custom-google-facrbook-login {
         margin-left: -0.9rem;
         margin-top: 5rem;
-    }
-    .custom-linkedin-login-signup {
-        background-color:#3b5998;
-        width: 15rem;
-        height: 3.438rem;
-        color: #fff;
-        border: none;
-        border-radius: 0.625rem;
-        font-size: 1.30rem;
-        font-weight: 500;
-        line-height: normal;
-        font-style: normal;
-        font-family: Poppins;
-    }
-    .custom-google-login-signup {
-        background-color:#fff;
-        color: black;
-        width: 15rem;
-        height: 3.438rem;
-        border:1px solid black;
-        border-radius: 0.625rem;
-        /* padding: 0.625rem 1rem 0.625rem 1rem; */
-        line-height: normal;
-        font-style: normal;
-        font-size: 1.30rem;
-        font-weight: 500;
-        font-family: Poppins;
     }
 }
 

@@ -65,7 +65,7 @@
 
 
     //  const printDiv = (id) => {
-
+         
 
     //      // Choose the element and save the PDF for your user.
     //      // Choose the element that your content will be rendered to.
@@ -76,13 +76,6 @@
     //      console.log(element);
     //  }
  </script>
- <script type="text/javascript">
-    function changeLanguage(selectElement) {
-        var url = "/change";
-        var selectedValue = selectElement.value;
-        window.location.href = url + "?lang=" + selectedValue;
-    }
-</script>
 
  @if (Route::current()->uri == 'edit/resume/{ID}')
      @include('javascript_files.cropper-scripts')

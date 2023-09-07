@@ -16,8 +16,7 @@
         "predis/predis": "^2.2",
         "spatie/browsershot": "^3.57",
         "spatie/image": "^2.2",
-        "spatie/image-optimizer": "^1.6",
-        "stichoza/google-translate-php": "^5.1"
+        "spatie/image-optimizer": "^1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
