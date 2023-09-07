@@ -56,11 +56,11 @@
                 @endif
                 <li class="nav-item custom-select-button">
                     <select class="changeLang my-account-custom-btn" onchange="changeLanguage(this)">
-                        <option value=""> Select Language</option>
+                        <option value="en"  {{ session()->get('locale') == 'zh' ? 'selected' : '' }}> English</option>
                         <option value="zh" {{ session()->get('locale') == 'zh' ? 'selected' : '' }}>China</option>
                         <option value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>France</option>
                         <option value="es" {{ session()->get('locale') == 'es' ? 'selected' : '' }}>Spanish</option>
-                        <option value="ur" {{ session()->get('locale') == 'ur' ? 'selected' : '' }}>urdu</option>
+                        <option value="ur" {{ session()->get('locale') == 'ur' ? 'selected' : '' }}>Urdu</option>
                         <option value="de" {{ session()->get('locale') == 'de' ? 'selected' : '' }}>Danish</option>
                         <option value="de" {{ session()->get('locale') == 'de' ? 'selected' : '' }}>German</option>
                         <option value="id" {{ session()->get('locale') == 'id' ? 'selected' : '' }}>Indonasiaon</option>
