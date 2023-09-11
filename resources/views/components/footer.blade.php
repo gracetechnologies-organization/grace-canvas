@@ -3,42 +3,45 @@
     <div class="container pt-5 pb-5 pl-2 ">
         <div class="row footers-section ">
             <div class="mt-5 col-lg-4 col-md-6 col-sm-12">
-                <h2><a class="navbar-brand text-light" href="#"> {{ GoogleTranslate::trans('grace-canvas', app()->getLocale())}}</a></h2><br>
-                <p class="w-75 p1 ">{{ GoogleTranslate::trans('Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nulla ipsum iste maiores, ducimus hic iure vitae consequatur esse sed.', app()->getLocale())}}</p><br>
+                <h2>
+                    <a class="navbar-brand text-light" href="#"> {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Grace Canvas']) }} </a>
+                </h2>
+                <br>
+                <p class="w-75 p1 ">
+                    {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit nulla ipsum iste maiores, ducimus hic iure vitae consequatur esse sed.']) }}
+                </p>
+                <br>
             </div>
             <div class="mt-5 col-lg-4 col-md-6 col-sm-12 learn-more">
-                <h2>{{ GoogleTranslate::trans('Learn', app()->getLocale())}}</h2><br>
+                <h2>{{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Learn']) }}</h2><br>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ GoogleTranslate::trans('Career Blog', app()->getLocale())}}</a>
+                        <a class="nav-link" href="#">{{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Career Blog']) }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ GoogleTranslate::trans('How to write a Resume', app()->getLocale())}}</a>
+                        <a class="nav-link" href="#"> {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'How to write a Resume']) }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> {{ GoogleTranslate::trans('How to write a CV', app()->getLocale())}}</a>
+                        <a class="nav-link" href="#"> {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'How to write a Cover Letter']) }} </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> {{ GoogleTranslate::trans('How to write a Cover Letter', app()->getLocale())}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> {{ GoogleTranslate::trans('Resume Example', app()->getLocale())}}</a>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#"> {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Resume Example']) }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"> {{ GoogleTranslate::trans('Cover Letter Example', app()->getLocale())}}</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="mt-5 col-lg-4 col-md-6 col-sm-12 other">
-                <h2>{{ GoogleTranslate::trans('Other', app()->getLocale())}}</h2><br>
+                <h2>{{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Others']) }}</h2><br>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ GoogleTranslate::trans('Pricing', app()->getLocale())}}</a>
+                        <a class="nav-link" href="#">{{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Pricing']) }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ GoogleTranslate::trans('About Us', app()->getLocale())}}</a>
+                        <a class="nav-link" href="#">{{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'About Us']) }}</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#">{{ GoogleTranslate::trans('E-book: How to Get a job in 2023', app()->getLocale())}}</a>
                     </li>
                     <li class="nav-item">
@@ -46,7 +49,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">{{ GoogleTranslate::trans('Help Center', app()->getLocale())}}</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -63,7 +66,7 @@
         </div>
     </div>
     <div class="p-3 px-5 container-fluid footer-copy-right">
-        <p class="m-0 text-center text-white">{{ GoogleTranslate::trans('Copyright@gracetechnoglogiespk', app()->getLocale())}}</p>
+        <p class="m-0 text-center text-white">{{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'copyright@gracetechnoglogiespk']) }}</p>
     </div>
 </footer>
 

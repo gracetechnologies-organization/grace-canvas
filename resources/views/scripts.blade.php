@@ -22,17 +22,22 @@
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  <script>
-      const printDiv = (id) => {
-          var printContents = document.getElementById(id).innerHTML;
-          var originalContents = document.body.innerHTML;
-          // Replace the current document's body with the content to be printed
-          document.body.innerHTML = printContents;
-          // Trigger the print dialog for the current window
-          window.print();
-          // Restore the original document content after printing is done
-          document.body.innerHTML = originalContents;
-      }
+     const printDiv = (id) => {
+         var printContents = document.getElementById(id).innerHTML;
+         var originalContents = document.body.innerHTML;
+         // Replace the current document's body with the content to be printed
+         document.body.innerHTML = printContents;
+         // Trigger the print dialog for the current window
+         window.print();
+         // Restore the original document content after printing is done
+         document.body.innerHTML = originalContents;
+     }
 
+     function changeLanguage(selectElement) {
+         var url = "/change";
+         var selectedValue = selectElement.value;
+         window.location.href = url + "?lang=" + selectedValue;
+     }
 
      //  const printDiv = (id) => {
      //      const { jsPDF } = window.jspdf;
@@ -64,25 +69,18 @@
      //  }
 
 
-    //  const printDiv = (id) => {
+     //  const printDiv = (id) => {
 
 
-    //      // Choose the element and save the PDF for your user.
-    //      // Choose the element that your content will be rendered to.
-    //      const element = document.getElementById(id);
-    //      // Choose the element and save the PDF for your user.
-    //      html2pdf().from(element).save();
+     //      // Choose the element and save the PDF for your user.
+     //      // Choose the element that your content will be rendered to.
+     //      const element = document.getElementById(id);
+     //      // Choose the element and save the PDF for your user.
+     //      html2pdf().from(element).save();
 
-    //      console.log(element);
-    //  }
+     //      console.log(element);
+     //  }
  </script>
- <script type="text/javascript">
-    function changeLanguage(selectElement) {
-        var url = "/change";
-        var selectedValue = selectElement.value;
-        window.location.href = url + "?lang=" + selectedValue;
-    }
-</script>
 
  @if (Route::current()->uri == 'edit/resume/{ID}')
      @include('javascript_files.cropper-scripts')
