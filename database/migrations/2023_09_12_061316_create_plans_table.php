@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('birthday_templates', function (Blueprint $table) {
+        Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->text('front_image');
-            $table->text('svg');
-            $table->tinyInteger('version')->default(0)->comment('0: free, 1: premium');
-            $table->tinyInteger('default')->default(0)->comment('0: no, 1: yes');
+            $table->string('name');
+            $table->string('slug');
+            $table->string('stripe_plan');
+            $table->integer('price');
+            $table->string('description');
             $table->timestamps();
             $table->softDeletesTz();
         });
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('birthday_templates');
+        Schema::dropIfExists('plans');
     }
 };
