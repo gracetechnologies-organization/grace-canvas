@@ -10,17 +10,16 @@
                     {{ app('googleTranslator', ['string' => 'For Your Next Dream Job']) }}
                 </h2>
                 <p>
-                    {{ app('googleTranslator', ['string' => 'Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!']) }}
+                    {{ app('googleTranslator', [
+                        'string' => 'Quickly design and customize responsive mobile-first sites with Bootstrap, the
+                                        world’s most popular front-end open source toolkit!',
+                    ]) }}
                 </p>
                 <button class="lets-created">
-                    <a href="">
-                        {{ app('googleTranslator', ['string' => 'Lets Create']) }}
-                    </a>
+                    <a href=""> {{ app('googleTranslator', ['string' => 'Let\'s Create']) }} </a>
                 </button>
                 <button class="go-premium">
-                    <a href="">
-                        {{ app('googleTranslator', ['string' => 'Go Premium']) }}
-                    </a>
+                    <a href="{{ route('payment.plans') }}"> {{ app('googleTranslator', ['string' => 'Go Premium']) }} </a>
                 </button>
                 <br><br>
             </div>
@@ -80,8 +79,8 @@
                         {{ app('googleTranslator', [
                             'lang' => app()->getLocale(),
                             'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae
-                                                                lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                                                                commodo tempor vestibulum sed erat mollis.',
+                                                                                        lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                                                                        commodo tempor vestibulum sed erat mollis.',
                         ]) }}
                     </p>
                     <button class="custom-button-css">
@@ -109,9 +108,11 @@
                         <br>
                     </h2>
                     <p class="text-left w-80 responsive-print-ready-section">
-                        {{ app('googleTranslator', ['string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisqu
-                        vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                        commodo tempor vestibulum sed erat mollis.']) }}
+                        {{ app('googleTranslator', [
+                            'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisqu
+                                                vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                                commodo tempor vestibulum sed erat mollis.',
+                        ]) }}
                     </p>
                     <button class="custom-button-css">
                         <a href="#">

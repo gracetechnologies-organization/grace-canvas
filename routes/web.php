@@ -26,3 +26,4 @@ require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/user.php';
 require_once __DIR__ . '/dashboard.php';
 require_once __DIR__ . '/terms-of-services.php';
+require_once __DIR__ . '/payments.php';

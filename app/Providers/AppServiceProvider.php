@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use App\Models\Cashier\User;
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -49,5 +51,6 @@ class AppServiceProvider extends ServiceProvider
             // Otherwise we will run the Google translator
             return GoogleTranslate::trans($Parameters['string'], app()->getLocale());
         });
+        Cashier::useCustomerModel(User::class);
     }
 }
