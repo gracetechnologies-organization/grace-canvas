@@ -12,7 +12,7 @@
                 <p>
                     {{ app('googleTranslator', [
                         'string' => 'Quickly design and customize responsive mobile-first sites with Bootstrap, the
-                                        world’s most popular front-end open source toolkit!',
+                                                            world’s most popular front-end open source toolkit!',
                     ]) }}
                 </p>
                 <button class="lets-created">
@@ -43,26 +43,7 @@
     <section class="mt-5">
         <div class="container-fluid">
             <div class="row resume-card-section row1">
-                @foreach ($Resumes as $SingleIndex)
-                    <div class="mb-3 col-lg-4 col-md-6 col-sm-12">
-                        <a href="{{ route('edit.resume.form', $SingleIndex->id) }}" class="text-decoration-none" target="_blank">
-                            <div class="card">
-                                {{-- version:1 == Premium template --}}
-                                @if ($SingleIndex->version === 1)
-                                    <div class="top-0 position-absolute end-0">
-                                        <button class="btn btn-secondary my-4 mx-4 py-2" type="button" title="Premium template">
-                                            <i class='bx bxs-crown bx-sm text-warning'></i>
-                                        </button>
-                                    </div>
-                                @endif
-                                <img src="{{ asset('storage/images/resumes/' . $SingleIndex->front_image) }}" loading="lazy" class="p-3 img-fluid" alt="">
-                                <div class="btn-resume-section">
-                                    {{ app('googleTranslator', ['string' => 'Select Template']) }}
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
+                @include('components.resumes-grid')
                 {{-- <div class="d-flex justify-content-center">
                 {{$Resumes->links()}}
             </div> --}}
@@ -87,8 +68,8 @@
                         {{ app('googleTranslator', [
                             'lang' => app()->getLocale(),
                             'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae
-                                                                                        lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                                                                                        commodo tempor vestibulum sed erat mollis.',
+                                                                                                                lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                                                                                                commodo tempor vestibulum sed erat mollis.',
                         ]) }}
                     </p>
                     <button class="custom-button-css">
@@ -118,8 +99,8 @@
                     <p class="text-left w-80 responsive-print-ready-section">
                         {{ app('googleTranslator', [
                             'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisqu
-                                                vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                                                commodo tempor vestibulum sed erat mollis.',
+                                                                        vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                                                        commodo tempor vestibulum sed erat mollis.',
                         ]) }}
                     </p>
                     <button class="custom-button-css">
