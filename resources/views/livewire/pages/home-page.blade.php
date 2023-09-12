@@ -12,7 +12,7 @@
                 <p>Quickly design and customize responsive mobile-first sites with Bootstrap, the
                     world’s most popular front-end open source toolkit!</p>
                 <button class="lets-created"><a href=""> Let's Create</a></button>
-                <button class="go-premium"> <a href="">Go Premium </a></button><br><br>
+                <button class="go-premium"> <a href="{{ route('payment.plans') }}">Go Premium </a></button><br><br>
             </div>
             <div class="mt-5 mb-4 col-lg-5 col-md-6 col-sm-3">
                 <img src="{{ asset('web-images/Group.svg') }}" class="pt-2 img-fluid w-90" alt="">
