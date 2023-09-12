@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="ml-5 row custome-background">
             <div class="text-center ">
-                <h2 class="mt-5 text-center standard-heading-css">Categories</h2>
+                <h2 class="mt-5 text-center standard-heading-css">{{ app('googleTranslator', ['string' => 'Categories']) }}</h2>
             </div>
             <div class="col-lg-12 col-sm-12 ">
                 <div class="mb-5 frame">
@@ -23,14 +23,14 @@
     <div class="container-fluid">
         <div class="row resume-card-section row1">
             <div class="mt-5 text-center">
-                <h2 class="text-center standard-heading-css custom-margin-css"> Resume Templates </h2>
+                <h2 class="text-center standard-heading-css custom-margin-css"> {{ app('googleTranslator', ['string' => 'Resume Templates']) }} </h2>
             </div>
             @foreach ($Resumes as $SingleIndex)
                 <div class="mb-3 col-lg-4 col-md-6 col-sm-12">
                     <div class="card">
                         <img src="{{ asset('storage/images/resumes/' . $SingleIndex->front_image) }}" loading="lazy" class="p-3 img-fluid" alt="">
                         <div class="btn-resume-section">
-                            <a href="{{ route('edit.resume.form', $SingleIndex->id) }}">Select Template</a>
+                            <a href="{{ route('edit.resume.form', $SingleIndex->id) }}"> {{ app('googleTranslator', ['string' => 'Select Templates']) }} </a>
                         </div>
                     </div>
                 </div>
