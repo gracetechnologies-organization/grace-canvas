@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('description');
             $table->timestamps();
+            $table->softDeletesTz();
         });
     }
 

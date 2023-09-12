@@ -28,7 +28,6 @@ class Plan extends Model
     /**
      * Write code on Method
      *
-     * @return response()
      */
 
     public function getRouteKeyName()

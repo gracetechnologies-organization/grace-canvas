@@ -51,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
             // Otherwise we will run the Google translator
             return GoogleTranslate::trans($Parameters['string'], app()->getLocale());
         });
+        
         Cashier::useCustomerModel(User::class);
     }
 }

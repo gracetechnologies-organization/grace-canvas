@@ -16,12 +16,11 @@ class GoogleLoginController extends Controller
 {
     public function googlePage()
     {
-
         return Socialite::driver('google')->redirect();
     }
+
     public function googleCallBack()
     {
-
         try {
             $user = Socialite::driver('google')->user();
             $finduser = User::where('email', $user->getEmail())->first();
@@ -50,14 +49,15 @@ class GoogleLoginController extends Controller
             dd($e);
         }
     }
+
     public function linkdInPage()
     {
         return Socialite::driver('linkedin')->redirect();
     }
+
     public function linkdInCallBack()
     {
         try {
-
             $user = Socialite::driver('linkedin')->user();
 
             $finduser = User::where('linkedin_id', $user->id)->first();

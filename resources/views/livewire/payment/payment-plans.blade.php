@@ -1,7 +1,5 @@
 <div>
-
     <div class="container mt-5 mb-5">
-        {{--  @dd($plans)   --}}
         <div>
             <p class="mb-5 text-center h2 standard-heading-css">Choose Your Perfect Plans</p>
         </div>
@@ -23,8 +21,6 @@
                 </div>
             </div>
             @endforeach
-
-
         </div>
     </div>
 </div>
