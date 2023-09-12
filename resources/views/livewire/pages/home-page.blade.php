@@ -1,27 +1,25 @@
 <div>
-    {{-- {{ dd(app('googleTranslator', ['lang' => app()->getLocale(),'string' => 'Good Morning'])) }} --}}
-
     <!-- hero section -->
     <section class="hero-section">
         <div class="row row1">
             <div class="mt-5 col-lg-7 col-md-6 col-sm-3 hero-section-column hero-left-section">
                 <h2>
-                    {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Pick A Template']) }}
+                    {{ app('googleTranslator', ['string' => 'Pick A Template']) }}
                 </h2>
                 <h2 class="mt-2">
-                    {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'For Your Next Dream Job']) }}
+                    {{ app('googleTranslator', ['string' => 'For Your Next Dream Job']) }}
                 </h2>
                 <p>
-                    {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!']) }}
+                    {{ app('googleTranslator', ['string' => 'Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!']) }}
                 </p>
                 <button class="lets-created">
                     <a href="">
-                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Lets Create']) }}
+                        {{ app('googleTranslator', ['string' => 'Lets Create']) }}
                     </a>
                 </button>
                 <button class="go-premium">
                     <a href="">
-                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Go Premium']) }}
+                        {{ app('googleTranslator', ['string' => 'Go Premium']) }}
                     </a>
                 </button>
                 <br><br>
@@ -35,11 +33,11 @@
     <section class="mt-5 text-center simple-section">
         <h2>
             <b class="standard-heading-css">
-                {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Resume Templates']) }}
+                {{ app('googleTranslator', ['string' => 'Resume Templates']) }}
             </b>
         </h2>
         <p>
-            {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Lets create something better']) }}
+            {{ app('googleTranslator', ['string' => 'Lets create something better']) }}
         </p>
     </section>
     <!-- resume card section -->
@@ -52,7 +50,7 @@
                             <img src="{{ asset('storage/images/resumes/' . $SingleIndex->front_image) }}" loading="lazy" class="p-3 img-fluid" alt="">
                             <div class="btn-resume-section">
                                 <a href="{{ route('edit.resume.form', $SingleIndex->id) }}">
-                                    {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Select Template']) }}
+                                    {{ app('googleTranslator', ['string' => 'Select Template']) }}
                                 </a>
                             </div>
                         </div>
@@ -73,10 +71,10 @@
                 </div>
                 <div class="col-12 col-md-6 col-sm-3 left-side">
                     <p class="p1">
-                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'How it works']) }}
+                        {{ app('googleTranslator', ['string' => 'How it works']) }}
                     </p>
                     <h2>
-                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Select A Template & Fill Your Information']) }}
+                        {{ app('googleTranslator', ['string' => 'Select A Template & Fill Your Information']) }}
                     </h2>
                     <p class="text-left p2">
                         {{ app('googleTranslator', [
@@ -88,7 +86,7 @@
                     </p>
                     <button class="custom-button-css">
                         <a href="{{ route('templates.resume') }}">
-                            {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Select Template']) }}
+                            {{ app('googleTranslator', ['string' => 'Select Template']) }}
                         </a>
                     </button>
                     <br><br>
@@ -102,22 +100,22 @@
             <div class="row">
                 <div class="mt-5 col-12 col-md-6 col-sm-3 print-ready-section">
                     <p class="print">
-                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Print Ready Design']) }}
+                        {{ app('googleTranslator', ['string' => 'Print Ready Design']) }}
                     </p>
                     <h2>
                         <b>
-                            {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Finished With Your Information, Just Click The Print Button']) }}
+                            {{ app('googleTranslator', ['string' => 'Finished With Your Information, Just Click The Print Button']) }}
                         </b>
                         <br>
                     </h2>
                     <p class="text-left w-80 responsive-print-ready-section">
-                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisqu
+                        {{ app('googleTranslator', ['string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisqu
                         vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
                         commodo tempor vestibulum sed erat mollis.']) }}
                     </p>
                     <button class="custom-button-css">
                         <a href="#">
-                            {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Lets Create']) }}
+                            {{ app('googleTranslator', ['string' => 'Lets Create']) }}
                         </a>
                     </button>
                     <br><br>
@@ -132,11 +130,11 @@
     <section class="mt-5 text-center review-section">
         <h2>
             <b class="standard-heading-css">
-                {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Our User’s Reviews About Our Templates']) }}
+                {{ app('googleTranslator', ['string' => 'Our User’s Reviews About Our Templates']) }}
             </b>
         </h2>
         <p>
-            {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Let\'s create something better']) }}
+            {{ app('googleTranslator', ['string' => 'What others says about us']) }}
         </p>
     </section><br><br><br>
     <!-- portfolio section  -->
@@ -150,14 +148,14 @@
                                 <img src="{{ asset('web-images/download.png') }}" class="mx-auto d-block">
                                 <div class="card-body">
                                     <h2 class="text-center">
-                                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Rana Waseem Rajpoot']) }}
+                                        {{ app('googleTranslator', ['string' => 'Rana Waseem Rajpoot']) }}
                                     </h2>
                                     <h5 class="text-center para-start">
-                                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'UI/UX Designer']) }}
+                                        {{ app('googleTranslator', ['string' => 'UI/UX Designer']) }}
                                         <i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
                                     </h5>
                                     <p>
-                                        {{ app('googleTranslator', ['lang' => app()->getLocale(), 'string' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum hic laboriosam molestiae cum minima sint praesentium magni inventore doloribus recusandae, eveniet iste doloremque, voluptates necessitatibus nisi similique alias, neque beatae? ']) }}
+                                        {{ app('googleTranslator', ['string' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum hic laboriosam molestiae cum minima sint praesentium magni inventore doloribus recusandae, eveniet iste doloremque, voluptates necessitatibus nisi similique alias, neque beatae? ']) }}
                                     </p>
                                 </div>
                             </div>
