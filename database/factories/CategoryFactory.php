@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ParentCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,8 @@ class CategoryFactory extends Factory
         return [
             'name' => $this->faker->unique()->word(),
             'description' => $this->faker->unique()->word(),
-            'image' => $this->faker->unique()->word() . '.jpg'
+            'image' => $this->faker->unique()->word() . '.jpg',
+            'parent_cat_id' => ParentCategory::inRandomOrder()->first()->id
         ];
     }
 }
