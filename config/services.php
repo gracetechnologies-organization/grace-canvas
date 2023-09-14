@@ -35,6 +35,11 @@ return [
         'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
         'redirect' => env('LINKEDIN_REDIRECT_URI'),
     ],
+    'stripe' => [
+        'MODELS'  => App\Models\User::class,
+        'STRIPE_KEY' => env('STRIPE_KEY'),
+        'STRIPE_SECRET' => env('STRIPE_SECRET'),
+    ],
 
 
 

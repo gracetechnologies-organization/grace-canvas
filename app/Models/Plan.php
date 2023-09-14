@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cashier\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Plan extends Model
 {
     use HasFactory;
+    // Should be included in the future
+    // use HasFactory, SoftDeletes;
 
      /**
      * The attributes that are mass assignable.
@@ -15,7 +19,6 @@ class Plan extends Model
      * @var array
 
      */
-
     protected $fillable = [
         'name',
         'slug',
@@ -23,15 +26,26 @@ class Plan extends Model
         'price',
         'description',
     ];
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
 
+    //
 
-    /**
-     * Write code on Method
-     *
-     */
-
-    public function getRouteKeyName()
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    */
+    public static function getPlanByID(int $ID)
     {
-        return 'slug';
+        return Plan::findOrFail($ID);
+    }
+
+    public static function getPlans()
+    {
+        return Plan::all();
     }
 }

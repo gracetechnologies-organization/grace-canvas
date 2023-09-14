@@ -4,22 +4,33 @@
             <p class="mb-5 text-center h2 standard-heading-css">Choose Your Perfect Plans</p>
         </div>
         <div class="mt-3 row">
-            @foreach ($plans as $plan)
-            <div class="col-lg-3 col-md-6 ">
-                <div class="card d-flex align-items-center justify-content-center">
-                    <div class="ribon"> <span class="fas fa-spray-can"></span> </div>
-                    <p class="h-1 pt-5">{{ $plan->name }}</p> <span class="price"> <sup class="sup">$</sup> <span
-                            class="number">{{ $plan->price }}</span> </span>
-                    <ul class="mb-5 list-unstyled text-muted">
-                        <li><span class="fa fa-check me-2"></span>{{ $plan->description }}</li>
-                        {{--  <li><span class="fa fa-check me-2"></span>Vacuuming</li>
-                        <li><span class="fa fa-check me-2"></span>Bathroom cleaning</li>
-                        <li><span class="fa fa-check me-2"></span>Mirrow cleaning</li>
-                        <li><span class="fa fa-check me-2"></span>Livingroom cleaning</li>  --}}
-                    </ul>
-                    <div class="btn btn-primary"> <a href="" class="nav-link"> Get Started </a> </div>
+            @foreach ($Plans as $Plan)
+                <div class="col-lg-3 col-md-6 ">
+                    <div class="card d-flex align-items-center justify-content-center">
+                        <a href="{{ route('plan.checkout',['Plan' => $Plan]) }}" {{-- wire:click="selectPlan($Plan->id)" --}} class="nav-link">
+                        <div class="ribon">
+                            <span class="fas fa-spray-can"></span> </div>
+                            <p class="h-1 pt-5">{{ $Plan->name }}</p> <span class="price"><span class="number">${{ number_format($Plan->price, 2) }}</span> </span>
+                            <ul class="mb-5 list-unstyled text-muted">
+                            <li><span class="fa fa-check me-2"></span>{{ $Plan->description }}</li>
+                            {{--  <li><span class="fa fa-check me-2"></span>Vacuuming</li>
+                            <li><span class="fa fa-check me-2"></span>Bathroom cleaning</li>
+                            <li><span class="fa fa-check me-2"></span>Mirrow cleaning</li>
+                           <li><span class="fa fa-check me-2"></span>Livingroom cleaning</li>  --}}
+                           </ul>
+                        <button class="btn btn-primary" wire:click.live="selectPlan({{ $Plan->id }})" wire:loading.attr="disabled">
+                            <span wire:loading.remove wire.target.live="selectPlan({{ $Plan->id }})">Select</span>
+                            <span wire:loading wire.target.live="selectPlan({{ $Plan->id }})"><div class="spinner-border text-danger"></div></span>
+                        </button>
+
+
+                        {{--  <div class="btn btn-primary" wire:loading wire:target="selectPlan({{ $Plan->id }})">
+                            <span>Loding</span>
+                                Select
+                        </div>  --}}
+                        </a>
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
@@ -32,7 +43,8 @@
         height: 380px;
         position: relative;
         padding: 20px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        color:black;
     }
 
     .h-1 {
@@ -58,7 +70,7 @@
     .ribon .fas.fa-shower,
     .ribon .fas.fa-infinity {
         font-size: 30px;
-        color: white
+        color: rgb(255, 255, 255)
     }
 
     .card .price {

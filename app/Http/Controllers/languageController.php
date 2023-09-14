@@ -50,39 +50,21 @@ class languageController extends Controller
         return redirect()->back();
     }
 
-    // public function yourMethod(Request $request)
-    // {
-    //     $url = $request->url();
+    public function yourMethod(Request $request)
+    {
+        $url = $request->url();
 
-    //     $ch = curl_init();
-    //     if (strpos($url, '/') !== false) {
+        $ch = curl_init();
 
-    //         curl_setopt($ch, CURLOPT_URL, $url);
-    //     } elseif (strpos($url, '/register') !== false) {
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 600);
 
-    //         curl_setopt($ch, CURLOPT_URL,  $url );
-    //     } elseif (strpos($url, '/login') !== false) {
+        $response = curl_exec($ch);
 
-    //         curl_setopt($ch, CURLOPT_URL,  $url);
+        if (curl_errno($ch)) {
+            $errorMessage = curl_error($ch);
+            dd($errorMessage);
+        }
 
-    //     } elseif (strpos($url, '/templates/resume') !== false) {
-
-    //         curl_setopt($ch, CURLOPT_URL,  $url);
-    //     } else {
-    //         // Handle other URLs or provide a default URL
-    //         // For example, you can set a default URL:
-    //         // curl_setopt($ch, CURLOPT_URL, 'http://127.0.0.1:8000/');
-    //     }
-
-    //     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 600);
-
-    //     $response = curl_exec($ch);
-
-    //     if (curl_errno($ch)) {
-    //         $errorMessage = curl_error($ch);
-    //         dd($errorMessage);
-    //     }
-
-    //     curl_close($ch);
-    // }
+        curl_close($ch);
+    }
 }
