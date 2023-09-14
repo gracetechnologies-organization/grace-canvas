@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ParentCategoryController extends Controller
 {
@@ -53,7 +56,7 @@ class ParentCategoryController extends Controller
             );
         }
     }
-    
+
     public function show(Request $Req)
     {
         try {

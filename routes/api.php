@@ -5,6 +5,7 @@ use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterHeadController;
+use App\Http\Controllers\ParentCategoryController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
@@ -27,6 +28,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $req) {
 });
 
 Route::middleware('auth.api.reqs')->group(function () {
+
+    Route::prefix('parent-category')->group(function () {
+        Route::post('/create', [ParentCategoryController::class, 'create']);
+        Route::post('/edit/{ID}', [ParentCategoryController::class, 'edit']);
+        Route::post('/destroy/{ID}', [ParentCategoryController::class, 'destroy']);
+        Route::get('/show/{ID?}', [ParentCategoryController::class, 'show']);
+    });
 
     Route::prefix('category')->group(function () {
         Route::post('/create', [CategoryController::class, 'create']);
