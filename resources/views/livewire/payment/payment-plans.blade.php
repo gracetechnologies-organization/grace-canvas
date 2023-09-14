@@ -4,34 +4,46 @@
             <p class="mb-5 text-center h2 standard-heading-css">Choose Your Perfect Plans</p>
         </div>
         <div class="mt-3 row">
-            @foreach ($Plans as $Plan)
-                <div class="col-lg-3 col-md-6 ">
-                    <div class="card d-flex align-items-center justify-content-center">
-                        <a href="{{ route('plan.checkout',['Plan' => $Plan]) }}" {{-- wire:click="selectPlan($Plan->id)" --}} class="nav-link">
+            <div class="col-lg-3 col-md-6 ">
+                <div class="card d-flex align-items-center justify-content-center">
+                    <a href="{{ route('templates.resume') }}" class="nav-link">
                         <div class="ribon">
-                            <span class="fas fa-spray-can"></span> </div>
-                            <p class="h-1 pt-5">{{ $Plan->name }}</p> <span class="price"><span class="number">${{ number_format($Plan->price, 2) }}</span> </span>
-                            <ul class="mb-5 list-unstyled text-muted">
-                            <li><span class="fa fa-check me-2"></span>{{ $Plan->description }}</li>
-                            {{--  <li><span class="fa fa-check me-2"></span>Vacuuming</li>
-                            <li><span class="fa fa-check me-2"></span>Bathroom cleaning</li>
-                            <li><span class="fa fa-check me-2"></span>Mirrow cleaning</li>
-                           <li><span class="fa fa-check me-2"></span>Livingroom cleaning</li>  --}}
-                           </ul>
-                        <button class="btn btn-primary" wire:click.live="selectPlan({{ $Plan->id }})" wire:loading.attr="disabled">
-                            <span wire:loading.remove wire.target.live="selectPlan({{ $Plan->id }})">Select</span>
-                            <span wire:loading wire.target.live="selectPlan({{ $Plan->id }})"><div class="spinner-border text-danger"></div></span>
-                        </button>
-
-
-                        {{--  <div class="btn btn-primary" wire:loading wire:target="selectPlan({{ $Plan->id }})">
-                            <span>Loding</span>
-                                Select
-                        </div>  --}}
-                        </a>
-                    </div>
+                            <span class="bx bxs-spray-can"></span>
+                        </div>
+                        <p class="h-1 pt-5"></p> <span class="price"><span class="number">Basic Free</span> </span>
+                        <ul class="mb-5 list-unstyled text-muted">
+                            <li><span class="bx bx-check me-2"></span>Vacuuming</li>
+                            <li><span class="bx bx-check me-2"></span>Bathroom cleaning</li>
+                            <li><span class="bx bx-check me-2"></span>Mirrow cleaning</li>
+                            <li><span class="bx bx-check me-2"></span>Livingroom cleaning</li>
+                        </ul>
+                        <button class="btn btn-primary" type="submit">Continue Free </button>
+                    </a>
                 </div>
-            @endforeach
+            </div>
+            <div class="col-lg-3 col-md-6 ">
+                <div class="card d-flex align-items-center justify-content-center">
+
+                    <div class="ribon">
+                        <span class="bx bxs-spray-can"> ${{ $Price }}</span>
+                    </div>
+                    <p class="h-1 pt-5"></p> <span class="price"><span class="number">Premuim</span> </span>
+                    <ul class="mb-5 list-unstyled text-muted">
+                        <li><span class="bx bx-check me-2"></span>Vacuuming</li>
+                        <li><span class="bx bx-check me-2"></span>Bathroom cleaning</li>
+                        <li><span class="bx bx-check me-2"></span>Mirrow cleaning</li>
+                        <li><span class="bx bx-check me-2"></span>Livingroom cleaning</li>
+
+                        <select wire:model.lazy='Price' id="">
+                            <option value="5" selected>1 Month</option>
+                            <option value="10">3 Month</option>
+                            <option value="15">6 Month</option>
+                        </select>
+                    </ul>
+                    <a href="{{ route('plan.checkout' , ['Price'=>$Price]) }}" class="btn btn-primary" type="submit" value="30">Buy </a>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -44,7 +56,7 @@
         position: relative;
         padding: 20px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        color:black;
+        color: black;
     }
 
     .h-1 {

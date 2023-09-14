@@ -6,7 +6,8 @@ use App\Http\Livewire\Payment\StripeCheckout;
 Route::middleware('auth')->group(function () {
     Route::prefix('payment')->group(function () {
         Route::get('/plans', PaymentPlans::class)->name('payment.plans')->withoutMiddleware('auth');
-        Route::get('/checkout/{Plan}', StripeCheckout::class)->name('plan.checkout');
-        Route::post('subscription', [StripeCheckout::class, 'subscription'])->name("subscription.create");
+        Route::get('/checkout/{Price}', StripeCheckout::class)->name('plan.checkout');
+        Route::post('/submit-card', [StripeCheckout::class, 'stripePayment'])->name('stripe.card.submit');
+        // Route::post('stripePayment', [StripeCheckout::class, 'stripePayment'])->name("stripe.Payment");
     });
 });

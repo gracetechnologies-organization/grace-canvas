@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cashier\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Cashier\Billable;
 
 class Plan extends Model
 {
     use HasFactory;
+    use Billable;
     // Should be included in the future
     // use HasFactory, SoftDeletes;
 

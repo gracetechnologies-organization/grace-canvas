@@ -15,19 +15,17 @@ use Livewire\Component;
 // }
 class PaymentPlans extends Component
 {
-    public $selectedPlan; // Public property to store the selected plan
+   public $Price;
+   public function mount()
+   {
+       $this->Price = 5;
+   }
 
-    // Method to handle the selection of a plan
-    public function selectPlan($PlanId)
-    {
-        $this->selectedPlan = Plan::find($PlanId);// Redirect to the checkout page with the selected plan
-        return redirect()->route('plan.checkout', ['Plan' => $this->selectedPlan->id]);
-    }
+
 
     public function render()
     {
-        $Plans = Plan::getPlans();
-        return view('livewire.payment.payment-plans', compact('Plans'));
+        return view('livewire.payment.payment-plans');
     }
 
 }
