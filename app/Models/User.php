@@ -62,7 +62,21 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public static function getUserData(){
-        return auth()->user() ;
+    public static function getUserData()
+    {
+        return auth()->user();
     }
+
+    public static function userSubscription(){
+        $UserSubscription = User::with('subscribPlan')->get()->first();
+        return $UserSubscription ;
+    }
+
+    public function subscribPlan()
+    {
+        return $this->hasMany(SubcribePlan::class, 'user_id');
+    }
+
+
+
 }

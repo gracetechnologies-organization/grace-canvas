@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-use App\Models\Cashier\User;
+use App\Models\User;
 use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Cashier::useCustomerModel(User::class);
         Response::macro('macroJson', function (array $Data = [], int $Success = null, string $Message = '', int $HttpCode = 500) {
             return Response::make([
                 'data' => $Data,
@@ -51,7 +52,5 @@ class AppServiceProvider extends ServiceProvider
             // Otherwise we will run the Google translator
             return GoogleTranslate::trans($Parameters['string'], app()->getLocale());
         });
-        
-        Cashier::useCustomerModel(User::class);
     }
 }

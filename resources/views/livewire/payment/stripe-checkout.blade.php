@@ -38,9 +38,10 @@
                                         <div id="card-errors" role="alert"></div>
                                         <input type="hidden" name="Price" value="{{ $Price }}" />
                                     </div>
+
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-dark mt-5" type="submit">Buy (${{ $Price }})</button>
+                                    <button class="btn btn-dark" type="submit">Buy ${{ $Price }}</button>
                                 </div>
                             </form>
                         </div>
@@ -112,6 +113,7 @@
             // Submit the form with the token ID.
             function stripeTokenHandler(token) {
                 // Insert the token ID into the form so it gets submitted to the server
+
                 var form = document.getElementById('payment-form');
                 var hiddenInput = document.createElement('input');
                 hiddenInput.setAttribute('type', 'hidden');
