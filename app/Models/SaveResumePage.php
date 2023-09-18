@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class SaveResumePage extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'user_id',
+        'resume_id',
+        'front_image',
+        'form_data',
+        'page_code'
+    ];
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+    // 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    */
+    public static function savePage(int $UserID, int $ResumeID, string $FrontImage, $FormData, string $PageCode)
+    {
+        return SaveResumePage::create([
+            'user_id' => $UserID,
+            'resume_id' => $ResumeID,
+            'front_image' => $FrontImage,
+            'form_data' => 'Coming Soon',
+            'page_code' => $PageCode
+        ]);
+    }
+
+    public static function getSavedPageByID(int $ID)
+    {
+        return SaveResumePage::findOrFail($ID);
+    }
+
+    // public static function getSavedPages()
+    // {
+    //     return SaveResumePage::with('category');
+    // }
+}

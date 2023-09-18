@@ -57,12 +57,6 @@
             reader.onloadend = function() {
                 var base64data = reader.result;
                 document.getElementById('resume-photo').src = base64data;
-                //  var Modal = document.querySelector('#crop-image-modal');
-                //  var ModalBackdrop = document.querySelector('.modal-backdrop');
-                // console.log(Modal);
-                // Remove the 'show' class from modal and modal-backdrop
-                //  Modal.classList.remove('show');
-                //  ModalBackdrop.classList.remove('show');
                 CropImgModal.modal('hide');
             }
         });
