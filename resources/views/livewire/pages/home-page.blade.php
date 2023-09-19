@@ -19,7 +19,7 @@
                     <a href=""> {{ app('googleTranslator', ['string' => 'Let\'s Create']) }} </a>
                 </button>
                 <button class="go-premium">
-                    <a href="{{ route('payment.plans') }}"> {{ app('googleTranslator', ['string' => 'Go Premium']) }} </a>
+                    <a href="{{ route('subscription') }}"> {{ app('googleTranslator', ['string' => 'Go Premium']) }} </a>
                 </button>
                 <br><br>
             </div>

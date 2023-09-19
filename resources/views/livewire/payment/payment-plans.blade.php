@@ -35,13 +35,37 @@
                         <li><span class="bx bx-check me-2"></span>Livingroom cleaning</li>
 
                         <select wire:model.lazy='Price' id="">
-                            <option value="5" selected>1 Month</option>
+                            <option value="yhjhjhj5" selected>1 Month</option>
                             <option value="10">3 Month</option>
                             <option value="15">6 Month</option>
                         </select>
                     </ul>
-                    <a href="{{ route('plan.checkout' , ['Price'=>$Price]) }}" class="btn btn-primary" type="submit" value="30">Buy </a>
+                    <a href="{{ route('plan.checkout', ['Price' => $Price]) }}" class="btn btn-primary" type="submit"
+                        value="30">Buy </a>
 
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 ">
+                <div class="card d-flex align-items-center justify-content-center">
+
+                    <div class="ribon">
+                        <span class="bx bxs-spray-can"> ${{ $Price }}</span>
+                    </div>
+                    <p class="h-1 pt-5"></p> <span class="price"><span class="number">Premuim</span> </span>
+                    <ul class="mb-5 list-unstyled text-muted">
+                        <li><span class="bx bx-check me-2"></span>Vacuuming</li>
+                        <li><span class="bx bx-check me-2"></span>Bathroom cleaning</li>
+                        <li><span class="bx bx-check me-2"></span>Mirrow cleaning</li>
+                        <li><span class="bx bx-check me-2"></span>Livingroom cleaning</li>
+
+                        <select wire:model.lazy='Price' id="">
+                            <option value="yhjhjhj5" selected>1 Month</option>
+                            <option value="10">3 Month</option>
+                            <option value="15">6 Month</option>
+                        </select>
+                    </ul>
+                    <a href="{{ route('subscription') }}" class="btn btn-primary" type="submit"
+                        value="30">Buy </a>
                 </div>
             </div>
         </div>

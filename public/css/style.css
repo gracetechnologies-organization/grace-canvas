@@ -12711,6 +12711,24 @@ body {
     font-weight: 600;
     line-height: normal;
 }
+.standard-heading-subscription h2{
+    color: #F60;
+    /* text-align: justify; */
+    font-family: Poppins;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 600;
+    /* line-height: normal; */
+}
+.standard-heading-subscription h3{
+    color: #F60;
+    /* text-align: justify; */
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    /* line-height: normal; */
+}
 
 .feature {
     display: inline-flex;

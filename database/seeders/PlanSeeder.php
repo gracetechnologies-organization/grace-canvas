@@ -18,22 +18,22 @@ class PlanSeeder extends Seeder
                 'name' => 'Basic',
                 'slug' => 'Basic',
                 'stripe_plan' => 'price_1NpOGPAJ0BhvCZp9D8CxhhzO',
-                'price' => 0,
+                'cost' => 0,
                 'description' => 'Basic subscription'
             ],
             [
-                'name' => 'Bronze',
-                'slug' => 'Bronze',
-                'stripe_plan' => 'price_1NpOBjAJ0BhvCZp9DVlfwYSs',
-                'price' => 10,
-                'description' => 'Bronze subscription'
+                'name' => 'Premium',
+                'slug' => 'Premium',
+                'stripe_plan' => 'price_1NrZ7kAJ0BhvCZp9ymmyMAUn',
+                'cost' => 10,
+                'description' => 'Premium  subscription'
             ],
             [
-                'name' => 'Gold',
-                'slug' => 'Gold',
-                'stripe_plan' => 'price_1NpODKAJ0BhvCZp9dlKrVuC8',
-                'price' => 50,
-                'description' => 'Gold subscription'
+                'name' => 'Premium',
+                'slug' => 'Premium',
+                'stripe_plan' => 'price_1NrZ7kAJ0BhvCZp95weXZO6U',
+                'cost' => 15,
+                'description' => 'Premium subscription'
             ]
         ];
 
