@@ -15,12 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('linkedin_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
+            $table->softDeletesTz();
         });
     }
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->tinyInteger('version')->default(0)->comment('0: free, 1: premium');
             $table->tinyInteger('default')->default(0)->comment('0: no, 1: yes');
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletesTz();
         });
     }
 

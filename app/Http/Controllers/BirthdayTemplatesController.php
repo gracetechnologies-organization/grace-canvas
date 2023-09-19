@@ -97,50 +97,29 @@ class BirthdayTemplatesController extends Controller
     public function create(Request $Req)
     {
         try {
-            // $Validator = Validator::make($Req->all(), [
-            //     'FrontImage' => 'mimes:jpg,png',
-            //     'svg' => 'mimes:svg',
-            //     'version' => 'integer',
-            //     'default' => 'integer',
-            // ]);
-            // if ($Validator->fails()) {
-            //     return response()->macroJson(
-            //         [],
-            //         config('messages.FAILED_CODE'),
-            //         $Validator->errors(),
-            //         config('messages.HTTP_UNPROCESSABLE_DATA')
-            //     );
-            // }
+            $Validator = Validator::make($Req->all(), [
+                'FrontImage' => 'required|mimes:jpg,png',
+                'TemplateID' => 'required|integer',
+            ]);
+            if ($Validator->fails()) {
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    $Validator->errors(),
+                    config('messages.HTTP_UNPROCESSABLE_DATA')
+                );
+            }
 
-            // $image = $Req->file('image');
-            // $LastInsertedId =  BirthdayTemplates::getLastInsertedID();
-            // $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-            // $image = CustomHelpers::getBirthdayTemplateImgWithID($image, $LastInsertedId);
-
-            // dd('I am running');
-            // Load the main image
-            $mainImage = Image::make(url('/storage/images/birthday_templates') . '/' . '2_Group_61.png');
-            
-            dd($mainImage);
-            // Detect transparent area
-            $mask = $mainImage->mask();
-            $transparentArea = $mask->crop()->getWidthAndHeight();
-            // Load the replacement image
-            $replacementImage = Image::make('http://127.0.0.1:8000/storage/images/Asset%2011.png');
-            $replacementImage->resize($transparentArea['width'], $transparentArea['height']);
-
-            // Replace transparent area with replacement image
-            $mainImage->insert($replacementImage, 'top-left', 0, 0);
-
-            // Save the resulting image
-            $mainImage->save('http://127.0.0.1:8000/storage/images/birthday_templates/new_birthday_template.png');
-
-            // return response()->macroJson(
-            //     [],
-            //     config('messages.FAILED_CODE'),
-            //     config('messages.UPDATION_FAILED'),
-            //     config('messages.HTTP_SUCCESS_CODE')
-            // );
+            $FontImage = CustomHelpers::getImgURL($Req->FrontImage);
+            $BirthdayTemplate = BirthdayTemplates::getBirthdayTemplateByID($Req->TemplateID);
+            $ThisTemplate = $BirthdayTemplate['svg'] . 'birthday_templates';
+            $View = view('birthday_templates.' . $ThisTemplate, compact('FontImage'));
+            // Create a response with the file content
+            return response()->macroView(
+                $View,
+                config('messages.HTTP_SUCCESS_CODE'),
+                ['Content-Type' => 'text/html']
+            );
         } catch (Exception $error) {
             report($error);
             return response()->macroJson(

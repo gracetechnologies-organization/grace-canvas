@@ -1,4 +1,4 @@
-<div>
+<div id="template-page">
     <style>
         .img-container {
             height: 500px;
@@ -7,6 +7,11 @@
 
         .custom-border {
             border: 1px solid rgb(54, 54, 54);
+        }
+
+        .accordion-body {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
         }
     </style>
     <!-- Offcanvas for detail customization -->
@@ -37,18 +42,23 @@
     <!-- Fixed buttons -->
     <div class="fixed-btn-container">
         @include('components.print-btn')
+        @include('components.save-template-page-btn')
     </div>
 
     <!-- Editing form & preview section -->
     <div class="container-fluid px-5 px-md-4 px-lg-5">
-        <div class="row">
+        <div class="row" id="form-and-template">
             <!-- Form column -->
             <div class="col-12 col-md-5 col-lg-4">
                 @include('components.resume-form')
             </div>
-           <!-- Resume template will render here -->
+            <!-- Resume template will render here -->
             @include($ResumeFile)
         </div>
+
+        {{-- <div>
+            {!! $SavedTemplate !!}
+        </div> --}}
     </div>
 
 </div>
