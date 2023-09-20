@@ -68,8 +68,8 @@ class User extends Authenticatable
     }
 
     public static function userSubscription(){
-        $UserSubscription = User::with('subscribPlan')->get()->first();
-        return $UserSubscription ;
+        $Subscriptions = auth()->user()->subscriptions;
+        return $Subscriptions ;
     }
 
     public function subscribPlan()

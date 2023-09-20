@@ -39,21 +39,16 @@
                         <h3 class="title">{{ $Plan->name }}</h3>
                         <div class="price-value">
                             <span class="currency">$</span>
-                            <span class="amount">{{ $Plan->cost }}</span>
+                            <span class="amount">{{ $Plan->price }}</span>
                             <span class="month">/month</span>
                         </div>
                         <ul class="pricing-content">
-                            @if ($Plan->cost == 0)
-                            <li><span class="bx bx-check me-2"></span>You Are Using Just 10 Template</li>
-                            {{--  <li><span class=" me-2"></span>Bathroom cleaning</li>
-                            <li><span class=" me-2"></span>Mirrow cleaning</li>
-                            <li><span class=" me-2"></span>Livingroom cleaning</li>  --}}
-                        @elseif($Plan->cost == 10)
+                        @if($Plan->price == 10)
                         <li><span class="bx bx-check me-2"></span>You Are Using Just 50 Template</li>
                         <li><span class="bx bx-check me-2"></span>Bathroom cleaning</li>
                         <li><span class=" me-2"></span>Mirrow cleaning</li>
                         <li><span class=" me-2"></span>Livingroom cleaning</li>
-                        @elseif ($Plan->cost == 15)
+                        @elseif ($Plan->price == 15)
                             <li><span class="bx bx-check me-2"></span>You Are Using Just 100 Template</li>
                             <li><span class="bx bx-check me-2"></span>Bathroom cleaning</li>
                             <li><span class="bx bx-check me-2"></span>Mirrow cleaning</li>
