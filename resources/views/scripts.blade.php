@@ -81,7 +81,9 @@
      //      console.log(element);
      //  }
  </script>
-
+ {{--  @if (Route::current()->uri == 'user/dashboard/home' || Route::current()->uri == 'user/dashboard/settings' || Route::current()->uri == 'user/dashboard/subcribtion')
+ @include('javascript-files.user-dahsboard-scripts')
+ @endif  --}}
  @if (Route::current()->uri == 'edit/resume/{ID}')
-     @include('javascript_files.cropper-scripts')
+     @include('javascript-files.cropper-scripts')
  @endif
