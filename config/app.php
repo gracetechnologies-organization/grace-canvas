@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -187,7 +187,8 @@ return [
         // 'Example' => App\Facades\Example::class,
         // 'Fortify' => Laravel\Fortify\FortifyFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'GoogleTranslate' => Stichoza\GoogleTranslate\GoogleTranslate::class
+        'GoogleTranslate' => Stichoza\GoogleTranslate\GoogleTranslate::class,
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ])->toArray(),
 
 ];

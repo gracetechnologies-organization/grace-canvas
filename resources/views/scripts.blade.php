@@ -36,10 +36,10 @@
      const saveTemplate = (RequestedTemplateID, ContainerID) => {
          const PageCode = document.getElementById(ContainerID).innerHTML;
 
-        //  saveResume(int $UserID, $ResumeID, $FrontImage, $FormData, $PageCode)
+         //  saveResume(int $UserID, $ResumeID, $FrontImage, $FormData, $PageCode)
          const data = {
-            RequestedTemplateID: RequestedTemplateID,
-            PageCode: PageCode
+             RequestedTemplateID: RequestedTemplateID,
+             PageCode: PageCode
          };
          // Send a POST request to the server-side script
          fetch('{{ route('save.resume') }}', {
@@ -50,7 +50,7 @@
                      'X-CSRF-Token': @json(csrf_token())
                  }
              })
-            //  .then(response => response.json())
+             //  .then(response => response.json())
              .then(response => {
                  console.log(response);
              })
@@ -110,3 +110,7 @@
  @if (Route::current()->uri == 'edit/resume/{ID}' || Route::current()->uri == 'edit/saved/resume/{ID}')
      @include('javascript_files.cropper-scripts')
  @endif
+ {{--  
+    @if (Route::current()->uri == 'user/dashboard/home' || Route::current()->uri == 'user/dashboard/settings' || Route::current()->uri == 'user/dashboard/subcribtion')
+ @include('javascript-files.user-dahsboard-scripts')
+ @endif  --}}

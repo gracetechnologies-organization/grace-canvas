@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Cashier\Billable;
-
+use Laravel\Cashier\Subscription;
 
 class User extends Authenticatable
 {
@@ -60,4 +60,25 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function getUserData()
+    {
+        return auth()->user();
+    }
+
+    public static function userSubscription()
+    {
+        $Subscriptions = auth()->user()->subscriptions;
+        return $Subscriptions;
+    }
+
+    public function subscribPlan()
+    {
+        return $this->hasMany(SubcribePlan::class, 'user_id');
+    }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class); // Assuming you have a Subscription model
+    }
 }
