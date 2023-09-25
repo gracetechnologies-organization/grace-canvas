@@ -30,7 +30,7 @@
                         </a>
                         <ul class="dropdown-content">
                             <li>
-                                <a href="{{ route('user.dashboard') }}">
+                                <a href="{{ route('user.dashboard.home') }}">
                                     {{ app('googleTranslator', ['string' => 'Dashboard']) }}
                                 </a>
                                 <form method="POST" action="{{ route('logout') }}">

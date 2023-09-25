@@ -1,4 +1,4 @@
-<div id="dashboardDiv">
+{{-- <div id="dashboardDiv">
     <style>
         /* Your existing CSS styles */
         .custom-user-dashboard-container {
@@ -140,14 +140,12 @@
     <div class="container custom-user-dashboard-container">
         @include('components.user-dashboard-heading')
         <div class="row">
-            <!-- Add Bootstrap classes for responsive design -->
             <div class="col-lg-3 col-md-3 col-sm-6">
                 @include('components.user-dashboard-sidebar')
             </div>
             <div class="col-lg-9 col-md-9 col-sm-6">
                 <div class="content">
                     <div id="dataContainer">
-                        {{--  @yield('user-dashboard')  --}}
                         @if (session('subscription_message'))
                             <div class="alert alert-danger">
                                 {{ session('subscription_message') }}
@@ -188,4 +186,4 @@
             });
         });
     </script>
-</div>
+</div> --}}

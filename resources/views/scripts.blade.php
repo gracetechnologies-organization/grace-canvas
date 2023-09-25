@@ -7,18 +7,9 @@
  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
  {{-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> --}}
 
- {{-- <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script> --}}
-
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
-
- {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script> --}}
-
- {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>  --}}
-
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
- {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  <script>
@@ -106,11 +97,10 @@
      //      console.log(element);
      //  }
  </script>
-
- @if (Route::current()->uri == 'edit/resume/{ID}' || Route::current()->uri == 'edit/saved/resume/{ID}')
+ @if (Route::current()->uri == 'edit/resume/{ID}')
      @include('javascript_files.cropper-scripts')
  @endif
- {{--  
-    @if (Route::current()->uri == 'user/dashboard/home' || Route::current()->uri == 'user/dashboard/settings' || Route::current()->uri == 'user/dashboard/subcribtion')
- @include('javascript-files.user-dahsboard-scripts')
- @endif  --}}
+
+ @if (Route::current()->uri == 'user/dashboard/home' || Route::current()->uri == 'user/dashboard/settings' || Route::current()->uri == 'user/dashboard/subcribtion')
+     @include('javascript_files.user-dahsboard-scripts')
+ @endif

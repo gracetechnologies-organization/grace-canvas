@@ -30,8 +30,7 @@
                 </div>
             @endif  --}}
             @if (session('subscription_message'))
-                <div class="modal fade show madel" id="customModal" tabindex="-1" aria-labelledby="customModalLabel"
-                    aria-hidden="true" style="display: block;">
+                <div class="modal fade show madel" id="customModal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             {{--  <div class="modal-header">
@@ -109,79 +108,26 @@
                                 <span class="month">{{ $Plan->interval_count }}/month</span>
                             </div>
                             <ul class="pricing-content">
-                                @if ($Plan->price == 10)
-                                    <li><span class="bx bx-check me-2"></span>You Are Using Just 50 Template</li>
-                                    <li><span class="bx bx-check me-2"></span>Bathroom cleaning</li>
-                                    <li><span class=" me-2"></span>Mirrow cleaning</li>
-                                    <li><span class=" me-2"></span>Livingroom cleaning</li>
-                                @elseif ($Plan->price == 15)
-                                    <li><span class="bx bx-check me-2"></span>You Are Using Just 100 Template</li>
-                                    <li><span class="bx bx-check me-2"></span>Bathroom cleaning</li>
-                                    <li><span class="bx bx-check me-2"></span>Mirrow cleaning</li>
-                                    <li><span class="bx bx-check me-2"></span>Livingroom cleaning</li>
+                                @if ($Plan->price == 5)
+                                    <li><span class="bx bx-check me-2"></span>All premium templates</li>
+                                    <li><span class="bx bx-x me-2"></span>24/7 support</li>
                                 @endif
-
+                                @if ($Plan->price == 10)
+                                    <li><span class="bx bx-check me-2"></span>All premium templates</li>
+                                    <li><span class="bx bx-x me-2"></span>24/7 support</li>
+                                @endif 
+                                @if($Plan->price == 15)
+                                    <li><span class="bx bx-check me-2"></span>All premium templates</li>
+                                    <li><span class="bx bx-check me-2"></span>24/7 support</li>
+                                @endif
                             </ul>
-                            <a href="{{ route('subscription.post', ['ID' => $Plan->id, 'month' => $Plan->interval_count]) }}"
-                                class="pricingTable-signup">BUY NOW</a>
+                            <a href="{{ route('subscription.post', ['ID' => $Plan->id, 'month' => $Plan->interval_count]) }}" class="pricingTable-signup">
+                                BUY NOW
+                            </a>
                         </div>
                     </div>
                 @empty
-                    <div class="col-md-4 col-sm-6">
-                        <div class="pricingTable">
-                            <h3 class="title"></h3>
-                            <div class="price-value">
-                                <span class="currency">$</span>
-                                <span class="amount">10.00</span>
-                                <span class="month">/month</span>
-                            </div>
-                            <ul class="pricing-content">
-
-                                <li><b>50GB</b> Disk Space</li>
-                                <li><b>50</b> Email Accounts</li>
-                                <li><b>50GB</b> Bandwidth</li>
-                                <li><b>10</b> Subdomains</li>
-                                <li><b>15</b> Domains</li>
-                            </ul>
-                            <a href="#" class="pricingTable-signup">Order Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="pricingTable pink">
-                            <h3 class="title">BUSINESS</h3>
-                            <div class="price-value">
-                                <span class="currency">$</span>
-                                <span class="amount">20.00</span>
-                                <span class="month">/month</span>
-                            </div>
-                            <ul class="pricing-content">
-                                <li><b>60GB</b> Disk Space</li>
-                                <li><b>60</b> Email Accounts</li>
-                                <li><b>60GB</b> Bandwidth</li>
-                                <li><b>15</b> Subdomains</li>
-                                <li><b>20</b> Domains</li>
-                            </ul>
-                            <a href="#" class="pricingTable-signup">Order Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="pricingTable blue">
-                            <h3 class="title">PREMIUM</h3>
-                            <div class="price-value">
-                                <span class="currency">$</span>
-                                <span class="amount">30.00</span>
-                                <span class="month">/month</span>
-                            </div>
-                            <ul class="pricing-content">
-                                <li><b>70GB</b> Disk Space</li>
-                                <li><b>70</b> Email Accounts</li>
-                                <li><b>70GB</b> Bandwidth</li>
-                                <li><b>20</b> Subdomains</li>
-                                <li><b>25</b> Domains</li>
-                            </ul>
-                            <a href="#" class="pricingTable-signup">Order Now</a>
-                        </div>
-                    </div>
+                    <h1 class="text-center"> No Plans Created Yet..!! </h1>
                 @endforelse
             </div>
         </div>
