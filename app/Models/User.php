@@ -17,6 +17,7 @@ class User extends Authenticatable
     use Notifiable;
     use Billable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -64,6 +65,16 @@ class User extends Authenticatable
     public static function getUserData()
     {
         return auth()->user();
+    }
+
+    public static function getUserName()
+    {
+        return auth()->user()->name;
+    }
+
+    public static function getUserID()
+    {
+        return auth()->user()->id;
     }
 
     public static function userSubscription()

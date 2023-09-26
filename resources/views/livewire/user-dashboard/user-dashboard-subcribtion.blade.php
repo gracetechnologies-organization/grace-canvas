@@ -88,10 +88,13 @@
                                                     @if ($Subscription->ends_at == null)
                                                         <a href="#"
                                                             wire:click="cancel({{ $Subscription->id }})"><i
-                                                                class="bi bi-x-square-fill"></i></a>
+                                                                class="bi bi-x-square-fill"></i></a> /
                                                     @else
-                                                        <span class="text-muted">Plan Canceled</span>
+                                                        <span class="text-muted">Plan Canceled</span> /
                                                     @endif
+
+                                                    <a href="#" wire:click="delete({{ $Subscription->id }})">
+                                                    <i class='bx bxs-trash'></i>
                                                 </td>
 
                                             </tr>

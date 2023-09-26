@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Closure;
 use Exception;
@@ -41,8 +42,7 @@ class CheckSubscriptionStatus
     public function handle(Request $request, Closure $next): Response
     {
         try {
-            $user = auth()->user();
-
+            $user = User::getUserData();
             if ($user) {
                 $subscription = $user->subscription; // Assuming you have a relationship set up in your User model
 
@@ -51,11 +51,14 @@ class CheckSubscriptionStatus
                     $subscription->update([
                         'trial_ends_at' => null,
                         'ends_at' => now(),
+                        'is_subscribed' => 0,
+                        'subscription_type' => 0,
+                        'stripe_status' => 'canceled',
                     ]);
-                    session()->flash('subscription_message', 'Your subscription has expired. Purchase a new subscription');
+
+                        session()->flash('subscription_message', 'Your subscription has expired. Purchase a new subscription');
+            
                     // session()->flash('subscription_message', '<a href="/purchase">Purchase a new subscription</a>');
-
-
                 }
             }
             return $next($request);
