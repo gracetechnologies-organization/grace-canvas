@@ -37,4 +37,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
     }
+
+
+    protected function mapInertiaRequests()
+    {
+    Route::middleware(['web', 'inertia'])->group(base_path('routes/inertia.php'));
+    }
+
 }
