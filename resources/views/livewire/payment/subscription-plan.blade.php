@@ -121,7 +121,7 @@
                                     <li><span class="bx bx-check me-2"></span>24/7 support</li>
                                 @endif
                             </ul>
-                            <a href="{{ route('subscription.form', ['ID' => $Plan->id, 'month' => $Plan->interval_count]) }}" class="pricingTable-signup">
+                            <a href="{{ route('subscription.post', ['ID' => $Plan->id, 'month' => $Plan->interval_count]) }}" class="pricingTable-signup">
                                 BUY NOW
                             </a>
                         </div>
