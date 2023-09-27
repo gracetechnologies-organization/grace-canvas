@@ -79,22 +79,34 @@
                                                         {{ $Subscription->ends_at }}
                                                     @endif
                                                 </td>
-                                                {{--  this method use for all plan cancel  --}}
-                                                {{--  <td>
-                                                    <a href="#" wire:click="cancel">cancelPlan</a>
-                                                 </td>  --}}
-                                                {{--  this method use for only used for id based plan cancel  --}}
                                                 <td>
                                                     @if ($Subscription->ends_at == null)
+                                                        @php
+                                                            $trialEndDate = $Subscription->created_at;
+                                                            $currentDate = now();
+                                                            $daysDifference = $currentDate->diffInDays($trialEndDate);
+                                                        @endphp
+                                                        @if ($daysDifference < 5)
+                                                            <a href="#"
+                                                                wire:click="cancel({{ $Subscription->id }})">
+                                                                <i class="bi bi-x-square-fill"></i></a> /
+                                                        @else
+                                                            <span class="text-muted">Plan Canceled</span> /
+                                                        @endif
+                                                    @else
+                                                        <span class="text-muted">Plan Canceled</span> /
+                                                    @endif
+
+                                                    {{--  @if ($Subscription->ends_at == null)
                                                         <a href="#"
                                                             wire:click="cancel({{ $Subscription->id }})"><i
                                                                 class="bi bi-x-square-fill"></i></a> /
                                                     @else
                                                         <span class="text-muted">Plan Canceled</span> /
-                                                    @endif
+                                                    @endif  --}}
 
                                                     <a href="#" wire:click="delete({{ $Subscription->id }})">
-                                                    <i class='bx bxs-trash'></i>
+                                                        <i class='bx bxs-trash'></i>
                                                 </td>
 
                                             </tr>
