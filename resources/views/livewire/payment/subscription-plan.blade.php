@@ -73,9 +73,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                @if (session()->has('massage'))
-                    <div class="alert alert-denger alert-dismissible fade show" role="alert">
-                        <strong>{{ session()->get('massage') }}</strong>
+                @if (session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{ session()->get('error') }}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
@@ -115,7 +115,7 @@
                                 @if ($Plan->price == 10)
                                     <li><span class="bx bx-check me-2"></span>All premium templates</li>
                                     <li><span class="bx bx-x me-2"></span>24/7 support</li>
-                                @endif 
+                                @endif
                                 @if($Plan->price == 15)
                                     <li><span class="bx bx-check me-2"></span>All premium templates</li>
                                     <li><span class="bx bx-check me-2"></span>24/7 support</li>
