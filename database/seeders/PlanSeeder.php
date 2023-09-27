@@ -17,28 +17,37 @@ class PlanSeeder extends Seeder
             [
                 'name' => 'Basic',
                 'slug' => 'Basic',
-                'stripe_plan' => 'price_1NpOGPAJ0BhvCZp9D8CxhhzO',
-                'price' => 0,
+                'stripe_plan' => 'price_1Nu828AJ0BhvCZp9zkS8sMC6',
+                'billing_method'=> 'month',
+                'interval_count'=> 1,
+                'currency' => 'usd',
+                'price' => 5,
                 'description' => 'Basic subscription'
             ],
             [
                 'name' => 'Bronze',
                 'slug' => 'Bronze',
-                'stripe_plan' => 'price_1NpOBjAJ0BhvCZp9DVlfwYSs',
+                'stripe_plan' => 'price_1NrZ7kAJ0BhvCZp9ymmyMAUn',
+                'billing_method'=> 'month',
+                'interval_count'=> 3,
+                'currency' => 'usd',
                 'price' => 10,
                 'description' => 'Bronze subscription'
             ],
             [
                 'name' => 'Gold',
                 'slug' => 'Gold',
-                'stripe_plan' => 'price_1NpODKAJ0BhvCZp9dlKrVuC8',
-                'price' => 50,
+                'stripe_plan' => 'price_1NrZ7kAJ0BhvCZp95weXZO6U',
+                'billing_method'=> 'month',
+                'interval_count'=> 6,
+                'currency' => 'usd',
+                'price' => 15,
                 'description' => 'Gold subscription'
             ]
         ];
 
-        foreach ($plans as $plan) {
-            Plan::create($plan);
-        }
+        foreach ($plans as $plan) Plan::create($plan);
+
+        // Plan::factory()->count(1)->create();
     }
 }

@@ -1,10 +1,4 @@
-<div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Add links to Bootstrap and Font Awesome here -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <title>Responsive Sidebar</title>
-
+{{-- <div id="dashboardDiv">
     <style>
         /* Your existing CSS styles */
         .custom-user-dashboard-container {
@@ -32,7 +26,7 @@
             display: block;
             overflow: hidden;
             transition: 0.3s;
-            padding:10px;
+            padding: 10px;
         }
 
         .custom-sidebar-user-dashboard a:hover {
@@ -60,17 +54,19 @@
             /* Adjust this margin as needed */
             padding: 15px;
         }
-        .custome-card-border{
-            border: 2px dashed #FF6600 ;
+
+        .custome-card-border {
+            border: 2px dashed #FF6600;
         }
-        .custom-button-css{
+
+        .custom-button-css {
             width: 11rem !important;
             height: 4rem !important;
             border-radius: 1rem;
             border: none;
             margin-top: 0px;
             padding-right: 0rem !important;
-            padding-left: 0rem !important ;
+            padding-left: 0rem !important;
             background-color: #FF6600;
             color: #FFF;
             font-family: Poppins;
@@ -108,14 +104,15 @@
             .custome-color {
                 color: #ff6600;
             }
-            .custom-button-css{
+
+            .custom-button-css {
                 width: 8rem !important;
                 height: 3rem !important;
                 border-radius: 0.5rem;
                 border: none;
                 padding-right: 0rem !important;
-                padding-left: 0rem !important ;
-                padding-bottom: 1rem !important ;
+                padding-left: 0rem !important;
+                padding-bottom: 1rem !important;
                 background-color: #FF6600;
                 color: #FFF;
                 font-family: Poppins;
@@ -139,34 +136,21 @@
 
             }
         }
-
     </style>
     <div class="container custom-user-dashboard-container">
-        <h2 class="my-4 text-center custome-color">
-            Wellcome To Your Dashboard
-        </h2>
+        @include('components.user-dashboard-heading')
         <div class="row">
-            <!-- Add Bootstrap classes for responsive design -->
             <div class="col-lg-3 col-md-3 col-sm-6">
-                <div id="sidebar" class="sidebar custom-sidebar-user-dashboard">
-                    <a href="{{route('user.dashboard.home')}}">
-                        <i class='bx bx-home-alt-2'></i> <!-- Home Icon -->
-                        <span class="d-md-inline">Home</span>
-                    </a>
-                    <a href="{{ route('user.dashboard.settings') }}">
-                        <i class='bx bxs-cog'></i><!-- Setting Icon -->
-                        <span class="d-md-inline">Setting</span>
-                    </a>
-                    <a href="{{ route('user.dashboard.templates') }}">
-                        <i class="bx bx-file "></i> <!-- Template Icon -->
-                        <span class="d-md-inline">MY Template</span>
-                    </a>
-                </div>
+                @include('components.user-dashboard-sidebar')
             </div>
             <div class="col-lg-9 col-md-9 col-sm-6">
                 <div class="content">
                     <div id="dataContainer">
-                        @yield('user-dashboard')
+                        @if (session('subscription_message'))
+                            <div class="alert alert-danger">
+                                {{ session('subscription_message') }}
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -202,4 +186,4 @@
             });
         });
     </script>
-</div>
+</div> --}}
