@@ -19,9 +19,9 @@ class SubscriptionController extends Controller
             }
             $user = auth()->user();
             auth()->user()->newSubscription($request->name, $request->plan)->create($request->paymentMethod);
-
+            
+            // Get the user's subscription by name ('Premium' in this case)
             $subscription = $user->subscription($request->name);
-
             if ($subscription) {
                 // Update subscription details, e.g., trial_ends_at, is_subscribed, and subscription_type
                 $subscription->update([

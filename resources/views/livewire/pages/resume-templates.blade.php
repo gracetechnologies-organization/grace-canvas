@@ -3,7 +3,9 @@
     <section class="category-section">
         <div class="container-fluid">
             <div class="ml-5 row custome-background">
-                {{--  <div class="text-center ">
+
+                {{--  
+                <div class="text-center ">
                     <h2 class="mt-5 text-center standard-heading-css">{{ app('googleTranslator', ['string' => 'Categories']) }}</h2>
                 </div>
                 <div class="col-lg-12 col-sm-12 ">
@@ -14,7 +16,8 @@
                         <button class="custom-btn btn-5"><span><a href="#" class="resumes">CSR</a></span></button>
                         <button class="custom-btn btn-9"><span><a href="#">See More</a></span></button>
                     </div>
-                </div>  --}}
+                </div>  
+                --}}
             </div>
         </div>
     </section>
