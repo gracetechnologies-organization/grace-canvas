@@ -19,22 +19,22 @@ class CheckUserSubscribePremium
     public function handle(Request $request, Closure $next): Response
     {
         $Resume = Resume::getResumeByID($request->ID);
-       if ($Resume->version == 1) {
-        if (!Auth::check()) {
-             session()->flash('login_error', 'bhai tun login nhi haa , phly login kr ly tak mujhy tery ID mill jay ');
-            return redirect()->back();
-        }
-        $UserID = auth()->user()->id;
-        $Subscriptions = Subscription::where('user_id', $UserID)->first();
-         if ($Subscriptions && $Subscriptions->subscription_type == 1) {
-            return $next($request);
+        if ($Resume->version == 1) {
+            if (!Auth::check()) {
+                session()->flash('login_error', 'Please login to use premium templates');
+                return redirect()->back();
+            }
+            $UserID = auth()->user()->id;
+            // Using stripe built-in Subscription model
+            $Subscriptions = Subscription::where('user_id', $UserID)->first();
+            if ($Subscriptions && $Subscriptions->subscription_type == 1) {
+                return $next($request);
+            } else {
+                session()->flash('not_subscribed_error', 'This template is only for premium users. Please purchase a premium plan to continue.');
+                return redirect()->back();
+            }
         } else {
-            session()->flash('not_subscribed_error', 'Ary Bhai Phly Plan Purchase kr Phir me Tum ko Premium Ka Access Day Dun ,Dhundu ');
-            return redirect()->back();
+            return $next($request);
         }
-       }else{
-        return $next($request);
-       }
-
     }
 }
