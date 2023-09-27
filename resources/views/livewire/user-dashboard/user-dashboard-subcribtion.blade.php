@@ -27,6 +27,13 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
+                            @if ($deleteSuccessMessage)
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>{{ $deleteSuccessMessage }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
                             @if (session()->has('massage'))
                                 <div class="alert alert-denger alert-dismissible fade show" role="alert">
                                     <strong>{{ session()->get('massage') }}</strong>

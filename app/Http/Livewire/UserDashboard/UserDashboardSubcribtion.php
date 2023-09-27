@@ -12,6 +12,7 @@ class UserDashboardSubcribtion extends Component
 {
     public $Subscriptions;
     public $cancelSuccessMessage = '';
+    public $deleteSuccessMessage = '';
 
     public function cancel($subscriptionId)
     {
@@ -51,13 +52,13 @@ class UserDashboardSubcribtion extends Component
             // Check if the subscription has been canceled
             if ($subscription->stripe_status === 'canceled') {
                 // Delete the subscription from Stripe
-                // $subscription->cancelNow(); // This will delete the subscription from Stripe
+                $subscription->cancelNow(); // This will delete the subscription from Stripe
                 // Delete the subscription locally
-                $subscription->delete(); // This will delete the subscription record from your database
-
-                return redirect()->route('subscription')->with('success', 'Subscription has been deleted.');
+                // $subscription->delete(); // This will delete the subscription record from your database
+                $subscription->update(['deleted_at' => now()]);
+                $this->cancelSuccessMessage = 'Subscription has been deleted.';
             } else {
-                return redirect()->route('subscription')->with('error', 'Subscription cannot be deleted as it is not canceled.');
+                $this->cancelSuccessMessage ='Subscription cannot be deleted as it is not canceled.';
             }
         } catch (\Exception $e) {
             return $e->getMessage(); // Handle exceptions, e.g., display an error message
