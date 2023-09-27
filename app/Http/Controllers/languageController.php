@@ -6,9 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class languageController extends Controller
 {
+
+    // public function showSavedTemplate($ID)
+    // {
+    //     // dd($ID);
+    //     $Data = DB::table('saved_resumes')
+    //         ->select('template_code')
+    //         ->where('id', $ID)
+    //         ->get();
+
+    //     // dd($Data);
+    //     $SavedTemplate = $Data[0]->template_code;
+
+    //     return view('saved_resumes.saved-resume', compact('SavedTemplate'));
+    // }
 
     // public function index()
     // {

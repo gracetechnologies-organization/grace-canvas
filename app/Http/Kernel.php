@@ -39,7 +39,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\LanguageManager::class,
             \App\Http\Middleware\CheckSubscriptionStatus::class,
-            \App\Http\Middleware\EnsureUserIsSubscribed::class
+            \App\Http\Middleware\EnsureUserIsSubscribed::class,
         ],
 
         'api' => [
@@ -68,6 +68,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'auth.api.reqs' => \App\Http\Middleware\AuthenticateAPIRequests::class,
-
+        'is.user.subscribed'=>  \App\Http\Middleware\CheckUserSubscribePremium::class,
     ];
 }

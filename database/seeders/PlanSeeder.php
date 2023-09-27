@@ -17,34 +17,37 @@ class PlanSeeder extends Seeder
             [
                 'name' => 'Basic',
                 'slug' => 'Basic',
-                'stripe_plan' => 'price_1NpOGPAJ0BhvCZp9D8CxhhzO',
-                'price' => 0,
+                'stripe_plan' => 'price_1Nu828AJ0BhvCZp9zkS8sMC6',
+                'billing_method'=> 'month',
+                'interval_count'=> 1,
+                'currency' => 'usd',
+                'price' => 5,
                 'description' => 'Basic subscription'
             ],
             [
-                'name' => 'Premium',
-                'slug' => 'Premium',
+                'name' => 'Bronze',
+                'slug' => 'Bronze',
                 'stripe_plan' => 'price_1NrZ7kAJ0BhvCZp9ymmyMAUn',
                 'billing_method'=> 'month',
-                'interval_count'=> 1,
+                'interval_count'=> 3,
                 'currency' => 'usd',
                 'price' => 10,
-                'description' => 'Premium  subscription'
+                'description' => 'Bronze subscription'
             ],
             [
-                'name' => 'Premium',
-                'slug' => 'Premium',
+                'name' => 'Gold',
+                'slug' => 'Gold',
                 'stripe_plan' => 'price_1NrZ7kAJ0BhvCZp95weXZO6U',
                 'billing_method'=> 'month',
-                'interval_count'=> 1,
+                'interval_count'=> 6,
                 'currency' => 'usd',
                 'price' => 15,
-                'description' => 'Premium subscription'
+                'description' => 'Gold subscription'
             ]
         ];
 
-        foreach ($plans as $plan) {
-            Plan::create($plan);
-        }
+        foreach ($plans as $plan) Plan::create($plan);
+
+        // Plan::factory()->count(1)->create();
     }
 }

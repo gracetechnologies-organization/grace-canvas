@@ -12,11 +12,11 @@
                 <p>
                     {{ app('googleTranslator', [
                         'string' => 'Quickly design and customize responsive mobile-first sites with Bootstrap, the
-                                        world’s most popular front-end open source toolkit!',
+                                                            world’s most popular front-end open source toolkit!',
                     ]) }}
                 </p>
                 <button class="lets-created">
-                    <a href=""> {{ app('googleTranslator', ['string' => 'Let\'s Create']) }} </a>
+                    <a href="{{ route('templates.resume') }}"> {{ app('googleTranslator', ['string' => 'Let\'s Create']) }} </a>
                 </button>
                 <button class="go-premium">
                     <a href="{{ route('subscription') }}"> {{ app('googleTranslator', ['string' => 'Go Premium']) }} </a>
@@ -43,18 +43,7 @@
     <section class="mt-5">
         <div class="container-fluid">
             <div class="row resume-card-section row1">
-                @foreach ($Resumes as $SingleIndex)
-                    <div class="mb-3 col-lg-4 col-md-6 col-sm-12">
-                        <div class="card">
-                            <img src="{{ asset('storage/images/resumes/' . $SingleIndex->front_image) }}" loading="lazy" class="p-3 img-fluid" alt="">
-                            <div class="btn-resume-section">
-                                <a href="{{ route('edit.resume.form', $SingleIndex->id) }}">
-                                    {{ app('googleTranslator', ['string' => 'Select Template']) }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                @include('components.resumes-grid')
                 {{-- <div class="d-flex justify-content-center">
                 {{$Resumes->links()}}
             </div> --}}
@@ -79,8 +68,8 @@
                         {{ app('googleTranslator', [
                             'lang' => app()->getLocale(),
                             'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae
-                                                                                        lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                                                                                        commodo tempor vestibulum sed erat mollis.',
+                                                                                                                lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                                                                                                commodo tempor vestibulum sed erat mollis.',
                         ]) }}
                     </p>
                     <button class="custom-button-css">
@@ -110,8 +99,8 @@
                     <p class="text-left w-80 responsive-print-ready-section">
                         {{ app('googleTranslator', [
                             'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisqu
-                                                vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                                                commodo tempor vestibulum sed erat mollis.',
+                                                                        vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                                                        commodo tempor vestibulum sed erat mollis.',
                         ]) }}
                     </p>
                     <button class="custom-button-css">
@@ -131,7 +120,7 @@
     <section class="mt-5 text-center review-section">
         <h2>
             <b class="standard-heading-css">
-                {{ app('googleTranslator', ['string' => 'Our User’s Reviews About Our Templates']) }}
+                {{ app('googleTranslator', ['string' => 'User’s Reviews About Our Templates']) }}
             </b>
         </h2>
         <p>

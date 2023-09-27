@@ -42,23 +42,14 @@
     <!-- Fixed buttons -->
     <div class="fixed-btn-container">
         @include('components.print-btn')
-        @include('components.save-template-page-btn')
+        {{-- @include('components.save-template-page-btn') --}}
     </div>
 
     <!-- Editing form & preview section -->
     <div class="container-fluid px-5 px-md-4 px-lg-5">
         <div class="row" id="form-and-template">
-            <!-- Form column -->
-            <div class="col-12 col-md-5 col-lg-4">
-                @include('components.resume-form')
-            </div>
-            <!-- Resume template will render here -->
-            @include($ResumeFile)
+            {!! $SavedPageCode !!}
         </div>
-
-        {{-- <div>
-            {!! $SavedTemplate !!}
-        </div> --}}
     </div>
 
 </div>

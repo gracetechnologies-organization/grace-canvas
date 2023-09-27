@@ -9,26 +9,33 @@
     <!-- Core theme CSS (includes Bootstrap v5.2.3) -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
-
-        <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
-
+    <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
     @if (Route::current()->uri == 'templates/resume')
-        <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/resumeTempletes.css') }}" rel="stylesheet" />
     @endif
+
+    @php
+        $EditingRoutes = ['edit/resume/{ID}', 'edit/saved/resume/{ID}'];
+    @endphp
+    @if (in_array(Route::current()->uri, $EditingRoutes))
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-cyzxRvewl+FOKTtpBzYjW6x6IAYUCZy3sGP40hn+DQkqeluGRCax7qztK2ImL64SA+C7kVWdLI6wvdlStawhyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @endif
+
     @if (Route::current()->uri == 'register' || Route::current()->uri == 'login')
         <link href="{{ asset('css/loginSignUp.css') }}" rel="stylesheet" />
     @endif
-    @if (Route::current()->uri == 'user/dashboard/home' || Route::current()->uri == 'user/dashboard/settings' || Route::current()->uri == 'user/dashboard/subcribtion'  || Route::current()->uri == 'user/dashboard/templates' )
+
+    @php
+        $UserDashboardRoutes = ['user/dashboard/home', 'user/dashboard/settings', 'user/dashboard/subcribtion', 'user/dashboard/templates'];
+    @endphp
+    @if (in_array(Route::current()->uri, $UserDashboardRoutes))
     <link href="{{ asset('css/userDashboards.css') }}" rel="stylesheet" />
-    {{--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">  --}}
     @endif
+
     @if (Route::current()->uri == 'payment/subscription')
     <link href="{{ asset('css/subscriptionPlan.css') }}" rel="stylesheet" />
     @endif
-    @if (Route::current()->uri == 'edit/resume/{ID}')
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-cyzxRvewl+FOKTtpBzYjW6x6IAYUCZy3sGP40hn+DQkqeluGRCax7qztK2ImL64SA+C7kVWdLI6wvdlStawhyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @endif
+
     <!-- Boxicons -->
     <link href="{{ asset('fonts/boxicons.css') }}" rel="stylesheet" />
     <!-- Bootstrap icons -->
@@ -40,5 +47,6 @@
     <!-- Fonts -->
     {{-- <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> --}}
+    
     <!-- Scripts -->
     <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->

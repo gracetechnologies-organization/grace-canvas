@@ -7,23 +7,14 @@
  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
  {{-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> --}}
 
- {{-- <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script> --}}
-
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-
-
- {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script> --}}
-
- {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>  --}}
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
- {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  <script>
-     const printDiv = (id) => {
-         var printContents = document.getElementById(id).innerHTML;
+     const printDiv = (ID) => {
+         var printContents = document.getElementById(ID).innerHTML;
          var originalContents = document.body.innerHTML;
          // Replace the current document's body with the content to be printed
          document.body.innerHTML = printContents;
@@ -31,6 +22,32 @@
          window.print();
          // Restore the original document content after printing is done
          document.body.innerHTML = originalContents;
+     }
+
+     const saveTemplate = (RequestedTemplateID, ContainerID) => {
+         const PageCode = document.getElementById(ContainerID).innerHTML;
+
+         //  saveResume(int $UserID, $ResumeID, $FrontImage, $FormData, $PageCode)
+         const data = {
+             RequestedTemplateID: RequestedTemplateID,
+             PageCode: PageCode
+         };
+         // Send a POST request to the server-side script
+         fetch('{{ route('save.resume') }}', {
+                 method: 'POST',
+                 body: JSON.stringify(data),
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'X-CSRF-Token': @json(csrf_token())
+                 }
+             })
+             //  .then(response => response.json())
+             .then(response => {
+                 console.log(response);
+             })
+             .catch(error => {
+                 console.error(error);
+             });
      }
 
      function changeLanguage(selectElement) {
@@ -71,7 +88,6 @@
 
      //  const printDiv = (id) => {
 
-
      //      // Choose the element and save the PDF for your user.
      //      // Choose the element that your content will be rendered to.
      //      const element = document.getElementById(id);
@@ -81,9 +97,10 @@
      //      console.log(element);
      //  }
  </script>
- {{--  @if (Route::current()->uri == 'user/dashboard/home' || Route::current()->uri == 'user/dashboard/settings' || Route::current()->uri == 'user/dashboard/subcribtion')
- @include('javascript-files.user-dahsboard-scripts')
- @endif  --}}
  @if (Route::current()->uri == 'edit/resume/{ID}')
-     @include('javascript-files.cropper-scripts')
+     @include('javascript_files.cropper-scripts')
+ @endif
+
+ @if (Route::current()->uri == 'user/dashboard/home' || Route::current()->uri == 'user/dashboard/settings' || Route::current()->uri == 'user/dashboard/subcribtion')
+     @include('javascript_files.user-dahsboard-scripts')
  @endif

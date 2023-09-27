@@ -49,7 +49,7 @@ class GoogleLoginController extends Controller
             dd($e);
         }
     }
-
+    
     public function linkdInPage()
     {
         return Socialite::driver('linkedin')->redirect();
