@@ -23,6 +23,7 @@ class UserDashboardSubcribtion extends Component
             }
             $subscription->is_subscribed = false;
             $subscription->subscription_type = false;
+            // $subscription->deleted_at = now();
             $subscription->save();
             // Cancel the subscription
             $subscription->cancel();
@@ -52,7 +53,7 @@ class UserDashboardSubcribtion extends Component
             // Check if the subscription has been canceled
             if ($subscription->stripe_status === 'canceled') {
                 // Delete the subscription from Stripe
-                $subscription->cancelNow(); // This will delete the subscription from Stripe
+                // $subscription->cancelNow(); // This will delete the subscription from Stripe
                 // Delete the subscription locally
                 // $subscription->delete(); // This will delete the subscription record from your database
                 $subscription->update(['deleted_at' => now()]);
@@ -67,7 +68,7 @@ class UserDashboardSubcribtion extends Component
 
     public function mount()
     {
-        $this->Subscriptions = Subscription::where('user_id', auth()->id())->get();
+        $this->Subscriptions = Subscription::with('plan')->where('user_id', auth()->id())->get();
     }
 
     public function render()
