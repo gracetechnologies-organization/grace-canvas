@@ -19,11 +19,12 @@ class CheckUserSubscribePremium
     public function handle(Request $request, Closure $next): Response
     {
         $Resume = Resume::getResumeByID($request->ID);
+        // dd($Resume);
+        // if (!Auth::check()) {
+        //     session()->flash('login_error', 'Please login to use  templates');
+        //     return redirect()->back();
+        // }
         if ($Resume->version == 1) {
-            if (!Auth::check()) {
-                session()->flash('login_error', 'Please login to use premium templates');
-                return redirect()->back();
-            }
             $UserID = auth()->user()->id;
             // Using stripe built-in Subscription model
             $Subscriptions = Subscription::where('user_id', $UserID)->first();
