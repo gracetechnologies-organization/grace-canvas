@@ -2,31 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Laravel\Cashier\Subscription;
 
 class SubscriptionController extends Controller
 {
     public function create(Request $request)
     {
+        // dd($request->all());
+        // dd(now()->addMonths($request->month));
+        // dd($month);
         try {
-            $user = auth()->user();
-            auth()->user()->newSubscription($request->name, $request->plan)->create($request->paymentMethod);
-            // Get the user's subscription by name ('Premium' in this case)
-            $subscription = $user->subscription($request->name); 
-            if ($subscription) {
-                // Update the subscription if it exists
-                $subscription->update([
-                    'trial_ends_at' => now()->addMonths($request->month),
-                ]);
-            } else {
-                // Create a new subscription if it doesn't exist
-                $user->newSubscription($request->name, $request->plan)
-                    ->trialDays($request->month * 30) // Set the trial period in days based on months
-                    ->create($request->paymentMethod);
+            $UserID = User::getUserID();
+            $subscription = Subscription::where('user_id', $UserID)->first();
+
+            if ($subscription && $subscription->is_subscribed) {
+                return redirect()->route('subscription')->with('error', 'You are already subscribed to the plan');
             }
+            $user = auth()->user();
+            $subscription = auth()->user()->newSubscription($request->name, $request->plan)->create($request->token);
+            if ($subscription) {
+                if ($subscription->trial_ends_at) {
+                    $subscription->trial_ends_at = null;
+                }
+                $subscription->trial_ends_at = now()->addMonths($request->month);
+                // $subscription->subscription_type = false;
+                // $subscription->deleted_at = now();
+                $subscription->save();
+
+            // Get the user's subscription by name ('Premium' in this case)
+            // $subscription = $user->subscription($request->name);
+            // if ($subscription) {
+            //     $subscription->create([
+            //         'trial_ends_at' => now()->addMonths($request->month),
+            //         'is_subscribed' => true,
+            //         'subscription_type' => true,
+            //     ]);
+            // }
+            }
+            
+
             return redirect()->route('subscription')->with('success', 'Your Subscription Successful');
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return $e->getMessage(); // Handle exceptions, e.g., display an error message
         }
     }
 }

@@ -21,36 +21,36 @@
                         <div class="card-header">
                             Pay with debits or credits
                         </div>
-                        <div class="card-body">
-                            <form id="payment-form" {{--  wire:submit.prevent='subscriptionPost'>  --}} action="{{ route('subscription.create') }}"
-                                method="POST">
-                                @csrf
-                                <input type="hidden" name="plan" id="plan" value="{{ $Plan->stripe_plan }}">
-                                <input type="hidden" name="month" id="month" value="{{ $Plan->interval_count }}">
-                                <input type="hidden" name="name" id="name" value="{{ $Plan->name }}">
-                                <div class="row">
-                                    <div class="mt-3">
-                                        <div class="form-group">
-                                            <label for="" class="mb-2">Name</label>
-                                            <input type="text" name="name" id="card-holder-name"
-                                                class="form-control" value="{{ auth()->user()->name }}"
-                                                placeholder="Name on the card">
+                            <div class="card-body">
+                                <form id="payment-form" {{--  wire:submit.prevent='subscriptionPost'>  --}} action="{{ route('subscription.create') }}" method="POST">
+                                    @csrf
+                                        <input type="hidden" name="plan" id="plan" value="{{ $Plan->stripe_plan }}">
+                                        <input type="hidden" name="month" id="month" value="{{ $Plan->interval_count }}">
+                                        <input type="hidden" name="name" id="name" value="{{ $Plan->name }}">
+                                        <div class="row">
+                                            <div class="mt-3">
+                                                <div class="form-group">
+                                                    <label for="" class="mb-2">Name</label>
+                                                    <input type="text" name="name" id="card-holder-name"
+                                                        class="form-control" value="{{ auth()->user()->name }}"
+                                                        placeholder="Name on the card">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <d iv class="row">
-                                    <div class="mt-3 ">
-                                        <div class="form-group">
-                                            <label for="" class="mb-2">Card details</label>
-                                            <div id="card-element"></div>
+                                        <div class="row">
+                                            <div class="mt-3 ">
+                                                <div class="form-group">
+                                                    <label for="" class="mb-2">Card details</label>
+                                                <div id="card-element"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-12 col-lg-12">
-                                        <hr>
-                                        <button type="submit" class="btn btn-success" id="card-button"
-                                            data-secret="{{ $intent->client_secret }}">Buy Now</button>
-                                    </div>
-                        </div>
+                                        <div class="col-xl-12 col-lg-12">
+                                            <hr>
+                                            <button type="submit" class="btn btn-success" id="card-button" data-secret="{{ $intent->client_secret }}">Buy Now</button>
+
+
+                                        </div>
+                            </div>
 
                         </form>
 

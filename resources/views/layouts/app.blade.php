@@ -9,9 +9,14 @@
 <body class="font-sans antialiased">
     {{-- <x-banner /> --}}
     @include('components.navbar')
+    @if (session('login_error'))
+        @include('components.not-loggedin-error-modal')
+    @endif
+    @if (session('not_subscribed_error'))
+       @include('components.not-subscribed-error-modal')
+    @endif
 
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-
         <!-- Page Heading -->
         @if (isset($header))
             <header class="bg-white shadow dark:bg-gray-800">
@@ -26,10 +31,20 @@
         </main>
     </div>
 
-    {{-- @stack('modals') --}}
     @include('components.footer')
     @include('scripts')
     @livewireScripts
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            @if (session('login_error'))
+                $('#customModal').modal('show');
+            @endif
+            @if (session('not_subscribed_error'))
+                $('#customModal').modal('show');
+            @endif
+        });
+    </script>
 </body>
 
 </html>

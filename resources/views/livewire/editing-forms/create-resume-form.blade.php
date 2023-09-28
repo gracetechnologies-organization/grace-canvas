@@ -14,6 +14,7 @@
             padding-bottom: 0px !important;
         }
     </style>
+
     <!-- Offcanvas for detail customization -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
@@ -24,8 +25,9 @@
             <div>
                 Only For Pro Users...!
             </div>
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary standard-bg-color standard-border-color dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+            <div class="mt-3 dropdown">
+                <button class="btn btn-secondary standard-bg-color standard-border-color dropdown-toggle" type="button"
+                    id="dropdownMenuButton" data-bs-toggle="dropdown">
                     Download Now
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -37,6 +39,7 @@
         </div>
     </div>
 
+    @include('components.template-saved-success-model')
     @include('components.crop-img-modal')
 
     <!-- Fixed buttons -->
@@ -46,7 +49,7 @@
     </div>
 
     <!-- Editing form & preview section -->
-    <div class="container-fluid px-5 px-md-4 px-lg-5">
+    <div class="px-5 container-fluid px-md-4 px-lg-5">
         <div class="row" id="form-and-template">
             <!-- Form column -->
             <div class="col-12 col-md-5 col-lg-4">
@@ -60,5 +63,12 @@
             {!! $SavedTemplate !!}
         </div> --}}
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#customModal').modal('hide');
+            $('#customModal').modal('show');
+        });
+    </script>
 
 </div>
