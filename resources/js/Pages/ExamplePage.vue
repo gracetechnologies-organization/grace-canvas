@@ -10,9 +10,10 @@
       <!-- <ContentToPrint></ContentToPrint> -->
       <!-- <App></App> -->
     
-      <create-resume-form></create-resume-form>
+      <!-- <create-resume-form></create-resume-form> -->
+      <offcanvas-component></offcanvas-component>
       
-      <image></image>
+     <!--  <image-upload></image-upload> -->
       
       
   
@@ -20,8 +21,9 @@
   
   <script>
  //import ExampleComponent from '../components/ExampleComponent.vue';
- import CreateResumeForm from '../components/CreateResumeForm.vue';
- import Image from '../components/Image.vue';
+//  import CreateResumeForm from '../components/CreateResumeForm.vue';
+ import OffcanvasComponent from '../components/OffcanvasComponent.vue';
+ //import ImageUpload from '../components/ImageUpload.vue';
  //import PhoneInput from '../components/PhoneInput.vue';
 //  import NewFile from '../components/Experience.vue';
 //  import Reference from '../components/Reference.vue';
@@ -36,8 +38,9 @@
     components: {
     //ExampleComponent,
    // ResumeForm,
-    CreateResumeForm,
-    Image,
+    // CreateResumeForm,
+    OffcanvasComponent,
+   // ImageUpload,
     //PhoneInput,
    // AddData,
     //Countries,

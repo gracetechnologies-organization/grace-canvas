@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div>
     <input type="file" @change="handleImageUpload" accept="jpeg/*">
     <div v-if="imageSrc">
@@ -52,7 +52,7 @@ export default {
     },
   },
 };
-</script> -->
+</script>
 
 
 <!-- <template>
@@ -203,7 +203,7 @@ export default {
     },
   };
   </script> -->
-  
+<!--   
   <template>
     <div>
       <input type="file" @change="handleImageUpload" accept="image/*">
@@ -257,4 +257,4 @@ export default {
     },
   };
   </script> 
-  
+   -->
