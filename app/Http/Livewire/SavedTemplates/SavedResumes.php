@@ -8,8 +8,7 @@ use Livewire\Component;
 
 class SavedResumes extends Component
 {
-    public
-    $RequestedPageID;
+    public $RequestedPageID;
 
     public function mount(Request $Req)
     {

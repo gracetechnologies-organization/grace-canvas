@@ -62,6 +62,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function SaveResumePage()
+    {
+        return $this->hasMany(SaveResumePage::class);
+    }
+
     public static function getUserData()
     {
         return auth()->user();
@@ -92,4 +97,5 @@ class User extends Authenticatable
     {
         return $this->hasOne(Subscription::class); // Assuming you have a Subscription model
     }
+
 }

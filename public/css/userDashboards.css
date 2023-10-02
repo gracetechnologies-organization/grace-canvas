@@ -77,7 +77,9 @@
     outline: none;    /* Remove the outline */
     border:2px solid #FF6600 ;
 }
-
+.custome-button-user-templates{
+    padding:1rem;
+}
 /* Additional CSS for responsive design */
 @media (max-width: 767px) {
     .custom-user-dashboard-container {

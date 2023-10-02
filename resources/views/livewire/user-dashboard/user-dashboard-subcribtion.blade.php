@@ -113,7 +113,6 @@
                                                 <span class="text-muted">Plan Canceled</span> /
                                                 @endif --}}
                                                 @if ($Subscription->stripe_status == 'canceled')
-
                                                 <a href="#" wire:click="delete({{ $Subscription->id }})">
                                                     <i class='bx bxs-trash'></i>
                                                     @endif

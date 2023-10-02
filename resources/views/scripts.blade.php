@@ -72,6 +72,54 @@
         });
     }
 
+    {{--  updateTemplate JavaScript start --}}
+    const updateTemplate = (RequestedPageID, ContainerID) => {
+            const iconElement = document.getElementById('icon');
+            const loaderElement = document.getElementById('loader');
+            const successMessageElement = document.getElementById('successMessage');
+
+
+        // Hide the icon and display the loader
+        iconElement.style.display = 'none';
+        loaderElement.style.display = 'block';
+
+        const PageCode = document.getElementById(ContainerID).innerHTML;
+
+        const data = {
+            RequestedPageID: RequestedPageID,
+            PageCode: PageCode
+        };
+
+        fetch('{{ route('update.resume') }}', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': @json(csrf_token())
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                // Display the success message and show the custom modal
+                successMessageElement.style.display = 'block';
+                $('#customModal').modal('show');
+            }else{
+                // Handle other response statuses (e.g., display an error message)
+                console.error('Error: ' + response.status);
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            // Handle fetch errors (e.g., display an error message)
+        })
+        .finally(() => {
+            // Hide the loader and show the icon (regardless of success or error)
+            loaderElement.style.display = 'none';
+            iconElement.style.display = 'block';
+        });
+    }
+    {{--  updateTemplate JavaScript end --}}
+
 
 
         {{--  const saveTemplate = (RequestedTemplateID, ContainerID) => {

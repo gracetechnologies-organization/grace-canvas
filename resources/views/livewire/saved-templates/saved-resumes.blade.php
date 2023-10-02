@@ -36,13 +36,13 @@
             </div>
         </div>
     </div>
-
+    @include('components.template-saved-success-model')
     @include('components.crop-img-modal')
 
     <!-- Fixed buttons -->
     <div class="fixed-btn-container">
         @include('components.print-btn')
-        {{-- @include('components.save-template-page-btn') --}}
+        @include('components.update-template-page-btn')
     </div>
 
     <!-- Editing form & preview section -->
@@ -51,5 +51,16 @@
             {!! $SavedPageCode !!}
         </div>
     </div>
+
+    {{--  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (performance.navigation.type === 1) {
+                $('#customModal').modal('show');
+            } else {
+                $('#customModal').modal('hide');
+            }
+        });
+    </script>  --}}
 
 </div>
