@@ -9,7 +9,7 @@
 
 <template>
     <div>
-      <label for="nationality">Nationality</label>
+      <!-- <label for="nationality">Nationality</label> -->
       <select class="form-select" id="nationality" v-model="selectedNationality">
         <option value="">Select</option>
         <option value="Afghanistan">Afghanistan</option>
