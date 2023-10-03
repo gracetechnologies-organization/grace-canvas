@@ -32,6 +32,7 @@
         const PageCode = document.getElementById(ContainerID).innerHTML;
 
         const data = {
+            UserID: {{ Auth::id() }}
             RequestedTemplateID: RequestedTemplateID,
             PageCode: PageCode
         };

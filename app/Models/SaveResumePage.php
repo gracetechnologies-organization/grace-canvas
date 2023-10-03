@@ -22,7 +22,10 @@ class SaveResumePage extends Model
     | Relations
     |--------------------------------------------------------------------------
     */
-    //
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -43,11 +46,6 @@ class SaveResumePage extends Model
     public static function updatePage(int $ID, string $PageCode)
     {
         return SaveResumePage::where('id',$ID)->update(['page_code' => $PageCode]);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 
     public static function getSavedPageByID(int $ID)

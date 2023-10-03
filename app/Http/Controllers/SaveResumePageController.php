@@ -14,15 +14,15 @@ class SaveResumePageController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                // 'UserID' => 'required|integer',
+                'UserID' => 'required|integer',
                 'RequestedTemplateID' => 'required|integer',
                 // 'FormData' => 'required|string',
                 'PageCode' => 'required|string'
             ]);
             if ($Validator->fails()) echo "ValidationFailed: " . $Validator->errors();
+            
             $FrontImage = Resume::getResumeByID($Req->RequestedTemplateID)->front_image;
-            // saveResume(int $UserID, $ResumeID, $FrontImage, $FormData, $PageCode)
-            $Saved = SaveResumePage::savePage(1, $Req->RequestedTemplateID, $FrontImage, '$Req->FormData', $Req->PageCode);
+            $Saved = SaveResumePage::savePage($Req->UserID, $Req->RequestedTemplateID, $FrontImage, '$Req->FormData', $Req->PageCode);
             if ($Saved) {
                 return "SavedSuccessfully";
             }
