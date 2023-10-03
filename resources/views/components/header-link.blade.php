@@ -10,6 +10,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
+    
     @if (Route::current()->uri == 'templates/resume')
         <link href="{{ asset('css/resumeTempletes.css') }}" rel="stylesheet" />
     @endif
@@ -21,7 +22,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-cyzxRvewl+FOKTtpBzYjW6x6IAYUCZy3sGP40hn+DQkqeluGRCax7qztK2ImL64SA+C7kVWdLI6wvdlStawhyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @endif
 
-    @if (Route::current()->uri == 'register' || Route::current()->uri == 'login')
+    @php
+        $RegistrationRoutes = ['register','login','edit/resume/{ID}', 'edit/saved/resume/{ID}'];
+    @endphp
+    @if (in_array(Route::current()->uri, $RegistrationRoutes))
         <link href="{{ asset('css/loginSignUp.css') }}" rel="stylesheet" />
     @endif
 
@@ -40,13 +44,6 @@
     <link href="{{ asset('fonts/boxicons.css') }}" rel="stylesheet" />
     <!-- Bootstrap icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-
-    {{--  <!-- Add links to Bootstrap and Font Awesome here -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>  --}}
-
-    <!-- Fonts -->
-    {{-- <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> --}}
 
     <!-- Scripts -->
     <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->

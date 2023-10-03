@@ -20,7 +20,6 @@ class SaveResumePageController extends Controller
                 'PageCode' => 'required|string'
             ]);
             if ($Validator->fails()) echo "ValidationFailed: " . $Validator->errors();
-
             $FrontImage = Resume::getResumeByID($Req->RequestedTemplateID)->front_image;
             // saveResume(int $UserID, $ResumeID, $FrontImage, $FormData, $PageCode)
             $Saved = SaveResumePage::savePage(1, $Req->RequestedTemplateID, $FrontImage, '$Req->FormData', $Req->PageCode);
@@ -31,6 +30,28 @@ class SaveResumePageController extends Controller
         } catch (Exception $error) {
             report($error);
             echo "ServerError: " . $error->getMessage();
+        }
+    }
+
+    public function updateResume(Request $Req)
+    {
+        try {
+            $Validator = Validator::make($Req->all(), [
+                'RequestedPageID' => 'required|integer',
+                'PageCode' => 'required|string'
+            ]);
+
+            if ($Validator->fails()) {
+                return response()->json(['error' => 'ValidationFailed', 'message' => $Validator->errors()], 400);
+            }
+            $Update = SaveResumePage::updatePage($Req->RequestedPageID, $Req->PageCode);
+            if ($Update) {
+                return response()->json(['message' => 'SavedSuccessfully'], 200);
+            }
+            return response()->json(['error' => 'ErrorInSaving'], 500);
+        } catch (Exception $error) {
+            dd($error);
+            return response()->json(['error' => 'ServerError', 'message' => $error->getMessage()], 500);
         }
     }
 }

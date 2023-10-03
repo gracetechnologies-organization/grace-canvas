@@ -53,7 +53,7 @@
                     </li>
                 @endif
                 <li class="nav-item custom-select-button">
-                    <select class="changeLang my-account-custom-btn" onchange="changeLanguage(this)">
+                    <select onchange="changeLanguage(this)">
                         <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
                         <option value="zh" {{ session()->get('locale') == 'zh' ? 'selected' : '' }}>China</option>
                         <option value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>France</option>

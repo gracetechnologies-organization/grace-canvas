@@ -24,7 +24,7 @@
             <div>
                 Only For Pro Users...!
             </div>
-            <div class="dropdown mt-3">
+            <div class="mt-3 dropdown">
                 <button class="btn btn-secondary standard-bg-color standard-border-color dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                     Download Now
                 </button>
@@ -36,17 +36,17 @@
             </div>
         </div>
     </div>
-
+    @include('components.update-template-success-model')
     @include('components.crop-img-modal')
 
     <!-- Fixed buttons -->
     <div class="fixed-btn-container">
         @include('components.print-btn')
-        {{-- @include('components.save-template-page-btn') --}}
+        @include('components.update-template-page-btn')
     </div>
 
     <!-- Editing form & preview section -->
-    <div class="container-fluid px-5 px-md-4 px-lg-5">
+    <div class="px-5 container-fluid px-md-4 px-lg-5">
         <div class="row" id="form-and-template">
             {!! $SavedPageCode !!}
         </div>

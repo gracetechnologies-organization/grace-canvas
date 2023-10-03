@@ -54,7 +54,7 @@
 }
 
 .custome-card-border {
-    border: 2px dashed #ff6600;
+    border: 2px dashed var(--custom-theme-color);
 }
 
 .custom-button-css {
@@ -65,7 +65,7 @@
     margin-top: 0px;
     padding-right: 0rem !important;
     padding-left: 0rem !important;
-    background-color: #ff6600;
+    background-color: var(--custom-theme-color);
     color: #fff;
     font-family: Poppins;
     font-size: 20px !important;
@@ -73,9 +73,14 @@
     font-weight: 500;
     line-height: normal;
 }
+
 .btn-transparent:focus {
     outline: none;    /* Remove the outline */
-    border:2px solid #FF6600 ;
+    border:2px solid var(--custom-theme-color) ;
+}
+
+.custome-button-user-templates{
+    padding:1rem;
 }
 
 /* Additional CSS for responsive design */
@@ -104,7 +109,7 @@
     }
 
     .custome-color {
-        color: #ff6600;
+        color: var(--custom-theme-color);
     }
 
     .custom-button-css {
@@ -115,7 +120,7 @@
         padding-right: 0rem !important;
         padding-left: 0rem !important;
         padding-bottom: 1rem !important;
-        background-color: #ff6600;
+        background-color: var(--custom-theme-color);
         color: #fff;
         font-family: Poppins;
         font-size: 1rem !important;

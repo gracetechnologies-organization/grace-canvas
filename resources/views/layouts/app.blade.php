@@ -7,11 +7,17 @@
 </head>
 
 <body class="font-sans antialiased">
-    {{-- <x-banner /> --}}
     @include('components.navbar')
     @if (session('login_error'))
         @include('components.not-loggedin-error-modal')
     @endif
+    @if (session('not_subscribed_error'))
+       @include('components.not-subscribed-error-modal')
+    @endif
+
+    {{-- @if (session('login_error'))
+        @include('components.not-loggedin-error-modal')
+    @endif --}}
     @if (session('not_subscribed_error'))
        @include('components.not-subscribed-error-modal')
     @endif

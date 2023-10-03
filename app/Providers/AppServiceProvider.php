@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Cashier::useCustomerModel(User::class);
+
         Response::macro('macroJson', function (array $Data = [], int $Success = null, string $Message = '', int $HttpCode = 500) {
             return Response::make([
                 'data' => $Data,
@@ -46,6 +47,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // The following function is used to translate the whole app according to the user set local language
+        // $this->app property provides access to our laravel app
+        // ->bind method is used to register a new binding e.g a class or a function
         $this->app->bind('googleTranslator', function ($App, $Parameters) {
             // If the langugae == English then we don't have to translate
             if (app()->getLocale() === 'en') return $Parameters['string'];

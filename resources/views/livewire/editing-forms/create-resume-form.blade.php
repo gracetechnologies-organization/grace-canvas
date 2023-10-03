@@ -63,12 +63,4 @@
             {!! $SavedTemplate !!}
         </div> --}}
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#customModal').modal('hide');
-            $('#customModal').modal('show');
-        });
-    </script>
-
 </div>

@@ -78,6 +78,8 @@
     --bs-link-hover-color: #0a58ca;
     --bs-code-color: #d63384;
     --bs-highlight-bg: #fff3cd;
+    /* custom css variables  */
+    --custom-theme-color: #FF6600;
 }
 
 *,
@@ -12613,15 +12615,15 @@ fieldset:disabled .btn {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .standard-bg-color {
-    background-color: #FF6600 !important;
+    background-color: var(--custom-theme-color) !important;
 }
 
 .standard-txt-color {
-    color: #FF6600 !important;
+    color: var(--custom-theme-color) !important;
 }
 
 .standard-border-color {
-    border-color: #FF6600 !important;
+    border-color: var(--custom-theme-color) !important;
 }
 
 body {
@@ -12640,7 +12642,7 @@ body {
 }
 
 #navbarManu {
-    background-color: #FF6600;
+    background-color: var(--custom-theme-color);
 }
 
 .nav-link {
@@ -12854,7 +12856,7 @@ body {
 }
 
 .footer-copy-right {
-    background-color: #FF6600;
+    background-color: var(--custom-theme-color);
     font-family: Poppins;
     font-size: 2rem;
     font-style: normal;
@@ -13254,7 +13256,7 @@ body {
     }
 
     .custom-login-signup-css {
-        background-color: #FF6600;
+        background-color: var(--custom-theme-color);
         float: right;
         color: #fff;
         width: 5.125rem;
@@ -13395,6 +13397,6 @@ body {
 @media only screen and (max-width: 1024px) {
     .contianer-customs {
         overflow: scroll;
-        border: 1px solid red;
+        /* border: 1px solid red; */
     }
 }

@@ -22,7 +22,7 @@ class SaveResumePage extends Model
     | Relations
     |--------------------------------------------------------------------------
     */
-    // 
+    //
 
     /*
     |--------------------------------------------------------------------------
@@ -38,6 +38,16 @@ class SaveResumePage extends Model
             'form_data' => 'Coming Soon',
             'page_code' => $PageCode
         ]);
+    }
+
+    public static function updatePage(int $ID, string $PageCode)
+    {
+        return SaveResumePage::where('id',$ID)->update(['page_code' => $PageCode]);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public static function getSavedPageByID(int $ID)

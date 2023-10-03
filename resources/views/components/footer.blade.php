@@ -1,5 +1,5 @@
 <!-- footer section -->
-<footer style="background-color:#FF6600">
+<footer style="background-color:var(--custom-theme-color)">
     <div class="container pt-5 pb-5 pl-2 ">
         <div class="row footers-section ">
             <div class="mt-5 col-lg-4 col-md-6 col-sm-12">
