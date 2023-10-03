@@ -2,7 +2,7 @@
     <div class="demo">
         <div class="container mt-5 mb-5">
             @if (session('subscription_message'))
-                <div class="modal fade show madel" id="subscription-message-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
+                <div class="modal fade show " id="subscription-message-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -17,7 +17,7 @@
                 </div>
             @endif
             @if (session()->has('subscription_success'))
-                <div class="modal fade show madel" id="subscription-success-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
+                <div class="modal fade show " id="subscription-success-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">

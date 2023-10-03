@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    @include('components.template-saved-success-model')
+    @include('components.template-saved-success-modal')
     @include('components.crop-img-modal')
 
     <!-- Fixed buttons -->

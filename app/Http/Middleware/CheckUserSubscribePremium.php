@@ -30,7 +30,7 @@ class CheckUserSubscribePremium
             if ($Subscriptions && $Subscriptions->subscription_type == 1) {
                 return $next($request);
             } else {
-                session()->flash('not_subscribed_error', 'This template is only for premium users. Please purchase a premium plan to continue.');
+                session()->flash('not_subscribed_error', 'This template is only available for premium users. Please purchase a premium plan to continue.');
                 return redirect()->back();
             }
         } else {

@@ -25,7 +25,9 @@ return [
     'TOKEN_GENERATED_SUCCESS' => 'A token against your app has been generated successfully.',
     'TOKEN_RESET_SUCCESS' => 'Token reset successfully.',
     'TOKEN_DESTROYED_SUCCESS' => 'Token has been destroyed successfully.',
-    'CACHE_DESTROYED_SUCCESS' => 'All cached data by your application has been removed seccessfully',
+    'CACHE_DESTROYED_SUCCESS' => 'All cached data by your application has been removed seccessfully.',
+    'TEMPLATE_SAVED_SUCCESS' => 'Your template has been saved successfully.',
+    'TEMPLATE_UPDATED_SUCCESS' => 'Your template has been updated successfully.',
     /* Failure Constants */
     'INSERTION_FAILED' => 'Failed to insert data.',
     'UPDATION_FAILED' => 'Failed to update data.',
