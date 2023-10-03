@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <!-- Your custom message goes here -->
-                <div id="successMessage" style="display: none;">
+                <div id="updateMessage" style="display: none;">
                     Your Template has been Update successfully.
                 </div>
             </div>

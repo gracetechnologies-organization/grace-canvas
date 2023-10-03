@@ -76,7 +76,7 @@
     const updateTemplate = (RequestedPageID, ContainerID) => {
             const iconElement = document.getElementById('icon');
             const loaderElement = document.getElementById('loader');
-            const successMessageElement = document.getElementById('successMessage');
+            const updateMessageElement = document.getElementById('updateMessage');
 
 
         // Hide the icon and display the loader
@@ -101,7 +101,7 @@
         .then(response => {
             if (response.status === 200) {
                 // Display the success message and show the custom modal
-                successMessageElement.style.display = 'block';
+                updateMessageElement.style.display = 'block';
                 $('#customModal').modal('show');
             }else{
                 // Handle other response statuses (e.g., display an error message)
