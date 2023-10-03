@@ -41,6 +41,7 @@
 
     @include('components.template-saved-success-model')
     @include('components.crop-img-modal')
+
     <!-- Fixed buttons -->
     <div class="fixed-btn-container">
         @include('components.print-btn')
@@ -62,14 +63,4 @@
             {!! $SavedTemplate !!}
         </div> --}}
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            if (performance.navigation.type === 1) {
-                $('#customModal').modal('show');
-            } else {
-                $('#customModal').modal('hide');
-            }
-        });
-    </script>
 </div>

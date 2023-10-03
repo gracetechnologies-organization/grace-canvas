@@ -181,11 +181,11 @@ a {
 .pricingTable.pink .pricingTable-signup,
 .pricingTable.pink .title,
 .pricingTable.pink:after {
-    background: #ff6600;
+    background: var(--custom-theme-color);
 }
 
 .pricingTable.pink .price-value {
-    color: #ff6600;
+    color: var(--custom-theme-color);
 }
 
 .pricingTable.pink .title:after,

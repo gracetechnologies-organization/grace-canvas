@@ -19,7 +19,6 @@ class CheckUserSubscribePremium
     public function handle(Request $request, Closure $next): Response
     {
         $Resume = Resume::getResumeByID($request->ID);
-        // dd($Resume);
         // if (!Auth::check()) {
         //     session()->flash('login_error', 'Please login to use  templates');
         //     return redirect()->back();

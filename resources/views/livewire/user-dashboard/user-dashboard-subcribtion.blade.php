@@ -2,47 +2,38 @@
     <div class="container custom-user-dashboard-container">
         @include('components.user-dashboard-heading')
         <div class="row">
-            <!-- Add Bootstrap classes for responsive design -->
             <div class="col-lg-3 col-md-3 col-sm-6">
                 @include('components.user-dashboard-sidebar')
             </div>
             <div class="col-lg-9 col-md-9 col-sm-6">
-
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                </div>
                 <div class="content">
                     <div id="dataContainer">
                         <div class="row">
                             @if (session('subscription_message'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <strong>{{ session('subscription_message') }}</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
                             @if ($cancelSuccessMessage)
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>{{ $cancelSuccessMessage }}</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
                             @if ($deleteSuccessMessage)
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>{{ $deleteSuccessMessage }}</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
                             @if (session()->has('massage'))
                             <div class="alert alert-denger alert-dismissible fade show" role="alert">
                                 <strong>{{ session()->get('massage') }}</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
                             @if (count($Subscriptions) > 0)
-                            {{-- @dd($User) --}}
                             <table class="table custome-card-border">
                                 <thead>
                                     <tr>
@@ -90,7 +81,6 @@
                                         </td>
                                         <td>
                                             {{ $Subscription->stripe_status }}
-
                                         </td>
                                         <td>
                                             @if ($Subscription->ends_at == null)
@@ -123,9 +113,10 @@
                                 </tbody>
                             </table>
                             @else
-                            <h2>{{ strtoupper('your are not subscripe to any plan ') }}<a
-                                    href="{{ route('subscription') }}">subscribe
-                                    new plan</a></h2>
+                            <h2>
+                                You Have Not Subscribed For Any Plan
+                                <a href="{{ route('subscription') }}">Subscribe Now</a>
+                            </h2>
                             @endif
                             {{-- @foreach ($Subscriptions as $Subscription)
                             <div class="col-md-4 col-sm-6">

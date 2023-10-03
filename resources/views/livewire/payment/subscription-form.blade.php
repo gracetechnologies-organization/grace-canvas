@@ -59,16 +59,16 @@
             </div>
         </div>
     </div>
-    <Style>
+    <style>
         .card-header {
-            background-color: #ff6600;
+            background-color: var(--custom-theme-color);
             color: #ffffff;
         }
 
         .buy-now-premium-template {
-            border: 2px dashed #ff6600;
+            border: 2px dashed var(--custom-theme-color);
         }
-    </Style>
+    </style>
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         const stripe = Stripe(

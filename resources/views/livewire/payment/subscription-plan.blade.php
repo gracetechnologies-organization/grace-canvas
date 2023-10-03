@@ -1,11 +1,8 @@
 <div>
     <div class="demo">
         <div class="container mt-5 mb-5">
-            <!-- The Modal -->
-
             @if (session('subscription_message'))
-                <div class="modal fade show madel" id="customModal" tabindex="-1" aria-labelledby="customModalLabel"
-                    aria-hidden="true" style="display: block;">
+                <div class="modal fade show madel" id="subscription-message-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -14,45 +11,34 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">OK</button>
-                                <!-- You can add additional buttons here -->
-                                {{-- <button type="button" class="btn btn-primary">OK</button> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             @endif
-            @if (session()->has('success'))
-                    <div class="modal fade show madel" id="customModal" tabindex="-1"
-                        aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <!-- Your custom message goes here -->
-                                    {{ session('success') }}
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">OK</button>
-                                    <!-- You can add additional buttons here -->
-                                    {{-- <button type="button" class="btn btn-primary">OK</button> --}}
-                                </div>
+            @if (session()->has('subscription_success'))
+                <div class="modal fade show madel" id="subscription-success-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <!-- Your custom message goes here -->
+                                {{ session('subscription_success') }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">OK</button>
                             </div>
                         </div>
                     </div>
-                @endif
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                {{-- @if (session()->has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ session()->get('success') }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                @endif --}}
-                @if (session()->has('error'))
+            @endif
+            @if (session()->has('subscription_error'))
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>{{ session()->get('error') }}</strong>
+                        <strong>{{ session()->get('subscription_error') }}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                @endif
-            </div>
+                </div>
+            @endif
             <div class="row">
                 @forelse ($Plans as $Plan)
                     <div class="col-md-4 col-sm-6">
@@ -65,11 +51,10 @@
                             </div>
                             <ul class="pricing-content">
 
-                                    <li><span class="bx bx-check me-2"></span>All Premium templates</li>
-                                    <li><span class="bx bx-check me-2"></span>24/7 support</li>
+                                <li><span class="bx bx-check me-2"></span>All Premium templates</li>
+                                <li><span class="bx bx-check me-2"></span>24/7 support</li>
                             </ul>
-                            <a href="{{ route('subscription.form', ['ID' => $Plan->id, 'month' => $Plan->interval_count]) }}"
-                                class="pricingTable-signup">
+                            <a href="{{ route('subscription.form', ['ID' => $Plan->id, 'month' => $Plan->interval_count]) }}" class="pricingTable-signup">
                                 BUY NOW
                             </a>
                         </div>
@@ -80,17 +65,16 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    {{-- <script>
         $(document).ready(function() {
-            // Check if the session variable is present
             @if (session('subscription_message'))
                 // Open the modal when the page is reloaded
-                $('#customModal').modal('show');
+                $('#subscription-message-modal').modal('show');
             @endif
-            @if (session('success'))
-                $('#customModal').modal('show');
+            @if (session('subscription_success'))
+                $('#subscription-success-modal').modal('show');
             @endif
         });
-    </script>
+    </script> --}}
 </div>

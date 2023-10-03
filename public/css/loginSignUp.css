@@ -1,5 +1,5 @@
 .custom-login-signup-css {
-    background-color: #FF6600;
+    background-color: var(--custom-theme-color);
     float: right;
     color: #fff;
     width: 9.125rem;
@@ -15,8 +15,9 @@
     font-weight: 500;
     font-family: Poppins;
 }
+
 .custom-linkedin-login-signup {
-    background-color:#3b5998;
+    background-color: #3b5998;
     width: 20rem;
     height: 3.438rem;
     color: #fff;
@@ -28,12 +29,13 @@
     font-style: normal;
     font-family: Poppins;
 }
+
 .custom-google-login-signup {
-    background-color:#fff;
+    background-color: #fff;
     color: black;
     width: 20rem;
     height: 3.438rem;
-    border:1px solid black;
+    border: 1px solid black;
     border-radius: 0.625rem;
     /* padding: 0.625rem 1rem 0.625rem 1rem; */
     line-height: normal;
@@ -42,6 +44,7 @@
     font-weight: 500;
     font-family: Poppins;
 }
+
 .custom-google-facrbook-login {
     margin-top: 3rem;
 }
@@ -51,15 +54,17 @@
     /* Adjust the width as needed */
 
 }
-.bi-google{
-    color:#196eb4;
+
+.bi-google {
+    color: #196eb4;
     width: 2rem;
     height: 2rem;
     padding: 0.3rem;
     margin-left: -1rem;
     margin-right: 1rem
 }
-.bx-linkedin{
+
+.bx-linkedin {
     background-color: #fff;
     color: black;
     width: 2rem;
@@ -74,8 +79,9 @@
         margin-left: -0.9rem;
         margin-top: 5rem;
     }
+
     .custom-linkedin-login-signup {
-        background-color:#3b5998;
+        background-color: #3b5998;
         width: 15rem;
         height: 3.438rem;
         color: #fff;
@@ -87,12 +93,13 @@
         font-style: normal;
         font-family: Poppins;
     }
+
     .custom-google-login-signup {
-        background-color:#fff;
+        background-color: #fff;
         color: black;
         width: 15rem;
         height: 3.438rem;
-        border:1px solid black;
+        border: 1px solid black;
         border-radius: 0.625rem;
         /* padding: 0.625rem 1rem 0.625rem 1rem; */
         line-height: normal;
@@ -104,10 +111,11 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* register css */
 .form-container {
-    border:3px dashed #F60;
-    padding:1.5rem;
+    border: 3px dashed #F60;
+    padding: 1.5rem;
     width: 50%;
     margin: auto;
     margin-top: 100px;
@@ -125,265 +133,277 @@
 }
 
 /* responsive css */
-@media only screen and (max-width:2560px) and (min-width:951px){
- /*  register css */
- .custom-login-signup-css {
-    background-color: #FF6600;
-    float: right;
-    color: #fff;
-    width: 8.125rem;
-    height: 3rem;
-    padding: 0.525rem 1rem 0.525rem 1rem;
-    margin-top: -2.5rem;
-    margin-left: 1rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1.30rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
-}
-@media only screen and (max-width:1440px) and (min-width:951px){
-/* register css */
-.standard-heading-css {
-    color: #F60;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 2.5rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+@media only screen and (max-width:2560px) and (min-width:951px) {
+
+    /*  register css */
+    .custom-login-signup-css {
+        background-color: var(--custom-theme-color);
+        float: right;
+        color: #fff;
+        width: 8.125rem;
+        height: 3rem;
+        padding: 0.525rem 1rem 0.525rem 1rem;
+        margin-top: -2.5rem;
+        margin-left: 1rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1.30rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
 }
 
-.custom-login-signup-css {
-    background-color: #FF6600;
-    float: right;
-    color: #fff;
-    width: 8.125rem;
-    height: 3rem;
-    border: none;
-    border-radius: 0.625rem;
-    padding: 0.525rem 1rem 0.525rem 1rem;
-    margin-top: -2.5rem;
-    margin-left: 1rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1.30rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
-}
-@media only screen and (max-width:1024px) and (min-width:951px){
-/* register css */
-.form-container {
-    width: 80%;
-    margin: auto;
-    margin-top: 200px;
-    margin-bottom: 200px;
+@media only screen and (max-width:1440px) and (min-width:951px) {
+
+    /* register css */
+    .standard-heading-css {
+        color: #F60;
+        text-align: justify;
+        font-family: Poppins;
+        font-size: 2.5rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+
+    .custom-login-signup-css {
+        background-color: var(--custom-theme-color);
+        float: right;
+        color: #fff;
+        width: 8.125rem;
+        height: 3rem;
+        border: none;
+        border-radius: 0.625rem;
+        padding: 0.525rem 1rem 0.525rem 1rem;
+        margin-top: -2.5rem;
+        margin-left: 1rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1.30rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
 }
 
-.standard-heading-css {
-    color: #F60;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+@media only screen and (max-width:1024px) and (min-width:951px) {
+
+    /* register css */
+    .form-container {
+        width: 80%;
+        margin: auto;
+        margin-top: 200px;
+        margin-bottom: 200px;
+    }
+
+    .standard-heading-css {
+        color: #F60;
+        text-align: justify;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
 }
-}
+
 @media only screen and (min-width:768px) and (max-width:951px) {
-/* register css */
-.standard-heading-css {
-    color: #F60;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-.custom-login-signup-css {
+    
+    /* register css */
+    .standard-heading-css {
+        color: #F60;
+        text-align: justify;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
 
-    background-color: #FF6600;
-    float: right;
-    color: #fff;
-    width: 5.125rem;
-    height: 2.438rem;
-    border: none;
-    border-radius: 0.625rem;
-    padding: 0.325rem 1rem 0.625rem 1rem;
-    margin-top: -2rem !important;
-    margin-left: 0.2rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
+    .custom-login-signup-css {
+        background-color: var(--custom-theme-color);
+        float: right;
+        color: #fff;
+        width: 5.125rem;
+        height: 2.438rem;
+        border: none;
+        border-radius: 0.625rem;
+        padding: 0.325rem 1rem 0.625rem 1rem;
+        margin-top: -2rem !important;
+        margin-left: 0.2rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
 }
-}
+
 @media only screen and (min-width:425px) and (max-width:951px) {
-/* register css */
-.form-container {
-    width: 80%;
-    margin: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+
+    /* register css */
+    .form-container {
+        width: 80%;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    .standard-heading-css {
+        color: #F60;
+        text-align: justify;
+        font-family: Poppins;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+
+    .custom-login-signup-css {
+        background-color: var(--custom-theme-color);
+        float: right;
+        color: #fff;
+        width: 5.125rem;
+        height: 2.438rem;
+        border: none;
+        border-radius: 0.625rem;
+        padding: 0.325rem 1rem 0.625rem 1rem;
+        margin-top: -2rem !important;
+        margin-left: 0.2rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+
+    .custom-login-signup-css a {
+        margin-left: -0.5rem;
+        padding: 0rem 1rem 0rem 0rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+
 }
 
-.standard-heading-css {
-    color: #F60;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.custom-login-signup-css {
-
-    background-color: #FF6600;
-    float: right;
-    color: #fff;
-    width: 5.125rem;
-    height: 2.438rem;
-    border: none;
-    border-radius: 0.625rem;
-    padding: 0.325rem 1rem 0.625rem 1rem;
-    margin-top: -2rem !important;
-    margin-left: 0.2rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
-
-.custom-login-signup-css a {
-    margin-left: -0.5rem;
-    padding: 0rem 1rem 0rem 0rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
-
-}
 @media only screen and (min-width:375px) and (max-width:951px) {
-/* register css */
-.form-container {
-    width: 85%;
-    margin: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    padding-bottom:3rem ;
+
+    /* register css */
+    .form-container {
+        width: 85%;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding-bottom: 3rem;
+    }
+
+    .standard-heading-css {
+        color: #F60;
+        text-align: justify;
+        font-family: Poppins;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+
+    .custom-login-signup-css {
+
+        background-color: var(--custom-theme-color);
+        float: right;
+        color: #fff;
+        width: 5.125rem;
+        height: 2.438rem;
+        border: none;
+        border-radius: 0.625rem;
+        padding: 0.325rem 1rem 0.625rem 1rem;
+        margin-top: 0rem !important;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+
+    .custom-login-signup-css a {
+        margin-left: -0.5rem;
+        padding: 0rem 1rem 0rem 0rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+
+    .custom-login-signup-css span {
+        margin-left: -0.5rem;
+        padding: 0rem 1rem 0rem 0rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
 }
 
-.standard-heading-css {
-    color: #F60;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.custom-login-signup-css {
-
-    background-color: #FF6600;
-    float: right;
-    color: #fff;
-    width: 5.125rem;
-    height: 2.438rem;
-    border: none;
-    border-radius: 0.625rem;
-    padding: 0.325rem 1rem 0.625rem 1rem;
-    margin-top: 0rem !important;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
-
-.custom-login-signup-css a {
-    margin-left: -0.5rem;
-    padding: 0rem 1rem 0rem 0rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
-
-.custom-login-signup-css span {
-    margin-left: -0.5rem;
-    padding: 0rem 1rem 0rem 0rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
-}
 @media only screen and (min-width:320px) and (max-width:951px) {
- /* register css */
- .form-container {
-    width: 90%;
-    margin: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    padding-bottom:3rem ;
-}
 
-.standard-heading-css {
-    color: #F60;
-    text-align: justify;
-    font-family: Poppins;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
+    /* register css */
+    .form-container {
+        width: 90%;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding-bottom: 3rem;
+    }
 
-.custom-login-signup-css {
+    .standard-heading-css {
+        color: #F60;
+        text-align: justify;
+        font-family: Poppins;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
 
-    background-color: #FF6600;
-    float: right;
-    color: #fff;
-    width: 5.125rem;
-    height: 2.438rem;
-    border: none;
-    border-radius: 0.625rem;
-    padding: 0.325rem 1rem 0.625rem 1rem;
-    margin-top: 0rem !important;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
+    .custom-login-signup-css {
 
-.custom-login-signup-css a {
-    margin-left: -0.5rem;
-    padding: 0rem 1rem 0rem 0rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
+        background-color: var(--custom-theme-color);
+        float: right;
+        color: #fff;
+        width: 5.125rem;
+        height: 2.438rem;
+        border: none;
+        border-radius: 0.625rem;
+        padding: 0.325rem 1rem 0.625rem 1rem;
+        margin-top: 0rem !important;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
 
-.custom-login-signup-css span {
-    margin-left: -0.5rem;
-    padding: 0rem 1rem 0rem 0rem;
-    line-height: normal;
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: Poppins;
-}
+    .custom-login-signup-css a {
+        margin-left: -0.5rem;
+        padding: 0rem 1rem 0rem 0rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
+
+    .custom-login-signup-css span {
+        margin-left: -0.5rem;
+        padding: 0rem 1rem 0rem 0rem;
+        line-height: normal;
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: Poppins;
+    }
 }
