@@ -3,11 +3,17 @@
         @if (session('not_subscribed_error'))
             $('#not-subscribed-error-modal').modal('show');
         @endif
+
         @if (session('subscription_message'))
             $('#subscription-message-modal').modal('show');
         @endif
+
         @if (session('subscription_success'))
             $('#subscription-success-modal').modal('show');
+        @endif
+
+        @if (session('subscription_error'))
+        $('#subscription-error-modal').modal('show');
         @endif
     });
 

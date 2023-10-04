@@ -24,11 +24,11 @@
                                     <div class="row">
                                         <div class="mb-3 col-md-6">
                                             <label for="name" class="form-label">{{ app('googleTranslator', ['string' => 'Name']) }}</label>
-                                            <p>{{ $data->name }}</p>
+                                            <p>{{ app('googleTranslator', ['string' => $data->name ]) }}</p>
                                         </div>
                                         <div class="mb-3 col-md-6">
                                             <label for="email" class="form-label">{{ app('googleTranslator', ['string' => 'E-mail']) }}</label>
-                                            <p>{{ $data->email }}</p>
+                                            <p>{{ app('googleTranslator', ['string' => $data->email ]) }}</p>
                                         </div>
                                     </div>
                                 </div>

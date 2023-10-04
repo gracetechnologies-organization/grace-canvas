@@ -61,7 +61,7 @@ class CheckSubscriptionStatus
             }
             return $next($request);
         } catch (Exception $e) {
-            dd($e->getMessage());
+            return $e->getMessage();
         }
     }
 }

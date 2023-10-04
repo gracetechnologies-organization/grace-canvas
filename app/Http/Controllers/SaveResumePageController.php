@@ -6,6 +6,7 @@ use App\Models\Resume;
 use App\Models\SaveResumePage;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class SaveResumePageController extends Controller
@@ -14,15 +15,15 @@ class SaveResumePageController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'UserID' => 'required|integer',
+                // 'UserID' => 'required|integer',
                 'RequestedTemplateID' => 'required|integer',
                 // 'FormData' => 'required|string',
                 'PageCode' => 'required|string'
             ]);
             if ($Validator->fails()) echo "ValidationFailed: " . $Validator->errors();
-            
+
             $FrontImage = Resume::getResumeByID($Req->RequestedTemplateID)->front_image;
-            $Saved = SaveResumePage::savePage($Req->UserID, $Req->RequestedTemplateID, $FrontImage, '$Req->FormData', $Req->PageCode);
+            $Saved = SaveResumePage::savePage(Auth::id(), $Req->RequestedTemplateID, $FrontImage, '$Req->FormData', $Req->PageCode);
             if ($Saved) {
                 return "SavedSuccessfully";
             }

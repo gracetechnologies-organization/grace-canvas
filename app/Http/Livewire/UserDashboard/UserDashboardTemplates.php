@@ -11,9 +11,16 @@ use Exception;
 
 class UserDashboardTemplates extends Component
 {
-    public $ResumePagesID;
-    public $cancelSuccessMessage;
-    public $deleteSuccessMessage;
+    public 
+        $ResumePagesID,
+        $cancelSuccessMessage,
+        $deleteSuccessMessage,
+        $UserID;
+
+    public function mount()
+    {
+        $this->UserID = auth()->user()->id;
+    }
 
     public function destroy($ResumePagesID)
     {
@@ -38,9 +45,7 @@ class UserDashboardTemplates extends Component
 
     public function render()
     {
-        $userID = User::getUserID();
-        $SaveResumePages = SaveResumePage::with('user')->where('user_id',$userID)->get();
-
+        $SaveResumePages = SaveResumePage::getSavedPageByUserID($this->UserID);
         return view('livewire.user-dashboard.user-dashboard-templates' ,['SaveResumePages' => $SaveResumePages]);
     }
 }

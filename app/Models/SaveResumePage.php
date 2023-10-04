@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class SaveResumePage extends Model
 {
@@ -53,8 +54,9 @@ class SaveResumePage extends Model
         return SaveResumePage::findOrFail($ID);
     }
 
-    // public static function getSavedPages()
-    // {
-    //     return SaveResumePage::with('category');
-    // }
+    public static function getSavedPageByUserID(int $UserID)
+    {
+        return SaveResumePage::with('user')->where('user_id', $UserID)->get();
+    }
+
 }
