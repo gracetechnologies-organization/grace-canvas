@@ -8,6 +8,9 @@
      
     
       <create-resume-form></create-resume-form>
+      <modal-vue></modal-vue>
+      <!-- <image-code></image-code> -->
+
       <!-- <offcanvas-component></offcanvas-component> -->
       
      <!--  <image-upload></image-upload> -->
@@ -19,13 +22,16 @@
   <script>
 
   import CreateResumeForm from '../components/CreateResumeForm.vue';
+  // import ImageCode from '../components/ImageCode.vue';
+  import ModalVue from '../components/ModalVue.vue';
 
  
   export default {
     components: {
    
-     CreateResumeForm,
-   
+    CreateResumeForm,
+    ModalVue,
+    // ImageCode,
     },
   };
   </script>

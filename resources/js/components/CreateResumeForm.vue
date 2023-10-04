@@ -202,8 +202,8 @@
                 <!-- <countries></countries> -->
                 <!-- <div ref="bladeTemplateContainer"></div> -->
                 <!-- <label>Nationality</label> -->
-       <select class="form-select" id="nationality" v-model="selectedNationality">
-        <option selected="Select">Select</option>
+       <select class="form-select" id="floatingSelect" v-model="formData.selectedNationalityStatus">
+        <option value="Select">Select</option>
         <option value="Afghanistan">Afghanistan</option>
         <option value="Aland Islands">Aland Islands</option>
         <option value="Albania">Albania</option>
@@ -458,7 +458,7 @@
         <option value="Zimbabwe">Zimbabwe</option>
       </select>
       <label>Nationality</label>
-            </div>
+    </div>
         </div>
         <div class="col-12 col-md-12 col-lg-8">
             <div class="form-floating">
@@ -486,27 +486,27 @@
          <div class="accordion-item">
             <h2 class="accordion-header" id="accordionHeader">
               <button
-                class="accordion-button collapsed"
+                class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsOpen-Experience"
                 aria-expanded="true"
                 aria-controls="panelsOpen-Experience"
                 >
-                Experience
+                Experiences
               </button>
             </h2>
 
     <div id="panelsOpen-Experience" class="accordion-collapse collapse show" >
       <!-- Checkbox to toggle visibility of input fields -->
-      <input type="checkbox" v-model="hideExperience" />
-      <label>Hide Experience</label>
+      <input class="checkbox-margin" type="checkbox" v-model="hideExperience" />
+      <label class="checkbox-text">Hide Experience</label>
   
       <!-- Display existing input fields and render data live -->
       <div v-for="(experience, index) in experiences" :key="index">
         
         <div class="accordion-body" :id="'ExperienceForm' + index" v-show="!hideExperience">
-          <div class="row g-2 my-3">
+          <div class="row g-2 my-3  ">
             <div class="col-12 col-md-12 col-lg-6">
               <div class="form-floating">
                 <input
@@ -544,7 +544,7 @@
           </div>
           <div class="row g-2 my-3">
             <div class="col-12 col-md-12 col-lg-6">
-              <div class="form-floating custom-lg-mt-24"  >
+              <div class="form-floating custom-lg-mt-24" style="margin-top:25px;" >
                 <input
                   type="date"
                   class="form-control"
@@ -555,6 +555,10 @@
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-6">
+              <div class="ps-2 ">
+                  <input type="checkbox" id="render-continue" v-model="hideDate" @change="updateText">
+                  <label class="text-muted" for="render-continue" style="margin-left:5px">Continue</label>
+              </div>
               <div class="form-floating">
                 <input
                   type="date"
@@ -587,13 +591,13 @@
       aria-expanded="false"
       aria-controls="panelsOpen-Education"
       >  
-      Education
+      Educations
       </button>
     </h2>
     <div id="panelsOpen-Education" class="accordion-collapse collapse" >
       <!-- Checkbox to toggle visibility of input fields -->
-      <input type="checkbox" v-model="hideEducation" />
-      <label>Hide Education</label>
+      <input class="checkbox-margin" type="checkbox" v-model="hideEducation" />
+      <label class="checkbox-text">Hide Education</label>
   
       <!-- Display existing input fields and render data live -->
       <div v-for="(education, index) in educations" :key="index">
@@ -625,7 +629,7 @@
           <!-- </div> -->
           <div class="row g-2 my-3">
             <div class="col-12 col-md-12 col-lg-6">
-              <div class="form-floating custom-lg-mt-24"  >
+              <div class="form-floating custom-lg-mt-24 " style="margin-top:25px;"  >
                 <input
                   type="text"
                   class="form-control"
@@ -636,6 +640,10 @@
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-6">
+              <div class="ps-2 ">
+                  <input type="checkbox" id="render-continue" v-model="hideDate2" @change="updateText2">
+                  <label class="text-muted" for="render-continue" style="margin-left:5px">Continue</label>
+              </div>
               <div class="form-floating">
                 <input
                   type="date"
@@ -673,18 +681,18 @@
 
     <div id="panelsOpen-Skill" class="accordion-collapse collapse">
           <!-- Checkbox to toggle visibility of input fields -->
-          <input type="checkbox" v-model="hideSkill" />
-          <label>Hide Skill</label>
+          <input class="checkbox-margin2" type="checkbox" v-model="hideSkill" />
+          <label class="checkbox-text">Hide Skill</label>
       
 
-        <div class="row g-2 mb-3">
+        <div class="row g-2 mb-3 input-group">
           <div class="col-12 col-md-12 col-lg-8">
               <div class="form-floating">
                 <!-- Display existing input fields and render data live -->
           <div v-for="(skill, index) in skills" :key="index">
             
             <div class="accordion-body" :id="'SkillForm' + index" v-show="!hideSkill">
-                  <input type="text" style="height:50px"
+                  <input type="text" style="height:50px; margin-bottom:15px;"
                       class="form-control"
                       placeholder="Enter name"
                       v-model="skill.name">
@@ -693,8 +701,10 @@
               </div>
             </div>  
           </div>
+  
           <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2 add-skill" @click="addNewSkill"> <i class='bx bxs-plus-circle icons-size'></i></button>
           <button  type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2 delete-skill"  @click="deleteSkill(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
+       
         </div>
 
         <!-- <div class="row g-2 mb-3">
@@ -742,18 +752,18 @@
 
 <div id="panelsOpen-Achievement" class="accordion-collapse collapse">
       <!-- Checkbox to toggle visibility of input fields -->
-      <input type="checkbox" v-model="hideAchievement" />
-      <label>Hide Achievements</label>
+      <input class="checkbox-margin2" type="checkbox" v-model="hideAchievement" />
+      <label class="checkbox-text">Hide Achievements</label>
   
 
-    <div class="row g-2 mb-3">
+    <div class="row g-2 mb-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
       <div v-for="(achievement, index) in achievements" :key="index">
         
         <div class="accordion-body" :id="'AchievementForm' + index" v-show="!hideAchievement">
-              <input type="text" style="height:50px"
+              <input type="text" style="height:50px; margin-bottom:15px;"
                   class="form-control"
                   placeholder="Enter name"
                   v-model="achievement.name">
@@ -785,18 +795,18 @@
 
 <div id="panelsOpen-Project" class="accordion-collapse collapse">
       <!-- Checkbox to toggle visibility of input fields -->
-      <input type="checkbox" v-model="hideProject" />
-      <label>Hide Projects</label>
+      <input class="checkbox-margin2" type="checkbox" v-model="hideProject" />
+      <label class="checkbox-text">Hide Projects</label>
   
 
-    <div class="row g-2 mb-3">
+    <div class="row g-2 mb-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
       <div v-for="(project, index) in projects" :key="index">
         
         <div class="accordion-body" :id="'ProjectForm' + index" v-show="!hideProject">
-              <input type="text" style="height:50px"
+              <input type="text" style="height:50px; margin-bottom:15px;"
                   class="form-control"
                   placeholder="Enter name"
                   v-model="project.name">
@@ -828,18 +838,18 @@
 
 <div id="panelsOpen-Interest" class="accordion-collapse collapse">
       <!-- Checkbox to toggle visibility of input fields -->
-      <input type="checkbox" v-model="hideInterest" />
-      <label>Hide Interests</label>
+      <input class="checkbox-margin2" type="checkbox" v-model="hideInterest" />
+      <label class="checkbox-text">Hide Interests</label>
   
 
-    <div class="row g-2 mb-3">
+    <div class="row g-2 mb-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
       <div v-for="(interest, index) in interests" :key="index">
         
         <div class="accordion-body" :id="'InterestForm' + index" v-show="!hideInterest">
-              <input type="text" style="height:50px"
+              <input type="text" style="height:50px; margin-bottom:15px;"
                   class="form-control"
                   placeholder="Enter name"
                   v-model="interest.name">
@@ -871,18 +881,18 @@
 
 <div id="panelsOpen-Language" class="accordion-collapse collapse">
       <!-- Checkbox to toggle visibility of input fields -->
-      <input type="checkbox" v-model="hideLanguage" />
-      <label>Hide Languages</label>
+      <input class="checkbox-margin2" type="checkbox" v-model="hideLanguage" />
+      <label class="checkbox-text">Hide Languages</label>
   
 
-    <div class="row g-2 mb-3">
+    <div class="row g-2 mb-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
       <div v-for="(language, index) in languages" :key="index">
         
         <div class="accordion-body" :id="'LanguageForm' + index" v-show="!hideLanguage">
-              <input type="text" style="height:50px"
+              <input type="text" style="height:50px; margin-bottom:15px;"
                   class="form-control"
                   placeholder="Enter name"
                   v-model="language.name">
@@ -915,8 +925,8 @@
 
 <div id="panelsOpen-Reference" class="accordion-collapse collapse " >
       <!-- Checkbox to toggle visibility of input fields -->
-      <input type="checkbox" v-model="hideReference" />
-      <label>Hide Reference</label>
+      <input class="checkbox-margin" type="checkbox" v-model="hideReference" />
+      <label class="checkbox-text">Hide Reference</label>
   
       <!-- Display existing input fields and render data live -->
       <div v-for="(reference, index) in references" :key="index">
@@ -989,7 +999,7 @@
                         <div class="resume-photo" >
                           
                           <div class="image-container">
-                            <img :src="imageUrl" alt="Resized Image" />
+                            <img src="" alt="Resized Image" />
                           </div>
                           <!-- <img :src="imageUrl" id="resume-photo" width="142px"> -->
                         </div>
@@ -1021,7 +1031,7 @@
                             </div>
                             <div class="personal-info-details ">
                                 <p>NATIONALITY</p>
-                                <p id="Nationality">Pakistan {{ displayValue }}</p>
+                                <p id="Nationality"> {{ formData.selectedNationalityStatus }}</p>
                             </div>
                             <div class="personal-info-details ">
                                 <p>ADDRESS</p>
@@ -1073,7 +1083,7 @@
                                 <div class="experience-details" v-if="!hideExperience">
                                     <h3 id="Designation0">{{ experience.organization }}</h3>
                                     <h3><span id="Organization0">{{ experience.designation }}</span> <span
-                                            id="JoiningDate0"> {{ experience.joiningDate }} </span> | <span id="EndDate0">{{ experience.endDate }}</span></h3>
+                                            id="JoiningDate0"> {{ experience.joiningDate }} </span> | <span id="EndDate0" v-if="!hideDate">{{ experience.endDate }}</span> <span>{{ displayText }}</span></h3>
                                     <p id="JobDescription0">
                                         {{ experience.jobDescription }}
                                     </p>
@@ -1088,7 +1098,7 @@
                                 <div class="education-details" v-if="!hideEducation">
                                     <h3 id="EducationalOrganization0"> {{education.university }}</h3>
                                     <p id="Degree0"> {{ education.degree }}</p>
-                                    <p><span id="Score0"> {{ education.score }}</span> <span id="CompletionDate0">{{ education.completeDate }}</span>
+                                    <p><span id="Score0"> {{ education.score }}</span> <span v-if="!hideDate2" id="CompletionDate0">{{ education.completeDate }}</span> <span>{{ displayText2 }}</span>
                                     </p>
                                 </div>
                             </div>
@@ -1217,23 +1227,14 @@
       </div>
     
     </div>  -->
+<!-- 
+    <div>
+    <input type="checkbox" v-model="hideDate" @change="updateText" />
+    <label for="checkbox">Toggle Text</label>
+    <p>{{displayText}}</p>
+  </div> -->
 
-
-    <button @click="openModal">Open Modal</button>
-<div class="modal" :class="{ 'is-active': isModalOpen }">
-  <div class="modal-content">
-    <p>Modal</p>
-  </div>
-
-  <!-- Modal footer -->
-  <div class="modal-footer">
-        <button @click="closeModal">Close</button>
-  </div>
-</div>
-
-
-
-  </div> 
+</div> 
 </template>
 
 <script>
@@ -1269,6 +1270,9 @@ export default {
    // components: {Reference},
   data() {
     return {
+        isChecked: false, // Initial checkbox state
+        displayText: "",
+        displayText2:"",
         showModal: false ,
         isModalOpen: false,
         selectedImage: "", // Store the selected image data
@@ -1290,6 +1294,8 @@ export default {
         hideReference: false,
         hideInterest: false,
         hideAchievement:false,
+        hideDate:false,
+        hideDate2:false,
        // imageUrl: null,
         isExperienceExpanded: true,
         formData: {
@@ -1304,28 +1310,10 @@ export default {
         address:'Bahria, Rawalpindi',
         objective:' Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position to utilize my expertise in front-end and back-end technologies, as well as my problem-solving and collaboration skills, to contribute to the development user experiences. ',
         eduInstitute:'',
-       // organization:'Job Position',
-       // designation:'COMPANY NAME',
-        //joinDate:'2020',
-       // endDate:'2022',
-       // jobDes:'Highly skilled and motivated web developer with a passion for creating innovative and user-friendly web applications. Seeking a challenging position.',
         selectedMaritalStatus: 'Single',
         selectedGenderStatus:'Male',
-        selectedCountryStatus:'',
-        // eduInstitute: 'UNIVERSITY NAME OR SCHOOL NAME',
-        //degree:'Write your degree name here',
-        //score:'3.2 CGPA 2015',
-       // completeDate: '1990-07-01',
-        // skill:'PHOTOSHOP',
-        // Achievement: 'Your Achievement 1',
-        // Project:'Your Project 1',
-        // Interest:'GAMING',
-        // Language:'Language',
-        //referenceName: 'Reference 1',
-        //referenceDesignation: 'Designation',
-        //referenceContact:'Number',
-
-        
+        selectedNationalityStatus:'Select',
+   
         // Add more fields here
       },
     };
@@ -1361,6 +1349,15 @@ export default {
 
   methods: {
 
+    updateText() {
+      // Update the text based on the checkbox state
+      this.displayText = this.hideDate ? "Continue" : "";
+    },
+
+    updateText2() {
+      // Update the text based on the checkbox state
+      this.displayText2 = this.hideDate2 ? "Continue" : "";
+    },
       openModal() {
             this.showModal = true;
       },
@@ -1401,10 +1398,10 @@ export default {
           endDate: "1990-07-01",
         });
       },
-      deleteExperience(index) {
-        // Delete the experience object at the specified index
-        this.experiences.splice(index, 1);
-      },
+      deleteExperience: function() {
+      // Use the pop() method to remove the last element from the array
+      this.experiences.pop();
+    },
 
     //   toggleCollapseForm() {
       // Toggle the visibility of the input fields form
@@ -1421,21 +1418,20 @@ export default {
         //   endDate: "",
         });
       },
-      deleteEducation(index) {
-        // Delete the education object at the specified index
-        this.educations.splice(index, 1);
-      },
-
+      deleteEducation: function() {
+      // Use the pop() method to remove the last element from the array
+      this.educations.pop();
+    },
       addNewSkill() {
             // Add a new skill object to the array with empty values
             this.skills.push({
               name: "PHOTOSHOP",
       
-            });
-          },
-        deleteSkill(index) {
-        // Delete the skill object at the specified index
-        this.skills.splice(index, 1);
+          });
+        },
+          deleteSkill: function() {
+          // Use the pop() method to remove the last element from the array
+          this.skills.pop();
         },
 
         addNewAchievement() {
@@ -1445,9 +1441,9 @@ export default {
 
         });
         },
-        deleteAchievement(index) {
-        // Delete the object at the specified index
-        this.achievements.splice(index, 1);
+        deleteAchievement: function() {
+      // Use the pop() method to remove the last element from the array
+          this.achievements.pop();
         },
 
         addNewProject(index){
@@ -1456,8 +1452,9 @@ export default {
             });
         },
 
-        deleteProject(index){
-            this.projects.splice(index,1);
+        deleteProject: function() {
+      // Use the pop() method to remove the last element from the array
+          this.projects.pop();
         },
 
         addNewInterest() {
@@ -1467,10 +1464,10 @@ export default {
        
             });
           },
-          deleteInterest(index) {
-            // Delete the object at the specified index
-            this.interests.splice(index, 1);
-          },
+          deleteInterest: function() {
+          // Use the pop() method to remove the last element from the array
+          this.interests.pop();
+        },
 
           addNewLanguage() {
           // Add a new  object to the array with empty values
@@ -1479,10 +1476,11 @@ export default {
       
           });
         },
-        deleteLanguage(index) {
-          // Delete the object at the specified index
-          this.languages.splice(index, 1);
-        },
+        
+        deleteLanguage: function() {
+        // Use the pop() method to remove the last element from the array
+        this.languages.pop();
+       },
 
         addNewReference() {
         // Add a new reference object to the array with empty values
@@ -1494,11 +1492,15 @@ export default {
         });
       },
       
-      deleteReference(index) {
+      // deleteReference(index) {
         // Delete the reference object at the specified index
-        this.references.splice(index, 1);
-      },
+      //   this.references.splice(index, 1);
+      // },
 
+      deleteReference: function() {
+      // Use the pop() method to remove the last element from the array
+      this.references.pop();
+    },
       handleUpload(event) {
       const file = event.target.files[0];
 
@@ -2227,5 +2229,31 @@ line-height: 5px;
       font-size: 30px;
       height: 50px;
       width: 270px;
+    }
+
+    .experience-name{
+
+      margin-top: -30px;
+    }
+
+    .checkbox-exp{
+      margin-left: 20px; 
+      margin-top: 15px;
+      margin-bottom:-5px;
+    }
+
+    .checkbox-margin{
+      margin-left: 20px; 
+      margin-top: 15px;
+    }
+
+    .checkbox-margin2{
+      margin-left: 20px; 
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-text{
+      margin-left: 5px;
     }
 </style>
