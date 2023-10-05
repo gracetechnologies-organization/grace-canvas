@@ -30,11 +30,19 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_SECRET_ID'),
+        'redirect' => env('GOOGLE_REDERICT_URL'),
+    ],
+
     'linkedin' => [
         'client_id' => env('LINKEDIN_CLIENT_ID'),
         'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
         'redirect' => env('LINKEDIN_REDIRECT_URI'),
     ],
+
     'stripe' => [
         'MODELS'  => App\Models\User::class,
         'STRIPE_KEY' => env('STRIPE_KEY'),

@@ -27,9 +27,7 @@ class GoogleLoginController extends Controller
             if (!$finduser) {
                 $saveUser = User::updateOrCreate(
                     [
-                        'google_id' => $user->getId()
-                    ],
-                    [
+                        'google_id' => $user->getId(),
                         'name' => $user->getName(),
                         'email' => $user->getEmail(),
                         'password' => Hash::make($user->getName() . '@' . $user->getId()),
@@ -44,15 +42,19 @@ class GoogleLoginController extends Controller
 
             Auth::loginUsingId($saveUser->id);
 
-            return redirect()->route('user.dashboard');
+            return redirect()->route('user.dashboard.home');
         } catch (Exception $e) {
             dd($e);
         }
     }
-    
+
     public function linkdInPage()
     {
-        return Socialite::driver('linkedin')->redirect();
+        try {
+            return Socialite::driver('linkedin')->redirect();
+        } catch (\Exception $th) {
+            return $th->getMessage();
+        }
     }
 
     public function linkdInCallBack()
