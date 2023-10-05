@@ -1,5 +1,5 @@
 <div>
-  
+
     <!-- hero section -->
     <section class="hero-section">
         <div class="row row1">
@@ -69,8 +69,8 @@
                         {{ app('googleTranslator', [
                             'lang' => app()->getLocale(),
                             'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisque vitae
-                                                                                                                lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                                                                                                                commodo tempor vestibulum sed erat mollis.',
+                                        lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                        commodo tempor vestibulum sed erat mollis.',
                         ]) }}
                     </p>
                     <button class="custom-button-css">
@@ -100,8 +100,8 @@
                     <p class="text-left w-80 responsive-print-ready-section">
                         {{ app('googleTranslator', [
                             'string' => 'Lorem ipsum dolor sit amet consectetur. Nulla vel risus adipiscing quisqu
-                                                                        vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
-                                                                        commodo tempor vestibulum sed erat mollis.',
+                                        vitae lectus eget. Elit nunc dapibus urna faucibus. Ut sagittis massa congue in porttitor. Elementum
+                                        commodo tempor vestibulum sed erat mollis.',
                         ]) }}
                     </p>
                     <button class="custom-button-css">

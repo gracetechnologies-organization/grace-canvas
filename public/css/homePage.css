@@ -42,7 +42,8 @@ body {
     border-radius: 0.625rem;
 
 }
-.custom-button-css{
+
+.custom-button-css {
     width: 15.375rem;
     height: 4.938rem;
     margin: 50px 0px 0px 0px;
@@ -736,15 +737,45 @@ body {
         line-height: 1.5;
     }
 
-  /* row responsive */
-  .row1 {
-      --bs-gutter-x: 1.5rem;
-      --bs-gutter-y: 0;
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: calc(1 * var(--bs-gutter-y));
-      margin-right: calc(0.5 * var(--bs-gutter-x));
-      margin-left: calc(0.5 * var(--bs-gutter-x));
-  }
+    /* row responsive */
+    .row1 {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(1 * var(--bs-gutter-y));
+        margin-right: calc(0.5 * var(--bs-gutter-x));
+        margin-left: calc(0.5 * var(--bs-gutter-x));
+    }
 
+}
+
+@media (max-width: 320px) {
+    .standard-heading-css {
+        color: #F60;
+        font-family: Poppins;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        word-spacing: -3px;
+    }
+
+    .review-section p {
+        padding: 1px;
+    }
+}
+
+@media(max-width:425px) {
+    .footers-section .p1 {
+        margin-left: 0;
+        width: 100% !important;
+    }
+}
+
+@media(max-width:425px) {
+
+    .standard-heading-subscription h3{
+        font-size: 1.2rem;
+    }
 }

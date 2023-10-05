@@ -12914,14 +12914,6 @@ body {
     border-radius: 0.5rem;
 }
 
-@media (max-width: 768px) {
-
-    .buy-now-premium-template h2,
-    .buy-now-premium-template h3 {
-        font-size: 1.6rem;
-    }
-}
-
 /* To render all the CSS colors in the print preview */
 @media print {
     html {
@@ -12960,6 +12952,31 @@ body {
         margin-top: 1rem;
     }
 }
+
+@media (max-width: 425px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .buy-now-premium-template h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .buy-now-premium-template h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .buy-now-premium-template h3 {
+        font-size: 1.2rem;
+    }
+}
+
 
 /* responsive css homePage */
 @media only screen and (max-width:2560px) and (min-width:951px) {
@@ -13009,6 +13026,9 @@ body {
     /* footer */
     .footers-section .navbar-nav .nav-item .nav-link {
         padding-left: -1rem
+    }
+    footer{
+        background-color:var(--custom-theme-color)
     }
 }
 

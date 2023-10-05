@@ -122,12 +122,13 @@
 @if (in_array(Route::current()->uri, $UserDashboardRoutes))
     @include('javascript_files.user-dahsboard-scripts')
 @endif
-{{--  @if (Route::current()->uri == '/payment/subscription/{ID}')  --}}
+@if (Route::current()->uri == '/payment/subscription/{ID?}')
 @include('javascript_files.subscription-form')
-{{--  @endif  --}}
+@endif
 {{-- JQuery --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
 {{-- JQuery - Dynamic scripts --}}
+
 @include('jquery_files.modals-scripts')
 
 @php
