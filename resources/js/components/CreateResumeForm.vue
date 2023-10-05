@@ -70,7 +70,7 @@
 </div> -->
 
 
-<div>
+
    
 <!--Connect Input field with modal -->
         <!-- <button @click="openModal">Open Modal</button>
@@ -91,13 +91,13 @@
 
 
 <!-- Editing form & preview section -->
-<div class="container-fluid px-5 px-md-4 px-lg-5">
-    <div class="row">
+<div class="container-fluid px-md-4 px-lg-5">
+    <div class="row " >
         <!-- Form column -->
         <div class="col-12 col-md-5 col-lg-4">
             <!-- @include('components.resume-form') -->
 
-            <form style="z-index: 10;">
+            <form>
     <!-- <div class="row">
         <div class="col-10 py-1 mt-1">
             <div class="input-group mt-0">
@@ -113,7 +113,7 @@
         </div>
     </div> -->
     <div class="row g-2 my-3">
-        <div class="col-12 col-md-12 col-lg-6">
+        <div class="col-12 col-md-12 col-lg-6 col-sm-12" >
             <div class="form-floating">
                 <!-- <input type="text" class="form-control" placeholder="Enter first name" onkeyup="CreateResumeForm.renderTxt('FName', this.value)"> -->
                 <input type="text" class="form-control" placeholder="Enter first name" v-model="formData.name">
@@ -544,7 +544,7 @@
           </div>
           <div class="row g-2 my-3">
             <div class="col-12 col-md-12 col-lg-6">
-              <div class="form-floating custom-lg-mt-24" style="margin-top:25px;" >
+              <div class="form-floating custom-lg-mt-24" style="margin-top: 25px;" >
                 <input
                   type="date"
                   class="form-control"
@@ -554,9 +554,9 @@
                 <label>Joining Date</label>
               </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-6">
-              <div class="ps-2 ">
-                  <input type="checkbox" id="render-continue" v-model="hideDate" @change="updateText">
+            <div class="col-12 col-md-12 col-lg-6" style="margin-top: -8px">
+              <div class="my-2">
+                  <input class="mobile-responsive" type="checkbox" id="render-continue" v-model="hideDate" @change="updateText">
                   <label class="text-muted" for="render-continue" style="margin-left:5px">Continue</label>
               </div>
               <div class="form-floating">
@@ -572,10 +572,10 @@
           </div>
         </div>     
       </div>
-      <div class="row g-0 my-3 ml-3 input-group">
+      <div class="row g-0 my-3 p-2 input-group">
       <!-- Button to add a new input field -->
-      <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color col-5  add-experience" @click="addNewExperience"> <i class='bx bxs-plus-circle icons-size'></i></button>
-      <button  type="button" class="btn btn-outline-danger col-5 delete-experience "  @click="deleteExperience(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
+      <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6  add-experience" @click="addNewExperience"> <i class='bx bxs-plus-circle icons-size'></i></button>
+      <button  type="button" class="btn btn-outline-danger col-6 delete-experience "  @click="deleteExperience(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
     </div>    
     </div>
     </div>
@@ -604,7 +604,7 @@
         
         <div class="accordion-body" :id="'EducationForm' + index" v-show="!hideEducation">
           <!-- <div class="row g-2 my-3"> -->
-            <div class="col-12 my-3">
+            <div class="col-12">
               <div class="form-floating">
                 <input
                   type="text"
@@ -627,7 +627,7 @@
               </div>
             </div>
           <!-- </div> -->
-          <div class="row g-2 my-3">
+          <div class="row g-2 mb-3">
             <div class="col-12 col-md-12 col-lg-6">
               <div class="form-floating custom-lg-mt-24 " style="margin-top:25px;"  >
                 <input
@@ -639,8 +639,8 @@
                 <label>Score</label>
               </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-6">
-              <div class="ps-2 ">
+            <div class="col-12 col-md-12 col-lg-6" style="margin-top:-8px;">
+              <div class="my-2">
                   <input type="checkbox" id="render-continue" v-model="hideDate2" @change="updateText2">
                   <label class="text-muted" for="render-continue" style="margin-left:5px">Continue</label>
               </div>
@@ -657,10 +657,10 @@
           </div>
         </div>
       </div>
-      <div class="row g-0 my-3 input-group">
+      <div class="row g-0 my-3 p-2 input-group">
       <!-- Button to add a new input field -->
-      <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color col-5 add-education" @click="addNewEducation"> <i class='bx bxs-plus-circle icons-size'></i></button>
-      <button  type="button" class="btn btn-outline-danger col-5 delete-education"  @click="deleteEducation(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
+      <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6 add-education" @click="addNewEducation"> <i class='bx bxs-plus-circle icons-size'></i></button>
+      <button  type="button" class="btn btn-outline-danger col-6 delete-education"  @click="deleteEducation(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
     </div>
     </div>
   </div>
@@ -684,29 +684,28 @@
           <input class="checkbox-margin2" type="checkbox" v-model="hideSkill" />
           <label class="checkbox-text">Hide Skill</label>
       
-
-        <div class="row g-2 mb-3 input-group">
-          <div class="col-12 col-md-12 col-lg-8">
+        <div class="row g-2 mb-3 ps-3 input-group" >
+          <div class="col-12 col-md-12 col-lg-8" >
               <div class="form-floating">
                 <!-- Display existing input fields and render data live -->
           <div v-for="(skill, index) in skills" :key="index">
             
             <div class="accordion-body" :id="'SkillForm' + index" v-show="!hideSkill">
                   <input type="text" style="height:50px; margin-bottom:15px;"
-                      class="form-control"
+                      class="form-control "
                       placeholder="Enter name"
                       v-model="skill.name">
                   <!-- <label>Enter Your Skill Title</label> -->
+                 
               </div>
               </div>
             </div>  
           </div>
-  
-          <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2 add-skill" @click="addNewSkill"> <i class='bx bxs-plus-circle icons-size'></i></button>
+          
+          <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2  add-skill" @click="addNewSkill"> <i class='bx bxs-plus-circle icons-size'></i></button>
           <button  type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2 delete-skill"  @click="deleteSkill(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
-       
-        </div>
-
+        
+      </div>
         <!-- <div class="row g-2 mb-3">
           
           Display existing input fields and render data live 
@@ -771,10 +770,10 @@
           </div>
           </div>
         </div>  
-      </div>
+      </div> 
       <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color custom-r-border-radius-0 col-6 col-md-6 col-lg-2 add-achievement" @click="addNewAchievement"> <i class='bx bxs-plus-circle icons-size'></i></button>
       <button  type="button" class="btn btn-outline-danger custom-l-border-radius-0 col-6 col-md-6 col-lg-2 delete-achievement"  @click="deleteAchievement(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
-    </div>
+    </div> 
 
 </div>  
 </div>
@@ -932,7 +931,7 @@
       <div v-for="(reference, index) in references" :key="index">
         
         <div class="accordion-body" :id="'ReferenceForm' + index" v-show="!hideReference">
-          <div class="row g-2 my-3">
+          <div class="row g-2 my-3 ">
             <div class="col-12 col-md-12 col-lg-6">
               <div class="form-floating">
                 <input
@@ -971,10 +970,10 @@
         </div>
         
       </div>
-      <div class="row g-0 my-3 input-group">
+      <div class="row g-0 my-3 p-2 input-group">
       <!-- Button to add a new input field -->
-      <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color col-5 add-reference" @click="addNewReference"> <i class='bx bxs-plus-circle icons-size'></i></button>
-      <button  type="button" class="btn btn-outline-danger col-5 delete-reference"  @click="deleteReference(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
+      <button  type="button" class="btn btn-secondary standard-bg-color standard-border-color col-6 add-reference" @click="addNewReference"> <i class='bx bxs-plus-circle icons-size'></i></button>
+      <button  type="button" class="btn btn-outline-danger col-6 delete-reference"  @click="deleteReference(index)"> <i class='bx bxs-minus-circle icons-size'></i></button>
     </div>
     </div>
   </div>
@@ -990,7 +989,7 @@
         <!-- Resume template will render here -->
         <!-- {{-- @include($ResumeFile) --}} -->
         <!-- Resume template column -->
-        <div class="col-12 col-md-7 col-lg-8">
+        <div class="col-12 col-md-7 col-lg-8" style="overflow:scroll">
             <!-- Resume template design  class="container contianer-customs mt-2 border border-danger" id="resume-template-container"        -->
             <div >
                 <div class="row custom-border" style="width:720px;">
@@ -1177,7 +1176,7 @@
     </div>
 </div>
 
-</div>
+
 
 <!-- <div v-if="imageUrl" >
      <img :src="imageUrl" alt="Uploaded Image">                        
@@ -1253,6 +1252,7 @@ import Countries from './Countries.vue';
 
 
 export default {
+  name: 'mobile-responsive',
 
  // name: "vueImageCropperExample",
       components: {
@@ -2106,15 +2106,15 @@ line-height: 5px;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      margin-left: 20px ;
-      width: 270px;
+      /* margin-left: 20px ; */
+      /* width: 270px; */
       padding-bottom: 15px;
     }
 
     .delete-experience{
       font-size: 30px;
       height: 50px;
-      width: 270px;
+      /* width: 270px; */
 
     }
 
@@ -2124,15 +2124,15 @@ line-height: 5px;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      margin-left: 20px ;
-      width: 270px;
+      /* margin-left: 20px ; */
+      /* width: 270px; */
       padding-bottom: 15px;
     }
 
     .delete-education{
       font-size: 30px;
       height: 50px;
-      width: 270px;
+      /* width: 270px; */
     }
 
     .add-skill{
@@ -2141,13 +2141,13 @@ line-height: 5px;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .delete-skill{
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .add-achievement{
@@ -2156,14 +2156,15 @@ line-height: 5px;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
+      
     }
 
     .delete-achievement{
 
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .add-project{
@@ -2172,14 +2173,14 @@ line-height: 5px;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .delete-project{
 
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .add-interest{
@@ -2188,14 +2189,14 @@ line-height: 5px;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }    
 
     .delete-interest{
 
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .add-language{
@@ -2204,31 +2205,30 @@ line-height: 5px;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .delete-language{
 
       font-size: 30px;
       height: 50px;
-      width:80px;
+      /* width:80px; */
     }
 
     .add-reference{
-
       border-color: #FF6600 !important;
       background-color: #FF6600 !important;
       font-size: 30px;
       height: 50px;
-      margin-left: 20px ;
-      width: 270px;
+      /* margin-left: 20px ; */
+      /* width: 270px; */
       padding-bottom: 15px;
     }
 
     .delete-reference{
       font-size: 30px;
       height: 50px;
-      width: 270px;
+      /* width: 270px; */
     }
 
     .experience-name{
@@ -2256,4 +2256,32 @@ line-height: 5px;
     .checkbox-text{
       margin-left: 5px;
     }
+
+    .input-group{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    }
+@media (max-width: 768px) {
+
+  .tablet-responsive{
+    display:flex;
+    flex-wrap: wrap;
+    align-items:stretch;
+    position: relative;
+  }
+  
+}
+
+@media(max-width: 425px){
+
+  .mobile-responsive{
+    /* display: flex; */
+    margin-top:5px;
+    margin-bottom:5px;
+  }
+}
+    
 </style>
