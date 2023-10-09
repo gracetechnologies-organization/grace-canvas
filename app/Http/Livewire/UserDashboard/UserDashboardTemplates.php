@@ -2,17 +2,12 @@
 
 namespace App\Http\Livewire\UserDashboard;
 
-use App\Models\Resume;
 use App\Models\SaveResumePage;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Exception;
-
 class UserDashboardTemplates extends Component
 {
-    public 
-        $ResumePagesID,
+    public
         $cancelSuccessMessage,
         $deleteSuccessMessage,
         $UserID;
@@ -25,14 +20,9 @@ class UserDashboardTemplates extends Component
     public function destroy($ResumePagesID)
     {
         try {
-                $Destroy = SaveResumePage::find($ResumePagesID);
-                $Destroy->forceDelete();
-
-            if (!$Destroy) {
-                return redirect()->back()->with('error', 'ResumePages not found.');
-            }
+            $Deleted = SaveResumePage::deletePage($ResumePagesID);
             sleep(1);
-            if ($Destroy) {
+            if ($Deleted) {
                 session()->flash('success', config('messages.DELETION_SUCCESS'));
             } else {
                 session()->flash('error', config('messages.DELETION_FAILED'));

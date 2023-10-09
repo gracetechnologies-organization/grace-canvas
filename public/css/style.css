@@ -12804,6 +12804,10 @@ body {
 }
 
 /* footer section */
+footer {
+    background-color: var(--custom-theme-color);
+}
+
 .footer-section {
     margin-bottom: 5rem !important;
 }
@@ -13026,9 +13030,6 @@ body {
     /* footer */
     .footers-section .navbar-nav .nav-item .nav-link {
         padding-left: -1rem
-    }
-    footer{
-        background-color:var(--custom-theme-color)
     }
 }
 

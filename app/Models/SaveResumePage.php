@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
 
 class SaveResumePage extends Model
 {
@@ -47,6 +46,11 @@ class SaveResumePage extends Model
     public static function updatePage(int $ID, string $PageCode)
     {
         return SaveResumePage::where('id',$ID)->update(['page_code' => $PageCode]);
+    }
+
+    public static function deletePage(int $ID)
+    {
+        return SaveResumePage::find($ID)->forceDelete();
     }
 
     public static function getSavedPageByID(int $ID)

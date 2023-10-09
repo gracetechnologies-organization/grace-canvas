@@ -14,6 +14,11 @@ class UserDashboardSubcribtion extends Component
     public $cancelSuccessMessage = '';
     public $deleteSuccessMessage = '';
 
+    public function mount()
+    {
+        $this->Subscriptions = Subscription::with('plan')->where('user_id', auth()->id())->get();
+    }
+    
     public function cancel($subscriptionId)
     {
         $subscription = auth()->user()->subscriptions->find($subscriptionId);
@@ -66,15 +71,8 @@ class UserDashboardSubcribtion extends Component
         }
     }
 
-    public function mount()
-    {
-        $this->Subscriptions = Subscription::with('plan')->where('user_id', auth()->id())->get();
-    }
-
     public function render()
     {
-        // dd($this->Subscriptions);
-
         return view('livewire.user-dashboard.user-dashboard-subcribtion');
     }
 }

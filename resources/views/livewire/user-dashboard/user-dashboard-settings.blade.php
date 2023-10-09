@@ -8,7 +8,7 @@
             <div class="col-lg-9 col-md-9 col-sm-6">
                 <div class="content">
                     <div id="dataContainer">
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-lg-9 col-sm-12">
                                 <div class="p-3 mb-4 card custome-card-border">
                                     <h5 class="card-header custome-color">{{ app('googleTranslator', ['string' => 'Profile Information']) }}</h5>

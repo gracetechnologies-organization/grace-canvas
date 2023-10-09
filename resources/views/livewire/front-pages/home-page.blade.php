@@ -1,5 +1,4 @@
 <div>
-
     <!-- hero section -->
     <section class="hero-section">
         <div class="row row1">
@@ -157,5 +156,3 @@
         </div>
     </section>
 </div>
-</body>
-</html>

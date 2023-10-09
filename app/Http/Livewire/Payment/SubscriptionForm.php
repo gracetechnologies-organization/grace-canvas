@@ -7,9 +7,9 @@ use Livewire\Component;
 
 class SubscriptionForm extends Component
 {
-    public $Plan;
-
-    public $ID;
+    public
+        $Plan,
+        $ID;
 
     public function mount(Plan $Plan, $ID)
     {

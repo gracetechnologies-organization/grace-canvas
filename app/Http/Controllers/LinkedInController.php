@@ -4,35 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-class linkdinController extends Controller
+class LinkedInController extends Controller
 {
-    const LINKDIN_TYPE = 'linkedin';
+    private const LINKEDIN_DRIVER = 'linkedin-openid';
 
     public function linkdInPage()
     {
         try {
-            return Socialite::driver(static::LINKDIN_TYPE)->redirect();
-        } catch (\Exception $th) {
-            return $th->getMessage();
+            return Socialite::driver(static::LINKEDIN_DRIVER)->redirect();
+        } catch (Exception $error) {
+            report($error);
+            dd($error->getMessage());
         }
     }
 
     public function linkdInCallBack()
     {
         try {
-            $user = Socialite::driver(static::LINKDIN_TYPE)->user();
-
+            $user = Socialite::driver(static::LINKEDIN_DRIVER)->user();
+          
             $finduser = User::where('linkedin_id', $user->id)->first();
 
             if ($finduser) {
 
                 Auth::login($finduser);
 
-                return redirect()->route('user.dashboard');
+                return redirect()->route('user.dashboard.home');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -43,10 +43,11 @@ class linkdinController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect('/home');
+                return redirect()->route('user.dashboard.home');
             }
-        } catch (Exception $e) {
-            dd($e->getMessage());
+        } catch (Exception $error) {
+            report($error);
+            dd($error->getMessage());
         }
     }
 }

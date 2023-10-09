@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\EditingForms;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class CreateResumeForm extends Component

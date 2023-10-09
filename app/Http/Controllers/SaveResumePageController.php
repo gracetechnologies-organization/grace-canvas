@@ -41,12 +41,12 @@ class SaveResumePageController extends Controller
                 'RequestedPageID' => 'required|integer',
                 'PageCode' => 'required|string'
             ]);
-
             if ($Validator->fails()) {
                 return response()->json(['error' => 'ValidationFailed', 'message' => $Validator->errors()], 400);
             }
-            $Update = SaveResumePage::updatePage($Req->RequestedPageID, $Req->PageCode);
-            if ($Update) {
+
+            $Updated = SaveResumePage::updatePage($Req->RequestedPageID, $Req->PageCode);
+            if ($Updated) {
                 return response()->json(['message' => 'SavedSuccessfully'], 200);
             }
             return response()->json(['error' => 'ErrorInSaving'], 500);
