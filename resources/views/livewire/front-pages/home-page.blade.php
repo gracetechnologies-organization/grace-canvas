@@ -104,7 +104,7 @@
                         ]) }}
                     </p>
                     <button class="custom-button-css">
-                        <a href="#">
+                        <a href="{{ route('templates.resume') }}">
                             {{ app('googleTranslator', ['string' => 'Lets Create']) }}
                         </a>
                     </button>

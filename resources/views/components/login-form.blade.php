@@ -22,7 +22,7 @@
             {{ app('googleTranslator', ['string' => 'Login']) }}
         </button>
     </form>
-    {{-- <div class="text-center custom-google-facrbook-login center-block ">
+    <div class="text-center custom-google-facrbook-login center-block ">
         <div class="mb-2">
             <a href="{{ route('google.page') }}">
                 <button type="submit" class="p-2 custom-google-login-signup btn-block">
@@ -36,6 +36,6 @@
                     <span class="bx bxl-linkedin bx-linkedin"></span>{{ GoogleTranslate::trans('LinkedIn Login', app()->getLocale()) }}
                 </button>
             </a>
-        </div> 
-    </div> --}}
+        </div>
+    </div>
 </div>

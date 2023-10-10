@@ -775,7 +775,7 @@ body {
 
 @media(max-width:425px) {
 
-    .standard-heading-subscription h3{
+    .standard-heading-subscription h3 {
         font-size: 1.2rem;
     }
 }
