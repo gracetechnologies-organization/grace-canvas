@@ -1,95 +1,84 @@
 <template>
-   <div>
+  
 <head>
+  <link href="https://code.jquery.com/jquery-3.6.0.min.js">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js">
     <!-- <link href="{{ asset('fonts/boxicons.css') }}" rel="stylesheet" /> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 
-<!-- Offcanvas for detail customization -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div>
-            Only For Pro Users...!
-        </div>
-        <div class="dropdown mt-3">
-            <button class="btn btn-secondary standard-bg-color standard-border-color dropdown-toggle" type="button"
-                id="dropdownMenuButton" data-bs-toggle="dropdown">
-                Download Now
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#">PDF</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+<nav class="navbar navbar-expand-lg navbar-light" id="navbarManu" style="background-color: #FF6600;">
+    <div class="container">
+        <a class="navbar-brand text-light" href="https://gracecanvas.co">
+            Grace Canvas
+        </a>
+        <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-supported-content" aria-controls="navbar-supported-content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-light"></span>
+        </button>
+        <div class="mb-4 collapse navbar-collapse text-light" id="navbar-supported-content">
+            <ul class="mt-4 navbar-nav ms-auto custom-navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://gracecanvas.co">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://gracecanvas.co/templates/resume">Resume Templates</a>
+                </li>
+                
+
+                <!-- Check if the user is authenticated  -->
+                                <!-- If the user is authenticated, display the My Account button  -->
+                <li class="nav-item custom-dropdown">
+                    <a class="nav-link my-account-custom-btn" href="#">
+                        <span>My Account</span>
+                    </a>
+                    <ul class="dropdown-content">
+                        <li>
+                            <a href="https://gracecanvas.co/user/dashboard/home">
+                                Dashboard
+                            </a>
+                            <form method="POST" action="https://gracecanvas.co/logout">
+                                <input type="hidden" name="_token" value="Fp7kAxyF55lQ1G9lgKAUUlTE7T39pVcAKA74IBCP" autocomplete="off">   <a href="https://gracecanvas.co/logout" onclick="event.preventDefault();this.closest('form').submit();">
+                                    Log Out
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item custom-select-language"><i class="bx bx-world"></i>
+                    <select onchange="changeLanguage(this)" id="languageSelect">
+                        <option value="en"> English</option>
+                        <option value="zh"> China</option>
+                        <option value="fr"> France</option>
+                        <option value="es"> Spanish</option>
+                        <option value="ur"> Urdu</option>
+                        <option value="de"> Danish</option>
+                        <option value="de"> German</option>
+                        <option value="id"> Indonasiaon</option>
+                        <option value="it"> Italian</option>
+                        <option value="nl"> Dutch</option>
+                        <option value="no"> Norwagian</option>
+                        <option value="pl"> Polish</option>
+                        <option value="pt"> Portuguese</option>
+                        <option value="sv"> Swedish</option>
+                        <option value="ru"> Russion</option>
+                        <option value="tr"> Turkish</option>
+                    </select>
+                </li>
             </ul>
         </div>
     </div>
-</div>
-
-<!-- @include('components.crop-img-modal') -->
-
-<!-- <div class="modal fade" id="crop-image-modal" tabindex="-1" aria-labelledby="crop-image-modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          
-            <div class="modal-header">
-                <h5 class="modal-title" id="modal-label">Crop Your Image</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="img-container">
-                    <img src="" id="image" width="500px">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary standard-bg-color standard-border-color" onclick="cropImg()">Crop</button>
-            </div>
-        </div>
-    </div>
-</div> -->
+</nav>
 
 
-<!-- Fixed buttons -->
-<!-- <div class="fixed-btn-container">
-     @include('components.print-btn')
-
-    <button class="fixed-btn" title="Download as PDF or Print" onclick="printDiv('resume-template-container')">
-    <i class='bx bx-cloud-download icons-size standard-txt-color'></i>
-    </button>
-
-     Test btn
-    <button style="border: 1px solid black" class="fixed-btn" title="Download as PDF or Print"
-        onclick="printDiv('resume-template-container')">
-        Test PDF
-    </button>
-</div> -->
-
-
-
-   
-<!--Connect Input field with modal -->
-        <!-- <button @click="openModal">Open Modal</button>
-        <div class="modal" v-if="showModal">
-          <div class="modal-content">
-            <span class="close-button" @click="closeModal">&times;</span>
-            <h2>Modal Content</h2>
-            <p>This is a simple modal.</p>
-          </div>
-        </div> -->
-
-        <!-- <div>
-    <button @click="openModal">Open Modal</button>
-    <div v-if="showModal" @closeModal="closeModal" >
-    </div>
-  </div> -->
-
-
-
+<div>
+  <div>
+    <!-- <child-component2 @imageCropped="handleImageCropped" /> -->
+    <!-- chatgpt parent-comp Bind the cropped image data from the child component -->
+    
+  </div>
 <!-- Editing form & preview section -->
 <div class="container-fluid px-md-4 px-lg-5">
     <div class="row " >
@@ -98,20 +87,21 @@
             <!-- @include('components.resume-form') -->
 
             <form>
-    <!-- <div class="row">
+    <div class="row">
         <div class="col-10 py-1 mt-1">
             <div class="input-group mt-0">
-                  <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control image" id="upload-resume-photo"> 
-                 <input type="file" ref="fileInput" @change="handleImageUpload" />
+                  <!-- <input type="file" accept="image/jpeg,image/png,image/webp" class="form-control image" id="upload-resume-photo"> 
+                 <input type="file" ref="fileInput" @change="handleImageUpload" /> -->
+                 <child-component2 @imageCropped="handleImageCropped" />
                 <label class="input-group-text" for="upload-resume-photo">Upload Pic</label>
             </div>
         </div>
         <div class="col-2 py-1 text-end">
-             {{-- <button type="button" class="custom-btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" title="Settings & options">
+             <!-- {{-- <button type="button" class="custom-btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" title="Settings & options">
                 <i class='bx bx-cog icons-size standard-txt-color'></i>
-            </button> --}}
+            </button> --}} -->
         </div>
-    </div> -->
+    </div>
     <div class="row g-2 my-3">
         <div class="col-12 col-md-12 col-lg-6 col-sm-12" >
             <div class="form-floating">
@@ -695,8 +685,7 @@
                       class="form-control "
                       placeholder="Enter name"
                       v-model="skill.name">
-                  <!-- <label>Enter Your Skill Title</label> -->
-                 
+                  <!-- <label>Enter Your Skill Title</label> -->         
               </div>
               </div>
             </div>  
@@ -755,7 +744,7 @@
       <label class="checkbox-text">Hide Achievements</label>
   
 
-    <div class="row g-2 mb-3 input-group">
+    <div class="row g-2 mb-3 ps-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
@@ -798,7 +787,7 @@
       <label class="checkbox-text">Hide Projects</label>
   
 
-    <div class="row g-2 mb-3 input-group">
+    <div class="row g-2 mb-3 ps-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
@@ -841,7 +830,7 @@
       <label class="checkbox-text">Hide Interests</label>
   
 
-    <div class="row g-2 mb-3 input-group">
+    <div class="row g-2 mb-3 ps-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
@@ -884,7 +873,7 @@
       <label class="checkbox-text">Hide Languages</label>
   
 
-    <div class="row g-2 mb-3 input-group">
+    <div class="row g-2 mb-3 ps-3 input-group">
       <div class="col-12 col-md-12 col-lg-8">
           <div class="form-floating">
             <!-- Display existing input fields and render data live -->
@@ -998,8 +987,13 @@
                         <div class="resume-photo" >
                           
                           <div class="image-container">
-                            <img src="" alt="Resized Image" />
+                            <!-- <img  src="cropImg" alt="Cropped Image" width="142px" />
+                            <img :src="cropImg" style="width: 142px; height: 142px; border: 1px solid gray" alt="Cropped Image" id="cropped" /> -->
+                            <div v-if="croppedImage">
+                              <img :src="croppedImage" style="width: 142px; height: 142px; border: 1px solid gray" alt="Cropped Image in Parent" />
+                            </div>
                           </div>
+
                           <!-- <img :src="imageUrl" id="resume-photo" width="142px"> -->
                         </div>
                         <div class="personal-info-container">
@@ -1037,7 +1031,6 @@
                                 <p id="Address">{{ formData.address }}</p>
                             </div>
                         </div>
-
                         <div class="skills-container">
                             <h2> Skills </h2>
                             <div id="skills-section" v-for="(skill, index) in skills" :key="index">
@@ -1067,19 +1060,16 @@
                             <p class="profession" id="Profession"> {{ formData.profession }}</p>
                             <div class="right-col-divider"></div>
                         </div>
-
                         <div class="objective-container ">
                             <h2>Objective</h2>
-                            <p id="Objective">
-                               
+                            <p id="Objective">                           
                                 {{ formData.objective }}
                             </p>
-                        </div>
-                    
+                        </div>    
                         <div class="experience-container" >
                             <h2>Work Experience</h2>
                             <div id="experiences-section" v-for="(experience, index) in experiences" :key="index">
-                                <div class="experience-details" v-if="!hideExperience">
+                                <div class=" experience-details" v-if="!hideExperience">
                                     <h3 id="Designation0">{{ experience.organization }}</h3>
                                     <h3><span id="Organization0">{{ experience.designation }}</span> <span
                                             id="JoiningDate0"> {{ experience.joiningDate }} </span> | <span id="EndDate0" v-if="!hideDate">{{ experience.endDate }}</span> <span>{{ displayText }}</span></h3>
@@ -1089,7 +1079,7 @@
                                 </div>
                             </div>
                             <div class="right-col-divider"></div>
-                            <div v-for="(experience, index) in experiences" :key="index"></div>
+                            <!-- <div v-for="(experience, index) in experiences" :key="index"></div> -->
                         </div>
                         <div class="education-container">
                             <h2>Education</h2>
@@ -1109,9 +1099,7 @@
                                 <div class="achievement-details" v-if="!hideAchievement">
                                     <p id="AchievementTitle0">{{ achievement.name }}</p>
                                 </div>
-                                <div class="achievement-details">
-                                    <!-- {{-- This area is for JavaScript Baby --}} -->
-                                </div>
+                                
                             </div>
                             <div class="right-col-divider"></div>
                         </div>
@@ -1121,9 +1109,7 @@
                                 <div class="project-details" v-if="!hideProject">
                                     <p id="ProjectTitle0">{{ project.name  }}</p>
                                 </div>
-                                <div class="project-details">
-                                    <!-- {{-- This area is for JavaScript Baby --}} -->
-                                </div>
+                               
                             </div>
                             <div class="right-col-divider"></div>
                         </div>
@@ -1137,9 +1123,7 @@
                                         <p id="ReferenceDescription0">{{ reference.number}}</p>
                                     </div>
                                 </div>
-                                <div class="reference-details">
-                                    <!-- {{-- This area is for JavaScript Baby --}} -->
-                                </div>
+                                
                             </div>
                             <div class="right-col-divider"></div>
                         </div>
@@ -1162,10 +1146,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="languages-details">
-                                    <!-- {{-- This area is for JavaScript Baby --}} -->
-                                </div>
+                                
                             </div>
+                        </div>
+
+                        <div class="container">
+                          <div class="row">
+                            <div class="col">
+                              Column
+                            </div>
+                            <div class="col">
+                              Column
+                            </div>
+                            <div class="col">
+                              Column
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -1176,100 +1172,69 @@
     </div>
 </div>
 
+</div>
 
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> 
+   <button type="button" class="btn btn-primary" @click="openModal">
+  Launch demo modal
+</button> -->
 
-<!-- <div v-if="imageUrl" >
-     <img :src="imageUrl" alt="Uploaded Image">                        
-</div> -->
-
-
-<!-- <experience></experience>
-<education></education> -->
-<!-- <reference></reference> -->
-
-<!-- <div> -->
-     <!-- <input type="file" @change="handleImageUpload" /> -->
-     <!-- <input type="file" @click="openModal=true" @change="handleImageUpload"> -->
-           <!-- <img :src="selectedImage" alt="Selected Image" />  -->
-           <!-- <img style="width: 142px; height: 142px;" src="" id="croppedImage" >
-    </div> -->
-    <!-- <div class="example">
-        <cropper ref="cropper" class="example-cropper" :src="selectedImage" />
-        <drop-zone
-          v-model="image"
-          :label="upload"
-          :location="location"
-          @uploaded="newImagesUploaded"
-          class="pb-15"
-        />
-        <div class="button-wrapper">
-          <span class="cropbutton" @click="cropImage">Crop image</span>
-          <button class="cancelbutton" @click="closeModal">Cancel</button>
-        </div>
+<!-- Modal 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+          <button type="button" class="close" @click="closeModal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    <div class="modal" v-if="showModal">
-        <div class="modal-content">
-            <span class="close-button" @click="closeModal">&times;</span>
-      <div class="example">
-        <cropper ref="cropper" class="example-cropper" :src="selectedImage" />
-        <drop-zone
-          v-model="image"
-          :label="upload"
-          :location="location"
-          @uploaded="newImagesUploaded"
-          class="pb-15"
-        />
-        <div class="button-wrapper">
-          <span class="cropbutton" @click="cropImage">Crop image</span>
-          <button class="cancelbutton" @click="closeModal">Cancel</button>
-        </div>
+      <div class="modal-body">
+        ...
       </div>
-    
-    </div>  -->
-<!-- 
-    <div>
-    <input type="checkbox" v-model="hideDate" @change="updateText" />
-    <label for="checkbox">Toggle Text</label>
-    <p>{{displayText}}</p>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+        <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- <div>
+    <p>Image ID received from child component: {{ receivedImageId }}</p>
+    <ChildComponent :imageId="receivedImageId" @imageIdSelected="handleImageId" />
   </div> -->
-
-</div> 
 </template>
 
 <script>
-import { Cropper } from "vue-advanced-cropper";
-import "vue-advanced-cropper/dist/style.css";
-import 'boxicons/css/boxicons.min.css';
-// import PhoneInput from './PhoneInput.vue';
-// import NewFile from './NewFile.vue';
-import Countries from './Countries.vue';
+// import ImageCode from './ImageCode.vue';
+import ChildComponent2 from './ChildComponent2.vue'; // Import the child component
 
-// import Experience from './Experience.vue';
-// import Education from './Education.vue';
-
-//import Reference from './Reference.vue';
-//import PhoneInput from '../components/PhoneInput.vue';
-
+//  import VueCropper from 'vue-cropperjs';
+//       import { Cropper } from "vue-advanced-cropper";
+//       import "vue-advanced-cropper/dist/style.css";
+//       import { mapState } from 'vuex'
+//       import axios from 'axios'
+//       import 'cropperjs/dist/cropper.css'
+      
 
 export default {
-  name: 'mobile-responsive',
+  inject: ['cropImg'],
+  components: {
+    ChildComponent2,
+    },
 
- // name: "vueImageCropperExample",
-      components: {
-        Cropper
-      },
-  //    props: {},
- // props:{displayValue: String,},  
-
-//   components: { PhoneInput },
-//   components:{ NewFile},
-    components: {Countries},
-    // components: {Experience},
-    // components: {Education},
-    
-   // components: {Reference},
   data() {
     return {
+      croppedImage: '', // Store the cropped image data here
+      receivedImageId: null,
+        imgSrc: '',
+        // cropImg: '',
+        isModalVisible: false,
         isChecked: false, // Initial checkbox state
         displayText: "",
         displayText2:"",
@@ -1277,7 +1242,7 @@ export default {
         isModalOpen: false,
         selectedImage: "", // Store the selected image data
        // imageUrl: '', // To store the resized image URL
-        experiences: [{organization: "Name",designation: "Designation",jobDescription: "Description here",joiningDate: "",endDate: "",}], // Array to store experience data
+        experiences: [{organization: "Organization",designation: "Designation",jobDescription: "Description here",joiningDate: "2018",endDate: "2021",}], // Array to store experience data
         educations: [{university:"Name",degree:"Degree",score:"3.2 CGPA", completeDate:"1990-07-01"}], // Array to store education data
         skills: [{name:"PHOTOSHOP"}], // Array to store skill data
         projects:[{name:"Project 1"}],
@@ -1319,35 +1284,18 @@ export default {
     };
   },
 
-//   methods: {
-//     handleImageUpload(event) {
-//       const file = event.target.files[0];
-//       if (file) {
-//         const reader = new FileReader();
-//         reader.onload = (e) => {
-//           this.imageUrl = e.target.result;
-//         };
-//         reader.readAsDataURL(file);
-//       }
-//     }
-//   },
-
-//   methods: {
-//     toggleExperience() {
-//       this.isExperienceExpanded = !this.isExperienceExpanded;
-//     },
-//   },
-
-//   methods: {
-//     handleMaritalStatusChange() {
-//       // The selected value is available in this.maritalStatus
-//       console.log('Selected Marital Status:', this.selectedMaritalStatus);
-
-//       // You can perform additional actions here if needed
-//     },
-//   },
 
   methods: {
+
+    // Handle the event emitted by the child component
+    handleImageCropped(croppedImageData) {
+      this.croppedImage = croppedImageData;
+    },
+
+    handleImageId(imageId) {
+      // This method is called when the child component emits the event
+      this.receivedImageId = imageId;
+    },
 
     updateText() {
       // Update the text based on the checkbox state
@@ -1358,36 +1306,7 @@ export default {
       // Update the text based on the checkbox state
       this.displayText2 = this.hideDate2 ? "Continue" : "";
     },
-      openModal() {
-            this.showModal = true;
-      },
-      closeModal() {
-        this.showModal = false;
-      },
-      cropImage() {
-      const result = this.$refs.cropper.getResult();
-      const imageDataURL = result.canvas.toDataURL("image/jpeg");
-
-        // Update the src attribute of the img element
-        const imgElement = document.getElementById("croppedImage");
-        if (imgElement) {
-          imgElement.src = imageDataURL;
-        }
-        this.showModal = false;
-      },
-      handleImageUpload(event) {
-      const file = event.target.files[0]; // Get the selected file
-      
-      if (file) {
-        // Read the selected file as a data URL
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.selectedImage = reader.result; // Update the selectedImage data property
-        };
-        reader.readAsDataURL(file);
-      }
-    },
-
+     
       addNewExperience() {
         // Add a new experience object to the array with empty values
         this.experiences.push({
@@ -1403,10 +1322,7 @@ export default {
       this.experiences.pop();
     },
 
-    //   toggleCollapseForm() {
-      // Toggle the visibility of the input fields form
-    //   this.hideInputFields = !this.hideInputFields;
-    // },
+  
 
     addNewEducation() {
         // Add a new education object to the array with empty values
@@ -1492,44 +1408,14 @@ export default {
         });
       },
       
-      // deleteReference(index) {
-        // Delete the reference object at the specified index
-      //   this.references.splice(index, 1);
-      // },
+
 
       deleteReference: function() {
       // Use the pop() method to remove the last element from the array
       this.references.pop();
     },
-      handleUpload(event) {
-      const file = event.target.files[0];
-
-      if (file) {
-        // Create a FileReader to read the selected image
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-          const img = new Image();
-          img.src = e.target.result;
-
-          // Resize the image
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = 142; // Set the desired width
-            canvas.height = 142; // Set the desired height
-
-            ctx.drawImage(img, 0, 0, 142, 142);
-
-            // Convert the canvas to a data URL and set it as imageUrl
-            this.imageUrl = canvas.toDataURL('image/jpeg');
-          };
-        };
-
-        reader.readAsDataURL(file);
-      }
-    },
-
+    
+  
   
     },
 
@@ -1985,6 +1871,7 @@ export default {
     .languages-container {
         width: 100%;
         padding: 10px 30px 0px 30px;
+        display:inline-block;
     }
 
     .languages-container h2 {
@@ -2000,10 +1887,12 @@ export default {
         width: 170px;
         padding: 0px 3px 0px 5px;
         margin-bottom: 10px;
+        display:inline-block;
     }
 
     .languages-section .languages-details {
         width: 50%;
+        display:inline-block;
     }
 
     /* .languages-details div p {
@@ -2037,9 +1926,9 @@ line-height: 5px;
         margin: 10px 0px 0px 0px;
 
     }
-
+  /*
     .modal {
-        /* position: fixed; */
+       position: fixed;
         margin:0px;
         width: 500px;
         height: 500px;
@@ -2055,51 +1944,12 @@ line-height: 5px;
         padding: 20px;
         width: 500px;
         height: 500px;
-        /* z-index: 999;  */
+        /* z-index: 999;  
         border-radius: 5px;
-        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
       }
-      
-      .close-button {
-        /* position: absolute; */
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        font-size: 20px;
-      }
-
-
-      .example-cropper {
-      border: solid 1px #eee;
-      min-height: 300px;
-      width: 500px;
-      height: 500px;
-    }
-    
-    .button-wrapper {
-      display: flex;
-      justify-content: center;
-      margin-top: 17px;
-    }
-    
-    .cropbutton {
-      color: white;
-      font-size: 16px;
-      padding: 10px 20px;
-      background: #35b392;
-      cursor: pointer;
-      transition: background 0.5s;
-      font-family: Open Sans, Arial;
-      margin: 0 10px;
-    }
-    
-    .cropbutton:hover {
-      background: #38d890;
-    }
-    
-    .cropbutton input {
-      display: none;
-    }
+       */
+ 
 
     .add-experience{
       border-color: #FF6600 !important;

@@ -1,4 +1,4 @@
-import './bootstrap';
+// import './bootstrap';
 
 // import Alpine from 'alpinejs';
 
@@ -17,10 +17,17 @@ import 'bootstrap/dist/js/bootstrap.js'; // You may not need this line if you do
 // import 'vue-cropperjs/dist/vue-cropper.css';
 import { Cropper } from "vue-advanced-cropper";
 import "vue-advanced-cropper/dist/style.css";
+// import 'bootstrap'
 import './bootstrap';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
+// import SlotComp from './components/SlotComp.vue'
+import 'boxicons/css/boxicons.min.css';
 
+// Now you can use Boxicons in your HTML or Vue/React templates.
+
+
+// app.component('slot-comp', SlotComp)
 // Vue.use(VueCropper);
 createInertiaApp({
     resolve: name => {
