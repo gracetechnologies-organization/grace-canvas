@@ -83,16 +83,16 @@
                                         </td>
                                         <td>
                                             @if ($Subscription->ends_at == null)
-                                                @php
+                                                {{--  @php
                                                 $trialEndDate = $Subscription->created_at;
                                                 $currentDate = now();
                                                 $daysDifference = $currentDate->diffInDays($trialEndDate);
                                                 @endphp
-                                                @if ($daysDifference < 5)
+                                                @if ($daysDifference < 5)  --}}
                                                     <a href="#" wire:click="cancel({{ $Subscription->id }})">
                                                     <i class="bi bi-x-square-fill"></i>
                                                     </a>
-                                                @endif
+                                                {{--  @endif  --}}
                                             @endif
                                                 @if ($Subscription->stripe_status == 'canceled')
                                                     <a href="#" wire:click="delete({{ $Subscription->id }})">

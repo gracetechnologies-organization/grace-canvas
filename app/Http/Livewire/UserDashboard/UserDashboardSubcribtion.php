@@ -19,23 +19,17 @@ class UserDashboardSubcribtion extends Component
 
     public function mount()
     {
-        $this->Subscriptions = Subscription::with('plan')->where('user_id', auth()->id())->get();
-        // try {
-        //     $this->Subscriptions = Subscription::join('plans', 'subscriptions.stripe_price', '=', 'plans.stripe_plan')
-        //         ->select('subscriptions.*', 'plans.*')
-        //         ->where('subscriptions.user_id', Auth::id())
-        //         ->get();
-        // } catch (Exception $e) {
-        //     // Handle the exception, e.g., log the error
-        //     dd($e->getMessage());
-        // }
+        // $this->Subscriptions = Subscription::with('plan')->where('user_id', auth()->id())->get();
+        $this->Subscriptions = Subscription::join('plans', 'subscriptions.stripe_price', '=', 'plans.stripe_plan')
+            ->select('subscriptions.*', 'plans.name', 'plans.price')
+            ->where('subscriptions.user_id', Auth::id())
+            ->get();
     }
 
     public function cancel($subscriptionId)
     {
         try {
             $subscription = auth()->user()->subscriptions->find($subscriptionId);
-            // dd( $subscription);
             if ($subscription) {
                 if ($subscription->trial_ends_at) {
                     $subscription->trial_ends_at = null;
@@ -48,7 +42,6 @@ class UserDashboardSubcribtion extends Component
                 $subscription->cancel();
                 $this->cancelSuccessMessage = 'Subscription canceled successfully.';
             }
-
         } catch (Exception $e) {
             dd($e->getMessage());
         }
@@ -56,11 +49,9 @@ class UserDashboardSubcribtion extends Component
         // public function cancel()
         // {
         //     $activeSubscriptions = auth()->user()->subscriptions()->active()->get();  // getting all the active subscriptions
-
         //     foreach ($activeSubscriptions as $subscription) {
         //         $subscription->cancel(); // cancelling each of the active subscription
         //     }
-
         //      $this->cancelSuccessMessage = 'Subscription canceled successfully.';
         // }
     }
