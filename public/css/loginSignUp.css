@@ -122,6 +122,17 @@
     margin-bottom: 200px;
 }
 
+.reset-password {
+    border: 3px dashed #F60;
+    text-align: justify;
+    padding: 1rem;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    width: 20%;
+}
+
 .standard-heading-css {
     color: #F60;
     text-align: justify;
@@ -405,5 +416,17 @@
         font-size: 1rem;
         font-weight: 500;
         font-family: Poppins;
+    }
+}
+
+@media(min-width:1024px) {
+    .reset-password {
+        border: 3px dashed #F60;
+        padding: 1.5rem;
+        width: 50%;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 200px;
+        width: 40%;
     }
 }

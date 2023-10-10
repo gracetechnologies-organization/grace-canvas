@@ -10,7 +10,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="{{ asset('css/homePage.css') }}" rel="stylesheet" />
-    
+
     @if (Route::current()->uri == 'templates/resume')
         <link href="{{ asset('css/resumeTempletes.css') }}" rel="stylesheet" />
     @endif
@@ -19,11 +19,11 @@
         $EditingRoutes = ['edit/resume/{ID}', 'edit/saved/resume/{ID}'];
     @endphp
     @if (in_array(Route::current()->uri, $EditingRoutes))
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-cyzxRvewl+FOKTtpBzYjW6x6IAYUCZy3sGP40hn+DQkqeluGRCax7qztK2ImL64SA+C7kVWdLI6wvdlStawhyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-cyzxRvewl+FOKTtpBzYjW6x6IAYUCZy3sGP40hn+DQkqeluGRCax7qztK2ImL64SA+C7kVWdLI6wvdlStawhyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @endif
 
     @php
-        $RegistrationRoutes = ['register','login','edit/resume/{ID}', 'edit/saved/resume/{ID}'];
+        $RegistrationRoutes = ['register', 'login', 'edit/resume/{ID}', 'edit/saved/resume/{ID}', 'forgot-password', 'reset-password/{token}'];
     @endphp
     @if (in_array(Route::current()->uri, $RegistrationRoutes))
         <link href="{{ asset('css/loginSignUp.css') }}" rel="stylesheet" />
@@ -33,11 +33,11 @@
         $UserDashboardRoutes = ['user/dashboard/home', 'user/dashboard/settings', 'user/dashboard/subcribtion', 'user/dashboard/templates'];
     @endphp
     @if (in_array(Route::current()->uri, $UserDashboardRoutes))
-    <link href="{{ asset('css/userDashboards.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/userDashboards.css') }}" rel="stylesheet" />
     @endif
 
     @if (Route::current()->uri == 'payment/subscription')
-    <link href="{{ asset('css/subscriptionPlan.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/subscriptionPlan.css') }}" rel="stylesheet" />
     @endif
 
     <!-- Boxicons -->

@@ -8,12 +8,19 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
         <div class="my-2 mb-2">
-            <label for="password" class="mt-2" :value="__('Password')"> {{ app('googleTranslator', ['string' => 'Password']) }} </label>
+            <div class=" float-start"><label for="password" class="mt-2" :value="__('Password')"> {{ app('googleTranslator', ['string' => 'Password']) }} </label></div>
+            <div class=" float-end">
+                <label for="password" class="mt-2" :value="__('Password')">
+                @if (Route::has('password.request'))
+                 <a href="{{ route('password.request') }}">{{ app('googleTranslator', ['string' => 'Forget Your Password ?']) }} </a>
+                 @endif
+                </label></div>
             <input type="password" id="password" class="mt-2 form-control" name="password" required autocomplete="current-password">
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
         <div class="my-2 mb-2">
-            <label class="mt-2 form-check-label" class="mt-2"><input type="checkbox"> {{ app('googleTranslator', ['string' => 'Remember Me']) }} </label>
+            <label class="mt-2 form-check-label" class="mt-2">
+                <input type="checkbox" required> {{ app('googleTranslator', ['string' => 'Remember Me']) }} </label>
         </div>
         <button type="submit" class="custom-login-signup-css ">
             <a class="nav-link" href="{{ route('register') }}"> {{ app('googleTranslator', ['string' => 'Register']) }} </a>
