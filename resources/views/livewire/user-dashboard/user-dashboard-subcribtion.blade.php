@@ -50,18 +50,20 @@
                                     @foreach ($Subscriptions as $Subscription)
                                     <tr>
                                         <th scope="row">
-                                            @if ($Subscription->plan)
+                                            {{ $Subscription->plan->name }}
+                                            {{--  @if ($Subscription->plan)
                                             {{ $Subscription->plan->name }}
                                             @else
                                             Null
-                                            @endif
+                                            @endif  --}}
                                         </th>
                                         <td>
-                                            @if ($Subscription->plan)
+                                            ${{ $Subscription->price }}
+                                            {{--  @if ($Subscription->plan)
                                             ${{ $Subscription->plan->price }}
                                             @else
                                             Null
-                                            @endif
+                                            @endif  --}}
                                         </td>
                                         <td>{{ $Subscription->quantity }}</td>
                                         <td>
