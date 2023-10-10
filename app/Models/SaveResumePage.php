@@ -22,7 +22,10 @@ class SaveResumePage extends Model
     | Relations
     |--------------------------------------------------------------------------
     */
-    //
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -45,9 +48,9 @@ class SaveResumePage extends Model
         return SaveResumePage::where('id',$ID)->update(['page_code' => $PageCode]);
     }
 
-    public function user()
+    public static function deletePage(int $ID)
     {
-        return $this->belongsTo(User::class);
+        return SaveResumePage::find($ID)->forceDelete();
     }
 
     public static function getSavedPageByID(int $ID)
@@ -55,8 +58,9 @@ class SaveResumePage extends Model
         return SaveResumePage::findOrFail($ID);
     }
 
-    // public static function getSavedPages()
-    // {
-    //     return SaveResumePage::with('category');
-    // }
+    public static function getSavedPageByUserID(int $UserID)
+    {
+        return SaveResumePage::with('user')->where('user_id', $UserID)->get();
+    }
+
 }

@@ -6,6 +6,7 @@ use App\Models\Resume;
 use App\Models\SaveResumePage;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class SaveResumePageController extends Controller
@@ -20,9 +21,9 @@ class SaveResumePageController extends Controller
                 'PageCode' => 'required|string'
             ]);
             if ($Validator->fails()) echo "ValidationFailed: " . $Validator->errors();
+
             $FrontImage = Resume::getResumeByID($Req->RequestedTemplateID)->front_image;
-            // saveResume(int $UserID, $ResumeID, $FrontImage, $FormData, $PageCode)
-            $Saved = SaveResumePage::savePage(1, $Req->RequestedTemplateID, $FrontImage, '$Req->FormData', $Req->PageCode);
+            $Saved = SaveResumePage::savePage(Auth::id(), $Req->RequestedTemplateID, $FrontImage, '$Req->FormData', $Req->PageCode);
             if ($Saved) {
                 return "SavedSuccessfully";
             }
@@ -40,12 +41,12 @@ class SaveResumePageController extends Controller
                 'RequestedPageID' => 'required|integer',
                 'PageCode' => 'required|string'
             ]);
-
             if ($Validator->fails()) {
                 return response()->json(['error' => 'ValidationFailed', 'message' => $Validator->errors()], 400);
             }
-            $Update = SaveResumePage::updatePage($Req->RequestedPageID, $Req->PageCode);
-            if ($Update) {
+
+            $Updated = SaveResumePage::updatePage($Req->RequestedPageID, $Req->PageCode);
+            if ($Updated) {
                 return response()->json(['message' => 'SavedSuccessfully'], 200);
             }
             return response()->json(['error' => 'ErrorInSaving'], 500);

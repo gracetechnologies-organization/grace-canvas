@@ -22,16 +22,5 @@
             {{ app('googleTranslator', ['string' => 'Login']) }}
         </button>
     </form>
-    {{--  <div class="text-center custom-google-facrbook-login center-block ">
-        <div class="mb-2">
-            <a class="" href="{{ route('google.page') }}">
-                <button type="submit" class="p-2 custom-google-login-signup btn-block"><span class="bi bi-google"></span>{{ GoogleTranslate::trans('Google Login', app()->getLocale()) }}</button>
-            </a>
-        </div>
-        <div>
-            <a class="" href="#">
-                <button type="submit" class="p-2 custom-linkedin-login-signup btn-block"><span class="bx bxl-linkedin bx-linkedin"></span>{{ GoogleTranslate::trans('LinkedIn Login', app()->getLocale()) }}</button>
-            </a>
-        </div>
-    </div>  --}}
+    @include('components.social-logins')
 </div>

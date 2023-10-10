@@ -12651,6 +12651,13 @@ body {
     font-size: 20px;
 }
 
+.custom-select-language select {
+    background-color: var(--custom-theme-color);
+    border: none;
+    color: white;
+    width: 50px;
+}
+
 .my-account-custom-btn span {
     background-color: #F9F9F9;
     color: black;
@@ -12713,7 +12720,8 @@ body {
     font-weight: 600;
     line-height: normal;
 }
-.standard-heading-subscription h2{
+
+.standard-heading-subscription h2 {
     color: #F60;
     /* text-align: justify; */
     font-family: Poppins;
@@ -12722,7 +12730,8 @@ body {
     font-weight: 600;
     /* line-height: normal; */
 }
-.standard-heading-subscription h3{
+
+.standard-heading-subscription h3 {
     color: #F60;
     /* text-align: justify; */
     font-family: Poppins;
@@ -12795,6 +12804,10 @@ body {
 }
 
 /* footer section */
+footer {
+    background-color: var(--custom-theme-color);
+}
+
 .footer-section {
     margin-bottom: 5rem !important;
 }
@@ -12894,6 +12907,17 @@ body {
     background: #8a3ab9;
 }
 
+/* subscription form page css */
+.card-header {
+    background-color: var(--custom-theme-color);
+    color: #ffffff;
+}
+
+.buy-now-premium-template {
+    border: 2px dashed var(--custom-theme-color);
+    border-radius: 0.5rem;
+}
+
 /* To render all the CSS colors in the print preview */
 @media print {
     html {
@@ -12903,6 +12927,60 @@ body {
 }
 
 /* ----------------General media queries---------------- */
+@media (max-width: 768px) {
+    .dropdown-content {
+        border-radius: 0px 0px 15px 15px;
+        display: none;
+        margin: 0rem 0rem 0rem 0rem;
+        position: absolute;
+        background-color: #F9F9F9;
+        min-width: 180px;
+        padding: 20px 10px 10px 27px;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-select-language select {
+        word-wrap: normal;
+        background-color: var(--custom-theme-color);
+        border: none;
+        color: white;
+        width: 50px;
+        margin-top: 1.2rem;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-dropdown {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .buy-now-premium-template h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .buy-now-premium-template h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .buy-now-premium-template h3 {
+        font-size: 1.2rem;
+    }
+}
+
 
 /* responsive css homePage */
 @media only screen and (max-width:2560px) and (min-width:951px) {

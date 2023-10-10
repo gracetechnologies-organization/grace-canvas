@@ -2,7 +2,7 @@
     <div class="demo">
         <div class="container mt-5 mb-5">
             @if (session('subscription_message'))
-                <div class="modal fade show madel" id="subscription-message-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
+                <div class="modal fade show " id="subscription-message-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -17,7 +17,7 @@
                 </div>
             @endif
             @if (session()->has('subscription_success'))
-                <div class="modal fade show madel" id="subscription-success-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
+                <div class="modal fade show " id="subscription-success-modal" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true" style="display: block;">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -43,40 +43,25 @@
                 @forelse ($Plans as $Plan)
                     <div class="col-md-4 col-sm-6">
                         <div class="pricingTable pink">
-                            <h3 class="title">{{ $Plan->name }}</h3>
+                            <h3 class="title">{{ app('googleTranslator', ['string' =>  $Plan->name]) }}</h3>
                             <div class="price-value">
                                 <span class="currency">$</span>
-                                <span class="amount">{{ $Plan->price }}</span>
-                                <span class="month">{{ $Plan->interval_count }}/month</span>
+                                <span class="amount">{{ app('googleTranslator', ['string' =>  $Plan->price]) }}</span>
+                                <span class="month">{{ app('googleTranslator', ['string' =>  $Plan->interval_count]) }}/{{ app('googleTranslator', ['string' => 'month']) }}</span>
                             </div>
                             <ul class="pricing-content">
-                                <li><span class="bx bx-check me-2"></span>All Premium templates</li>
-                                <li><span class="bx bx-check me-2"></span>24/7 support</li>
+                                <li><span class="bx bx-check me-2"></span>{{ app('googleTranslator', ['string' => 'All Premium Templates']) }}</li>
+                                <li><span class="bx bx-check me-2"></span>24/7 {{ app('googleTranslator', ['string' =>  'Support']) }}</li>
                             </ul>
                             <a href="{{ route('subscription.form', ['ID' => $Plan->id, 'month' => $Plan->interval_count]) }}" class="pricingTable-signup">
-                                BUY NOW
+                                {{ app('googleTranslator', ['string' =>  'BUY NOW']) }}
                             </a>
                         </div>
                     </div>
                 @empty
-                    <h1 class="text-center"> No Plans Created Yet..!! </h1>
+                    <h1 class="text-center"> {{ app('googleTranslator', ['string' =>  'No Plans Created Yet..!!']) }} </h1>
                 @endforelse
             </div>
         </div>
     </div>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    {{-- <script>
-        $(document).ready(function() {
-            @if (session('subscription_message'))
-                // Open the modal when the page is reloaded
-                $('#subscription-message-modal').modal('show');
-            @endif
-            @if (session('subscription_success'))
-                $('#subscription-success-modal').modal('show');
-            @endif
-            @if (session('success'))
-                $('#customModal').modal('show');
-            @endif
-        });
-    </script> --}}
 </div>

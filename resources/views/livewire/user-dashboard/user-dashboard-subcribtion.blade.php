@@ -34,67 +34,71 @@
                                 </div>
                             @endif
                             @if (count($Subscriptions) > 0)
-                                <table class="table custome-card-border">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">{{ strtoupper('plan name') }}</th>
-                                            <th scope="col">{{ strtoupper('price') }}</th>
-                                            <th scope="col">{{ strtoupper('quantity') }}</th>
-                                            <th scope="col">{{ strtoupper('trail_at_end') }}</th>
-                                            <th scope="col">{{ strtoupper('end_at') }}</th>
-                                            <th scope="col">{{ strtoupper('status') }}</th>
-                                            <th scope="col">{{ strtoupper('action') }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($Subscriptions as $Subscription)
-                                            <tr>
-                                                <th scope="row">
-                                                    @if ($Subscription->plan)
-                                                        {{ $Subscription->plan->name }}
-                                                    @else
-                                                        Null
-                                                    @endif
-                                                </th>
-                                                <td>
-                                                    {{-- @dd($Subscription->plan->price) --}}
-                                                    @if ($Subscription->plan)
-                                                        ${{ $Subscription->plan->price }}
-                                                    @else
-                                                        Null
-                                                    @endif
-                                                </td>
-                                                <td>{{ $Subscription->quantity }}</td>
-                                                <td>
-                                                    @if ($Subscription->trial_ends_at == null)
-                                                        Null
-                                                    @else
-                                                        {{ $Subscription->trial_ends_at }}
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($Subscription->ends_at == null)
-                                                        Null
-                                                    @else
-                                                        {{ $Subscription->ends_at }}
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    {{ $Subscription->stripe_status }}
-                                                </td>
-                                                <td>
-                                                    @if ($Subscription->ends_at == null)
-                                                        @php
-                                                            $trialEndDate = $Subscription->created_at;
-                                                            $currentDate = now();
-                                                            $daysDifference = $currentDate->diffInDays($trialEndDate);
-                                                        @endphp
-                                                        @if ($daysDifference < 5)
-                                                            <a href="#" wire:click="cancel({{ $Subscription->id }})">
-                                                                <i class="bi bi-x-square-fill"></i>
-                                                            </a>
-                                                        @endif
-                                                    @endif
+                            <table class="table custome-card-border">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('plan name')]) }}</th>
+                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('price')]) }}</th>
+                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('quantity')]) }}</th>
+                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('trail-at-end')]) }}</th>
+                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('end-at')]) }}</th>
+                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('status')]) }}</th>
+                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('action')]) }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($Subscriptions as $Subscription)
+                                    <tr>
+                                        <th scope="row">
+                                            @if ($Subscription->plan)
+                                            {{ $Subscription->plan->name }}
+                                            @else
+                                            Null
+                                            @endif
+                                        </th>
+                                        <td>
+                                            @if ($Subscription->plan)
+                                            ${{ $Subscription->plan->price }}
+                                            @else
+                                            Null
+                                            @endif
+                                        </td>
+                                        <td>{{ $Subscription->quantity }}</td>
+                                        <td>
+                                            @if ($Subscription->trial_ends_at == null)
+                                            Null
+                                            @else
+                                            {{ $Subscription->trial_ends_at }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($Subscription->ends_at == null)
+                                            Null
+                                            @else
+                                            {{ $Subscription->ends_at }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ $Subscription->stripe_status }}
+                                        </td>
+                                        <td>
+                                            @if ($Subscription->ends_at == null)
+                                                @php
+                                                $trialEndDate = $Subscription->created_at;
+                                                $currentDate = now();
+                                                $daysDifference = $currentDate->diffInDays($trialEndDate);
+                                                @endphp
+                                                @if ($daysDifference < 5)
+                                                    <a href="#" wire:click="cancel({{ $Subscription->id }})">
+                                                    <i class="bi bi-x-square-fill"></i>
+                                                    </a>
+                                                @endif
+                                            @endif
+                                                @if ($Subscription->stripe_status == 'canceled')
+                                                    <a href="#" wire:click="delete({{ $Subscription->id }})">
+                                                    <i class='bx bxs-trash'></i>
+                                                @endif
+                                        </td>
 
                                                     {{-- @if ($Subscription->ends_at == null)
                                                     <a href="#" wire:click="cancel({{ $Subscription->id }})"><i
@@ -113,10 +117,10 @@
                                     </tbody>
                                 </table>
                             @else
-                                <h2>
-                                    You Have Not Subscribed For Any Plan
-                                    <a href="{{ route('subscription') }}">Subscribe Now</a>
-                                </h2>
+                            <h2>
+                                {{ app('googleTranslator', ['string' => 'You Have Not Subscribed For Any Plan']) }}
+                                <a href="{{ route('subscription') }}">{{ app('googleTranslator', ['string' => 'Subscribe Now']) }}</a>
+                            </h2>
                             @endif
                             {{-- @foreach ($Subscriptions as $Subscription)
                             <div class="col-md-4 col-sm-6">

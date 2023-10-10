@@ -17,23 +17,21 @@
                             </div>
                         @endif
                         <div class="row">
-                            <div class="card mb-4 custome-card-border">
+                            <div class="mb-4 card custome-card-border">
                                 <h5 class="card-header">Profile Details</h5>
-                                <!-- Account -->
                                 <div class="card-body">
                                     <input type="hidden" name="id" value="">
                                     <div class="row">
                                         <div class="mb-3 col-md-6">
-                                            <label for="name" class="form-label">Name</label>
-                                            <p>{{ $data->name }}</p>
+                                            <label for="name" class="form-label">{{ app('googleTranslator', ['string' => 'Name']) }}</label>
+                                            <p>{{ app('googleTranslator', ['string' => $data->name ]) }}</p>
                                         </div>
                                         <div class="mb-3 col-md-6">
-                                            <label for="email" class="form-label">E-mail</label>
-                                            <p>{{ $data->email }}</p>
+                                            <label for="email" class="form-label">{{ app('googleTranslator', ['string' => 'E-mail']) }}</label>
+                                            <p>{{ app('googleTranslator', ['string' => $data->email ]) }}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /Account -->
                             </div>
                         </div>
                     </div>

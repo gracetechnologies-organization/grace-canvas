@@ -18,14 +18,14 @@ class SubscriptionController extends Controller
             $subscription = Subscription::where('user_id', $UserID)->first();
 
             if ($subscription && $subscription->is_subscribed) {
-                return redirect()->route('subscription')->with('subscription_error', 'You are already subscribed to the plan');
+                return redirect()->back()->with('subscription_error', 'You are already subscribed to the plan');
             }
 
             // $user = auth()->user();
             $subscription = auth()->user()->newSubscription($request->name, $request->plan)->create($request->token);
             if ($subscription) {
                 if ($subscription->trial_ends_at) $subscription->trial_ends_at = null;
-                
+
                 $subscription->trial_ends_at = now()->addMonths($request->month);
                 // $subscription->subscription_type = false;
                 // $subscription->deleted_at = now();
@@ -40,10 +40,10 @@ class SubscriptionController extends Controller
                 //     ]);
                 // }
             }
-            return redirect()->route('subscription')->with('subscription_success', 'Your Subscription Successful');
+            return redirect()->back()->with('subscription_success', 'Your Subscription Successful');
         } catch (\Exception $e) {
             // Handle exceptions, e.g., display an error message
-            return $e->getMessage(); 
+            return $e->getMessage();
         }
     }
 }

@@ -44,7 +44,8 @@ class CheckSubscriptionStatus
         try {
             $user = User::getUserData();
             if ($user) {
-                $subscription = $user->subscription; // Assuming you have a relationship set up in your User model
+                // Assuming that you already have a relation setup in your User model
+                $subscription = $user->subscription;
 
                 if ($subscription && now() > $subscription->trial_ends_at) {
                     // Subscription period has ended, set trial_ends_at to null
@@ -55,15 +56,12 @@ class CheckSubscriptionStatus
                         'subscription_type' => 0,
                         'stripe_status' => 'canceled',
                     ]);
-
-                        session()->flash('subscription_message', 'Your subscription has expired. Purchase a new subscription');
-            
-                    // session()->flash('subscription_message', '<a href="/purchase">Purchase a new subscription</a>');
+                    session()->flash('subscription_message', 'Your subscription has expired. Purchase a new subscription');
                 }
             }
             return $next($request);
         } catch (Exception $e) {
-            dd($e->getMessage());
+            return $e->getMessage();
         }
     }
 }

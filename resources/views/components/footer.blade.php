@@ -1,5 +1,5 @@
 <!-- footer section -->
-<footer style="background-color:var(--custom-theme-color)">
+<footer>
     <div class="container pt-5 pb-5 pl-2 ">
         <div class="row footers-section ">
             <div class="mt-5 col-lg-4 col-md-6 col-sm-12">
@@ -66,7 +66,7 @@
         </div>
     </div>
     <div class="p-3 px-5 container-fluid footer-copy-right">
-        <p class="m-0 text-center text-white">{{ app('googleTranslator', ['string' => 'copyright@gracetechnoglogiespk']) }}</p>
+        <p class="m-0 text-center text-white">{{ app('googleTranslator', ['string' => 'copyright@']) }}{{ app('googleTranslator', ['string' => 'gracetechnoglogiespk']) }}</p>
     </div>
 </footer>
 

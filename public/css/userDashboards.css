@@ -75,12 +75,13 @@
 }
 
 .btn-transparent:focus {
-    outline: none;    /* Remove the outline */
-    border:2px solid var(--custom-theme-color) ;
+    outline: none;
+    /* Remove the outline */
+    border: 2px solid var(--custom-theme-color);
 }
 
-.custome-button-user-templates{
-    padding:1rem;
+.custome-button-user-templates {
+    padding: 1rem;
 }
 
 /* Additional CSS for responsive design */

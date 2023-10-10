@@ -3,7 +3,6 @@
     <section class="category-section">
         <div class="container-fluid">
             <div class="ml-5 row custome-background">
-
                 {{--  
                 <div class="text-center ">
                     <h2 class="mt-5 text-center standard-heading-css">{{ app('googleTranslator', ['string' => 'Categories']) }}</h2>
