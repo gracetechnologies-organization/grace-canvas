@@ -4,6 +4,8 @@ namespace App\Http\Livewire\UserDashboard;
 
 use App\Models\SubcribePlan;
 use App\Models\User;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Cashier\Subscription;
 use Livewire\Component;
@@ -18,22 +20,37 @@ class UserDashboardSubcribtion extends Component
     public function mount()
     {
         $this->Subscriptions = Subscription::with('plan')->where('user_id', auth()->id())->get();
+        // try {
+        //     $this->Subscriptions = Subscription::join('plans', 'subscriptions.stripe_price', '=', 'plans.stripe_plan')
+        //         ->select('subscriptions.*', 'plans.*')
+        //         ->where('subscriptions.user_id', Auth::id())
+        //         ->get();
+        // } catch (Exception $e) {
+        //     // Handle the exception, e.g., log the error
+        //     dd($e->getMessage());
+        // }
     }
 
     public function cancel($subscriptionId)
     {
-        $subscription = auth()->user()->subscriptions->find($subscriptionId);
-        if ($subscription) {
-            if ($subscription->trial_ends_at) {
-                $subscription->trial_ends_at = null;
+        try {
+            $subscription = auth()->user()->subscriptions->find($subscriptionId);
+            // dd( $subscription);
+            if ($subscription) {
+                if ($subscription->trial_ends_at) {
+                    $subscription->trial_ends_at = null;
+                }
+                $subscription->is_subscribed = false;
+                $subscription->subscription_type = false;
+                // $subscription->deleted_at = now();
+                $subscription->save();
+                // Cancel the subscription
+                $subscription->cancel();
+                $this->cancelSuccessMessage = 'Subscription canceled successfully.';
             }
-            $subscription->is_subscribed = false;
-            $subscription->subscription_type = false;
-            // $subscription->deleted_at = now();
-            $subscription->save();
-            // Cancel the subscription
-            $subscription->cancel();
-            $this->cancelSuccessMessage = 'Subscription canceled successfully.';
+
+        } catch (Exception $e) {
+            dd($e->getMessage());
         }
 
         // public function cancel()
@@ -51,29 +68,26 @@ class UserDashboardSubcribtion extends Component
     public function delete($subscriptionId)
     {
         try {
-            // Find the subscription by ID
+
             $subscription = auth()->user()->subscriptions->find($subscriptionId);
             if (!$subscription) {
-                return redirect()->route('subscription')->with('error', 'Subscription not found.');
+                return redirect()->back()->with('error', 'Subscription not found.');
             }
-            // Check if the subscription has been canceled
+
             if ($subscription->stripe_status == 'canceled') {
-                // Delete the subscription from Stripe
-                // $subscription->cancelNow(); // This will delete the subscription from Stripe
-                // Delete the subscription locally
-                // $subscription->delete(); // This will delete the subscription record from your database
                 $subscription->delete();
                 $this->cancelSuccessMessage = 'Subscription has been deleted.';
             } else {
                 $this->cancelSuccessMessage = 'Subscription cannot be deleted as it is not canceled.';
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $e->getMessage(); // Handle exceptions, e.g., display an error message
         }
     }
 
     public function render()
     {
+        // dd($this->Subscriptions);
         return view('livewire.user-dashboard.user-dashboard-subcribtion');
     }
 }
