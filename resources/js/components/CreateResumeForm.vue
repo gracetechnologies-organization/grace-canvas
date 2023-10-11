@@ -72,6 +72,19 @@
     </div>
 </nav>
 
+<div class="fixed-btn-container">
+  <!-- <button @click="exportToPDF">Export to PDF</button> -->
+        <button class="fixed-btn"  @click="exportToPDF" title="Download as PDF or Print" style="color:#FF6600">
+    <i class="bx bx-cloud-download icons-size standard-txt-color"></i>
+</button>        <button class="fixed-btn" onclick="saveTemplate(9,'form-and-template')" title="Save in your dashboard" style="color:#FF6600">
+    <i id="icon" class="bx bx-save icons-size standard-txt-color"></i>
+    <div id="loader" style="display: none;">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden"></span>
+          </div>
+    </div>
+</button>
+    </div>
 
 <div>
   <div>
@@ -978,10 +991,10 @@
         <!-- Resume template will render here -->
         <!-- {{-- @include($ResumeFile) --}} -->
         <!-- Resume template column -->
-        <div class="col-12 col-md-7 col-lg-8" style="overflow:scroll">
+        <div class="col-12 col-md-7 col-lg-8" style="overflow:scroll" >
             <!-- Resume template design  class="container contianer-customs mt-2 border border-danger" id="resume-template-container"        -->
-            <div >
-                <div class="row custom-border" style="width:720px;">
+            <div  >
+                <div class="row custom-border" style="width:720px;" id="element-to-convert">
                     
                     <div class="left-col">
                         <div class="resume-photo" >
@@ -1095,7 +1108,7 @@
                         </div>
                         <div class="achievement-container">
                             <h2>Achievement</h2>
-                            <div class="row achievement-section" id="achievement-section" v-for="(achievement, index) in achievements" :key="index">
+                            <div class="row achievement-section" id="achievement-section" v-for="(achievement, index) in achievements" :key="index"  style="display: inline-block">
                                 <div class="achievement-details" v-if="!hideAchievement">
                                     <p id="AchievementTitle0">{{ achievement.name }}</p>
                                 </div>
@@ -1105,7 +1118,7 @@
                         </div>
                         <div class="project-container">
                             <h2>Project</h2>
-                            <div class="row project-section" id="project-section" v-for="(project, index) in projects" :key="index">
+                            <div class="row project-section" id="project-section" v-for="(project, index) in projects" :key="index"  style="display: inline-block">
                                 <div class="project-details" v-if="!hideProject">
                                     <p id="ProjectTitle0">{{ project.name  }}</p>
                                 </div>
@@ -1115,8 +1128,8 @@
                         </div>
                         <div class="reference-container">
                             <h2>Reference</h2>
-                            <div class="row reference-section" id="reference-section" v-for="(reference, index) in references" :key="index">
-                                <div class="reference-details" v-if="!hideReference">
+                            <div class="row reference-section" id="reference-section" v-for="(reference, index) in references" :key="index"  style="display: inline-block">
+                                <div class="reference-details" v-if="!hideReference" >
                                     <div>
                                         <h3 id="ReferenceName0">{{ reference.name }}</h3>
                                         <p id="ReferenceDesignation0">{{ reference.designation }}</p>
@@ -1129,7 +1142,7 @@
                         </div>
                         <div class="languages-container">
                             <h2>Language</h2>
-                            <div class="row languages-section" id="languages-section" v-for="(language, index) in languages" :key="index">
+                            <div class="row languages-section" id="languages-section" v-for="(language, index) in languages" :key="index" style="display: inline-block;  width: 250px; ">
                                 <div class="languages-details" v-if="!hideLanguage">
                                     <div class="row col-12">
                                         <div class="col-6">
@@ -1150,7 +1163,7 @@
                             </div>
                         </div>
 
-                        <div class="container">
+                        <!-- <div class="container">
                           <div class="row">
                             <div class="col">
                               Column
@@ -1162,7 +1175,7 @@
                               Column
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -1213,7 +1226,7 @@
 <script>
 // import ImageCode from './ImageCode.vue';
 import ChildComponent2 from './ChildComponent2.vue'; // Import the child component
-
+import html2pdf from "html2pdf.js";
 //  import VueCropper from 'vue-cropperjs';
 //       import { Cropper } from "vue-advanced-cropper";
 //       import "vue-advanced-cropper/dist/style.css";
@@ -1223,7 +1236,9 @@ import ChildComponent2 from './ChildComponent2.vue'; // Import the child compone
       
 
 export default {
-  inject: ['cropImg'],
+  name: "app",
+
+  // inject: ['cropImg'],
   components: {
     ChildComponent2,
     },
@@ -1286,6 +1301,24 @@ export default {
 
 
   methods: {
+
+    exportToPDF() {
+      var element = document.getElementById('element-to-convert');
+var opt = {
+  // margin:       0,
+  margin: [0.2, 0.3, 0.3, 0.3],
+  filename:     'myfile.pdf',
+  image:        { type: 'jpeg', quality: 0.98 },
+  html2canvas:  { scale: 2 },
+  jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+};
+
+// New Promise-based usage:
+html2pdf().set(opt).from(element).save();
+
+// Old monolithic-style usage:
+// html2pdf(element, opt);
+      },
 
     // Handle the event emitted by the child component
     handleImageCropped(croppedImageData) {
@@ -1778,8 +1811,8 @@ export default {
     }
 
     .achievement-section div {
-        height: 47px;
-        width: 50%;
+        /* height: 47px; */
+        width: 250px;
     }
 
     .achievement-details p {
@@ -1813,8 +1846,8 @@ export default {
     }
 
     .project-section div {
-        height: 47px;
-        width: 50%;
+        /* height: 47px; */
+        width: 250px;
     }
 
     .project-details p {
@@ -1847,8 +1880,9 @@ export default {
     }
 
     .reference-section div {
-        height: 47px;
-        width: 50%;
+        /* height: 47px; */
+        width: 250px;
+        
     }
 
     .reference-details div h3 {
@@ -1858,6 +1892,7 @@ export default {
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        
     }
 
     .reference-details div p {
@@ -1871,7 +1906,7 @@ export default {
     .languages-container {
         width: 100%;
         padding: 10px 30px 0px 30px;
-        display:inline-block;
+        /* display:inline-block; */
     }
 
     .languages-container h2 {
@@ -1887,12 +1922,13 @@ export default {
         width: 170px;
         padding: 0px 3px 0px 5px;
         margin-bottom: 10px;
-        display:inline-block;
+        /* display:inline-block; */
     }
 
-    .languages-section .languages-details {
-        width: 50%;
+    .languages-section .languages-detail {
+        /* width: 50%; */
         display:inline-block;
+       
     }
 
     /* .languages-details div p {
