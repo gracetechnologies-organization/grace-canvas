@@ -12,12 +12,7 @@
                             <div class="my-2 mb-2">
                                 <label for="email" class="mt-2" :value="__('Email')"> {{ app('googleTranslator', ['string' => 'Email']) }} </label>
                                 <input type="email" name="email" id="email" class="mt-2 mb-2 form-control" value="{{ old('email') }}" required autofocus autocomplete="username">
-                                <x-input-error :messages="$errors->get('email')" class="mt-2 custom-error-color" />
-                                    <style>
-                                        .custom-error-color{
-                                            color: red;
-                                        }
-                                    </style>
+                                <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
                             </div>
                             <div class="flex items-center">
                                 <button class="btn btn-success">

@@ -5,12 +5,12 @@
         <div class="mt-4">
             <label for="name" :value="__('Name')"> {{ app('googleTranslator', ['string' => 'Name']) }} </label>
             <input type="name" name="name" id="name" class="form-control" value="{{ old('name') }}" required autofocus autocomplete="username">
-            <x-input-error :messages="$errors->get('name')" class="mt-2 " />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
         <div class="mt-4">
             <label for="email" :value="__('Email')"> {{ app('googleTranslator', ['string' => 'Email']) }} </label>
             <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required autofocus autocomplete="username">
-            <x-input-error :messages="$errors->get('email')" class="mt-2 " />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
         <div class="mt-4">
             <label for="password" :value="__('Password')"> {{ app('googleTranslator', ['string' => 'Password']) }} </label>
@@ -28,7 +28,7 @@
         <button type="submit" class="custom-login-signup-css">
             <a class="nav-link" href="{{ route('login') }}"> {{ app('googleTranslator', ['string' => 'Login']) }} </a>
         </button>
-        <button type="submit" class="flex custom-login-signup-css float-end ">
+        <button type="submit" class="flex custom-login-signup-css float-end">
             {{ app('googleTranslator', ['string' => 'Register']) }}
         </button>
     </form>

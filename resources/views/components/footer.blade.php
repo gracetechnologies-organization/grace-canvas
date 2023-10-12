@@ -59,14 +59,17 @@
             <div class="bg-white col-lg-4 col-md-3 col-sm-12"></div>
             <div class="bg-white col-lg-4 col-md-6 col-sm-12 float-center ">
                 <a href="#" class="bx bxl-facebook"></a>
-                <a href="#" class="bx bxl-linkedin"></a>
                 <a href="#" class="bx bxl-instagram"></a>
             </div>
             <div class="bg-white col-lg-4 col-md-3 col-sm-12"></div>
         </div>
     </div>
     <div class="p-3 px-5 container-fluid footer-copy-right">
-        <p class="m-0 text-center text-white">{{ app('googleTranslator', ['string' => 'copyright@']) }}{{ app('googleTranslator', ['string' => 'gracetechnoglogiespk']) }}</p>
+        <p class="m-0 text-center">
+            <a href="https://gracetechnologiespk.com/" class="text-white fs-5 text-decoration-none" target="_blank">
+                {{ app('googleTranslator', ['string' => '© All rights reserved by gracetechnoglogiespk.com']) }}
+            </a>
+        </p>
     </div>
 </footer>
 
