@@ -15,8 +15,8 @@
                                 <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
                             </div>
                             <div class="flex items-center">
-                                <button class="btn btn-success">
-                                    Email Password Reset Link
+                                <button class="custome-css-for-get">
+                                        Send Reset Link
                                 </button>
                             </div>
                         </form>
