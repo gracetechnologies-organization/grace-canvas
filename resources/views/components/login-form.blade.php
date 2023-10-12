@@ -12,7 +12,7 @@
             <div class=" float-end">
                 <label for="password" class="mt-2" :value="__('Password')">
                 @if (Route::has('password.request'))
-                 <a href="{{ route('password.request') }}">{{ app('googleTranslator', ['string' => 'Forget Your Password ?']) }} </a>
+                 <a href="{{ route('password.request') }}" class="text-dark">{{ app('googleTranslator', ['string' => 'Forget your password?']) }} </a>
                  @endif
                 </label></div>
             <input type="password" id="password" class="mt-2 form-control" name="password" required autocomplete="current-password">
@@ -20,7 +20,8 @@
         </div>
         <div class="my-2 mb-2">
             <label class="mt-2 form-check-label" class="mt-2">
-                <input type="checkbox" required> {{ app('googleTranslator', ['string' => 'Remember Me']) }} </label>
+                <input type="checkbox"> {{ app('googleTranslator', ['string' => 'Remember Me']) }} 
+            </label>
         </div>
         <button type="submit" class="custom-login-signup-css ">
             <a class="nav-link" href="{{ route('register') }}"> {{ app('googleTranslator', ['string' => 'Register']) }} </a>

@@ -16,8 +16,11 @@
     font-family: Poppins;
 }
 
-.custom-linkedin-login-signup {
-    background-color: #3b5998;
+.linkedin-bg{
+    background-color: var(--linkedin-color) !important;
+}
+
+.custom-linkedin-login-btn {
     width: 20rem;
     height: 3.438rem;
     color: #fff;
@@ -30,14 +33,17 @@
     font-family: Poppins;
 }
 
-.custom-google-login-signup {
+.google-bg{
+    background-color: var(--google-color) !important;
+}
+
+.custom-google-login-btn {
     background-color: #fff;
-    color: black;
+    color: #fff;
     width: 20rem;
     height: 3.438rem;
-    border: 1px solid black;
+    border: none;
     border-radius: 0.625rem;
-    /* padding: 0.625rem 1rem 0.625rem 1rem; */
     line-height: normal;
     font-style: normal;
     font-size: 1.30rem;
@@ -80,7 +86,7 @@
         margin-top: 5rem;
     }
 
-    .custom-linkedin-login-signup {
+    .custom-linkedin-login-btn {
         background-color: #3b5998;
         width: 15rem;
         height: 3.438rem;
@@ -94,7 +100,7 @@
         font-family: Poppins;
     }
 
-    .custom-google-login-signup {
+    .custom-google-login-btn {
         background-color: #fff;
         color: black;
         width: 15rem;
