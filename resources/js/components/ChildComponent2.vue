@@ -23,24 +23,24 @@
       <hr/>
       
       <!-- <button @click="cropImage" v-if="imgSrc != ''" style="margin-right: 40px;">Crop</button> -->
-      <button @click="rotate" v-if="imgSrc != ''">Rotate</button>
+   
       
       <!-- <input type="file" name="image" accept="image/*"
              style="font-size: 1.2em; padding: 10px 0;"
              @change="setImage" /> -->
       <br/>
       <!-- <div style="width: 200px; height:200px; border: 1px solid gray;"> -->
-        <!-- <v-card>  :guides="true"     :background="true"-->
+        <!-- <v-card>       -->
           <!-- <v-card-text> -->
         <vue-cropper
             ref='cropper'
-            
+            :guides="true"
             :view-mode="1"
             drag-mode="crop"
             :auto-crop-area="0.5"
             :min-container-width="250"
             :min-container-height="180"
-           
+            :background="true"
             :rotatable="true"
             :src="imgSrc"
             alt="Source Image"
@@ -56,6 +56,7 @@
     </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" @click="rotate" v-if="imgSrc != ''">Rotate</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="cancelModal">Cancel</button>
         <button type="button" class="btn btn-primary" @click="cropImage" data-bs-dismiss="modal" >Crop</button>
       </div>

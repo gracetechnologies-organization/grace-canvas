@@ -1912,330 +1912,214 @@
                 
                 <!-- Resume template column -->
                 <div class="col-12 col-md-7 col-lg-8" style="overflow: scroll">
-                    <!-- Resume template design  class="container contianer-customs mt-2 border border-danger" id="resume-template-container"        -->
-                    <div class="custom-border" style="width: 720px">
-                        <div
-                            class="row"
-                            style="width: 720px"
-                            id="element-to-convert"
-                        >
-                            <div class="left-col">
-                                <div class="resume-photo">
-                                    <div class="image-container">
-                                        <!-- 
-                            <img :src="cropImg" style="width: 142px; height: 142px; border: 1px solid gray" alt="Cropped Image" id="cropped" /> -->
-                                        <div v-if="croppedImage">
-                                            <img
-                                                :src="croppedImage"
-                                                style="
-                                                    width: 142px;
-                                                    height: 142px;
-                                                    border: 1px solid gray;
-                                                "
-                                                alt="Cropped Image in Parent"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="personal-info-container">
-                                    <h2>Personal Info</h2>
-                                    <div class="personal-info-details">
-                                        <p>PHONE</p>
-                                        <p id="Phone">{{ formData.phone }}</p>
-                                    </div>
-                                    <div class="personal-info-details">
-                                        <p>EMAIL</p>
-                                        <p id="Email">{{ formData.email }}</p>
-                                    </div>
-                                    <div class="personal-info-details">
-                                        <p>ID CARD</p>
-                                        <p id="Cnic">{{ formData.cnic }}</p>
-                                    </div>
-                                    <div class="personal-info-details">
-                                        <p>DATE OF BIRTH</p>
-                                        <p id="DOB">{{ formData.dob }}</p>
-                                    </div>
-                                    <div class="personal-info-details">
-                                        <p>GENDER</p>
-                                        <p id="Gender">
-                                            {{ formData.selectedGenderStatus }}
-                                        </p>
-                                    </div>
-                                    <div class="personal-info-details">
-                                        <p>MARITAL STATUS</p>
-                                        <p id="MaritalStatus">
-                                            {{ formData.selectedMaritalStatus }}
-                                        </p>
-                                    </div>
-                                    <div class="personal-info-details">
-                                        <p>NATIONALITY</p>
-                                        <p id="Nationality">
-                                            {{
-                                                formData.selectedNationalityStatus
-                                            }}
-                                        </p>
-                                    </div>
-                                    <div class="personal-info-details">
-                                        <p>ADDRESS</p>
-                                        <p id="Address">
-                                            {{ formData.address }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="skills-container">
-                                    <h2>Skills</h2>
-                                    <div
-                                        id="skills-section"
-                                        v-for="(skill, index) in skills"
-                                        :key="index"
-                                    >
-                                        <div
-                                            class="skills-details"
-                                            v-if="!hideInputFields"
-                                        >
-                                            <p id="SkillName0">
-                                                {{ skill.name }}
-                                            </p>
-                                            <div class="progress-bar-container">
-                                                <div
-                                                    class="custom-progress-bar"
-                                                    style="width: 85%"
-                                                ></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="interest-container">
-                                    <h2>Interest</h2>
-                                    <div
-                                        id="interests-section"
-                                        v-for="(interest, index) in interests"
-                                        :key="index"
-                                    >
-                                        <div
-                                            class="interest-details"
-                                            v-if="!hideInputFields"
-                                        >
-                                            <p id="Interest0">
-                                                {{ interest.name }}
-                                            </p>
-                                            <div class="progress-bar-container">
-                                                <div
-                                                    class="custom-progress-bar"
-                                                    style="width: 85%"
-                                                ></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <!-- Resume template design -->
+    <div class="custom-border" style="width: 720px">
+        <div class="row"
+        style="width: 720px"
+        id="element-to-convert">
+            
+            <div class="left-col">
+                <div class="name-container">
+                    <h2 id="FName"> <p>  {{ formData.name }} </p> <p class="bold-text" id="LName">  {{formData.sirname}} </p></h2>
+                    <p class="profession" id="Profession">{{ formData.profession }}</p>
+                    <p class= "email" id="Email">{{ formData.email }}</p>
+                    
+                </div>
+                <div class="objective-container ">
+                    <h2>Objective</h2>
+                    <p id="Objective">
+                        {{ formData.objective }}
+                    </p>
+                    <div class="right-col-divider"></div>
+                </div>
+                <div class="experience-container">
+                    <h2>Experience</h2>
+                    <div  id="experiences-section"
+                    v-for="(
+                        experience, index
+                    ) in experiences"
+                    :key="index">
+                        <div class="experience-details"
+                        v-if="!hideExperience">
+                            <h3 id="Designation0"> {{experience.designation }}</h3>
+                            <h3><span id="Organization0">{{ experience.organization }}</span> <span id="JoiningDate0">{{ experience.joiningDate }}</span> |
+                                <span  id="EndDate0"
+                                v-if="!hideDate">{{experience.endDate}}</span> <span>{{ displayText }}</span>
+                            </h3>
+                            <p id="JobDescription0">
+                                {{ experience.jobDescription }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="right-col-divider"></div>
+                </div>
+                <div class="education-container">
+                    <h2>Education</h2>
+                    <div id="educations-section"
+                    v-for="(education, index) in educations"
+                    :key="index">
+                        <div  class="education-details"
+                        v-if="!hideEducation">
+                            <h3 id="EducationalOrganization0">{{ education.university }}</h3>
+                            <p id="Degree0"> {{ education.degree }}</p>
+                            <p><span id="Score0"> {{ education.score }}</span> <span v-if="!hideDate2" id="CompletionDate0">{{education.completeDate}}</span><span>{{ displayText2 }}</span></p>
+                        </div>            
+                    </div>
+                    <div class="right-col-divider"></div>
+                </div>
+                <div class="achievement-container ">
+                    <h2>Achievement</h2>
+                    <div class="row achievement-section" id="achievement-section" v-for="(
+                        achievement, index
+                    ) in achievements"
+                    :key="index"
+                    style="display: inline-block">
+                        <div class="achievement-details"  v-if="!hideAchievement">
+                            <p id="AchievementTitle0">{{ achievement.name }}</p>
+                        </div>
+                    </div>
+                    <div class="right-col-divider"></div>
+                </div>
+                <div class="project-container ">
+                    <h2>Project</h2>
+                    <div class="row project-section" id="project-section"  v-for="(project, index) in projects"
+                    :key="index"
+                    style="display: inline-block">
+                        <div class="project-details" v-if="!hideProject">
+                            <p id="ProjectTitle0"> {{ project.name }}</p>
+                        </div>
+                    </div>
+                    <div class="right-col-divider"></div>
+                </div>
+                <div class="reference-container ">
+                    <h2>Reference</h2>
+                    <div class="row reference-section" id="reference-section" v-for="(reference, index) in references"
+                    :key="index"
+                    style="display: inline-block">
+                        <div class="reference-details"  v-if="!hideReference">
+                            <div>
+                                <h3 id="ReferenceName0">{{ reference.name }}</h3>
+                                <p id="ReferenceDesignation0"> {{ reference.designation }}</p>
+                                <p id="ReferenceDescription0">{{ reference.number }}</p>
                             </div>
-                            <div class="right-col">
-                                <div class="name-container">
-                                    <h2>
-                                        <span id="FName">
-                                            {{ formData.name }}</span
-                                        >
-                                        <span id="LName">{{
-                                            formData.sirname
-                                        }}</span>
-                                    </h2>
-                                    <p class="profession" id="Profession">
-                                        {{ formData.profession }}
-                                    </p>
-                                    <div class="right-col-divider"></div>
-                                </div>
-                                <div class="objective-container">
-                                    <h2>Objective</h2>
-                                    <p id="Objective">
-                                        {{ formData.objective }}
-                                    </p>
-                                </div>
-                                <div class="experience-container">
-                                    <h2>Work Experience</h2>
-                                    <div
-                                        id="experiences-section"
-                                        v-for="(
-                                            experience, index
-                                        ) in experiences"
-                                        :key="index"
-                                    >
-                                        <div
-                                            class="experience-details"
-                                            v-if="!hideExperience"
-                                        >
-                                            <h3 id="Designation0">
-                                              {{ experience.designation }}
-                                                                                               
-                                            </h3>
-                                            <h3>
-                                                <span id="Organization0"> {{ experience.organization }}</span>
-                                                <span id="JoiningDate0">
-                                                    {{ experience.joiningDate }}
-                                                </span>
-                                                |
-                                                <span
-                                                    id="EndDate0"
-                                                    v-if="!hideDate"
-                                                    >{{
-                                                        experience.endDate
-                                                    }}</span
-                                                >
-                                                <span>{{ displayText }}</span>
-                                            </h3>
-                                            <p id="JobDescription0">
-                                                {{ experience.jobDescription }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="right-col-divider"></div>
-                                </div>
-                                <div class="education-container">
-                                    <h2>Education</h2>
-                                    <div
-                                        id="educations-section"
-                                        v-for="(education, index) in educations"
-                                        :key="index"
-                                    >
-                                        <div
-                                            class="education-details"
-                                            v-if="!hideEducation"
-                                        >
-                                            <h3 id="EducationalOrganization0">
-                                                {{ education.university }}
-                                            </h3>
-                                            <p id="Degree0">
-                                                {{ education.degree }}
-                                            </p>
-                                            <p>
-                                                <span id="Score0">
-                                                    {{ education.score }}</span
-                                                >
-                                                <span
-                                                    v-if="!hideDate2"
-                                                    id="CompletionDate0"
-                                                    >{{
-                                                        education.completeDate
-                                                    }}</span
-                                                >
-                                                <span>{{ displayText2 }}</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="right-col-divider"></div>
-                                </div>
-                                <div class="achievement-container">
-                                    <h2>Achievement</h2>
-                                    <div
-                                        class="row achievement-section"
-                                        id="achievement-section"
-                                        v-for="(
-                                            achievement, index
-                                        ) in achievements"
-                                        :key="index"
-                                        style="display: inline-block"
-                                    >
-                                        <div
-                                            class="achievement-details"
-                                            v-if="!hideAchievement"
-                                        >
-                                            <p id="AchievementTitle0">
-                                                {{ achievement.name }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="right-col-divider"></div>
-                                </div>
-                                <div class="project-container">
-                                    <h2>Project</h2>
-                                    <div
-                                        class="row project-section"
-                                        id="project-section"
-                                        v-for="(project, index) in projects"
-                                        :key="index"
-                                        style="display: inline-block"
-                                    >
-                                        <div
-                                            class="project-details"
-                                            v-if="!hideProject"
-                                        >
-                                            <p id="ProjectTitle0">
-                                                {{ project.name }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="right-col-divider"></div>
-                                </div>
-                                <div class="reference-container">
-                                    <h2>Reference</h2>
-                                    <div
-                                        class="row reference-section"
-                                        id="reference-section"
-                                        v-for="(reference, index) in references"
-                                        :key="index"
-                                        style="display: inline-block"
-                                    >
-                                        <div
-                                            class="reference-details"
-                                            v-if="!hideReference"
-                                        >
-                                            <div>
-                                                <h3 id="ReferenceName0">
-                                                    {{ reference.name }}
-                                                </h3>
-                                                <p id="ReferenceDesignation0">
-                                                    {{ reference.designation }}
-                                                </p>
-                                                <p id="ReferenceDescription0">
-                                                    {{ reference.number }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right-col-divider"></div>
-                                </div>
-                                <div class="languages-container">
-                                    <h2>Language</h2>
-                                    <div
-                                        class="row languages-section"
-                                        id="languages-section"
-                                        v-for="(language, index) in languages"
-                                        :key="index"
-                                        style="
-                                            display: inline-block;
-                                            width: 250px;
-                                        "
-                                    >
-                                        <div
-                                            class="languages-details"
-                                            v-if="!hideLanguage"
-                                        >
-                                            <div class="row col-12">
-                                                <div class="col-6">
-                                                    <p id="Language0">
-                                                        {{ language.name }}
-                                                    </p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span class="dot"></span>
-                                                    <span
-                                                        class="dot-grey"
-                                                    ></span>
-                                                    <span
-                                                        class="dot-grey"
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>     
+                    </div>
+                </div>
+            </div>
+            <div class="right-col">
+                <div class="resume-photo">
+                    <!-- <img src= "image.png" id="resume-photo" width="142px"> -->
+                    <div class="image-container">
+                        <!-- 
+            <img :src="cropImg" style="width: 142px; height: 142px; border: 1px solid gray" alt="Cropped Image" id="cropped" /> -->
+                        <div v-if="croppedImage">
+                            <img
+                                :src="croppedImage"
+                                style="
+                                    width: 142px;
+                                    height: 142px;
+                                    border: 1px solid gray;
+                                "
+                                alt="Cropped Image in Parent"
+                            />
                         </div>
                     </div>
                 </div>
+                <div class="personal-info-container">
+                    <h2> Personal Info </h2>
+                    <div class="personal-info-details">
+                        <p>PHONE NO</p>
+                        <p id="Phone">{{ formData.phone }}</p>
+                    </div>
+                    <div class="personal-info-details ">
+                        <p>ID CARD</p>
+                        <p id="Cnic">{{ formData.cnic }}</p>
+                    </div>
+                    <div class="personal-info-details ">
+                        <p>DATE OF BIRTH</p>
+                        <p id="DOB">{{ formData.dob }}</p>
+                    </div>
+                    <div class="personal-info-details ">
+                        <p>GENDER</p>
+                        <p id="Gender">{{ formData.selectedGenderStatus }}</p>
+                    </div>
+                    <div class="personal-info-details ">
+                        <p>MARITAL STATUS</p>
+                        <p id="MaritalStatus">{{ formData.selectedMaritalStatus }}</p>
+                    </div>
+                    <div class="personal-info-details ">
+                        <p>NATIONALITY</p>
+                        <p id="Nationality">{{formData.selectedNationalityStatus}}</p>
+                    </div>
+                    <div class="personal-info-details ">
+                        <p>ADDRESS</p>
+                        <p id="Address">{{ formData.address }}</p>
+                    </div>
+                    <div class="left-col-divider"></div>
+                </div>
+                
+                <div class="languages-container">
+                    <h2> Languages </h2>
+                    <div id="languages-section" v-for="(language, index) in languages"
+                    :key="index"
+                    >
+                        <div class="languages-details" v-if="!hideLanguage">
+                            <div class="row col-12">
+                                <div class="custom-col-left">
+                                    <p id="Language0">{{ language.name }}</p>
+                                </div>
+                                <div class="custom-col-right col-4">
+                                    <div class="dot-div">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                    <div class="left-col-divider"></div>
+                </div>
+                <div class="skills-container">
+                    <h2> Skills </h2>
+                    <div id="skills-section" v-for="(skill, index) in skills"
+                    :key="index">
+                        <div class="skills-details"  v-if="!hideInputFields">
+                            <div class="row col-12">
+                                <div class="custom-col-left">
+                                    <p id="SkillName0">{{ skill.name }}</p>
+                                </div>
+                                <div class="custom-col-right col-4">
+                                    <div class="dot-div">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                 
+                    </div>
+                    <div class="left-col-divider"></div>
+                </div>
+                <div class="interest-container">
+                    <h2> Interest </h2>
+                    <div id="interests-section"  v-for="(interest, index) in interests"
+                    :key="index">
+                        <div class="interest-details"  v-if="!hideInputFields"> 
+                                    <p id="Interest0"> {{ interest.name }}</p>    
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </div>
@@ -2470,523 +2354,611 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+ .right-col {
+            background: #FF004F;
+            width: 245px;
+            height: 1040px;
+            margin-left: 0px;
+        }
 
-.img-container {
-    height: 500px;
-    overflow: hidden;
-}
+        .left-col {
+            background: white;
+            width: 475px;
+            height: 1040px;
+            padding: 0px;
+        }
 
-.custom-border {
-    border: 1px solid rgb(54, 54, 54);
-}
+        .image-div {
+            background-color: grey;
+            margin-top: 20px;
+            margin-left: -10px;
+            width: 215px;
+            height: 206px;
+        }
 
-.accordion-body {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-}
+        .resume-photo {
+            background-color: #FFF;
+            overflow: hidden;
+            width: 135px;
+            height: 135px;
+            margin: 25px 0px 0px 39px;
+            position: relative;
+            top: 7.5px;
+        }
 
-.left-col {
-    background: rgb(23, 23, 214);
-    width: 200px;
-    height: 1040px;
-}
+        .left-inner {
+            background-color: #333333;
+            width: 160px;
+            height: 764px;
+            margin-top: 10px;
+            margin-left: 30px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
 
-.right-col {
-    background: white;
-    width: 517px;
-    height: 1040px;
-    padding: 0px;
-}
+        .personal-info-container {
+            position: relative;
+            top: 90px;
+            left: 20px;
+            width: 150px;
+            padding-top: 10px;
+        }
 
-.resume-photo {
-    border: 2px solid white;
-    border-radius: 100%;
-    overflow: hidden;
-    width: 142px;
-    height: 142px;
-    margin: auto;
-    position: relative;
-    top: 45px;
-}
+        .personal-info-container h2 {
+            color: #464646;
+            background-color: white;
+            font-family: Poppins;
+            font-size: 13.17px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            margin-left: 28px;
+            margin-top: -69px;
+            margin-bottom: 5px;
+            width: 114px;
+            height: 20px;
+            padding-top: 5px;
+            padding-left: 4px;
+        }
 
-.personal-info-container {
-    position: relative;
-    top: 90px;
-    left: 20px;
-    width: 120px;
-    padding-top: 10px;
-    margin: -10px 10px 0px 0px;
-}
+        .left-col-divider {
+            background-color: white;
+            width: 175px;
+            height: 1px;
+            margin: 9px 0px 0px 5px;
+        }    
+        .right-col-divider {
+            background-color: #464646;
+            width: 425px;
+            height: 2px;
+            margin: 5px 0px 12px -8px;
+        }
 
-.personal-info-container h2 {
-    color: #fff;
-    background-color: #000;
-    font-family: Poppins;
-    font-size: 13.17px;
-    font-style: normal;
-    font-weight: 400;
-    text-transform: uppercase;
-    height: 25px;
-    width: 200px;
-    margin: 30px 0px 0px -40px;
-    padding-top: 5px;
-    padding-left: 45px;
-}
+        .personal-info-details {
+            padding: 10px 0px 0px 7px;
+            height: 39px;
+            margin-top: -7px;
+            margin-bottom: 5px;
+        }
 
-.left-col-divider {
-    background-color: white;
-    width: 120px;
-    height: 1.17px;
-}
+        .personal-info-details p {
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 10.61px;
+            font-style: normal;
+            font-weight: 400;
+            margin-top: 3px;
+            margin-bottom: -5px;
+        }
 
-.right-col-divider {
-    background-color: #464646;
-    width: 452.2px;
-    height: 2px;
-}
+        .languages-container {
+            position: relative;
+            top: 105px;
+            left: 20px;
+            width: 180px;
+            /* margin-top: -32px; */
+        }
 
-.personal-info-details {
-    padding: 25px 0px 0px 7px;
-    height: 39px;
-}
+        .languages-container h2 {
+            color: #464646;
+            background-color: white;
+            font-family: Poppins;
+            font-size: 13.17px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            margin-left: 32px;
+            width: 88px;
+            height: 20px;
+            padding-top: 5px;
+            /* margin-bottom: 80px; */
+        }
 
-.personal-info-details p {
-    color: #fff;
-    font-family: Poppins;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1px;
-}
+        #languages-section{
+            /* margin-top: -77px; */
+            margin-bottom: 10px;
+        }
 
-.skills-container {
-    position: relative;
-    top: 135px;
-    left: 20px;
-    width: 120px;
-    padding-top: 10px;
-}
+        .languages-details {
+            padding: 0px 0px 0px 7px;
+            margin-bottom: -8px;
+        }
 
-.skills-container h2 {
-    color: #fff;
-    background-color: #000;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    text-transform: uppercase;
-    height: 25px;
-    width: 200px;
-    margin: 0px 0px 0px -40px;
-    padding-top: 5px;
-    padding-left: 45px;
-}
+        .languages-details p {
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 10.8px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            word-spacing: 2px;
+            height: 20px;
+            display: inline-block;
+            width: 75px;
+            margin-left: 10px;
+        }
 
-.skills-details {
-    padding: 20px 0px 0px 7px;
-    height: auto;
-}
+        .dot-div-Lan {
+            display: inline-block;
+            height: 20px;
+            margin-left: 15px;
+        }
 
-.skills-details p {
-    color: #fff;
-    font-family: Poppins;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 0px;
-    text-transform: uppercase;
-    margin-bottom: 9px;
-}
+        .skills-container {
+            position: relative;
+            top: 110px;
+            left: 20px;
+            width: 180px;
+            padding-top: 10px;
+        }
 
-.progress-bar-container {
-    background-color: #a8a8a8;
-    border-radius: 100px;
-}
+        .skills-container h2 {
+            color:#464646;
+            background-color: white;
+            font-family: Poppins;
+            font-size: 13.17px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            margin-left: 32px;
+            width: 88px;
+            height: 20px;
+            padding-top: 5px;
+            margin-bottom: 8px;
+        }
 
-.progress-bar-container .custom-progress-bar {
-    padding: 3px;
-    background-color: white;
-    border-radius: 100px;
-}
+        #skills-section {
+        margin-bottom: 5px;
+        }
 
-.interest-container {
-    position: relative;
-    top: 170px;
-    left: 20px;
-    width: 120px;
-    padding-top: 10px;
-}
+        .skills-details {
+            padding: 0px 0px 0px 7px;
+            margin-top: -8px;           
+        }
 
-.interest-container h2 {
-    color: #fff;
-    background-color: #000;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    text-transform: uppercase;
-    height: 25px;
-    width: 200px;
-    margin: 0px 0px 0px -40px;
-    padding-top: 5px;
-    padding-left: 60px;
-}
+        .skills-details p {
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 10.8px;
+            font-style: normal;
+            font-weight: 700;
+            height: 20px;
+            text-transform: uppercase;
+            margin-bottom: -5px;
+            word-spacing: 2px;
+            display: inline-block;
+            margin-left: 10px;
+        }
 
-.interest-details {
-    padding: 20px 0px 0px 7px;
-    height: auto;
-}
+        .dot-div {
+            display: inline-block;
+            height: 20px;
+            width: 80px;
+            margin-left: -10px;
+        }
 
-.interest-details p {
-    color: #fff;
-    font-family: Poppins;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 0px;
-    text-transform: uppercase;
-    margin-bottom: 9px;
-}
+        .progress-bar-container {
+            background-color: #8A8A8A;
+        }
 
-.name-container {
-    width: 100%;
-    padding: 40px 30px 0px 30px;
-}
+        .progress-bar-container .custom-progress-bar {
+            padding: 3px;
+            background-color: white;
+        }
 
-.name-container h2 {
-    line-height: 5px;
-    font-size: 15px;
-}
+        .interest-container {
+            position: relative;
+            top: 127px;
+            left: 20px;
+            width: 180px;
+            padding-top: 0px;
+        }
 
-.name-container h2 span {
-    color: black;
-    font-family: Poppins;
-    font-size: 30.21px;
-    font-style: normal;
-    font-weight: 700;
-    text-transform: uppercase;
-}
+        .interest-container h2 {
+            color: #464646;
+            background-color: white;
+            font-family: Poppins;
+            font-size: 13.17px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            margin-left: 32px;
+            width: 88px;
+            height: 20px;
+            padding-top: 6px;
+            /* margin-top: -115px; */
+            margin-bottom: 20px;
+        }
 
-.name-container .profession {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    width: 220px;
-    height: 22px;
-    margin-top: 20px;
-    padding-left: 20px;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    margin: 15px 0px 0px 0px;
-}
+        #interests-section{
+            margin-bottom: -17px;
+            /* margin-top: -36px; */
+        }
 
-.objective-container {
-    width: 100%;
-    padding: 12px 30px 0px 30px;
-}
+        .interest-details {
+            padding: 0px 0px 0px 7px;
+            margin-top: -12px;
+        }
 
-.objective-container h2 {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    border-radius: 0px;
-    width: 170px;
-    padding: 0px 3px 0px 5px;
-}
+        .interest-details p {
+            color: #FFF;
+            font-family: Montserrat;
+            font-size: 12.35px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+            word-spacing: 2px;
+            height: 20px;
+            margin-left: 30px;
+            display: inline-block;
+        }
 
-.objective-container p {
-    color: black;
-    font-family: Poppins;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-}
+        .dot-div-int {
+            display: inline-block;
+            height: 20px;
+            margin-left: 10px;
+        }
 
-.experience-container {
-    width: 100%;
-    padding: 0px 30px 0px 30px;
-}
+        .name-container {
+            width: 350px;
+            height: 110px;
+            margin-top: 45px; 
+            margin-left: 110px;                                 
+        }
 
-.experience-container h2 {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    width: 170px;
-    padding: 0px 3px 0px 5px;
-    margin-bottom: 10px;
-}
+        .name-container h2 p {
+            color: #FF004F;
+            font-family: Poppins;
+            font-size: 33px;
+            font-style: normal;
+            font-weight: 400;
+            text-transform: uppercase;
+            display: inline-block;                  
+        }
 
-.experience-details h3 {
-    color: #000;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 10px;
-    text-transform: uppercase;
-}
+        .name-container .bold-text {
+            color: #FF004F;
+            font-family: Poppins;
+            font-size: 33px;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+        }
 
-.experience-details p {
-    color: #7d818c;
-    font-family: Poppins;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    margin-top: 10px;
-    line-height: 16px;
-    margin-bottom: 8px;
-}
+        .name-container .profession {
+            color: #A1A1A1;
+            font-family: Poppins;
+            width: 300px;
+            height: 28px;
+            margin-top: 20px;
+            padding-left: 45px;
+            font-size: 24.29px;
+            font-style: normal;
+            font-weight: 400;
+            text-transform: none;
+            margin: -30px 0px -2px 30px;
+        }
 
-.education-container {
-    width: 100%;
-    padding: 10px 30px 0px 30px;
-}
+        .name-container .email {
+            color: #464646;
+            font-family: Poppins;
+            width: 418px;
+            height: 28px;
+            margin-top: 20px;
+            padding-left: 0px;
+            font-size: 11.29px;
+            font-style: normal;
+            font-weight: 400;
+            text-transform: lowercase;
+            margin: 5px 0px 0px 78px;
+        }
 
-.education-container h2 {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    border-radius: 0px;
-    width: 170px;
-    padding: 0px 3px 0px 5px;
-    margin-bottom: 15px;
-}
+        .objective-container {
+            width: 100%;
+            padding: 0px 30px 0px 30px;
+            margin-top: 6px;
+        }
 
-.education-details {
-    margin-bottom: 25px;
-}
+        .objective-container h2 {
+            color: white;
+            background-color: #FF004F;
+            font-family: Poppins;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            width: 107.41px;
+            height: 23.74px;
+            padding: 5px 25px 0px 10px;
+            margin-left: 10px;
+            margin-top: -20px;
+            margin-bottom: 15px;
+        }
 
-.education-details h3 {
-    color: #464646;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 3px;
-    text-transform: uppercase;
-    margin-bottom: 17px;
-}
+        .objective-container p {
+            color: #302E30;
+            font-family: Montserrat;
+            font-size: 10.5px;
+            font-style: normal;
+            font-weight: 500;
+            margin-left: 10px;
+            margin-top: -7px;
+            margin-bottom: 10px;
+        }
 
-.education-details p {
-    color: #302e30;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    margin-top: 15px;
-    line-height: 3px;
-}
+        .experience-container {
+            width: 100%;
+            padding: 15px 30px 0px 30px;
+        }
 
-.achievement-container {
-    width: 100%;
-    padding: 10px 30px 0px 30px;
-}
+        .experience-container h2 {
+            color: white;
+            background-color: #FF004F;
+            font-family: Poppins;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            width: 107.41px;
+            height: 23.74px;
+            padding: 5px 18px 0px 10px;
+            margin-left: 10px;
+            margin-top: -15px;
+            margin-bottom: 10px;
+        }
 
-.achievement-container h2 {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    border-radius: 0px;
-    width: 170px;
-    padding: 0px 3px 0px 5px;
-    margin-bottom: 10px;
-}
+        .experience-details h3 {
+            color: #000;
+            font-family: Montserrat;
+            font-size: 13.06px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 10px;
+            margin-bottom: -2px;
+        }
 
-.achievement-section div {
-    /* height: 47px; */
-    width: 250px;
-}
+        .experience-details p {
+            color: #302E30;
+            font-family: Montserrat;
+            font-size: 10.5px;
+            font-style: normal;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
 
-.achievement-details p {
-    color: #464646;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 700;
-    margin-top: 5px;
-    line-height: 5px;
-}
+        .education-container {
+            width: 100%;
+            padding: 3px 30px 0px 30px;
+            
+        }
 
-.project-container {
-    width: 100%;
-    padding: 10px 30px 0px 30px;
-}
+        .education-container h2 {
+            color: white;
+            background-color: #FF004F;
+            font-family: Poppins;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            width: 107.41px;
+            height: 23.74px;
+            padding: 5px 13px 0px 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            margin-top: -3px;
+        }
 
-.project-container h2 {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    border-radius: 0px;
-    width: 170px;
-    padding: 0px 3px 0px 5px;
-    margin-bottom: 10px;
-}
+        .education-details {
+            margin-bottom: 15px;
+        }
 
-.project-section div {
-    /* height: 47px; */
-    width: 250px;
-}
+        .education-details h3 {
+            color: #000;
+            font-family: Montserrat;
+            font-size: 13.06px;
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
 
-.project-details p {
-    color: #464646;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 700;
-    margin-top: 5px;
-    line-height: 5px;
-}
+        .education-details {
+            margin-bottom: 7px;
+        }
 
-.reference-container {
-    width: 100%;
-    padding: 10px 30px 0px 30px;
-}
+        .education-details p {
+            color: #302E30;
+            font-family: Montserrat;
+            font-size: 10.5px;
+            font-style: normal;
+            font-weight: 600;
+            margin-top: -5px;
+            margin-bottom: 4px;
+            margin-left: 10px;
+        }
 
-.reference-container h2 {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    border-radius: 0px;
-    width: 170px;
-    padding: 0px 3px 0px 5px;
-}
+        .achievement-container {
+            width: 100%;
+            padding: 15px 30px 0px 30px;
+        }
 
-.reference-section div {
-    /* height: 47px; */
-    width: 250px;
-}
+        .achievement-container h2 {
+            color: white;
+            background-color: #FF004F;
+            font-family: Poppins;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            width: 125px;
+            height: 23.74px;
+            padding: 5px 13px 0px 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            margin-top: -15px;
+        }
 
-.reference-details div h3 {
-    color: #464646;
-    font-family: Poppins;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
+        .achievement-section div {
+            height: 47px;
+            width: 200px;
+            margin-bottom: -25px;
+            margin-top: -3px;
+        }
 
-.reference-details div p {
-    color: #7e808b;
-    font-family: Poppins;
-    font-size: 11px;
-    font-style: normal;
-    line-height: 0px;
-}
+        .achievement-details p {
+            color: #000;
+            font-family: Montserrat;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 700;
+            margin-bottom: -10px;
+            margin-left: 10px;
+        }
 
-.languages-container {
-    width: 100%;
-    padding: 10px 30px 0px 30px;
-    /* display:inline-block; */
-}
+        .project-container {
+            width: 100%;
+            padding: 10px 30px 0px 30px;
+            margin-top: -15px;
+        }
 
-.languages-container h2 {
-    background-color: rgb(23, 23, 214);
-    color: white;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
-    border-radius: 0px;
-    width: 170px;
-    padding: 0px 3px 0px 5px;
-    margin-bottom: 10px;
-    /* display:inline-block; */
-}
+        .project-container h2 {
+            color: white;
+            background-color: #FF004F;
+            font-family: Poppins;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            width: 125px;
+            height: 23.74px;
+            padding: 5px 13px 0px 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
 
-.languages-section .languages-detail {
-    /* width: 50%; */
-    display: inline-block;
-}
+        .project-section div {
+            height: 47px;
+            width: 200px;
+            margin-bottom: -30px;
+        }
 
-/* .languages-details div p {
-color: #7D818C;
-font-family: Poppins;
-font-size: 13px;
-font-style: normal;
-font-weight: 400;
-margin-top: 5px;
-line-height: 5px;
-} */
+        .project-details p {
+            color: #302E30;
+            font-family: Montserrat;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            margin-top: -12px;
+            margin-left: 10px;
+        }
 
-.dot {
-    height: 8px;
-    width: 8px;
-    background-color: rgb(23, 23, 214);
-    border-radius: 50%;
-    display: inline-block;
-}
+        .reference-container {
+            width: 100%;
+            padding: 10px 30px 0px 30px;
+        }
 
-.dot-grey {
-    height: 7px;
-    width: 7px;
-    background-color: #e7e7e6;
-    border-radius: 50%;
-    display: inline-block;
-}
+        .reference-container h2 {
+            color: white;
+            background-color: #FF004F;
+            font-family: Poppins;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            width: 125px;
+            height: 23.74px;
+            padding: 5px 13px 0px 10px;
+            margin-left: 10px;
+            margin-top: -10px;
+            margin-bottom: 8px;
+        }
 
-.right-col-divider {
-    width: 450px;
-    margin: 10px 0px 0px 0px;
-}
-/*
-    .modal {
-       position: fixed;
-        margin:0px;
-        width: 500px;
-        height: 500px;
-        background-color: rgba(0, 0, 0, 0.7);
-        z-index: 999; 
-        justify-content: center;
-        align-items: center;
-        border: 1px solid red;
-      }
-      
-      .modal-content {
-        background-color: black;
-        padding: 20px;
-        width: 500px;
-        height: 500px;
-        /* z-index: 999;  
-        border-radius: 5px;
-        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
-      }
-       */
+        .reference-section div {
+            height: 47px;
+            width: 215px;
+        }
+
+        .reference-details div h3 {
+            color: #000;
+            font-family: Montserrat;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .reference-details div p {
+            color: #302E30;
+            font-family: Montserrat;
+            font-size: 10.5px;
+            font-weight: 600;
+            font-style: normal;
+            margin-left: 10px;
+            margin-bottom: 9px;
+            margin-top: -9px;
+        }
+
+        .dot {
+            height: 9px;
+            width: 9px;
+            background-color: white;
+            display: inline-block;
+        }
+
+        .dot-grey {
+            height: 9px;
+            width: 9px;
+            background-color: grey;
+            display: inline-block;
+        }
+
+        .custom-col-left {
+            width: 90px;
+            padding: 0px;
+            height: 26px;
+        }
+
+        .custom-col-right {
+            width: 80px;
+        }
 
 .add-experience {
     border-color: #ff6600 !important;
