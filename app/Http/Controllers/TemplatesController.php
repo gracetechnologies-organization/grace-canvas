@@ -47,12 +47,12 @@ class TemplatesController extends Controller
                         config('messages.HTTP_SUCCESS_CODE')
                     );
             }
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -212,12 +212,12 @@ class TemplatesController extends Controller
                 config('messages.INSERTION_FAILED'),
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -288,12 +288,12 @@ class TemplatesController extends Controller
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -321,12 +321,12 @@ class TemplatesController extends Controller
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -355,12 +355,12 @@ class TemplatesController extends Controller
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -441,12 +441,12 @@ class TemplatesController extends Controller
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -500,12 +500,12 @@ class TemplatesController extends Controller
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -572,12 +572,12 @@ class TemplatesController extends Controller
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }

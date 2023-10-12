@@ -16,9 +16,9 @@ class GoogleLoginController extends Controller
     {
         try {
             return Socialite::driver(static::GOOGLE_DRIVER)->redirect();
-        } catch (Exception $error) {
-            report($error);
-            dd($error->getMessage());
+        } catch (Exception $Error) {
+            report($Error);
+            dd($Error->getMessage());
         }        
     }
 
@@ -47,9 +47,9 @@ class GoogleLoginController extends Controller
             Auth::loginUsingId($saveUser->id);
 
             return redirect()->route('user.dashboard.home');
-        } catch (Exception $error) {
-            report($error);
-            dd($error->getMessage());
+        } catch (Exception $Error) {
+            report($Error);
+            dd($Error->getMessage());
         }
     }
 }

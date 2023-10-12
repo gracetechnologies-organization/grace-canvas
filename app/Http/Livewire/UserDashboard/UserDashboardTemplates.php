@@ -27,8 +27,8 @@ class UserDashboardTemplates extends Component
             } else {
                 session()->flash('error', config('messages.DELETION_FAILED'));
             }
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             session()->flash('error', config('messages.EMPTY_ROW_DELETION'));
         }
     }

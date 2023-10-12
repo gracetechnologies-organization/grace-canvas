@@ -15,9 +15,9 @@ class LinkedInController extends Controller
     {
         try {
             return Socialite::driver(static::LINKEDIN_DRIVER)->redirect();
-        } catch (Exception $error) {
-            report($error);
-            dd($error->getMessage());
+        } catch (Exception $Error) {
+            report($Error);
+            dd($Error->getMessage());
         }
     }
 
@@ -45,9 +45,9 @@ class LinkedInController extends Controller
 
                 return redirect()->route('user.dashboard.home');
             }
-        } catch (Exception $error) {
-            report($error);
-            dd($error->getMessage());
+        } catch (Exception $Error) {
+            report($Error);
+            dd($Error->getMessage());
         }
     }
 }

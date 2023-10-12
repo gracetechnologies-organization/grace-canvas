@@ -1,5 +1,9 @@
 <script>
     $(document).ready(function() {
+        // @if (session('login_error'))
+        //         $('#customModal').modal('show');
+        // @endif
+
         @if (session('not_subscribed_error'))
             $('#not-subscribed-error-modal').modal('show');
         @endif
@@ -13,7 +17,7 @@
         @endif
 
         @if (session('subscription_error'))
-        $('#subscription-error-modal').modal('show');
+            $('#subscription-error-modal').modal('show');
         @endif
     });
 

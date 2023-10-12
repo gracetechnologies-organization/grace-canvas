@@ -13,6 +13,7 @@
         window.location.href = url + "?lang=" + selectedValue;
     }
 </script>
+
 {{-- Vanilla JavaScript - Dynamic scripts --}}
 @php
     $EditingRoutes = ['edit/resume/{ID}', 'edit/saved/resume/{ID}'];
@@ -34,8 +35,10 @@
 
 {{-- JQuery - Link --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
 {{-- JQuery - Static scripts --}}
 @include('jquery_files.modals-scripts')
+
 {{-- JQuery - Dynamic scripts --}}
 @php
     $EditingRoutes = ['edit/resume/{ID}', 'edit/saved/resume/{ID}'];

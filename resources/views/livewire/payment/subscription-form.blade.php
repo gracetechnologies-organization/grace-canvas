@@ -45,7 +45,7 @@
                             {{ app('googleTranslator', ['string' => ' Pay with debits or credits']) }}
                         </div>
                         <div class="card-body">
-                            <form id="payment-form" {{-- wire:submit.prevent='subscriptionPost'> --}} action="{{ route('subscription.create') }}" method="POST">
+                            <form id="payment-form" action="{{ route('subscription.create') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="plan" id="plan" value="{{ $Plan->stripe_plan }}">
                                 <input type="hidden" name="month" id="month" value="{{ $Plan->interval_count }}">

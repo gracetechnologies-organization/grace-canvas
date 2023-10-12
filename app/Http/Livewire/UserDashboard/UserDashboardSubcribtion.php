@@ -19,11 +19,17 @@ class UserDashboardSubcribtion extends Component
 
     public function mount()
     {
-        // $this->Subscriptions = Subscription::with('plan')->where('user_id', auth()->id())->get();
-        $this->Subscriptions = Subscription::join('plans', 'subscriptions.stripe_price', '=', 'plans.stripe_plan')
-            ->select('subscriptions.*', 'plans.name', 'plans.price')
-            ->where('subscriptions.user_id', Auth::id())
-            ->get();
+        // /*
+        // |--------------------------------------------------------------------------
+        // | The only reason to place this "join" here is bcz "Subscription" is not a 
+        // | Custom model infact it is provided by "laravel/cachier" package & we dont
+        // | Want to make any changes in the laravel "vendor" directory
+        // |--------------------------------------------------------------------------
+        // */
+        // $this->Subscriptions = Subscription::join('plans', 'subscriptions.stripe_price', '=', 'plans.stripe_plan')
+        //     ->select('subscriptions.*', 'plans.name', 'plans.price')
+        //     ->where('subscriptions.user_id', Auth::id())
+        //     ->get();
     }
 
     public function cancel($subscriptionId)
@@ -45,21 +51,20 @@ class UserDashboardSubcribtion extends Component
         } catch (Exception $e) {
             dd($e->getMessage());
         }
-
-        // public function cancel()
-        // {
-        //     $activeSubscriptions = auth()->user()->subscriptions()->active()->get();  // getting all the active subscriptions
-        //     foreach ($activeSubscriptions as $subscription) {
-        //         $subscription->cancel(); // cancelling each of the active subscription
-        //     }
-        //      $this->cancelSuccessMessage = 'Subscription canceled successfully.';
-        // }
     }
+
+    // public function cancel()
+    // {
+    //     $activeSubscriptions = auth()->user()->subscriptions()->active()->get();  // getting all the active subscriptions
+    //     foreach ($activeSubscriptions as $subscription) {
+    //         $subscription->cancel(); // cancelling each of the active subscription
+    //     }
+    //      $this->cancelSuccessMessage = 'Subscription canceled successfully.';
+    // }
 
     public function delete($subscriptionId)
     {
         try {
-
             $subscription = auth()->user()->subscriptions->find($subscriptionId);
             if (!$subscription) {
                 return redirect()->back()->with('error', 'Subscription not found.');
@@ -71,14 +76,26 @@ class UserDashboardSubcribtion extends Component
             } else {
                 $this->cancelSuccessMessage = 'Subscription cannot be deleted as it is not canceled.';
             }
-        } catch (Exception $e) {
-            return $e->getMessage(); // Handle exceptions, e.g., display an error message
+        } catch (Exception $Error) {
+            report($Error);
+            return $Error->getMessage();
         }
     }
 
     public function render()
     {
-        // dd($this->Subscriptions);
+        /*
+        |--------------------------------------------------------------------------
+        | The only reason to place this "join" here is bcz "Subscription" is not a 
+        | Custom model infact it is provided by "laravel/cachier" package & we dont
+        | Want to make any changes in the laravel "vendor" directory as it is not
+        | Included in our commits
+        |--------------------------------------------------------------------------
+        */
+        $this->Subscriptions = Subscription::join('plans', 'subscriptions.stripe_price', '=', 'plans.stripe_plan')
+            ->select('subscriptions.*', 'plans.name', 'plans.price')
+            ->where('subscriptions.user_id', Auth::id())
+            ->get();
         return view('livewire.user-dashboard.user-dashboard-subcribtion');
     }
 }

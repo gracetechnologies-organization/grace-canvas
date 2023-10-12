@@ -28,6 +28,7 @@ return [
     'CACHE_DESTROYED_SUCCESS' => 'All cached data by your application has been removed seccessfully.',
     'TEMPLATE_SAVED_SUCCESS' => 'Your template has been saved successfully.',
     'TEMPLATE_UPDATED_SUCCESS' => 'Your template has been updated successfully.',
+    'SUBSCRIPTION_SUCCESS' => 'Congratulations! You have successfully subscribed to our plan.',
     /* Failure Constants */
     'INSERTION_FAILED' => 'Failed to insert data.',
     'UPDATION_FAILED' => 'Failed to update data.',
@@ -61,6 +62,7 @@ return [
     'INTERESTS_LIMIT_REACHED' => 'You can only add 3 interests',
     'LANGUAGES_LIMIT_REACHED' => 'You can only add 4 languages',
     'REFERENCES_LIMIT_REACHED' => 'You can only add 2 references',
+    'SUBSCRIPTION_ERROR' => 'You are already subscribed to a plan.',
     /* HTTP Codes Constants */
     'HTTP_SUCCESS_CODE' => 200,
     'HTTP_SERVER_ERROR_CODE' => 500,
