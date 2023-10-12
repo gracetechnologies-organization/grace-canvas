@@ -48,12 +48,12 @@ class WallpaperController extends Controller
                 config('messages.UPDATION_FAILED'),
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
@@ -81,12 +81,12 @@ class WallpaperController extends Controller
                 config('messages.DELETION_FAILED'),
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }

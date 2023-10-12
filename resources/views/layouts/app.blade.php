@@ -40,17 +40,6 @@
     @include('components.footer')
     @include('scripts')
     @livewireScripts
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            @if (session('login_error'))
-                $('#customModal').modal('show');
-            @endif
-            @if (session('not_subscribed_error'))
-                $('#customModal').modal('show');
-            @endif
-        });
-    </script>
 </body>
 
 </html>

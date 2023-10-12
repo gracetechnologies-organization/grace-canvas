@@ -28,9 +28,9 @@ class SaveResumePageController extends Controller
                 return "SavedSuccessfully";
             }
             return "ErrorInSaving";
-        } catch (Exception $error) {
-            report($error);
-            echo "ServerError: " . $error->getMessage();
+        } catch (Exception $Error) {
+            report($Error);
+            echo "ServerError: " . $Error->getMessage();
         }
     }
 
@@ -50,9 +50,9 @@ class SaveResumePageController extends Controller
                 return response()->json(['message' => 'SavedSuccessfully'], 200);
             }
             return response()->json(['error' => 'ErrorInSaving'], 500);
-        } catch (Exception $error) {
-            dd($error);
-            return response()->json(['error' => 'ServerError', 'message' => $error->getMessage()], 500);
+        } catch (Exception $Error) {
+            dd($Error);
+            return response()->json(['error' => 'ServerError', 'message' => $Error->getMessage()], 500);
         }
     }
 }

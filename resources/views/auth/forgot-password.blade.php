@@ -6,8 +6,7 @@
                         <div class="mb-4  text-gray-600">
                             {{strtoupper('Just let us know your email address and we will email you a password reset link') }}
                         </div>
-                        <auth-session-status class="mb-4" :status="session('status')" />
-
+                        {{-- <auth-session-status class="mb-4" :status="session('status')" /> --}}
                         <form method="POST" action="{{ route('password.email') }}">
                             @csrf
                             <div class="my-2 mb-2">

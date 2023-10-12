@@ -43,12 +43,12 @@ class CacheController extends Controller
                 ($Destroyed) ? config('messages.CACHE_DESTROYED_SUCCESS') : config('messages.CACHE_DESTROYED_FAILED'),
                 config('messages.HTTP_SUCCESS_CODE')
             );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }

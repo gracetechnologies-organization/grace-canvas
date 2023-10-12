@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Subscription;
 
@@ -10,15 +11,12 @@ class SubscriptionController extends Controller
 {
     public function create(Request $request)
     {
-        // dd($request->all());
-        // dd(now()->addMonths($request->month));
-        // dd($month);
         try {
             $UserID = User::getUserID();
             $subscription = Subscription::where('user_id', $UserID)->first();
 
             if ($subscription && $subscription->is_subscribed) {
-                return redirect()->back()->with('subscription_error', 'You are already subscribed to the plan');
+                return redirect()->back()->with('subscription_error', config('messages.SUBSCRIPTION_ERROR'));
             }
 
             // $user = auth()->user();
@@ -40,8 +38,8 @@ class SubscriptionController extends Controller
                 //     ]);
                 // }
             }
-            return redirect()->back()->with('subscription_success', 'Your Subscription Successful');
-        } catch (\Exception $e) {
+            return redirect()->back()->with('subscription_success', config('messages.SUBSCRIPTION_SUCCESS'));
+        } catch (Exception $e) {
             // Handle exceptions, e.g., display an error message
             return $e->getMessage();
         }

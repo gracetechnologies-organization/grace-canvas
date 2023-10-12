@@ -17,20 +17,6 @@ class SubscriptionForm extends Component
         $this->Plan = Plan::getPlanByID($ID);
     }
 
-    // public function subscriptionPost(Request $request)
-    // {
-    //     dd($request->all());
-    //     exit;
-    //     try {
-    //         auth()->user()->newSubscription('cashier', $request->plan)->create($request->paymentMethod);
-    //         dd('success');
-
-    //         return redirect()->route('subscription')->with('success', 'Your Subscription Successfull');
-    //     } catch (\Exception $e) {
-    //         return $e->getMessage();
-    //     }
-    // }
-
     public function render()
     {
         return view('livewire.payment.subscription-form', ['intent' => auth()->user()->createSetupIntent()]);

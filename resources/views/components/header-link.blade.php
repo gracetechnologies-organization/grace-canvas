@@ -3,6 +3,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="google-site-verification" content="rgwEwSF2xLYl4DmTmTztDDmZRd5fqRFxnsN6XyVZcwM" />
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('storage/icons/canvas_icon.webp') }}" />

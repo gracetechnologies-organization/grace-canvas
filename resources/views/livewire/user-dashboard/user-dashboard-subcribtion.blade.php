@@ -34,84 +34,72 @@
                                 </div>
                             @endif
                             @if (count($Subscriptions) > 0)
-                            <table class="table custome-card-border">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('plan name')]) }}</th>
-                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('price')]) }}</th>
-                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('quantity')]) }}</th>
-                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('trail-at-end')]) }}</th>
-                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('end-at')]) }}</th>
-                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('status')]) }}</th>
-                                        <th scope="col">{{ app('googleTranslator', ['string' =>  strtoupper('action')]) }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($Subscriptions as $Subscription)
-                                    <tr>
-                                        <th scope="row">
-                                            {{ $Subscription->plan->name }}
-                                            {{--  @if ($Subscription->plan)
-                                            {{ $Subscription->plan->name }}
-                                            @else
-                                            Null
-                                            @endif  --}}
-                                        </th>
-                                        <td>
-                                            ${{ $Subscription->price }}
-                                            {{--  @if ($Subscription->plan)
-                                            ${{ $Subscription->plan->price }}
-                                            @else
-                                            Null
-                                            @endif  --}}
-                                        </td>
-                                        <td>{{ $Subscription->quantity }}</td>
-                                        <td>
-                                            @if ($Subscription->trial_ends_at == null)
-                                            Null
-                                            @else
-                                            {{ $Subscription->trial_ends_at }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($Subscription->ends_at == null)
-                                            Null
-                                            @else
-                                            {{ $Subscription->ends_at }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            {{ $Subscription->stripe_status }}
-                                        </td>
-                                        <td>
-                                            @if ($Subscription->ends_at == null)
-                                                {{--  @php
-                                                $trialEndDate = $Subscription->created_at;
-                                                $currentDate = now();
-                                                $daysDifference = $currentDate->diffInDays($trialEndDate);
-                                                @endphp
-                                                @if ($daysDifference < 5)  --}}
-                                                    <a href="#" wire:click="cancel({{ $Subscription->id }})">
-                                                    <i class="bi bi-x-square-fill"></i>
-                                                    </a>
-                                                {{--  @endif  --}}
-                                            @endif
-                                                @if ($Subscription->stripe_status == 'canceled')
-                                                    <a href="#" wire:click="delete({{ $Subscription->id }})">
-                                                    <i class='bx bxs-trash'></i>
-                                                @endif
-                                        </td>
-
-                                                    {{-- @if ($Subscription->ends_at == null)
-                                                    <a href="#" wire:click="cancel({{ $Subscription->id }})"><i
-                                                    class="bi bi-x-square-fill"></i></a> /
+                                <table class="table custome-card-border">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">{{ app('googleTranslator', ['string' => 'PLAN NAME']) }}</th>
+                                            <th scope="col">{{ app('googleTranslator', ['string' => 'PRICE']) }}</th>
+                                            <th scope="col">{{ app('googleTranslator', ['string' => 'QUANTITY']) }}</th>
+                                            <th scope="col">{{ app('googleTranslator', ['string' => 'TRAIL AT END']) }}</th>
+                                            <th scope="col">{{ app('googleTranslator', ['string' => 'END AT']) }}</th>
+                                            <th scope="col">{{ app('googleTranslator', ['string' => 'STATUS']) }}</th>
+                                            <th scope="col">{{ app('googleTranslator', ['string' => 'ACTION']) }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($Subscriptions as $Subscription)
+                                            <tr>
+                                                <th scope="row">{{ $Subscription->name }}</th>
+                                                <td>{{ $Subscription->price }}</td>
+                                                <td>{{ $Subscription->quantity }}</td>
+                                                <td>
+                                                    @if ($Subscription->trial_ends_at == null)
+                                                        null
                                                     @else
-                                                    <span class="text-muted">Plan Canceled</span> /
-                                                    @endif --}}
-
+                                                        {{ $Subscription->trial_ends_at }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($Subscription->ends_at == null)
+                                                        null
+                                                    @else
+                                                        {{ $Subscription->ends_at }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($Subscription->stripe_status == 'active')
+                                                        <span class="badge rounded-pill text-bg-success">{{ $Subscription->stripe_status }}</span>
+                                                    @else
+                                                        <span class="badge rounded-pill text-bg-danger">{{ $Subscription->stripe_status }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($Subscription->ends_at == null)
+                                                        {{--  @php
+                                                            $trialEndDate = $Subscription->created_at;
+                                                            $currentDate = now();
+                                                            $daysDifference = $currentDate->diffInDays($trialEndDate);
+                                                            @endphp
+                                                            @if ($daysDifference < 5)  --}}
+                                                        <button type="submit" class="btn btn-danger" wire:loading.class="btn-dark" wire:loading.class.remove="btn-danger" wire:loading.attr="disabled" wire:click="cancel({{ $Subscription->id }})" title="Cancel your subscription">
+                                                            <span wire:loading.remove wire:target="cancel({{ $Subscription->id }})">
+                                                                <i class='bx bxs-skull'></i>
+                                                            </span>
+                                                            <span wire:loading wire:target="cancel({{ $Subscription->id }})">
+                                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                            </span>
+                                                        </button>
+                                                        {{--  @endif  --}}
+                                                    @endif
                                                     @if ($Subscription->stripe_status == 'canceled')
-                                                        <a href="#" wire:click="delete({{ $Subscription->id }})">
-                                                            <i class='bx bxs-trash'></i>
+                                                        <button type="submit" class="btn btn-danger" wire:loading.class="btn-dark" wire:loading.class.remove="btn-danger" wire:loading.attr="disabled" wire:click="delete({{ $Subscription->id }})" title="Delete your subscription">
+                                                            <span wire:loading.remove wire:target="delete({{ $Subscription->id }})">
+                                                                <i class='bx bxs-trash'></i>
+                                                            </span>
+                                                            <span wire:loading wire:target="delete({{ $Subscription->id }})">
+                                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                            </span>
+                                                        </button>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -119,10 +107,10 @@
                                     </tbody>
                                 </table>
                             @else
-                            <h2>
-                                {{ app('googleTranslator', ['string' => 'You Have Not Subscribed For Any Plan']) }}
-                                <a href="{{ route('subscription') }}">{{ app('googleTranslator', ['string' => 'Subscribe Now']) }}</a>
-                            </h2>
+                                <h2>
+                                    {{ app('googleTranslator', ['string' => 'You Have Not Subscribed For Any Plan']) }}
+                                    <a href="{{ route('subscription') }}">{{ app('googleTranslator', ['string' => 'Subscribe Now']) }}</a>
+                                </h2>
                             @endif
                             {{-- @foreach ($Subscriptions as $Subscription)
                             <div class="col-md-4 col-sm-6">

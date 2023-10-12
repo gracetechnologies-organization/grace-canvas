@@ -33,12 +33,12 @@ class AuthenticateAPIRequests
                     config('messages.TOKEN_INVALID'),
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
-        } catch (Exception $error) {
-            report($error);
+        } catch (Exception $Error) {
+            report($Error);
             return response()->macroJson(
                 [],
                 config('messages.FAILED_CODE'),
-                $error->getMessage(),
+                $Error->getMessage(),
                 config('messages.HTTP_SERVER_ERROR_CODE')
             );
         }
