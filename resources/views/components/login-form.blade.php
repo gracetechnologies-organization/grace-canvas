@@ -20,13 +20,13 @@
         </div>
         <div class="my-2 mb-2">
             <label class="mt-2 form-check-label" class="mt-2">
-                <input type="checkbox"> {{ app('googleTranslator', ['string' => 'Remember Me']) }} 
+                <input type="checkbox"> {{ app('googleTranslator', ['string' => 'Remember Me']) }}
             </label>
         </div>
         <button type="submit" class="custom-login-signup-css ">
             <a class="nav-link" href="{{ route('register') }}"> {{ app('googleTranslator', ['string' => 'Register']) }} </a>
         </button>
-        <button type="submit" class="custom-login-signup-css ">
+        <button type="submit" class="custom-login-signup-css">
             {{ app('googleTranslator', ['string' => 'Login']) }}
         </button>
     </form>
