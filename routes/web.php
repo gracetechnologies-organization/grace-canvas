@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/change', [languageController::class, 'change'])->name('changeLang');
+// Route::get('/change', [languageController::class, 'change'])->name('changeLang');
 
 require_once __DIR__ . '/front-pages.php';
 // require_once __DIR__ . '/auth.php';
