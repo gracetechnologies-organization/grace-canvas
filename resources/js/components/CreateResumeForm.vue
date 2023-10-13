@@ -1913,10 +1913,10 @@
                 <!-- Resume template column -->
                 <div class="col-12 col-md-7 col-lg-8" style="overflow: scroll">
                     <!-- Resume template design  class="container contianer-customs mt-2 border border-danger" id="resume-template-container"        -->
-                    <div class="custom-border" style="width: 720px">
-                        <div
-                            class="row"
-                            style="width: 720px"
+                    <div class="custom-border" style="width: 720px" >
+                        <div ref="scrollContainer"
+                            class="row content"
+                            style="width: 720px border: 1px solid black"
                             id="element-to-convert"
                         >
                             <div class="left-col">
@@ -1982,7 +1982,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="skills-container">
+                                <div class="skills-container"  v-if="!hideSkill">
                                     <h2>Skills</h2>
                                     <div
                                         id="skills-section"
@@ -1991,7 +1991,7 @@
                                     >
                                         <div
                                             class="skills-details"
-                                            v-if="!hideInputFields"
+                                           
                                         >
                                             <p id="SkillName0">
                                                 {{ skill.name }}
@@ -2005,7 +2005,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="interest-container">
+                                <div class="interest-container" v-if="!hideInterest">
                                     <h2>Interest</h2>
                                     <div
                                         id="interests-section"
@@ -2014,7 +2014,7 @@
                                     >
                                         <div
                                             class="interest-details"
-                                            v-if="!hideInputFields"
+                                            
                                         >
                                             <p id="Interest0">
                                                 {{ interest.name }}
@@ -2050,7 +2050,7 @@
                                         {{ formData.objective }}
                                     </p>
                                 </div>
-                                <div class="experience-container">
+                                <div class="experience-container" v-if="!hideExperience">
                                     <h2>Work Experience</h2>
                                     <div
                                         id="experiences-section"
@@ -2061,7 +2061,7 @@
                                     >
                                         <div
                                             class="experience-details"
-                                            v-if="!hideExperience"
+                                            
                                         >
                                             <h3 id="Designation0">
                                               {{ experience.designation }}
@@ -2089,7 +2089,7 @@
                                     </div>
                                     <div class="right-col-divider"></div>
                                 </div>
-                                <div class="education-container">
+                                <div class="education-container" v-if="!hideEducation">
                                     <h2>Education</h2>
                                     <div
                                         id="educations-section"
@@ -2098,7 +2098,7 @@
                                     >
                                         <div
                                             class="education-details"
-                                            v-if="!hideEducation"
+                                            
                                         >
                                             <h3 id="EducationalOrganization0">
                                                 {{ education.university }}
@@ -2123,7 +2123,7 @@
                                     </div>
                                     <div class="right-col-divider"></div>
                                 </div>
-                                <div class="achievement-container">
+                                <div class="achievement-container"  v-if="!hideAchievement">
                                     <h2>Achievement</h2>
                                     <div
                                         class="row achievement-section"
@@ -2136,7 +2136,7 @@
                                     >
                                         <div
                                             class="achievement-details"
-                                            v-if="!hideAchievement"
+                                           
                                         >
                                             <p id="AchievementTitle0">
                                                 {{ achievement.name }}
@@ -2165,7 +2165,7 @@
                                     </div>
                                     <div class="right-col-divider"></div>
                                 </div>
-                                <div class="reference-container">
+                                <div class="reference-container"  v-if="!hideReference">
                                     <h2>Reference</h2>
                                     <div
                                         class="row reference-section"
@@ -2176,7 +2176,7 @@
                                     >
                                         <div
                                             class="reference-details"
-                                            v-if="!hideReference"
+                                           
                                         >
                                             <div>
                                                 <h3 id="ReferenceName0">
@@ -2193,7 +2193,7 @@
                                     </div>
                                     <div class="right-col-divider"></div>
                                 </div>
-                                <div class="languages-container">
+                                <div class="languages-container"  v-if="!hideLanguage">
                                     <h2>Language</h2>
                                     <div
                                         class="row languages-section"
@@ -2207,7 +2207,7 @@
                                     >
                                         <div
                                             class="languages-details"
-                                            v-if="!hideLanguage"
+                                           
                                         >
                                             <div class="row col-12">
                                                 <div class="col-6">
@@ -2255,6 +2255,8 @@ export default {
 
     data() {
         return {
+            currentPage: 1,
+            maxDivHeight: 1042,
             croppedImage: "", // Store the cropped image data here
             receivedImageId: null,
             imgSrc: "",
@@ -2330,6 +2332,22 @@ export default {
     },
 
     methods: {
+
+        checkScrollPosition() {
+        const scrollContainer = this.$refs.scrollContainer;
+        if (scrollContainer) {
+          const scrollTop = scrollContainer.scrollTop;
+          const scrollHeight = scrollContainer.scrollHeight;
+          const clientHeight = scrollContainer.clientHeight;
+          
+          if (scrollTop + clientHeight >= scrollHeight - 10) {
+            // User has reached the bottom of the div, add a new page
+            this.currentPage++;
+            // window.print();
+          }
+        }
+      },
+
         exportToPDF() {
             var element = document.getElementById("element-to-convert");
             var opt = {
@@ -2466,11 +2484,29 @@ export default {
             this.references.pop();
         },
     },
+
+    mounted() {
+      // Attach the scroll event listener
+      const scrollContainer = this.$refs.scrollContainer;
+      if (scrollContainer) {
+        scrollContainer.addEventListener("scroll", this.checkScrollPosition);
+      }
+    },
+    beforeDestroy() {
+      // Remove the scroll event listener when the component is destroyed
+      const scrollContainer = this.$refs.scrollContainer;
+      if (scrollContainer) {
+        scrollContainer.removeEventListener("scroll", this.checkScrollPosition);
+      }
+    },
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+
+
 
 .img-container {
     height: 500px;
