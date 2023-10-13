@@ -3,7 +3,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="google-site-verification" content="rgwEwSF2xLYl4DmTmTztDDmZRd5fqRFxnsN6XyVZcwM" />
+    <!-- Google console acc is on gracetec69@gmail.com -->
+    <meta name="google-site-verification" content="cGSVWamNI8I8qevkltJcn84naGJfMiXbXMdsD2HSL18" />
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('storage/icons/canvas_icon.webp') }}" />
