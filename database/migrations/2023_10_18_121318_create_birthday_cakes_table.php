@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('birthday_templates', function (Blueprint $table) {
+        Schema::create('birthday_cakes', function (Blueprint $table) {
             $table->id();
             $table->text('image');
             $table->text('thumbnail');
-            $table->enum('type', [1, 2, 3])->comment('1: landscape, 2: portrait, 3: square');
-            $table->tinyInteger('version')->default(0)->comment('0: free, 1: premium');
             $table->timestamps();
             $table->softDeletesTz();
         });
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('birthday_templates');
+        Schema::dropIfExists('birthday_cakes');
     }
 };

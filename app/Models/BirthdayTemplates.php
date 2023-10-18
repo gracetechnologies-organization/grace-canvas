@@ -10,13 +10,13 @@ class BirthdayTemplates extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'front_image',
-        'svg',
-        'version',
-        'default',
+        'image',
+        'thumbnail',
+        'type',
+        'version'
     ];
 
     public static function getBirthdayTemplateByID(int $ID)
@@ -24,30 +24,27 @@ class BirthdayTemplates extends Model
         $birthdayTemplates = BirthdayTemplates::findOrFail($ID);
         return [
             "id" => $birthdayTemplates->id,
-            "front_image" => url('/storage/images/birthday_templates') . '/' . $birthdayTemplates->front_image,
-            "svg" => $birthdayTemplates->svg,
-            'version' => $birthdayTemplates->version,
-            'default' => $birthdayTemplates->default,
-            "created_at" => $birthdayTemplates->created_at,
-            "updated_at" => $birthdayTemplates->updated_at,
-            "deleted_at" => $birthdayTemplates->deleted_at
+            "image" => url('/storage/images/birthday_templates') . '/' . $birthdayTemplates->image,
+            "thumbnail" => $birthdayTemplates->thumbnail,
+            "type" => $birthdayTemplates->type,
+            "version" => $birthdayTemplates->version
         ];
     }
 
-    public static function getDefaultBirthdayTemplate()
-    {
-        $birthdayTemplates = BirthdayTemplates::where('default', 1)->first();
-        return [
-            "id" => $birthdayTemplates->id,
-            "front_image" => url('/storage/images/birthday_templates') . '/' . $birthdayTemplates->front_image,
-            "svg" => $birthdayTemplates->svg,
-            'version' => $birthdayTemplates->version,
-            'default' => $birthdayTemplates->default,
-            "created_at" => $birthdayTemplates->created_at,
-            "updated_at" => $birthdayTemplates->updated_at,
-            "deleted_at" => $birthdayTemplates->deleted_at
-        ];
-    }
+    // public static function getDefaultBirthdayTemplate()
+    // {
+    //     $birthdayTemplates = BirthdayTemplates::where('default', 1)->first();
+    //     return [
+    //         "id" => $birthdayTemplates->id,
+    //         "front_image" => url('/storage/images/birthday_templates') . '/' . $birthdayTemplates->front_image,
+    //         "svg" => $birthdayTemplates->svg,
+    //         'version' => $birthdayTemplates->version,
+    //         'default' => $birthdayTemplates->default,
+    //         "created_at" => $birthdayTemplates->created_at,
+    //         "updated_at" => $birthdayTemplates->updated_at,
+    //         "deleted_at" => $birthdayTemplates->deleted_at
+    //     ];
+    // }
 
     public static function getBirthdayTemplates()
     {
@@ -59,27 +56,27 @@ class BirthdayTemplates extends Model
         return BirthdayTemplates::orderByDesc('id')->first()->id ?? 0;
     }
 
-    public static function insertBirthdayTemplates(string $FrontImage, string $FrontSvg, int $Version = 0, int $Default = 0)
+    public static function insertBirthdayTemplates(string $Image, string $Thumbnail, int $Type, int $Version = 0)
     {
         return BirthdayTemplates::create([
-            'front_image' => $FrontImage,
-            'svg' => $FrontSvg,
-            'version' => $Version,
-            'default' => $Default,
+            'image' => $Image,
+            'thumbnail' => $Thumbnail,
+            'type' => $Type,
+            'version' => $Version
         ]);
     }
 
-    public static function updateBirthdayTempletes(int $ID, string $FrontImage = null, string $FrontSvg = null, int $version = null, int $default = null)
+    public static function updateBirthdayTempletes(int $ID, string $Image = null, string $Thumbnail = null, int $Type = null, int $Version = null)
     {
         $BirthdayTemplete = BirthdayTemplates::findOrFail($ID);
-        if (!is_null($FrontImage)) $BirthdayTemplete->front_image = $FrontImage;
-        if (!is_null($FrontSvg)) $BirthdayTemplete->svg =  $FrontSvg;
-        if (!is_null($version)) $BirthdayTemplete->version = $version;
-        if (!is_null($default)) $BirthdayTemplete->default = $default;
+        if (!is_null($Image)) $BirthdayTemplete->image = $Image;
+        if (!is_null($Thumbnail)) $BirthdayTemplete->thumbnail = $Thumbnail;
+        if (!is_null($Type)) $BirthdayTemplete->type = $Type;
+        if (!is_null($Version)) $BirthdayTemplete->version = $Version;
         return $BirthdayTemplete->save();
     }
 
-    public static function deleteBirthdayTemplate(int $ID)
+    public static function deleteBirthdayTemplateByID(int $ID)
     {
         return BirthdayTemplates::where('id', $ID)->delete();
     }
@@ -89,7 +86,7 @@ class BirthdayTemplates extends Model
         return BirthdayTemplates::query()->update(['deleted_at' => now()]);
     }
 
-    public static function restoreBirthdayTemplete(int $ID)
+    public static function restoreBirthdayTempleteByID(int $ID)
     {
         return BirthdayTemplates::where('id', $ID)->restore();
     }
