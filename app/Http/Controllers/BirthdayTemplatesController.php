@@ -135,7 +135,7 @@ class BirthdayTemplatesController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Deleted = BirthdayTemplates::deleteBirthdayTemplate($Req->ID);
+                $Deleted = BirthdayTemplates::deleteBirthdayTemplateByID($Req->ID);
                 if ($Deleted) {
                     return response()->macroJson(
                         [],
@@ -181,7 +181,7 @@ class BirthdayTemplatesController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Restored = BirthdayTemplates::restoreBirthdayTemplete($Req->ID);
+                $Restored = BirthdayTemplates::restoreBirthdayTempleteByID($Req->ID);
                 if ($Restored) {
                     return response()->macroJson(
                         [],

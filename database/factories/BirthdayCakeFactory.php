@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BirthdayTemplates>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BirthdayCake>
  */
-class BirthdayTemplatesFactory extends Factory
+class BirthdayCakeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,7 @@ class BirthdayTemplatesFactory extends Factory
     {
         return [
             'image' => $this->faker->unique()->word() . '.jpg',
-            'thumbnail' => $this->faker->unique()->word() . '.jpg',
-            'type' => $this->faker->randomElement([1, 2, 3]),
-            'version' => $this->faker->randomElement([0, 1])
+            'thumbnail' => $this->faker->unique()->word() . '.jpg'
         ];
     }
 }

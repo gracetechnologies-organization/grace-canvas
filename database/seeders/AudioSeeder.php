@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\BirthdayTemplates;
+use App\Models\Audio;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class BirthdayTemplatesSeeder extends Seeder
+class AudioSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        BirthdayTemplates::factory()->count(5)->create();
+        Audio::factory()->count(5)->create();
     }
 }
