@@ -15,8 +15,8 @@ class BirthdayCakeController extends Controller
     public function upload(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
-            'Image' => 'required|mimes:webp,jpg,png|max:500',
-            'Thumbnail' => 'required|mimes:webp,jpg,png|max:100'
+            'Image' => 'required|mimes:jpg,png|max:500',
+            'Thumbnail' => 'required|mimes:jpg,png|max:100'
         ]);
         if ($Validator->fails()) {
             return response()->macroJson(
@@ -30,7 +30,7 @@ class BirthdayCakeController extends Controller
         $LastInsertedId =  BirthdayCake::getLastInsertedID();
         $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
         $Image = CustomHelpers::getBirthdayCakeImgWithID($Req->Image, $LastInsertedId);
-        $Thumbnail = CustomHelpers::getBirthdayCakeThumbnailWithID($Req->Thumbnail, $LastInsertedId);
+        $Thumbnail = CustomHelpers::saveCompressReturnImgName($Req->Thumbnail, 'birthday_cakes/thumbnails/', 'webp');
         $Inserted = BirthdayCake::insertBirthdayCake($Image, $Thumbnail);
         if ($Inserted) {
             return response()->macroJson(
@@ -52,8 +52,8 @@ class BirthdayCakeController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Images.*' => 'required|mimes:webp,jpg,png|max:500',
-                'Thumbnails.*' => 'required|mimes:webp,jpg,png|max:100'
+                'Images.*' => 'required|mimes:jpg,png|max:500',
+                'Thumbnails.*' => 'required|mimes:jpg,png|max:100'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -72,11 +72,16 @@ class BirthdayCakeController extends Controller
                 );
             }
             foreach ($Req->file('Images') as $Key => $Image) {
-                $FrontImage = CustomHelpers::getWallpaperImgName($Image);
-                $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'wallpapers/thumbnails/', 'webp');
-                $BulkData[] = ['front_image' => $FrontImage, 'thumbnail' => $ThisThumbnail, 'type' => $Req->Type, 'cat_id' => $Req->CatID];
+                $LastInsertedId =  BirthdayCake::getLastInsertedID();
+                $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
+                $Image = CustomHelpers::getBirthdayCakeImgWithID($Image, $LastInsertedId);
+                // $ThisThumbnail = CustomHelpers::getBirthdayCakeThumbnailWithID($Req->Thumbnail, $LastInsertedId);
+                
+                // $FrontImage = CustomHelpers::getWallpaperImgName($Image);
+                $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'birthday_cakes/thumbnails/', 'webp');
+                $BulkData[] = ['image' => $Image, 'thumbnail' => $ThisThumbnail];
             }
-            $Inserted = Wallpaper::insertBulkWallpapers($BulkData);
+            $Inserted = BirthdayCake::insertBulkBirthdayCakes($BulkData);
             if ($Inserted) {
                 return response()->macroJson(
                     [],
@@ -106,8 +111,8 @@ class BirthdayCakeController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Image' => 'required|mimes:webp,jpg,png|max:500',
-                'Thumbnail' => 'required|mimes:webp,jpg,png|max:100'
+                'Image' => 'required|mimes:jpg,png|max:500',
+                'Thumbnail' => 'required|mimes:jpg,png|max:100'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(

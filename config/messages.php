@@ -52,7 +52,7 @@ return [
     'CACHE_DESTROYED_FAILED' => 'There is no cache against this key',
     'PARAM_MISSING' => 'Some required parameters are missing.',
     'NO_RECORD' => 'No record found.',
-    'ARRAYS_NOT_EQUAL' => 'Thumbnails & FrontImages should be equal in number.',
+    'ARRAYS_NOT_EQUAL' => 'Thumbnails & Images should be equal in number.',
     'TYPE_NA' => 'The "Type" which you have entered is not available in our system',
     'EXPERIENCES_LIMIT_REACHED' => 'You can only add 2 experiences',
     'EDUCATIONS_LIMIT_REACHED' => 'You can only add 2 qualifications',

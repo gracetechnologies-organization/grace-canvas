@@ -21,10 +21,12 @@ class TemplatesController extends Controller
     {
         //
     }
+
     public function create()
     {
         //
     }
+
     public function store(Request $Req)
     {
         try {
@@ -55,6 +57,7 @@ class TemplatesController extends Controller
             );
         }
     }
+
     public function storeBusinessCard(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -93,6 +96,7 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
+
     public function storeLetterHead(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -127,6 +131,7 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
+
     public function storeWallpaper(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -159,6 +164,7 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
+
     public function storeBulkWallpapers(Request $Req)
     {
         try {
@@ -216,6 +222,7 @@ class TemplatesController extends Controller
             );
         }
     }
+
     public function storeResume(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -252,10 +259,12 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
+
     public function show()
     {
         //
     }
+
     public function showBusinessCards()
     {
         try {
@@ -289,6 +298,7 @@ class TemplatesController extends Controller
             );
         }
     }
+
     public function showLetterHeads()
     {
         try {
@@ -321,6 +331,7 @@ class TemplatesController extends Controller
             );
         }
     }
+
     public function showResumes()
     {
         try {
@@ -354,6 +365,7 @@ class TemplatesController extends Controller
             );
         }
     }
+
     public function showWallpapersByCatID(array $Category)
     {
         $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
@@ -372,6 +384,7 @@ class TemplatesController extends Controller
         }
         return ['data' => $Data, 'pagination' => $Wallpapers];
     }
+
     public function showWallpapers(Request $Req)
     {
         try {
@@ -438,6 +451,7 @@ class TemplatesController extends Controller
             );
         }
     }
+
     public function showCategoriesWallpapers(Request $Req)
     {
         try {
@@ -496,6 +510,7 @@ class TemplatesController extends Controller
             );
         }
     }
+
     public function edit()
     {
         //
@@ -540,8 +555,8 @@ class TemplatesController extends Controller
             foreach ($BirthdayTemplates as $BirthdayTemplate) {
                 array_push($Data, [
                     "id" => $BirthdayTemplate->id,
-                    "image" => url('/storage/images/birthday_templates') . '/' . $BirthdayTemplate->image,
-                    "thumbnail" => $BirthdayTemplate->thumbnail,
+                    "image" => url('/storage/birthday_templates') . '/' . $BirthdayTemplate->image,
+                    "thumbnail" => url('/storage/birthday_templates/thumbnails') . '/' . $BirthdayTemplate->thumbnail,
                     "type" => $BirthdayTemplate->type,
                     "version" => $BirthdayTemplate->version
                 ]);

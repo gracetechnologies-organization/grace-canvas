@@ -86,15 +86,17 @@ Route::middleware('auth.api.reqs')->group(function () {
     });
 
     Route::prefix('birthday-template')->group(function () {
-        Route::post('/create', [BirthdayTemplatesController::class, 'create']);
         Route::post('/upload', [BirthdayTemplatesController::class, 'upload']);
+        Route::post('/upload/bulk', [BirthdayTemplatesController::class, 'uploadBulk']);
+        // Route::post('/create', [BirthdayTemplatesController::class, 'create']);
         Route::post('/edit/{ID}', [BirthdayTemplatesController::class, 'edit']);
         Route::post('/destroy/{ID?}', [BirthdayTemplatesController::class, 'destroy']);
         Route::post('/restore/{ID?}', [BirthdayTemplatesController::class, 'restore']);
     });
 
-    Route::prefix('birthday-cakes')->group(function () {
+    Route::prefix('birthday-cake')->group(function () {
         Route::post('/upload', [BirthdayCakeController::class, 'upload']);
+        Route::post('/upload/bulk', [BirthdayCakeController::class, 'uploadBulk']);
         Route::post('/edit/{ID}', [BirthdayCakeController::class, 'edit']);
         Route::post('/destroy/{ID?}', [BirthdayCakeController::class, 'destroy']);
         Route::post('/restore/{ID?}', [BirthdayCakeController::class, 'restore']);

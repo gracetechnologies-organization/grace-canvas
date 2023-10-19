@@ -36,16 +36,17 @@ class CustomHelpers
     /**
      * @param string $Path e.g $Path = 'wallpapers/thumbnails/'
      */
-    public static function saveCompressReturnImgName(object $Img, string $Path, string $Extention)
+    public static function saveCompressReturnImgName(object $Img, string $Path)
     {
         $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME));
-        Storage::disk('public')->putFileAs($Path, $Img, $ImgName . '.' . $Img->getClientOriginalExtension());
-
-        Image::load(storage_path('app/public/') . $Path . $ImgName . '.' . $Img->getClientOriginalExtension())
-        ->optimize()
-        ->quality(70)
-        ->format(Manipulations::FORMAT_WEBP)
-        ->save(storage_path('app/public/') . $Path . $ImgName . '.webp');
+        $Extention = $Img->getClientOriginalExtension();
+        Storage::disk('public')->putFileAs($Path, $Img, $ImgName . '.' . $Extention);
+       
+        // Image::load(storage_path('app/public/') . $Path . $ImgName . '.' . $Extention)
+        // ->optimize()
+        // ->quality(70)
+        // ->format(Manipulations::FORMAT_JPG)
+        // ->save(storage_path('app/public/') . $Path . $ImgName . '.' . $Extention);
 
         return $ImgName . '.' . $Extention;
     }
@@ -85,7 +86,7 @@ class CustomHelpers
         | Save the image to the default storage path "storage/app/public/images"
         |--------------------------------------------------------------------------
         */
-        Storage::disk('public')->putFileAs('images/birthday_templates', $Img, $ImgName);
+        Storage::disk('public')->putFileAs('birthday_templates', $Img, $ImgName);
         return $ImgName;
     }
 
