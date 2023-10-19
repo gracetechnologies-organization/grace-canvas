@@ -43,6 +43,11 @@ class BirthdayCake extends Model
         ]);
     }
 
+    public static function insertBulkBirthdayCakes(array $Data)
+    {
+        return BirthdayCake::insert($Data);
+    }
+
     public static function updateBirthdayCake(int $ID, string $Image = null, string $Thumbnail = null)
     {
         $BirthdayCake = BirthdayCake::findOrFail($ID);

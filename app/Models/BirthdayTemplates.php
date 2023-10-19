@@ -19,13 +19,25 @@ class BirthdayTemplates extends Model
         'version'
     ];
 
+    public function getTypeAttribute($Value)
+    {
+        // Define a mapping for enum values to human-readable values
+        $TypeMapping = [
+            '1' => 'landscape',
+            '2' => 'portrait',
+            '3' => 'square',
+        ];
+        // Check if the value exists in the mapping; if not, return the value as is
+        return $TypeMapping[$Value] ?? $Value;
+    }
+
     public static function getBirthdayTemplateByID(int $ID)
     {
         $BirthdayTemplate = BirthdayTemplates::findOrFail($ID);
         return [
             "id" => $BirthdayTemplate->id,
-            "image" => url('/storage/images/birthday_templates') . '/' . $BirthdayTemplate->image,
-            "thumbnail" => $BirthdayTemplate->thumbnail,
+            "image" => url('/storage/birthday_templates') . '/' . $BirthdayTemplate->image,
+            "thumbnail" => url('/storage/birthday_templates/thumbnails') . '/' . $BirthdayTemplate->thumbnail,
             "type" => $BirthdayTemplate->type,
             "version" => $BirthdayTemplate->version
         ];
@@ -66,7 +78,12 @@ class BirthdayTemplates extends Model
         ]);
     }
 
-    public static function updateBirthdayTempletes(int $ID, string $Image = null, string $Thumbnail = null, int $Type = null, int $Version = null)
+    public static function insertBulkBirthdayTemplates(array $Data)
+    {
+        return BirthdayTemplates::insert($Data);
+    }
+
+    public static function updateBirthdayTemplate(int $ID, string $Image = null, string $Thumbnail = null, int $Type = null, int $Version = null)
     {
         $BirthdayTemplete = BirthdayTemplates::findOrFail($ID);
         if (!is_null($Image)) $BirthdayTemplete->image = $Image;
