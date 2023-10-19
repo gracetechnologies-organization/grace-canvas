@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BirthdayCakeController;
 use App\Http\Controllers\BirthdayTemplatesController;
 use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\CacheController;
@@ -90,6 +91,14 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/edit/{ID}', [BirthdayTemplatesController::class, 'edit']);
         Route::post('/destroy/{ID?}', [BirthdayTemplatesController::class, 'destroy']);
         Route::post('/restore/{ID?}', [BirthdayTemplatesController::class, 'restore']);
+    });
+
+    Route::prefix('birthday-cakes')->group(function () {
+        Route::post('/upload', [BirthdayCakeController::class, 'upload']);
+        Route::post('/edit/{ID}', [BirthdayCakeController::class, 'edit']);
+        Route::post('/destroy/{ID?}', [BirthdayCakeController::class, 'destroy']);
+        Route::post('/restore/{ID?}', [BirthdayCakeController::class, 'restore']);
+        Route::get('/show/{ID?}', [BirthdayCakeController::class, 'show']);
     });
 
     Route::prefix('cache')->group(function () {

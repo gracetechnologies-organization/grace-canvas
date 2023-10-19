@@ -89,6 +89,30 @@ class CustomHelpers
         return $ImgName;
     }
 
+    public static function getBirthdayCakeImgWithID(object $Img, int $ID)
+    {
+        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('images/birthday_cakes', $Img, $ImgName);
+        return $ImgName;
+    }
+
+    public static function getBirthdayCakeThumbnailWithID(object $Img, int $ID)
+    {
+        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('images/birthday_cakes/thumbnails', $Img, $ImgName);
+        return $ImgName;
+    }
+
     public static function getViewPathWithID(object $File, string $Type, int $ID, string $Side = null)
     {
         // Get the SVG content

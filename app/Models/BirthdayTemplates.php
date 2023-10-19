@@ -21,13 +21,13 @@ class BirthdayTemplates extends Model
 
     public static function getBirthdayTemplateByID(int $ID)
     {
-        $birthdayTemplates = BirthdayTemplates::findOrFail($ID);
+        $BirthdayTemplate = BirthdayTemplates::findOrFail($ID);
         return [
-            "id" => $birthdayTemplates->id,
-            "image" => url('/storage/images/birthday_templates') . '/' . $birthdayTemplates->image,
-            "thumbnail" => $birthdayTemplates->thumbnail,
-            "type" => $birthdayTemplates->type,
-            "version" => $birthdayTemplates->version
+            "id" => $BirthdayTemplate->id,
+            "image" => url('/storage/images/birthday_templates') . '/' . $BirthdayTemplate->image,
+            "thumbnail" => $BirthdayTemplate->thumbnail,
+            "type" => $BirthdayTemplate->type,
+            "version" => $BirthdayTemplate->version
         ];
     }
 
@@ -48,7 +48,7 @@ class BirthdayTemplates extends Model
 
     public static function getBirthdayTemplates()
     {
-        return BirthdayTemplates::inRandomOrder()->paginate(4);
+        return BirthdayTemplates::paginate(4);
     }
 
     public static function getLastInsertedID()
