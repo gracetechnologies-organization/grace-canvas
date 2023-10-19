@@ -21,12 +21,10 @@ class TemplatesController extends Controller
     {
         //
     }
-
     public function create()
     {
         //
     }
-
     public function store(Request $Req)
     {
         try {
@@ -57,7 +55,6 @@ class TemplatesController extends Controller
             );
         }
     }
-
     public function storeBusinessCard(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -96,7 +93,6 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
-
     public function storeLetterHead(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -131,7 +127,6 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
-
     public function storeWallpaper(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -164,7 +159,6 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
-
     public function storeBulkWallpapers(Request $Req)
     {
         try {
@@ -222,7 +216,6 @@ class TemplatesController extends Controller
             );
         }
     }
-
     public function storeResume(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
@@ -259,12 +252,10 @@ class TemplatesController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
-
     public function show()
     {
         //
     }
-
     public function showBusinessCards()
     {
         try {
@@ -298,7 +289,6 @@ class TemplatesController extends Controller
             );
         }
     }
-
     public function showLetterHeads()
     {
         try {
@@ -331,7 +321,6 @@ class TemplatesController extends Controller
             );
         }
     }
-
     public function showResumes()
     {
         try {
@@ -365,7 +354,6 @@ class TemplatesController extends Controller
             );
         }
     }
-
     public function showWallpapersByCatID(array $Category)
     {
         $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
@@ -384,7 +372,6 @@ class TemplatesController extends Controller
         }
         return ['data' => $Data, 'pagination' => $Wallpapers];
     }
-
     public function showWallpapers(Request $Req)
     {
         try {
@@ -451,7 +438,6 @@ class TemplatesController extends Controller
             );
         }
     }
-
     public function showCategoriesWallpapers(Request $Req)
     {
         try {
@@ -510,7 +496,6 @@ class TemplatesController extends Controller
             );
         }
     }
-
     public function edit()
     {
         //
@@ -535,39 +520,36 @@ class TemplatesController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            if ($Req->Default) {
-                $Data = Cache::rememberForever('birthdayTemplatesDefault', function () use ($Req) {
-                    return  BirthdayTemplates::getDefaultBirthdayTemplate();
-                });
-                return response()->macroJson(
-                    $Data,
-                    config('messages.SUCCESS_CODE'),
-                    (empty($Data)) ? config('messages.NO_RECORD') : '',
-                    config('messages.HTTP_SUCCESS_CODE')
-                );
+            // if ($Req->Default) {
+            //     $Data = Cache::rememberForever('birthdayTemplatesDefault', function () use ($Req) {
+            //         return  BirthdayTemplates::getDefaultBirthdayTemplate();
+            //     });
+            //     return response()->macroJson(
+            //         $Data,
+            //         config('messages.SUCCESS_CODE'),
+            //         (empty($Data)) ? config('messages.NO_RECORD') : '',
+            //         config('messages.HTTP_SUCCESS_CODE')
+            //     );
+            // }
+            
+            /* 
+            * Here we can't use cache bcz then pagination will not work properly 
+            */
+            $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates();
+            $Data = [];
+            foreach ($BirthdayTemplates as $BirthdayTemplate) {
+                array_push($Data, [
+                    "id" => $BirthdayTemplate->id,
+                    "image" => url('/storage/images/birthday_templates') . '/' . $BirthdayTemplate->image,
+                    "thumbnail" => $BirthdayTemplate->thumbnail,
+                    "type" => $BirthdayTemplate->type,
+                    "version" => $BirthdayTemplate->version
+                ]);
             }
-
-            $BirthdayTempletes = BirthdayTemplates::getBirthdayTemplates();
-            $Data = Cache::rememberForever('birthdayTemplates', function () use ($BirthdayTempletes) {
-                $Data = [];
-                foreach ($BirthdayTempletes as $BirthdayTemplete) {
-                    array_push($Data, [
-                        'id' => $BirthdayTemplete->id,
-                        'front_image' => url('/storage/images/birthday_templates') . '/' . $BirthdayTemplete->front_image,
-                        'svg' => $BirthdayTemplete->svg,
-                        'version' => $BirthdayTemplete->version,
-                        'default' => $BirthdayTemplete->default,
-                        'created_at' => $BirthdayTemplete->created_at,
-                        'updated_at' => $BirthdayTemplete->updated_at,
-                        'deleted_at' => $BirthdayTemplete->deleted_at,
-                    ]);
-                }
-                return $Data;
-            });
             return response()->macroJsonExtention(
                 $Data,
                 'pagination',
-                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($BirthdayTempletes)],
+                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($BirthdayTemplates)],
                 config('messages.SUCCESS_CODE'),
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')

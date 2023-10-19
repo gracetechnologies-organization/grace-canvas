@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
             ResumeSeeder::class,
             BirthdayTemplatesSeeder::class,
             ParentCategorySeeder::class,
-            PlanSeeder::class
+            PlanSeeder::class,
+            AudioSeeder::class,
+            BirthdayCakeSeeder::class,  
+            StickerSeeder::class
         ]);
     }
 }
