@@ -98,19 +98,7 @@ class CustomHelpers
         | Save the image to the default storage path "storage/app/public/images"
         |--------------------------------------------------------------------------
         */
-        Storage::disk('public')->putFileAs('images/birthday_cakes', $Img, $ImgName);
-        return $ImgName;
-    }
-
-    public static function getBirthdayCakeThumbnailWithID(object $Img, int $ID)
-    {
-        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
-        /*
-        |--------------------------------------------------------------------------
-        | Save the image to the default storage path "storage/app/public/images"
-        |--------------------------------------------------------------------------
-        */
-        Storage::disk('public')->putFileAs('images/birthday_cakes/thumbnails', $Img, $ImgName);
+        Storage::disk('public')->putFileAs('birthday_cakes', $Img, $ImgName);
         return $ImgName;
     }
 
