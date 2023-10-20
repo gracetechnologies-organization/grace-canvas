@@ -30,7 +30,7 @@ class BirthdayCakeController extends Controller
         $LastInsertedId =  BirthdayCake::getLastInsertedID();
         $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
         $Image = CustomHelpers::getBirthdayCakeImgWithID($Req->Image, $LastInsertedId);
-        $Thumbnail = CustomHelpers::saveCompressReturnImgName($Req->Thumbnail, 'birthday_cakes/thumbnails/', 'webp');
+        $Thumbnail = CustomHelpers::saveCompressReturnImgName($Req->Thumbnail, 'birthday_cakes/thumbnails/');
         $Inserted = BirthdayCake::insertBirthdayCake($Image, $Thumbnail);
         if ($Inserted) {
             return response()->macroJson(
@@ -75,10 +75,7 @@ class BirthdayCakeController extends Controller
                 $LastInsertedId =  BirthdayCake::getLastInsertedID();
                 $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
                 $Image = CustomHelpers::getBirthdayCakeImgWithID($Image, $LastInsertedId);
-                // $ThisThumbnail = CustomHelpers::getBirthdayCakeThumbnailWithID($Req->Thumbnail, $LastInsertedId);
-                
-                // $FrontImage = CustomHelpers::getWallpaperImgName($Image);
-                $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'birthday_cakes/thumbnails/', 'webp');
+                $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'birthday_cakes/thumbnails/');
                 $BulkData[] = ['image' => $Image, 'thumbnail' => $ThisThumbnail];
             }
             $Inserted = BirthdayCake::insertBulkBirthdayCakes($BulkData);
@@ -111,8 +108,8 @@ class BirthdayCakeController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Image' => 'required|mimes:jpg,png|max:500',
-                'Thumbnail' => 'required|mimes:jpg,png|max:100'
+                'Image' => 'mimes:jpg,png|max:500',
+                'Thumbnail' => 'mimes:jpg,png|max:100'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -123,7 +120,7 @@ class BirthdayCakeController extends Controller
                 );
             }
             $Image = (!is_null($Req->Image)) ? CustomHelpers::getBirthdayCakeImgWithID($Req->Image, $Req->ID) : null;
-            $Thumbnail = (!is_null($Req->Thumbnail)) ? CustomHelpers::getBirthdayCakeThumbnailWithID($Req->Thumbnail, $Req->ID) : null;
+            $Thumbnail = (!is_null($Req->Thumbnail)) ? CustomHelpers::saveCompressReturnImgName($Req->Thumbnail, 'birthday_cakes/thumbnails/') : null;
             $Updated = BirthdayCake::updateBirthdayCake($Req->ID, $Image, $Thumbnail);
             if ($Updated) {
                 return response()->macroJson(
