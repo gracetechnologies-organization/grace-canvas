@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
 
 class BirthdayCakeController extends Controller
 {

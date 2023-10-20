@@ -14,14 +14,25 @@ class BirthdayCake extends Model
         'image',
         'thumbnail'
     ];
+    /*
+    |--------------------------------------------------------------------------
+    | ORM Relations
+    |--------------------------------------------------------------------------
+    */
+    // 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Helper Functions
+    |--------------------------------------------------------------------------
+    */
     public static function getBirthdayCakeByID(int $ID)
     {
         $BirthdayCake = BirthdayCake::findOrFail($ID);
         return [
             "id" => $BirthdayCake->id,
-            "image" => url('/storage/images/birthday_cakes') . '/' . $BirthdayCake->image,
-            "thumbnail" => url('/storage/images/birthday_cakes/thumbnails') . '/' . $BirthdayCake->thumbnail
+            "image" => url('/storage/birthday_cakes') . '/' . $BirthdayCake->image,
+            "thumbnail" => url('/storage/birthday_cakes/thumbnails') . '/' . $BirthdayCake->thumbnail
         ];
     }
 

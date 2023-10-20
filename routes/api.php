@@ -10,6 +10,7 @@ use App\Http\Controllers\ParentCategoryController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
+use App\Http\Controllers\StickerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -101,6 +102,15 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/destroy/{ID?}', [BirthdayCakeController::class, 'destroy']);
         Route::post('/restore/{ID?}', [BirthdayCakeController::class, 'restore']);
         Route::get('/show/{ID?}', [BirthdayCakeController::class, 'show']);
+    });
+    
+    Route::prefix('sticker')->group(function () {
+        Route::post('/upload', [StickerController::class, 'upload']);
+        Route::post('/upload/bulk', [StickerController::class, 'uploadBulk']);
+        Route::post('/edit/{ID}', [StickerController::class, 'edit']);
+        Route::post('/destroy/{ID?}', [StickerController::class, 'destroy']);
+        Route::post('/restore/{ID?}', [StickerController::class, 'restore']);
+        Route::get('/show/{ID?}', [StickerController::class, 'show']);
     });
 
     Route::prefix('cache')->group(function () {
