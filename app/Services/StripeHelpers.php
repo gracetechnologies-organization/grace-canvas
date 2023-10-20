@@ -7,7 +7,7 @@ final class StripeHelpers {
 
     public static function createUserIntent()
     {
-        return auth()->user()->createSetupIntent() ;
+        return auth()->user()->createSetupIntent();
     }
 }
 

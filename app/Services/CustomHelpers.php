@@ -102,6 +102,18 @@ class CustomHelpers
         return $ImgName;
     }
 
+    public static function getStickerImgWithID(object $Img, int $ID)
+    {
+        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('stickers', $Img, $ImgName);
+        return $ImgName;
+    }
+
     public static function getViewPathWithID(object $File, string $Type, int $ID, string $Side = null)
     {
         // Get the SVG content

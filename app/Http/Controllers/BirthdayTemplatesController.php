@@ -7,7 +7,6 @@ use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
 
 class BirthdayTemplatesController extends Controller
 {
