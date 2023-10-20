@@ -38,7 +38,7 @@ class Sticker extends Model
 
     public static function getStickers()
     {
-        return Sticker::paginate(4);
+        return Sticker::paginate(12);
     }
 
     public static function getLastInsertedID()
