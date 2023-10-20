@@ -47,7 +47,6 @@ class StickerController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
-
     public function uploadBulk(Request $Req)
     {
         try {
@@ -103,7 +102,6 @@ class StickerController extends Controller
             );
         }
     }
-
     public function edit(Request $Req)
     {
         try {
@@ -146,7 +144,6 @@ class StickerController extends Controller
             );
         }
     }
-
     public function destroy(Request $Req)
     {
         try {
