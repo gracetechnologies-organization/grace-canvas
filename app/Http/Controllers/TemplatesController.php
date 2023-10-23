@@ -550,7 +550,7 @@ class TemplatesController extends Controller
             /* 
             * Here we can't use cache bcz then pagination will not work properly 
             */
-            $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates();
+            $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates($Req->Type);
             $Data = [];
             foreach ($BirthdayTemplates as $BirthdayTemplate) {
                 array_push($Data, [

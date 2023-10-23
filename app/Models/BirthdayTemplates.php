@@ -23,12 +23,12 @@ class BirthdayTemplates extends Model
     {
         // Define a mapping for enum values to human-readable values
         $TypeMapping = [
-            '1' => 'landscape',
-            '2' => 'portrait',
-            '3' => 'square',
+            1 => 'landscape',
+            2 => 'portrait',
+            3 => 'square',
         ];
         // Check if the value exists in the mapping; if not, return the value as is
-        return $TypeMapping[$Value] ?? $Value;
+        return $TypeMapping[$Value] ?? null;
     }
 
     public static function getBirthdayTemplateByID(int $ID)
@@ -58,9 +58,11 @@ class BirthdayTemplates extends Model
     //     ];
     // }
 
-    public static function getBirthdayTemplates()
+    public static function getBirthdayTemplates(int $Type = null)
     {
-        return BirthdayTemplates::paginate(4);
+        return BirthdayTemplates::when($Type, function ($Query) use ($Type) {
+            return $Query->where('type', $Type);
+        })->paginate(4);
     }
 
     public static function getLastInsertedID()

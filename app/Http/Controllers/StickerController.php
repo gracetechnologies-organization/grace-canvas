@@ -15,8 +15,8 @@ class StickerController extends Controller
     public function upload(Request $Req)
     {
         $Validator = Validator::make($Req->all(), [
-            'Image' => 'required|mimes:jpg,png|max:500',
-            'Thumbnail' => 'required|mimes:jpg,png|max:100'
+            'Image' => 'required|mimes:jpg,png|max:800',
+            'Thumbnail' => 'required|mimes:jpg,png|max:150'
         ]);
         if ($Validator->fails()) {
             return response()->macroJson(
@@ -47,12 +47,13 @@ class StickerController extends Controller
             config('messages.HTTP_SUCCESS_CODE')
         );
     }
+
     public function uploadBulk(Request $Req)
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Images.*' => 'required|mimes:jpg,png|max:500',
-                'Thumbnails.*' => 'required|mimes:jpg,png|max:100'
+                'Images.*' => 'required|mimes:jpg,png|max:800',
+                'Thumbnails.*' => 'required|mimes:jpg,png|max:150'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -102,12 +103,13 @@ class StickerController extends Controller
             );
         }
     }
+    
     public function edit(Request $Req)
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Image' => 'mimes:jpg,png|max:500',
-                'Thumbnail' => 'mimes:jpg,png|max:100'
+                'Image' => 'mimes:jpg,png|max:800',
+                'Thumbnail' => 'mimes:jpg,png|max:150'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
