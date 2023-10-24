@@ -260,8 +260,8 @@ class BirthdayCakeController extends Controller
             foreach ($BirthdayCakes as $BirthdayCake) {
                 array_push($Data, [
                     "id" => $BirthdayCake->id,
-                    "image" => url('/storage/images/birthday_cakes') . '/' . $BirthdayCake->image,
-                    "thumbnail" => url('/storage/images/birthday_cakes/thumbnails') . '/' . $BirthdayCake->thumbnail
+                    "image" => url('/storage/birthday_cakes') . '/' . $BirthdayCake->image,
+                    "thumbnail" => url('/storage/birthday_cakes/thumbnails') . '/' . $BirthdayCake->thumbnail
                 ]);
             }
             return response()->macroJsonExtention(
