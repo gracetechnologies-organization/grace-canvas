@@ -5,6 +5,7 @@ use App\Http\Controllers\BirthdayTemplatesController;
 use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FontsController;
 use App\Http\Controllers\LetterHeadController;
 use App\Http\Controllers\ParentCategoryController;
 use App\Http\Controllers\ResumeController;
@@ -103,7 +104,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/restore/{ID?}', [BirthdayCakeController::class, 'restore']);
         Route::get('/show/{ID?}', [BirthdayCakeController::class, 'show']);
     });
-    
+
     Route::prefix('sticker')->group(function () {
         Route::post('/upload', [StickerController::class, 'upload']);
         Route::post('/upload/bulk', [StickerController::class, 'uploadBulk']);
@@ -111,6 +112,16 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/destroy/{ID?}', [StickerController::class, 'destroy']);
         Route::post('/restore/{ID?}', [StickerController::class, 'restore']);
         Route::get('/show/{ID?}', [StickerController::class, 'show']);
+    });
+
+    Route::prefix('font')->group(function(){
+        Route::get('/show/{ID?}',[FontsController::class,'show']);
+        Route::post('/upload',[FontsController::class,'upload']);
+        Route::post('/upload/bulk',[FontsController::class,'uploadBulk']);
+        Route::post('/edit/{ID}',[FontsController::class,'edit']);
+        Route::post('/destroy/{ID?}',[FontsController::class,'destroy']);
+        Route::post('/restore/{ID?}',[FontsController::class,'restore']);
+        
     });
 
     Route::prefix('cache')->group(function () {

@@ -22,8 +22,9 @@ class DatabaseSeeder extends Seeder
             ParentCategorySeeder::class,
             PlanSeeder::class,
             AudioSeeder::class,
-            BirthdayCakeSeeder::class,  
-            StickerSeeder::class
+            BirthdayCakeSeeder::class,
+            StickerSeeder::class,
+            FontsSeeder::class,
         ]);
     }
 }
