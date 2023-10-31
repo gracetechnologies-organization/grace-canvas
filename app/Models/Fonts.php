@@ -30,7 +30,7 @@ class Fonts extends Model
     |--------------------------------------------------------------------------
     */
 
-    public static function getFontsByID(int $ID)
+    public static function getFontByID(int $ID)
     {
         $Font = self::findOrFail($ID);
         return 
@@ -62,14 +62,14 @@ class Fonts extends Model
         return self::insert($Data);
     }
 
-    public static function updateFonts(int $ID, string $File = null)
+    public static function updateFont(int $ID, string $File = null)
     {
         $Font = self::findOrFail($ID);
         if (!is_null($File)) $Font->File = $File;
         return $Font->save();
     }
 
-    public static function deleteFontsByID(int $ID)
+    public static function deleteFontByID(int $ID)
     {
         return self::where('id', $ID)->delete();
     }
@@ -79,7 +79,7 @@ class Fonts extends Model
         return self::query()->update(['deleted_at' => now()]);
     }
 
-    public static function restoreFontsByID(int $ID)
+    public static function restoreFontByID(int $ID)
     {
         return self::where('id', $ID)->restore();
     }

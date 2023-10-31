@@ -115,13 +115,12 @@ Route::middleware('auth.api.reqs')->group(function () {
     });
 
     Route::prefix('font')->group(function(){
-        Route::get('/show/{ID?}',[FontsController::class,'show']);
         Route::post('/upload',[FontsController::class,'upload']);
         Route::post('/upload/bulk',[FontsController::class,'uploadBulk']);
         Route::post('/edit/{ID}',[FontsController::class,'edit']);
         Route::post('/destroy/{ID?}',[FontsController::class,'destroy']);
         Route::post('/restore/{ID?}',[FontsController::class,'restore']);
-        
+        Route::get('/show/{ID?}',[FontsController::class,'show']);
     });
 
     Route::prefix('cache')->group(function () {

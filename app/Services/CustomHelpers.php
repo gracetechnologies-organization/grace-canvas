@@ -114,16 +114,16 @@ class CustomHelpers
         return $ImgName;
     }
 
-    public static function getFontsImgWithID(object $File, int $ID)
+    public static function getFontFileWithID(object $File, int $ID)
     {
-        $ImgName = $ID . "_" . str_replace(" ", "_", $File->getClientOriginalName());
+        $FileName = $ID . "_" . str_replace(" ", "_", $File->getClientOriginalName());
         /*
         |--------------------------------------------------------------------------
         | Save the image to the default storage path "storage/app/public/images"
         |--------------------------------------------------------------------------
         */
-        Storage::disk('public')->putFileAs('fonts', $File, $ImgName);
-        return $ImgName;
+        Storage::disk('public')->putFileAs('fonts', $File, $FileName);
+        return $FileName;
     }
 
     public static function getViewPathWithID(object $File, string $Type, int $ID, string $Side = null)

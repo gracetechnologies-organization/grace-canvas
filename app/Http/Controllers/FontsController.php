@@ -27,7 +27,7 @@ class FontsController extends Controller
         }
         $LastInsertedId =  Fonts::getLastInsertedID();
         $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-        $File = CustomHelpers::getFontsImgWithID($Req->File, $LastInsertedId);
+        $File = CustomHelpers::getFontFileWithID($Req->File, $LastInsertedId);
         $Inserted = Fonts::insertFont($File);
         if ($Inserted) {
             return response()->macroJson(
@@ -62,7 +62,7 @@ class FontsController extends Controller
             foreach ($Req->file('Files') as $Key => $File) {
                 $LastInsertedId =  Fonts::getLastInsertedID();
                 $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-                $File = CustomHelpers::getFontsImgWithID($File, $LastInsertedId);
+                $File = CustomHelpers::getFontFileWithID($File, $LastInsertedId);
                 $BulkData[] = ['file' => $File];
             }
             $Inserted = Fonts::insertBulkFonts($BulkData);
@@ -105,8 +105,8 @@ class FontsController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            $File = (!is_null($Req->File)) ? CustomHelpers::getFontsImgWithID($Req->File, $Req->ID) : null;
-            $Updated = Fonts::updateFonts($Req->ID, $File);
+            $File = (!is_null($Req->File)) ? CustomHelpers::getFontFileWithID($Req->File, $Req->ID) : null;
+            $Updated = Fonts::updateFont($Req->ID, $File);
             if ($Updated) {
                 return response()->macroJson(
                     [],
@@ -136,7 +136,7 @@ class FontsController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Deleted = Fonts::deleteFontsByID($Req->ID);
+                $Deleted = Fonts::deleteFontByID($Req->ID);
                 if ($Deleted) {
                     return response()->macroJson(
                         [],
@@ -182,7 +182,7 @@ class FontsController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Restored = Fonts::restoreFontsByID($Req->ID);
+                $Restored = Fonts::restoreFontByID($Req->ID);
                 if ($Restored) {
                     return response()->macroJson(
                         [],
@@ -228,8 +228,8 @@ class FontsController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Data = Cache::rememberForever('getFontsByID' . $Req->ID, function () use ($Req) {
-                    return  Fonts::getFontsByID($Req->ID);
+                $Data = Cache::rememberForever('getFontByID' . $Req->ID, function () use ($Req) {
+                    return  Fonts::getFontByID($Req->ID);
                 });
                 return response()->macroJson(
                     $Data,
@@ -238,9 +238,6 @@ class FontsController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            /*
-            * Here we can't use cache bcz then  will not work properly
-            */
             $Fonts = Fonts::getFonts();
             $Data = [];
             foreach ($Fonts as $Font) {
