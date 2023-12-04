@@ -234,6 +234,7 @@ class CustomHelpers
     {
         return [
             'currentPage' => $Paginator->currentPage(),
+            'lastPage' => $Paginator->lastPage(),
             'getOptions' => $Paginator->getOptions(),
             'hasMorePages' => $Paginator->hasMorePages(),
             'nextPageUrl' => $Paginator->nextPageUrl(),

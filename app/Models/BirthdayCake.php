@@ -38,7 +38,7 @@ class BirthdayCake extends Model
 
     public static function getBirthdayCakes()
     {
-        return BirthdayCake::paginate(4);
+        return BirthdayCake::paginate(9);
     }
 
     public static function getLastInsertedID()

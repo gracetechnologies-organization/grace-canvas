@@ -146,6 +146,7 @@ class StickerController extends Controller
             );
         }
     }
+    
     public function destroy(Request $Req)
     {
         try {
