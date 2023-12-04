@@ -308,25 +308,6 @@ class TemplatesController extends Controller
         }
     }
 
-    public function showWallpapersByCatID(array $Category)
-    {
-        $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
-        $Data = [];
-        foreach ($Wallpapers as $Wallpaper) {
-            array_push($Data, [
-                'id' => $Wallpaper->id,
-                'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
-                'thumbnail' => url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail,
-                'type' => $Wallpaper->type,
-                'created_at' => $Wallpaper->created_at,
-                'updated_at' => $Wallpaper->updated_at,
-                'deleted_at' => $Wallpaper->deleted_at,
-                'category' => $Category
-            ]);
-        }
-        return ['data' => $Data, 'pagination' => $Wallpapers];
-    }
-
     public function edit()
     {
         //

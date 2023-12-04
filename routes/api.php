@@ -81,10 +81,12 @@ Route::middleware('auth.api.reqs')->group(function () {
     Route::prefix('wallpaper/v1')->group(function () {
         Route::post('/upload/bulk', [WallpaperController::class, 'uploadBulk']);
         Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
-        Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
-        Route::get('/wallpapers/{CatID?}', [WallpaperController::class, 'showWallpapers']);
-        Route::get('/category/wallpapers/{CatID?}', [WallpaperController::class, 'showCategoriesWallpapers']);
+        Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
+        Route::post('/restore/{ID}', [WallpaperController::class, 'restore']);
+        Route::post('/restore/{CatID}/{Type}', [WallpaperController::class, 'restore']);
+        Route::get('/show/{CatID?}', [WallpaperController::class, 'showWallpapers']);
+        Route::get('/show/category/wallpapers/{CatID?}', [WallpaperController::class, 'showCategoriesWallpapers']);
     });
 
     Route::prefix('birthday-template')->group(function () {

@@ -15,6 +15,16 @@ class Category extends Model
         'description',
         'image'
     ];
+    /**
+     * The attributes that should be hidden for arrays/JSON
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
     /*
     |--------------------------------------------------------------------------
     | Relations
@@ -60,12 +70,10 @@ class Category extends Model
             "id" => $Category->id,
             "name" => $Category->name,
             "description" => $Category->description,
-            "image" => url('/storage/images') . '/' . $Category->image,
-            "created_at" => $Category->created_at,
-            "updated_at" => $Category->updated_at,
-            "deleted_at" => $Category->deleted_at
+            "image" => url('/storage/images') . '/' . $Category->image
         ];
     }
+
     public static function getCategories()
     {
         return Category::all();
@@ -73,7 +81,8 @@ class Category extends Model
 
     public static function getCategoriesWithWallpapers(int $ID = null)
     {
-        $Categories = Category::with('wallpapers')->when($ID, function ($Query, $ID) {
+        $Categories = Category::with('wallpapers')
+        ->when($ID, function ($Query, $ID) {
             return $Query->where('id', $ID);
         })->get();
 

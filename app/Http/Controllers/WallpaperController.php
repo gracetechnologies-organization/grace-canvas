@@ -22,8 +22,8 @@ class WallpaperController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'FrontImages.*' => 'mimes:jpg,png|max:500',
-                'Thumbnails.*' => 'mimes:jpg,png|max:200',
+                'FrontImages.*' => 'mimes:webp|max:500',
+                'Thumbnails.*' => 'mimes:webp|max:200',
                 'Type' =>  'required|integer',
                 'CatID' => 'required|integer'
             ]);
@@ -150,6 +150,68 @@ class WallpaperController extends Controller
         }
     }
 
+    public function restore(Request $Req)
+    {
+        try {
+            if ($Req->ID) {
+                $Restored = Wallpaper::restoreWallpaperByID($Req->ID);
+                if ($Restored) {
+                    return response()->macroJson(
+                        [],
+                        config('messages.SUCCESS_CODE'),
+                        config('messages.RESTORE_SUCCESS'),
+                        config('messages.HTTP_SUCCESS_CODE')
+                    );
+                }
+                return response()->macroJson(
+                    [],
+                    config('messages.FAILED_CODE'),
+                    config('messages.RESTORE_FAILED'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            $Restored = Wallpaper::restoreWallpapersByCatID($Req->CatID, $Req->Type);
+            if ($Restored) {
+                return response()->macroJson(
+                    [],
+                    config('messages.SUCCESS_CODE'),
+                    config('messages.RESTORE_SUCCESS'),
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                config('messages.RESTORE_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $Error) {
+            report($Error);
+            return response()->macroJson(
+                [],
+                config('messages.RESTORE_FAILED'),
+                $Error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
+    }
+
+    public function showWallpapersByCatID(array $Category)
+    {
+        $Wallpapers = Category::getWallpapersOfCategory($Category['id']);
+        $Data = [];
+        foreach ($Wallpapers as $Wallpaper) {
+            array_push($Data, [
+                'id' => $Wallpaper->id,
+                'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
+                'thumbnail' => url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail,
+                'type' => $Wallpaper->type,
+                'category' => $Category
+            ]);
+        }
+        return ['data' => $Data, 'pagination' => $Wallpapers];
+    }
+
     public function showWallpapers(Request $Req)
     {
         try {
@@ -183,9 +245,6 @@ class WallpaperController extends Controller
                         'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
                         'thumbnail' => url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail,
                         'type' => $Wallpaper->type,
-                        'created_at' => $Wallpaper->created_at,
-                        'updated_at' => $Wallpaper->updated_at,
-                        'deleted_at' => $Wallpaper->deleted_at,
                         'category' => $Wallpaper->categories
                     ]);
                 }
@@ -229,9 +288,6 @@ class WallpaperController extends Controller
                             'name' => $Category->name,
                             'description' => $Category->description,
                             'image' => url('/storage/images') . '/' . $Category->image,
-                            'created_at' => $Category->created_at,
-                            'updated_at' => $Category->updated_at,
-                            'deleted_at' => $Category->deleted_at,
                             'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
                             'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
                         ]);
@@ -248,9 +304,6 @@ class WallpaperController extends Controller
                             'name' => $Category->name,
                             'description' => $Category->description,
                             'image' => url('/storage/images') . '/' . $Category->image,
-                            'created_at' => $Category->created_at,
-                            'updated_at' => $Category->updated_at,
-                            'deleted_at' => $Category->deleted_at,
                             'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
                             'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
                         ]);

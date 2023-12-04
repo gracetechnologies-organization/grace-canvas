@@ -16,6 +16,16 @@ class Wallpaper extends Model
         'type',
         'cat_id'
     ];
+    /**
+     * The attributes that should be hidden for arrays/JSON
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
     /*
     |--------------------------------------------------------------------------
     | Relations
@@ -25,7 +35,6 @@ class Wallpaper extends Model
     {
         return $this->belongsTo(Category::class, 'cat_id');
     }
-
     /*
     |--------------------------------------------------------------------------
     | Helpers
@@ -33,12 +42,12 @@ class Wallpaper extends Model
     */
     public static function getLastInsertedID()
     {
-        return Wallpaper::orderByDesc('id')->first()->id ?? 0;
+        return self::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertWallpaper(string $FrontImage, string $Thumbnail, int $Type, int $CatID)
     {
-        return Wallpaper::create([
+        return self::create([
             'front_image' => $FrontImage,
             'thumbnail' => $Thumbnail,
             'type' => $Type,
@@ -48,12 +57,12 @@ class Wallpaper extends Model
 
     public static function insertBulkWallpapers(array $Data)
     {
-        return Wallpaper::insert($Data);
+        return self::insert($Data);
     }
 
     public static function updateWallpaper(int $ID, string $FrontImage = null, int $Type = null, int $CatID = null)
     {
-        $Wallpaper = Wallpaper::findOrFail($ID);
+        $Wallpaper = self::findOrFail($ID);
         if (!is_null($FrontImage)) $Wallpaper->front_image = $FrontImage;
         if (!is_null($Type)) $Wallpaper->type = $Type;
         if (!is_null($CatID)) $Wallpaper->cat_id = $CatID;
@@ -62,22 +71,32 @@ class Wallpaper extends Model
 
     public static function deleteWallpaper(int $ID)
     {
-        return Wallpaper::where('id', $ID)->delete();
+        return self::where('id', $ID)->delete();
     }
 
     public static function deleteWallpapersByCatID(int $CatID, int $Type)
     {
-        return Wallpaper::where('cat_id', $CatID)->where('type', $Type)->delete();
+        return self::where('cat_id', $CatID)->where('type', $Type)->delete();
+    }
+
+    public static function restoreWallpaperByID(int $ID)
+    {
+        return self::where('id', $ID)->restore();
+    }
+
+    public static function restoreWallpapersByCatID(int $CatID, int $Type)
+    {
+        return self::where('cat_id', $CatID)->where('type', $Type)->restore();
     }
 
     public static function getWallpaperByID(int $ID)
     {
-        return Wallpaper::findOrFail($ID);
+        return self::findOrFail($ID);
     }
 
     public static function getWallpapers()
     {
-        // return Wallpaper::with(['categories'])->paginate(10);
-        return Wallpaper::with(['categories'])->get();
+        // return self::with(['categories'])->paginate(10);
+        return self::with(['categories'])->get();
     }
 }

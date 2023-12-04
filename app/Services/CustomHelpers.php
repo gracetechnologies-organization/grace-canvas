@@ -255,10 +255,7 @@ class CustomHelpers
                     "thumbnail" => $SingleIndex->thumbnail,
                     "type" => $SingleIndex->type,
                     "cat_id" => $SingleIndex->cat_id,
-                    "cat_title" => $CatName,
-                    "created_at" => $SingleIndex->created_at,
-                    "updated_at" => $SingleIndex->updated_at,
-                    "deleted_at" => $SingleIndex->deleted_at,
+                    "cat_title" => $CatName
                 ]);
             }
         }
@@ -275,10 +272,7 @@ class CustomHelpers
                     "front_image" => $SingleIndex->front_image,
                     "type" => $SingleIndex->type,
                     "cat_id" => $SingleIndex->cat_id,
-                    "cat_title" => $CatName,
-                    "created_at" => $SingleIndex->created_at,
-                    "updated_at" => $SingleIndex->updated_at,
-                    "deleted_at" => $SingleIndex->deleted_at,
+                    "cat_title" => $CatName
                 ]);
             }
         }
