@@ -49,12 +49,15 @@ Route::middleware('auth.api.reqs')->group(function () {
     Route::prefix('template')->group(function () {
         Route::prefix('upload')->group(function () {
             Route::post('/', [TemplatesController::class, 'store']);
+            Route::post('/bulk/wallpapers', [TemplatesController::class, 'storeBulkWallpapers']);
         });
         Route::prefix('show')->group(function () {
             Route::get('/business-cards', [TemplatesController::class, 'showBusinessCards']);
             Route::get('/letter-heads', [TemplatesController::class, 'showLetterHeads']);
             Route::get('/resumes', [TemplatesController::class, 'showResumes']);
             Route::get('/birthday-templates/{ID?}', [TemplatesController::class, 'birthdayTemplates']);
+            Route::get('/wallpapers/{CatID?}', [TemplatesController::class, 'showWallpapers']);
+            Route::get('/category/wallpapers/{CatID?}', [TemplatesController::class, 'showCategoriesWallpapers']);
         });
     });
 
@@ -78,7 +81,15 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/restore/{ID?}', [ResumeController::class, 'restore']);
     });
 
-    Route::prefix('wallpaper/v1')->group(function () {
+    Route::prefix('wallpaper')->group(function () {
+        Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
+        Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
+        Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
+        Route::post('/restore/{ID}', [WallpaperController::class, 'restore']);
+        Route::post('/restore/{CatID}/{Type}', [WallpaperController::class, 'restore']);
+    });
+
+    Route::prefix('clock/wallpaper/v1')->group(function () {
         Route::post('/upload/bulk', [WallpaperController::class, 'uploadBulk']);
         Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
