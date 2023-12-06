@@ -23,12 +23,12 @@ class Sticker extends Model
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Helper Functions
+    | Helpers
     |--------------------------------------------------------------------------
     */
     public static function getStickerByID(int $ID)
     {
-        $Sticker = Sticker::findOrFail($ID);
+        $Sticker = self::findOrFail($ID);
         return [
             "id" => $Sticker->id,
             "image" => url('/storage/stickers') . '/' . $Sticker->image,
@@ -38,17 +38,17 @@ class Sticker extends Model
 
     public static function getStickers()
     {
-        return Sticker::paginate(12);
+        return self::paginate(12);
     }
 
     public static function getLastInsertedID()
     {
-        return Sticker::orderByDesc('id')->first()->id ?? 0;
+        return self::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertSticker(string $Image, string $Thumbnail)
     {
-        return Sticker::create([
+        return self::create([
             'image' => $Image,
             'thumbnail' => $Thumbnail
         ]);
@@ -56,12 +56,12 @@ class Sticker extends Model
 
     public static function insertBulkStickers(array $Data)
     {
-        return Sticker::insert($Data);
+        return self::insert($Data);
     }
 
     public static function updateSticker(int $ID, string $Image = null, string $Thumbnail = null)
     {
-        $Sticker = Sticker::findOrFail($ID);
+        $Sticker = self::findOrFail($ID);
         if (!is_null($Image)) $Sticker->image = $Image;
         if (!is_null($Thumbnail)) $Sticker->thumbnail = $Thumbnail;
         return $Sticker->save();
@@ -69,21 +69,21 @@ class Sticker extends Model
 
     public static function deleteStickerByID(int $ID)
     {
-        return Sticker::where('id', $ID)->delete();
+        return self::where('id', $ID)->delete();
     }
 
     public static function deleteAllStickers()
     {
-        return Sticker::query()->update(['deleted_at' => now()]);
+        return self::query()->update(['deleted_at' => now()]);
     }
 
     public static function restoreStickerByID(int $ID)
     {
-        return Sticker::where('id', $ID)->restore();
+        return self::where('id', $ID)->restore();
     }
 
     public static function restoreAllStickers()
     {
-        return Sticker::query()->restore();
+        return self::query()->restore();
     }
 }

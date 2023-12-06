@@ -21,12 +21,12 @@ class LetterHead extends Model
     */
     public static function getLastInsertedID()
     {
-        return LetterHead::orderByDesc('id')->first()->id ?? 0;
+        return self::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertLetterHead(string $FrontImage, string $FrontSvg)
     {
-        return LetterHead::create([
+        return self::create([
             'front_image' => $FrontImage,
             'front_svg' => $FrontSvg
         ]);
@@ -34,23 +34,23 @@ class LetterHead extends Model
 
     public static function updateLetterHead(int $ID, string $FrontImage)
     {
-        return LetterHead::where('id', $ID)->update([
+        return self::where('id', $ID)->update([
             'front_image' => $FrontImage
         ]);
     }
 
     public static function deleteLetterHead(int $ID)
     {
-        return LetterHead::where('id', $ID)->delete();
+        return self::where('id', $ID)->delete();
     }
 
     public static function getLetterHeadByID(int $ID)
     {
-        return LetterHead::findOrFail($ID);
+        return self::findOrFail($ID);
     }
 
     public static function getLetterHeads()
     {
-        return LetterHead::paginate(10);
+        return self::paginate(10);
     }
 }

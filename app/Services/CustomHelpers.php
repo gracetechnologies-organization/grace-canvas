@@ -40,7 +40,8 @@ class CustomHelpers
     {
         $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME));
         $Extention = $Img->getClientOriginalExtension();
-        Storage::disk('public')->putFileAs($Path, $Img, $ImgName . '.' . $Extention);
+        $ImgName = $ImgName . '.' . $Extention;
+        Storage::disk('public')->putFileAs($Path, $Img, $ImgName);
        
         // Image::load(storage_path('app/public/') . $Path . $ImgName . '.' . $Extention)
         // ->optimize()
@@ -48,7 +49,7 @@ class CustomHelpers
         // ->format(Manipulations::FORMAT_JPG)
         // ->save(storage_path('app/public/') . $Path . $ImgName . '.' . $Extention);
 
-        return $ImgName . '.' . $Extention;
+        return $ImgName;
     }
 
     public static function getImgNameWithID(object $Img, int $ID, string $Side = null)

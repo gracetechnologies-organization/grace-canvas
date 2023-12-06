@@ -29,12 +29,12 @@ class Audio extends Model
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Helper Functions
+    | Helpers
     |--------------------------------------------------------------------------
     */
     public static function getAudioByID(int $ID)
     {
-        $Audio = Audio::findOrFail($ID);
+        $Audio = self::findOrFail($ID);
         return [
             "id" => $Audio->id,
             "file" => url('/storage/audios') . '/' . $Audio->file,
@@ -44,17 +44,17 @@ class Audio extends Model
 
     public static function getAudios()
     {
-        return Audio::paginate(4);
+        return self::paginate(4);
     }
 
     public static function getLastInsertedID()
     {
-        return Audio::orderByDesc('id')->first()->id ?? 0;
+        return self::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertAudio(string $File, string $Time)
     {
-        return Audio::create([
+        return self::create([
             'file' => $File,
             'Time' => $Time
         ]);
@@ -62,12 +62,12 @@ class Audio extends Model
 
     public static function insertBulkAudios(array $Data)
     {
-        return Audio::insert($Data);
+        return self::insert($Data);
     }
 
     public static function updateAudio(int $ID, string $Image = null, string $Thumbnail = null)
     {
-        $Audio = Audio::findOrFail($ID);
+        $Audio = self::findOrFail($ID);
         if (!is_null($Image)) $Audio->image = $Image;
         if (!is_null($Thumbnail)) $Audio->thumbnail = $Thumbnail;
         return $Audio->save();
@@ -75,21 +75,21 @@ class Audio extends Model
 
     public static function deleteAudioByID(int $ID)
     {
-        return Audio::where('id', $ID)->delete();
+        return self::where('id', $ID)->delete();
     }
 
     public static function deleteAllAudios()
     {
-        return Audio::query()->update(['deleted_at' => now()]);
+        return self::query()->update(['deleted_at' => now()]);
     }
 
     public static function restoreAudioByID(int $ID)
     {
-        return Audio::where('id', $ID)->restore();
+        return self::where('id', $ID)->restore();
     }
 
     public static function restoreAllAudios()
     {
-        return Audio::query()->restore();
+        return self::query()->restore();
     }
 }
