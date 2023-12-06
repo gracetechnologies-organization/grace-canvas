@@ -55,7 +55,7 @@ class Category extends Model
         ]);
     }
 
-    public static function updateCategory(int $ID, string $Name = null, string $Description = null, string $Image = null, int $ParentCatID)
+    public static function updateCategory(int $ID, string $Name = null, string $Description = null, string $Image = null, int $ParentCatID = null)
     {
         $Category = self::findOrFail($ID);
         if (!is_null($Name)) $Category->name = ucfirst($Name);
