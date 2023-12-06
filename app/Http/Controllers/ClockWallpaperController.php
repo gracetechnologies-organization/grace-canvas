@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ClockWallpaperController extends Controller
 {
-    
+
     public function uploadBulk(Request $Req)
     {
         try {
@@ -118,7 +118,7 @@ class ClockWallpaperController extends Controller
         try {
             if ($Req->CatID)
                 $Deleted = ClockWallpaper::deleteInfoByCatID($Req->CatID);
-            else
+            else if ($Req->ID)
                 $Deleted = ClockWallpaper::deleteInfo($Req->ID);
 
             if ($Deleted) {

@@ -95,8 +95,8 @@ Route::middleware('auth.api.reqs')->group(function () {
     Route::prefix('clock/wallpaper/v1')->group(function () {
         Route::post('/upload/bulk', [ClockWallpaperController::class, 'uploadBulk']);
         Route::post('/edit/{ID}', [ClockWallpaperController::class, 'edit']);
-        Route::post('/destroy/{ID}', [ClockWallpaperController::class, 'destroy']);
-        Route::post('/destroy/{CatID}', [ClockWallpaperController::class, 'destroy']);
+        Route::post('/destroy/{ID?}', [ClockWallpaperController::class, 'destroy']);
+        Route::post('/destroy/{CatID?}', [ClockWallpaperController::class, 'destroy']);
         Route::post('/restore/{ID}', [ClockWallpaperController::class, 'restore']);
         Route::post('/restore/{CatID}/{Type}', [ClockWallpaperController::class, 'restore']);
         Route::get('/show/{CatID?}', [ClockWallpaperController::class, 'show']);
