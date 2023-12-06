@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ClockWallpaperController extends Controller
 {
+    
     public function uploadBulk(Request $Req)
     {
         try {
