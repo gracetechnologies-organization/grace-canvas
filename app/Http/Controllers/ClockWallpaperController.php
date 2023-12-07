@@ -249,9 +249,9 @@ class ClockWallpaperController extends Controller
                 foreach ($ClockWallpapers as $SingleIndex) {
                     array_push($Data, [
                         'id' => $SingleIndex->id,
-                        'image' => url('/storage/clock/wallpapers') . '/' . $SingleIndex->front_image,
+                        'image' => url('/storage/clock/wallpapers') . '/' . $SingleIndex->image,
                         'thumbnail' => url('/storage/clock/wallpapers/thumbnails') . '/' . $SingleIndex->thumbnail,
-                        'category' => $SingleIndex->categories
+                        // 'category' => $SingleIndex->categories
                     ]);
                 }
                 return $Data;
