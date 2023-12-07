@@ -40,7 +40,8 @@ class CustomHelpers
     {
         $ImgName = Carbon::now()->timestamp . "_" . str_replace(" ", "_", pathinfo($Img->getClientOriginalName(), PATHINFO_FILENAME));
         $Extention = $Img->getClientOriginalExtension();
-        Storage::disk('public')->putFileAs($Path, $Img, $ImgName . '.' . $Extention);
+        $ImgName = $ImgName . '.' . $Extention;
+        Storage::disk('public')->putFileAs($Path, $Img, $ImgName);
        
         // Image::load(storage_path('app/public/') . $Path . $ImgName . '.' . $Extention)
         // ->optimize()
@@ -48,7 +49,7 @@ class CustomHelpers
         // ->format(Manipulations::FORMAT_JPG)
         // ->save(storage_path('app/public/') . $Path . $ImgName . '.' . $Extention);
 
-        return $ImgName . '.' . $Extention;
+        return $ImgName;
     }
 
     public static function getImgNameWithID(object $Img, int $ID, string $Side = null)
@@ -112,6 +113,18 @@ class CustomHelpers
         */
         Storage::disk('public')->putFileAs('stickers', $Img, $ImgName);
         return $ImgName;
+    }
+
+    public static function getFontFileWithID(object $File, int $ID)
+    {
+        $FileName = $ID . "_" . str_replace(" ", "_", $File->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('fonts', $File, $FileName);
+        return $FileName;
     }
 
     public static function getViewPathWithID(object $File, string $Type, int $ID, string $Side = null)
@@ -222,6 +235,7 @@ class CustomHelpers
     {
         return [
             'currentPage' => $Paginator->currentPage(),
+            'lastPage' => $Paginator->lastPage(),
             'getOptions' => $Paginator->getOptions(),
             'hasMorePages' => $Paginator->hasMorePages(),
             'nextPageUrl' => $Paginator->nextPageUrl(),
@@ -242,10 +256,7 @@ class CustomHelpers
                     "thumbnail" => $SingleIndex->thumbnail,
                     "type" => $SingleIndex->type,
                     "cat_id" => $SingleIndex->cat_id,
-                    "cat_title" => $CatName,
-                    "created_at" => $SingleIndex->created_at,
-                    "updated_at" => $SingleIndex->updated_at,
-                    "deleted_at" => $SingleIndex->deleted_at,
+                    "cat_title" => $CatName
                 ]);
             }
         }
@@ -262,10 +273,7 @@ class CustomHelpers
                     "front_image" => $SingleIndex->front_image,
                     "type" => $SingleIndex->type,
                     "cat_id" => $SingleIndex->cat_id,
-                    "cat_title" => $CatName,
-                    "created_at" => $SingleIndex->created_at,
-                    "updated_at" => $SingleIndex->updated_at,
-                    "deleted_at" => $SingleIndex->deleted_at,
+                    "cat_title" => $CatName
                 ]);
             }
         }

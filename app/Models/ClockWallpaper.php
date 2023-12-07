@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ParentCategory extends Model
+class ClockWallpaper extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name'
+        'image',
+        'thumbnail',
+        'cat_id'
     ];
     /**
      * The attributes that should be hidden for arrays/JSON
@@ -28,25 +30,41 @@ class ParentCategory extends Model
     | Relations
     |--------------------------------------------------------------------------
     */
-    //
-
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'cat_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | Helpers
     |--------------------------------------------------------------------------
     */
-    public static function insertInfo(string $Name)
+    public static function insertBulkInfo(array $Data)
+    {
+        return self::insert($Data);
+    }
+
+    public static function insertInfo(string $ImageName = null, string $Thumbnail = null, int $CatID = null)
     {
         return self::create([
-            'name' => ucfirst($Name)
+            'image' => $ImageName,
+            'thumbnail' => $Thumbnail,
+            'cat_id' => $CatID
         ]);
     }
 
-    public static function updateInfo(int $ID, string $Name = null)
+    public static function updateInfo(int $ID, string $ImageName = null, string $Thumbnail = null, int $CatID = null)
     {
         $Info = self::findOrFail($ID);
-        if (!is_null($Name)) $Info->name = ucfirst($Name);
+        if (!is_null($ImageName)) $Info->image = $ImageName;
+        if (!is_null($Thumbnail)) $Info->thumbnail = $Thumbnail;
+        if (!is_null($CatID)) $Info->cat_id = $CatID;
         return $Info->save();
+    }
+
+    public static function deleteInfoByCatID(int $CatID)
+    {
+        return self::where('cat_id', $CatID)->delete();
     }
 
     public static function deleteInfo(int $ID)
@@ -69,12 +87,14 @@ class ParentCategory extends Model
         $Info = self::findOrFail($ID);
         return [
             "id" => $Info->id,
-            "name" => $Info->name
+            "image" => $Info->image,
+            "thumbnail" => $Info->thumbnail,
+            "cat_id" => $Info->cat_id
         ];
     }
 
     public static function getAll()
     {
-        return self::all();
+        return self::with(['categories'])->get();
     }
 }

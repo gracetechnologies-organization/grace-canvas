@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\ParentCategory;
 use App\Services\CustomHelpers;
 use Exception;
 use Illuminate\Http\Request;
@@ -19,9 +20,7 @@ class ParentCategoryController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Name' => 'required|string|unique:categories,name',
-                'Description' => 'required|string',
-                'Image' => 'required|mimes:png,jpg|max:50'
+                'Name' => 'required|string|unique:parent_categories,name'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -31,7 +30,7 @@ class ParentCategoryController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            $Inserted = Category::insertCategory($Req->Name, $Req->Description, CustomHelpers::saveImgAndGetName($Req->Image));
+            $Inserted = ParentCategory::insertInfo($Req->Name);
             if ($Inserted) {
                 return response()->macroJson(
                     [],
@@ -62,23 +61,18 @@ class ParentCategoryController extends Controller
         try {
             if ($Req->ID) {
                 return response()->macroJson(
-                    $Data = [Category::getCategoryByID($Req->ID)],
+                    $Data = [ParentCategory::getInfoByID($Req->ID)],
                     config('messages.SUCCESS_CODE'),
                     empty($Data) ? config('messages.NO_RECORD') : '',
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            $Categories = Category::getCategories();
+            $AllData = ParentCategory::getAll();
             $Data = [];
-            foreach ($Categories as $Category) {
+            foreach ($AllData as $SingleIndex) {
                 array_push($Data, [
-                    'id' => $Category->id,
-                    'name' => $Category->name,
-                    "description" => $Category->description,
-                    "image" => url('/storage/images') . '/' . $Category->image,
-                    'created_at' => $Category->created_at,
-                    'updated_at' => $Category->updated_at,
-                    'deleted_at' => $Category->deleted_at
+                    'id' => $SingleIndex->id,
+                    'name' => $SingleIndex->name
                 ]);
             }
             return response()->macroJson(
@@ -102,9 +96,7 @@ class ParentCategoryController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Name' => 'string|unique:categories,name',
-                'Description' => 'string',
-                'Image' => 'mimes:png,jpg|max:50'
+                'Name' => 'string|unique:categories,name'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -114,8 +106,7 @@ class ParentCategoryController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            $Image = (!is_null($Req->Image)) ? CustomHelpers::saveImgAndGetName($Req->Image) : null;
-            $Updated = Category::updateCategory($Req->ID, $Req->Name, $Req->Description, $Image);
+            $Updated = ParentCategory::updateInfo($Req->ID, $Req->Name);
             if ($Updated) {
                 return response()->macroJson(
                     [],
@@ -144,7 +135,7 @@ class ParentCategoryController extends Controller
     public function destroy(Request $Req)
     {
         try {
-            $Deleted = Category::deleteCategory($Req->ID);
+            $Deleted = ParentCategory::deleteInfo($Req->ID);
             if ($Deleted) {
                 return response()->macroJson(
                     [],
@@ -174,7 +165,7 @@ class ParentCategoryController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Restored = Resume::restoreResume($Req->ID);
+                $Restored = ParentCategory::restoreInfoByID($Req->ID);
                 if ($Restored) {
                     return response()->macroJson(
                         [],
@@ -190,7 +181,8 @@ class ParentCategoryController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            $Restored = Resume::restoreAllResumes();
+            
+            $Restored = ParentCategory::restoreAllInfo();
             if ($Restored) {
                 return response()->macroJson(
                     [],

@@ -21,7 +21,8 @@ class CategoryController extends Controller
             $Validator = Validator::make($Req->all(), [
                 'Name' => 'required|string|unique:categories,name',
                 'Description' => 'required|string',
-                'Image' => 'required|mimes:png,jpg|max:50'
+                'Image' => 'required|mimes:png,jpg|max:50',
+                'ParentCatID' => 'required|integer'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -31,7 +32,7 @@ class CategoryController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            $Inserted = Category::insertCategory($Req->Name, $Req->Description, CustomHelpers::saveImgAndGetName($Req->Image));
+            $Inserted = Category::insertCategory($Req->Name, $Req->Description, CustomHelpers::saveImgAndGetName($Req->Image), $Req->ParentCatID);
             if ($Inserted) {
                 return response()->macroJson(
                     [],
@@ -57,54 +58,14 @@ class CategoryController extends Controller
         }
     }
 
-    public function show(Request $Req)
-    {
-        try {
-            if ($Req->ID) {
-                return response()->macroJson(
-                    $Data = [Category::getCategoryByID($Req->ID)],
-                    config('messages.SUCCESS_CODE'),
-                    empty($Data) ? config('messages.NO_RECORD') : '',
-                    config('messages.HTTP_SUCCESS_CODE')
-                );
-            }
-            $Categories = Category::getCategories();
-            $Data = [];
-            foreach ($Categories as $Category) {
-                array_push($Data, [
-                    'id' => $Category->id,
-                    'name' => $Category->name,
-                    "description" => $Category->description,
-                    "image" => url('/storage/images') . '/' . $Category->image,
-                    'created_at' => $Category->created_at,
-                    'updated_at' => $Category->updated_at,
-                    'deleted_at' => $Category->deleted_at
-                ]);
-            }
-            return response()->macroJson(
-                (empty($Data)) ? [] : $Data,
-                config('messages.SUCCESS_CODE'),
-                (empty($Data)) ? config('messages.NO_RECORD') : '',
-                config('messages.HTTP_SUCCESS_CODE')
-            );
-        } catch (Exception $Error) {
-            report($Error);
-            return response()->macroJson(
-                [],
-                config('messages.FAILED_CODE'),
-                $Error->getMessage(),
-                config('messages.HTTP_SERVER_ERROR_CODE')
-            );
-        }
-    }
-
     public function edit(Request $Req)
     {
         try {
             $Validator = Validator::make($Req->all(), [
                 'Name' => 'string|unique:categories,name',
                 'Description' => 'string',
-                'Image' => 'mimes:png,jpg|max:50'
+                'Image' => 'mimes:png,jpg|max:50',
+                'ParentCatID' => 'integer'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -115,7 +76,7 @@ class CategoryController extends Controller
                 );
             }
             $Image = (!is_null($Req->Image)) ? CustomHelpers::saveImgAndGetName($Req->Image) : null;
-            $Updated = Category::updateCategory($Req->ID, $Req->Name, $Req->Description, $Image);
+            $Updated = Category::updateCategory($Req->ID, $Req->Name, $Req->Description, $Image, $Req->ParentCatID);
             if ($Updated) {
                 return response()->macroJson(
                     [],
@@ -157,6 +118,66 @@ class CategoryController extends Controller
                 [],
                 config('messages.FAILED_CODE'),
                 config('messages.DELETION_FAILED'),
+                config('messages.HTTP_SUCCESS_CODE')
+            );
+        } catch (Exception $Error) {
+            report($Error);
+            return response()->macroJson(
+                [],
+                config('messages.FAILED_CODE'),
+                $Error->getMessage(),
+                config('messages.HTTP_SERVER_ERROR_CODE')
+            );
+        }
+    }
+
+    public function show(Request $Req)
+    {
+        try {
+            if ($Req->ID) {
+                return response()->macroJson(
+                    $Data = [Category::getCategoryByID($Req->ID)],
+                    config('messages.SUCCESS_CODE'),
+                    empty($Data) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+
+            if ($Req->ParentCatID) {
+                $Categories = Category::getCategoriesByParentCatID($Req->ParentCatID);
+                $Data = [];
+                foreach ($Categories as $SingleIndex) {
+                    array_push($Data, [
+                        'id' => $SingleIndex->id,
+                        'name' => $SingleIndex->name,
+                        "description" => $SingleIndex->description,
+                        "image" => url('/storage/images') . '/' . $SingleIndex->image,
+                        'parent_cat_id' => $SingleIndex->parent_cat_id
+                    ]);
+                }
+                return response()->macroJson(
+                    (empty($Data)) ? [] : $Data,
+                    config('messages.SUCCESS_CODE'),
+                    (empty($Data)) ? config('messages.NO_RECORD') : '',
+                    config('messages.HTTP_SUCCESS_CODE')
+                );
+            }
+
+            $Categories = Category::getCategories();
+            $Data = [];
+            foreach ($Categories as $SingleIndex) {
+                array_push($Data, [
+                    'id' => $SingleIndex->id,
+                    'name' => $SingleIndex->name,
+                    "description" => $SingleIndex->description,
+                    "image" => url('/storage/images') . '/' . $SingleIndex->image,
+                    'parent_cat_id' => $SingleIndex->parent_cat_id
+                ]);
+            }
+            return response()->macroJson(
+                (empty($Data)) ? [] : $Data,
+                config('messages.SUCCESS_CODE'),
+                (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
         } catch (Exception $Error) {

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BirthdayCake;
+use App\Models\Fonts;
+use Illuminate\Http\Request;
 use App\Services\CustomHelpers;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
-class BirthdayCakeController extends Controller
+class FontsController extends Controller
 {
     public function upload(Request $Req)
     {
+
         $Validator = Validator::make($Req->all(), [
-            'Image' => 'required|mimes:jpg,png|max:800',
-            'Thumbnail' => 'required|mimes:jpg,png|max:150'
+                'File' => 'required|file',
         ]);
         if ($Validator->fails()) {
             return response()->macroJson(
@@ -25,12 +25,10 @@ class BirthdayCakeController extends Controller
                 config('messages.HTTP_UNPROCESSABLE_DATA')
             );
         }
-
-        $LastInsertedId =  BirthdayCake::getLastInsertedID();
+        $LastInsertedId =  Fonts::getLastInsertedID();
         $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-        $Image = CustomHelpers::getBirthdayCakeImgWithID($Req->Image, $LastInsertedId);
-        $Thumbnail = CustomHelpers::saveCompressReturnImgName($Req->Thumbnail, 'birthday_cakes/thumbnails/');
-        $Inserted = BirthdayCake::insertBirthdayCake($Image, $Thumbnail);
+        $File = CustomHelpers::getFontFileWithID($Req->File, $LastInsertedId);
+        $Inserted = Fonts::insertFont($File);
         if ($Inserted) {
             return response()->macroJson(
                 [],
@@ -51,8 +49,7 @@ class BirthdayCakeController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Images.*' => 'required|mimes:jpg,png|max:800',
-                'Thumbnails.*' => 'required|mimes:jpg,png|max:150'
+                'Files.*' => 'required|file',
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -62,22 +59,13 @@ class BirthdayCakeController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            if (count($Req->file('Thumbnails')) != count($Req->file('Images'))) {
-                return response()->macroJson(
-                    [],
-                    config('messages.FAILED_CODE'),
-                    config('messages.ARRAYS_NOT_EQUAL'),
-                    config('messages.HTTP_SUCCESS_CODE')
-                );
-            }
-            foreach ($Req->file('Images') as $Key => $Image) {
-                $LastInsertedId =  BirthdayCake::getLastInsertedID();
+            foreach ($Req->file('Files') as $Key => $File) {
+                $LastInsertedId =  Fonts::getLastInsertedID();
                 $LastInsertedId = ($LastInsertedId === 0) ? 1 : ++$LastInsertedId;
-                $Image = CustomHelpers::getBirthdayCakeImgWithID($Image, $LastInsertedId);
-                $ThisThumbnail = CustomHelpers::saveCompressReturnImgName($Req->file('Thumbnails')[$Key], 'birthday_cakes/thumbnails/');
-                $BulkData[] = ['image' => $Image, 'thumbnail' => $ThisThumbnail];
+                $File = CustomHelpers::getFontFileWithID($File, $LastInsertedId);
+                $BulkData[] = ['file' => $File];
             }
-            $Inserted = BirthdayCake::insertBulkBirthdayCakes($BulkData);
+            $Inserted = Fonts::insertBulkFonts($BulkData);
             if ($Inserted) {
                 return response()->macroJson(
                     [],
@@ -105,10 +93,9 @@ class BirthdayCakeController extends Controller
 
     public function edit(Request $Req)
     {
-        try {
+        try {           
             $Validator = Validator::make($Req->all(), [
-                'Image' => 'mimes:jpg,png|max:800',
-                'Thumbnail' => 'mimes:jpg,png|max:150'
+                'File' => 'file',
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -118,9 +105,8 @@ class BirthdayCakeController extends Controller
                     config('messages.HTTP_UNPROCESSABLE_DATA')
                 );
             }
-            $Image = (!is_null($Req->Image)) ? CustomHelpers::getBirthdayCakeImgWithID($Req->Image, $Req->ID) : null;
-            $Thumbnail = (!is_null($Req->Thumbnail)) ? CustomHelpers::saveCompressReturnImgName($Req->Thumbnail, 'birthday_cakes/thumbnails/') : null;
-            $Updated = BirthdayCake::updateBirthdayCake($Req->ID, $Image, $Thumbnail);
+            $File = (!is_null($Req->File)) ? CustomHelpers::getFontFileWithID($Req->File, $Req->ID) : null;
+            $Updated = Fonts::updateFont($Req->ID, $File);
             if ($Updated) {
                 return response()->macroJson(
                     [],
@@ -150,7 +136,7 @@ class BirthdayCakeController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Deleted = BirthdayCake::deleteBirthdayCakeByID($Req->ID);
+                $Deleted = Fonts::deleteFontByID($Req->ID);
                 if ($Deleted) {
                     return response()->macroJson(
                         [],
@@ -166,7 +152,7 @@ class BirthdayCakeController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            $Deleted = BirthdayCake::deleteAllBirthdayCakes();
+            $Deleted = Fonts::deleteAllFonts();
             if ($Deleted) {
                 return response()->macroJson(
                     [],
@@ -196,7 +182,7 @@ class BirthdayCakeController extends Controller
     {
         try {
             if ($Req->ID) {
-                $Restored = BirthdayCake::restoreBirthdayCakeByID($Req->ID);
+                $Restored = Fonts::restoreFontByID($Req->ID);
                 if ($Restored) {
                     return response()->macroJson(
                         [],
@@ -212,7 +198,7 @@ class BirthdayCakeController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            $Restored = BirthdayCake::restoreAllBirthdayCakes();
+            $Restored = Fonts::restoreAllFonts();
             if ($Restored) {
                 return response()->macroJson(
                     [],
@@ -238,12 +224,12 @@ class BirthdayCakeController extends Controller
         }
     }
 
-    public function show(Request $Req)
+    public function show(Request $Req , $ID=null)
     {
         try {
             if ($Req->ID) {
-                $Data = Cache::rememberForever('getBirthdayCakeByID' . $Req->ID, function () use ($Req) {
-                    return  BirthdayCake::getBirthdayCakeByID($Req->ID);
+                $Data = Cache::rememberForever('getFontByID' . $Req->ID, function () use ($Req) {
+                    return  Fonts::getFontByID($Req->ID);
                 });
                 return response()->macroJson(
                     $Data,
@@ -252,26 +238,21 @@ class BirthdayCakeController extends Controller
                     config('messages.HTTP_SUCCESS_CODE')
                 );
             }
-            /* 
-            * Here we can't use cache bcz then pagination will not work properly 
-            */
-            $BirthdayCakes = BirthdayCake::getBirthdayCakes();
+            $Fonts = Fonts::getFonts();
             $Data = [];
-            foreach ($BirthdayCakes as $BirthdayCake) {
+            foreach ($Fonts as $Font) {
                 array_push($Data, [
-                    "id" => $BirthdayCake->id,
-                    "image" => url('/storage/birthday_cakes') . '/' . $BirthdayCake->image,
-                    "thumbnail" => url('/storage/birthday_cakes/thumbnails') . '/' . $BirthdayCake->thumbnail
+                    "id" => $Font->id,
+                    "file" => url('/storage/fonts') . '/' . $Font->file,
                 ]);
             }
-            return response()->macroJsonExtention(
+            return response()->macroJson(
                 $Data,
-                'pagination',
-                (empty($Data)) ? [] : [CustomHelpers::getPaginationKeys($BirthdayCakes)],
                 config('messages.SUCCESS_CODE'),
                 (empty($Data)) ? config('messages.NO_RECORD') : '',
                 config('messages.HTTP_SUCCESS_CODE')
             );
+
         } catch (Exception $Error) {
             report($Error);
             return response()->macroJson(
@@ -282,4 +263,5 @@ class BirthdayCakeController extends Controller
             );
         }
     }
+
 }

@@ -23,12 +23,12 @@ class BusinessCard extends Model
     */
     public static function getLastInsertedID()
     {
-        return BusinessCard::orderByDesc('id')->first()->id ?? 0;
+        return self::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertBusinessCard(string $FrontImage, string $BackImage, string $FrontSvg, string $BackSvg)
     {
-        return BusinessCard::create([
+        return self::create([
             'front_image' => $FrontImage,
             'back_image' => $BackImage,
             'front_svg' => $FrontSvg,
@@ -38,7 +38,7 @@ class BusinessCard extends Model
 
     public static function updateBusinessCard(int $ID, string $FrontImage, string $BackImage)
     {
-        return BusinessCard::where('id', $ID)->update([
+        return self::where('id', $ID)->update([
             'front_image' => $FrontImage,
             'back_image' => $BackImage
         ]);
@@ -46,16 +46,16 @@ class BusinessCard extends Model
 
     public static function deleteBusinessCard(int $ID)
     {
-        return BusinessCard::where('id', $ID)->delete();
+        return self::where('id', $ID)->delete();
     }
 
     public static function getBusinessCardByID(int $ID)
     {
-        return BusinessCard::findOrFail($ID);
+        return self::findOrFail($ID);
     }
 
     public static function getBusinessCards()
     {
-        return BusinessCard::paginate(10);
+        return self::paginate(10);
     }
 }

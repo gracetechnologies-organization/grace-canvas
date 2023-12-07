@@ -34,7 +34,7 @@ class SaveResumePage extends Model
     */
     public static function savePage(int $UserID, int $ResumeID, string $FrontImage, $FormData, string $PageCode)
     {
-        return SaveResumePage::create([
+        return self::create([
             'user_id' => $UserID,
             'resume_id' => $ResumeID,
             'front_image' => $FrontImage,
@@ -45,22 +45,22 @@ class SaveResumePage extends Model
 
     public static function updatePage(int $ID, string $PageCode)
     {
-        return SaveResumePage::where('id',$ID)->update(['page_code' => $PageCode]);
+        return self::where('id',$ID)->update(['page_code' => $PageCode]);
     }
 
     public static function deletePage(int $ID)
     {
-        return SaveResumePage::find($ID)->forceDelete();
+        return self::find($ID)->forceDelete();
     }
 
     public static function getSavedPageByID(int $ID)
     {
-        return SaveResumePage::findOrFail($ID);
+        return self::findOrFail($ID);
     }
 
     public static function getSavedPageByUserID(int $UserID)
     {
-        return SaveResumePage::with('user')->where('user_id', $UserID)->get();
+        return self::with('user')->where('user_id', $UserID)->get();
     }
 
 }

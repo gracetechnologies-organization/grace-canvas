@@ -23,17 +23,17 @@ class BirthdayTemplates extends Model
     {
         // Define a mapping for enum values to human-readable values
         $TypeMapping = [
-            '1' => 'landscape',
-            '2' => 'portrait',
-            '3' => 'square',
+            1 => 'landscape',
+            2 => 'portrait',
+            3 => 'square',
         ];
         // Check if the value exists in the mapping; if not, return the value as is
-        return $TypeMapping[$Value] ?? $Value;
+        return $TypeMapping[$Value] ?? null;
     }
 
     public static function getBirthdayTemplateByID(int $ID)
     {
-        $BirthdayTemplate = BirthdayTemplates::findOrFail($ID);
+        $BirthdayTemplate = self::findOrFail($ID);
         return [
             "id" => $BirthdayTemplate->id,
             "image" => url('/storage/birthday_templates') . '/' . $BirthdayTemplate->image,
@@ -45,7 +45,7 @@ class BirthdayTemplates extends Model
 
     // public static function getDefaultBirthdayTemplate()
     // {
-    //     $birthdayTemplates = BirthdayTemplates::where('default', 1)->first();
+    //     $birthdayTemplates = self::where('default', 1)->first();
     //     return [
     //         "id" => $birthdayTemplates->id,
     //         "front_image" => url('/storage/images/birthday_templates') . '/' . $birthdayTemplates->front_image,
@@ -58,19 +58,21 @@ class BirthdayTemplates extends Model
     //     ];
     // }
 
-    public static function getBirthdayTemplates()
+    public static function getBirthdayTemplates(int $Type = null)
     {
-        return BirthdayTemplates::paginate(4);
+        return self::when($Type, function ($Query) use ($Type) {
+            return $Query->where('type', $Type);
+        })->paginate(6);
     }
 
     public static function getLastInsertedID()
     {
-        return BirthdayTemplates::orderByDesc('id')->first()->id ?? 0;
+        return self::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertBirthdayTemplates(string $Image, string $Thumbnail, int $Type, int $Version = 0)
     {
-        return BirthdayTemplates::create([
+        return self::create([
             'image' => $Image,
             'thumbnail' => $Thumbnail,
             'type' => $Type,
@@ -80,12 +82,12 @@ class BirthdayTemplates extends Model
 
     public static function insertBulkBirthdayTemplates(array $Data)
     {
-        return BirthdayTemplates::insert($Data);
+        return self::insert($Data);
     }
 
     public static function updateBirthdayTemplate(int $ID, string $Image = null, string $Thumbnail = null, int $Type = null, int $Version = null)
     {
-        $BirthdayTemplete = BirthdayTemplates::findOrFail($ID);
+        $BirthdayTemplete = self::findOrFail($ID);
         if (!is_null($Image)) $BirthdayTemplete->image = $Image;
         if (!is_null($Thumbnail)) $BirthdayTemplete->thumbnail = $Thumbnail;
         if (!is_null($Type)) $BirthdayTemplete->type = $Type;
@@ -95,21 +97,21 @@ class BirthdayTemplates extends Model
 
     public static function deleteBirthdayTemplateByID(int $ID)
     {
-        return BirthdayTemplates::where('id', $ID)->delete();
+        return self::where('id', $ID)->delete();
     }
 
     public static function deleteAllBirthdayTemplates()
     {
-        return BirthdayTemplates::query()->update(['deleted_at' => now()]);
+        return self::query()->update(['deleted_at' => now()]);
     }
 
     public static function restoreBirthdayTempleteByID(int $ID)
     {
-        return BirthdayTemplates::where('id', $ID)->restore();
+        return self::where('id', $ID)->restore();
     }
 
     public static function restoreAllBirthdayTempletes()
     {
-        return BirthdayTemplates::query()->restore();
+        return self::query()->restore();
     }
 }

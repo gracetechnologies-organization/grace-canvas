@@ -132,47 +132,45 @@ class TemplatesController extends Controller
         );
     }
 
-    public function storeWallpaper(Request $Req)
-    {
-        $Validator = Validator::make($Req->all(), [
-            'FrontImage' => 'required|mimes:png,jpg|max:500',
-            'Type' => 'required|integer',
-            'CatID' => 'required|integer'
-        ]);
-        if ($Validator->fails()) {
-            return response()->macroJson(
-                [],
-                config('messages.FAILED_CODE'),
-                $Validator->errors(),
-                config('messages.HTTP_UNPROCESSABLE_DATA')
-            );
-        }
-        $FrontImage = CustomHelpers::getWallpaperImgName($Req->FrontImage);
-        $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->Type, $Req->CatID);
-        if ($Inserted) {
-            return response()->macroJson(
-                [],
-                config('messages.SUCCESS_CODE'),
-                config('messages.INSERTION_SUCCESS'),
-                config('messages.HTTP_SUCCESS_CODE')
-            );
-        }
-        return response()->macroJson(
-            [],
-            config('messages.FAILED_CODE'),
-            config('messages.INSERTION_FAILED'),
-            config('messages.HTTP_SUCCESS_CODE')
-        );
-    }
+    // public function storeWallpaper(Request $Req)
+    // {
+    //     $Validator = Validator::make($Req->all(), [
+    //         'FrontImage' => 'required|mimes:png,jpg|max:500',
+    //         'Type' => 'required|integer',
+    //         'CatID' => 'required|integer'
+    //     ]);
+    //     if ($Validator->fails()) {
+    //         return response()->macroJson(
+    //             [],
+    //             config('messages.FAILED_CODE'),
+    //             $Validator->errors(),
+    //             config('messages.HTTP_UNPROCESSABLE_DATA')
+    //         );
+    //     }
+    //     $FrontImage = CustomHelpers::getWallpaperImgName($Req->FrontImage);
+    //     $Inserted = Wallpaper::insertWallpaper($FrontImage, $Req->Type, $Req->CatID);
+    //     if ($Inserted) {
+    //         return response()->macroJson(
+    //             [],
+    //             config('messages.SUCCESS_CODE'),
+    //             config('messages.INSERTION_SUCCESS'),
+    //             config('messages.HTTP_SUCCESS_CODE')
+    //         );
+    //     }
+    //     return response()->macroJson(
+    //         [],
+    //         config('messages.FAILED_CODE'),
+    //         config('messages.INSERTION_FAILED'),
+    //         config('messages.HTTP_SUCCESS_CODE')
+    //     );
+    // }
 
     public function storeBulkWallpapers(Request $Req)
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                // 'FrontImages' => 'required',
-                // 'Thumbnails' => 'required',
-                'FrontImages.*' => 'mimes:png,jpg|max:500',
-                'Thumbnails.*' => 'mimes:png,jpg|max:200',
+                'FrontImages.*' => 'mimes:webp|max:500',
+                'Thumbnails.*' => 'mimes:webp|max:200',
                 'Type' =>  'required|integer',
                 'CatID' => 'required|integer'
             ]);
@@ -376,9 +374,6 @@ class TemplatesController extends Controller
                 'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
                 'thumbnail' => url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail,
                 'type' => $Wallpaper->type,
-                'created_at' => $Wallpaper->created_at,
-                'updated_at' => $Wallpaper->updated_at,
-                'deleted_at' => $Wallpaper->deleted_at,
                 'category' => $Category
             ]);
         }
@@ -388,7 +383,6 @@ class TemplatesController extends Controller
     public function showWallpapers(Request $Req)
     {
         try {
-            // dd(Cache::flush());
             if ($Req->CatID) {
                 $Data = Cache::remember('showWallpapers' . $Req->CatID, now()->addDays(30), function () use ($Req) {
                     $Category = Category::getCategoryByID($Req->CatID);
@@ -419,9 +413,6 @@ class TemplatesController extends Controller
                         'front_image' => url('/storage/wallpapers') . '/' . $Wallpaper->front_image,
                         'thumbnail' => url('/storage/wallpapers/thumbnails') . '/' . $Wallpaper->thumbnail,
                         'type' => $Wallpaper->type,
-                        'created_at' => $Wallpaper->created_at,
-                        'updated_at' => $Wallpaper->updated_at,
-                        'deleted_at' => $Wallpaper->deleted_at,
                         'category' => $Wallpaper->categories
                     ]);
                 }
@@ -465,9 +456,6 @@ class TemplatesController extends Controller
                             'name' => $Category->name,
                             'description' => $Category->description,
                             'image' => url('/storage/images') . '/' . $Category->image,
-                            'created_at' => $Category->created_at,
-                            'updated_at' => $Category->updated_at,
-                            'deleted_at' => $Category->deleted_at,
                             'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
                             'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
                         ]);
@@ -484,9 +472,6 @@ class TemplatesController extends Controller
                             'name' => $Category->name,
                             'description' => $Category->description,
                             'image' => url('/storage/images') . '/' . $Category->image,
-                            'created_at' => $Category->created_at,
-                            'updated_at' => $Category->updated_at,
-                            'deleted_at' => $Category->deleted_at,
                             'wallpapers' => CustomHelpers::getOnlyWallpapers($Category->wallpapers, $Category->name),
                             'previews' => CustomHelpers::getOnlyPreviews($Category->wallpapers, $Category->name),
                         ]);
@@ -510,17 +495,7 @@ class TemplatesController extends Controller
             );
         }
     }
-
-    public function edit()
-    {
-        //
-    }
-
-    public function destroy()
-    {
-        //
-    }
-
+    
     public function birthdayTemplates(Request $Req)
     {
         try {
@@ -550,7 +525,7 @@ class TemplatesController extends Controller
             /* 
             * Here we can't use cache bcz then pagination will not work properly 
             */
-            $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates();
+            $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates($Req->Type);
             $Data = [];
             foreach ($BirthdayTemplates as $BirthdayTemplate) {
                 array_push($Data, [

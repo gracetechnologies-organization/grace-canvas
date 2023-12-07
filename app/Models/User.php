@@ -61,12 +61,30 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
+    /*
+    |--------------------------------------------------------------------------
+    | ORM Relations
+    |--------------------------------------------------------------------------
+    */
     public function SaveResumePage()
     {
         return $this->hasMany(SaveResumePage::class);
     }
 
+    public function subscribPlan()
+    {
+        return $this->hasMany(SubcribePlan::class, 'user_id');
+    }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class); // Assuming you have a Subscription model
+    }
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    */
     public static function getUserData()
     {
         return auth()->user();
@@ -87,15 +105,4 @@ class User extends Authenticatable
         $Subscriptions = auth()->user()->subscriptions;
         return $Subscriptions;
     }
-
-    public function subscribPlan()
-    {
-        return $this->hasMany(SubcribePlan::class, 'user_id');
-    }
-
-    public function subscription()
-    {
-        return $this->hasOne(Subscription::class); // Assuming you have a Subscription model
-    }
-
 }

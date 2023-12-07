@@ -5,12 +5,15 @@ use App\Http\Controllers\BirthdayTemplatesController;
 use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClockWallpaperController;
+use App\Http\Controllers\FontsController;
 use App\Http\Controllers\LetterHeadController;
 use App\Http\Controllers\ParentCategoryController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
 use App\Http\Controllers\StickerController;
+use App\Models\ParentCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +38,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/create', [ParentCategoryController::class, 'create']);
         Route::post('/edit/{ID}', [ParentCategoryController::class, 'edit']);
         Route::post('/destroy/{ID}', [ParentCategoryController::class, 'destroy']);
+        Route::post('/restore/{ID?}', [ParentCategoryController::class, 'restore']);
         Route::get('/show/{ID?}', [ParentCategoryController::class, 'show']);
     });
 
@@ -42,7 +46,7 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/create', [CategoryController::class, 'create']);
         Route::post('/edit/{ID}', [CategoryController::class, 'edit']);
         Route::post('/destroy/{ID}', [CategoryController::class, 'destroy']);
-        Route::get('/show/{ID?}', [CategoryController::class, 'show']);
+        Route::get('/show/{ID?}/{ParentCatID?}', [CategoryController::class, 'show']);
     });
 
     Route::prefix('template')->group(function () {
@@ -54,9 +58,9 @@ Route::middleware('auth.api.reqs')->group(function () {
             Route::get('/business-cards', [TemplatesController::class, 'showBusinessCards']);
             Route::get('/letter-heads', [TemplatesController::class, 'showLetterHeads']);
             Route::get('/resumes', [TemplatesController::class, 'showResumes']);
+            Route::get('/birthday-templates/{ID?}', [TemplatesController::class, 'birthdayTemplates']);
             Route::get('/wallpapers/{CatID?}', [TemplatesController::class, 'showWallpapers']);
             Route::get('/category/wallpapers/{CatID?}', [TemplatesController::class, 'showCategoriesWallpapers']);
-            Route::get('/birthday-templates/{ID?}', [TemplatesController::class, 'birthdayTemplates']);
         });
     });
 
@@ -82,8 +86,21 @@ Route::middleware('auth.api.reqs')->group(function () {
 
     Route::prefix('wallpaper')->group(function () {
         Route::post('/edit/{ID}', [WallpaperController::class, 'edit']);
-        Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
         Route::post('/destroy/{ID}', [WallpaperController::class, 'destroy']);
+        Route::post('/destroy/{CatID}/{Type}', [WallpaperController::class, 'destroy']);
+        Route::post('/restore/{ID}', [WallpaperController::class, 'restore']);
+        Route::post('/restore/{CatID}/{Type}', [WallpaperController::class, 'restore']);
+    });
+
+    Route::prefix('clock/wallpaper/v1')->group(function () {
+        Route::post('/upload/bulk', [ClockWallpaperController::class, 'uploadBulk']);
+        Route::post('/edit/{ID}', [ClockWallpaperController::class, 'edit']);
+        Route::post('/destroy/{ID?}', [ClockWallpaperController::class, 'destroy']);
+        Route::post('/destroy/{CatID?}', [ClockWallpaperController::class, 'destroy']);
+        Route::post('/restore/{ID}', [ClockWallpaperController::class, 'restore']);
+        Route::post('/restore/{CatID}/{Type}', [ClockWallpaperController::class, 'restore']);
+        Route::get('/show/{CatID?}', [ClockWallpaperController::class, 'show']);
+        // Route::get('/show/category/wallpapers/{CatID?}', [ClockWallpaperController::class, 'showCategoriesWallpapers']);
     });
 
     Route::prefix('birthday-template')->group(function () {
@@ -113,11 +130,21 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::get('/show/{ID?}', [StickerController::class, 'show']);
     });
 
+    Route::prefix('font')->group(function () {
+        Route::post('/upload', [FontsController::class, 'upload']);
+        Route::post('/upload/bulk', [FontsController::class, 'uploadBulk']);
+        Route::post('/edit/{ID}', [FontsController::class, 'edit']);
+        Route::post('/destroy/{ID?}', [FontsController::class, 'destroy']);
+        Route::post('/restore/{ID?}', [FontsController::class, 'restore']);
+        Route::get('/show/{ID?}', [FontsController::class, 'show']);
+    });
+
     Route::prefix('cache')->group(function () {
         Route::post('/destroy', [CacheController::class, 'destroy']);
     });
 
     Route::get('testing', [LetterHeadController::class, 'TestingMethod'])->withoutMiddleware('auth.api.reqs');
+
 });
 
 

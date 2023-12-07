@@ -31,12 +31,12 @@ class Resume extends Model
     */
     public static function getLastInsertedID()
     {
-        return Resume::orderByDesc('id')->first()->id ?? 0;
+        return self::orderByDesc('id')->first()->id ?? 0;
     }
 
     public static function insertResume(string $FrontImage, int $Version, int $CatID)
     {
-        return Resume::create([
+        return self::create([
             'front_image' => $FrontImage,
             'version' => $Version,
             'cat_id' => $CatID,
@@ -45,7 +45,7 @@ class Resume extends Model
 
     public static function updateResume(int $ID, string $FrontImage = null, int $Version = null, int $CatID = null)
     {
-        $Resume = Resume::findOrFail($ID);
+        $Resume = self::findOrFail($ID);
         if (!is_null($FrontImage)) $Resume->front_image = $FrontImage;
         if (!is_null($Version)) $Resume->version = $Version;
         if (!is_null($CatID)) $Resume->cat_id = $CatID;
@@ -55,7 +55,7 @@ class Resume extends Model
     // If no params are provided this function will delete all records
     public static function deleteResumesByGivenParams(int $ID = null,  int $CatID = null, int $Version = null)
     {
-        return Resume::when($ID, function ($Query, $ID) {
+        return self::when($ID, function ($Query, $ID) {
             return $Query->where('id', $ID);
         })->when($CatID, function ($Query, $CatID) {
             return $Query->where('cat_id', $CatID);
@@ -66,26 +66,26 @@ class Resume extends Model
 
     public static function deleteAllResumes(int $ID)
     {
-        return Resume::query()->update(['deleted_at' => now()]);
+        return self::query()->update(['deleted_at' => now()]);
     }
 
     public static function restoreResume(int $ID)
     {
-        return Resume::where('id', $ID)->restore();
+        return self::where('id', $ID)->restore();
     }
 
     public static function restoreAllResumes()
     {
-        return Resume::query()->restore();
+        return self::query()->restore();
     }
 
     public static function getResumeByID(int $ID)
     {
-        return Resume::findOrFail($ID);
+        return self::findOrFail($ID);
     }
 
     public static function getResumes()
     {
-        return Resume::with('category');
+        return self::with('category');
     }
 }

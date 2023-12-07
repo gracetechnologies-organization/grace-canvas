@@ -43,11 +43,11 @@ class Plan extends Model
     */
     public static function getPlanByID(int $ID)
     {
-        return Plan::findOrFail($ID);
+        return self::findOrFail($ID);
     }
 
     public static function getPlans()
     {
-        return Plan::all();
+        return self::all();
     }
 }
