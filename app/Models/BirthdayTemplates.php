@@ -62,7 +62,7 @@ class BirthdayTemplates extends Model
     {
         return self::when($Type, function ($Query) use ($Type) {
             return $Query->where('type', $Type);
-        })->paginate(6);
+        })->paginate(8);
     }
 
     public static function getLastInsertedID()
