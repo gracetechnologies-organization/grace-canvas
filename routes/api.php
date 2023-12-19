@@ -106,7 +106,6 @@ Route::middleware('auth.api.reqs')->group(function () {
     Route::prefix('birthday-template')->group(function () {
         Route::post('/upload', [BirthdayTemplatesController::class, 'upload']);
         Route::post('/upload/bulk', [BirthdayTemplatesController::class, 'uploadBulk']);
-        // Route::post('/create', [BirthdayTemplatesController::class, 'create']);
         Route::post('/edit/{ID}', [BirthdayTemplatesController::class, 'edit']);
         Route::post('/destroy/{ID?}', [BirthdayTemplatesController::class, 'destroy']);
         Route::post('/restore/{ID?}', [BirthdayTemplatesController::class, 'restore']);
