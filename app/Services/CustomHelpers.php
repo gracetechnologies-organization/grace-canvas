@@ -115,6 +115,18 @@ class CustomHelpers
         return $ImgName;
     }
 
+    public static function getPhotoCollageImgWithID(object $Img, int $ID)
+    {
+        $ImgName = $ID . "_" . str_replace(" ", "_", $Img->getClientOriginalName());
+        /*
+        |--------------------------------------------------------------------------
+        | Save the image to the default storage path "storage/app/public/images"
+        |--------------------------------------------------------------------------
+        */
+        Storage::disk('public')->putFileAs('PhotoCollages', $Img, $ImgName);
+        return $ImgName;
+    }
+
     public static function getFontFileWithID(object $File, int $ID)
     {
         $FileName = $ID . "_" . str_replace(" ", "_", $File->getClientOriginalName());

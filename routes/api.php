@@ -9,6 +9,7 @@ use App\Http\Controllers\ClockWallpaperController;
 use App\Http\Controllers\FontsController;
 use App\Http\Controllers\LetterHeadController;
 use App\Http\Controllers\ParentCategoryController;
+use App\Http\Controllers\PhotoCollageController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
@@ -136,6 +137,15 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/destroy/{ID?}', [FontsController::class, 'destroy']);
         Route::post('/restore/{ID?}', [FontsController::class, 'restore']);
         Route::get('/show/{ID?}', [FontsController::class, 'show']);
+    });
+
+    Route::prefix('photo-collage')->group(function () {
+        Route::post('/upload', [PhotoCollageController::class, 'upload']);
+        Route::post('/upload/bulk', [PhotoCollageController::class, 'uploadBulk']);
+        Route::post('/edit/{ID}', [PhotoCollageController::class, 'edit']);
+        Route::delete('/destroy/{ID?}', [PhotoCollageController::class, 'destroy']);
+        Route::post('/restore/{ID?}', [PhotoCollageController::class, 'restore']);
+        Route::get('/show/{ID?}', [PhotoCollageController::class, 'show']);
     });
 
     Route::prefix('cache')->group(function () {

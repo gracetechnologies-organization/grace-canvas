@@ -13,7 +13,7 @@ class Sticker extends Model
     protected $fillable = [
         'image',
         'thumbnail'
-    ];
+    ]; 
     /*
     |--------------------------------------------------------------------------
     | ORM Relations

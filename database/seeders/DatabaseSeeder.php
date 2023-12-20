@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             BirthdayCakeSeeder::class,
             StickerSeeder::class,
             FontsSeeder::class,
-            ClockWallpaperSeeder::class
+            ClockWallpaperSeeder::class,
+            PhotoCollageSeeder::class
         ]);
     }
 }
