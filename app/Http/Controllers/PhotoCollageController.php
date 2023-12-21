@@ -16,8 +16,8 @@ class PhotoCollageController extends Controller
     {
         
         $Validator = Validator::make($Req->all(), [
-            'Image' => 'required|mimes:png|max:800',
-            'Thumbnail' => 'required|mimes:png|max:150'
+            'Image' => 'required|mimes:jpg,png|max:800',
+            'Thumbnail' => 'required|mimes:jpg,png|max:150'
         ]);
         if ($Validator->fails()) {
             return response()->macroJson(
@@ -53,8 +53,8 @@ class PhotoCollageController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Images.*' => 'required|mimes:png|max:800',
-                'Thumbnails.*' => 'required|mimes:png|max:150'
+                'Images.*' => 'required|mimes:jpg,png|max:800',
+                'Thumbnails.*' => 'required|mimes:jpg,png|max:150'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -109,8 +109,8 @@ class PhotoCollageController extends Controller
     {
         try {
             $Validator = Validator::make($Req->all(), [
-                'Image' => 'mimes:png|max:800',
-                'Thumbnail' => 'mimes:png|max:150'
+                'Image' => 'mimes:jpg,png|max:800',
+                'Thumbnail' => 'mimes:jpg,png|max:150'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
