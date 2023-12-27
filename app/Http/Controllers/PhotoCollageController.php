@@ -14,7 +14,6 @@ class PhotoCollageController extends Controller
 {
     public function upload(Request $Req)
     {
-        
         $Validator = Validator::make($Req->all(), [
             'Image' => 'required|mimes:jpg,png|max:800',
             'Thumbnail' => 'required|mimes:jpg,png|max:150'
@@ -110,7 +109,8 @@ class PhotoCollageController extends Controller
         try {
             $Validator = Validator::make($Req->all(), [
                 'Image' => 'mimes:jpg,png|max:800',
-                'Thumbnail' => 'mimes:jpg,png|max:150'
+                'Thumbnail' => 'mimes:jpg,png|max:150',
+                'Dimensions' => 'json'
             ]);
             if ($Validator->fails()) {
                 return response()->macroJson(
@@ -122,7 +122,7 @@ class PhotoCollageController extends Controller
             }
             $Image = (!is_null($Req->Image)) ? CustomHelpers::getPhotoCollageImgWithID($Req->Image, $Req->ID) : null;
             $Thumbnail = (!is_null($Req->Thumbnail)) ? CustomHelpers::saveCompressReturnImgName($Req->Thumbnail, 'PhotoCollages/thumbnails/') : null;
-            $Updated = PhotoCollage::updateInfo($Req->ID, $Image, $Thumbnail);
+            $Updated = PhotoCollage::updateInfo($Req->ID, $Image, $Thumbnail, $Req->Dimensions);
             if ($Updated) {
                 return response()->macroJson(
                     [],
@@ -243,7 +243,6 @@ class PhotoCollageController extends Controller
     public function show(Request $Req)
     {
         try {
-            // dd($Req->all());
             if ($Req->ID) {
                 $Data = Cache::rememberForever('getPhotoCollageByID' . $Req->ID, function () use ($Req) {
                     return  PhotoCollage::getInfoByID($Req->ID);
@@ -264,7 +263,8 @@ class PhotoCollageController extends Controller
                 array_push($Data, [
                     "id" => $PhotoCollage->id,
                     "image" => url('/storage/PhotoCollages') . '/' . $PhotoCollage->image,
-                    "thumbnail" => url('/storage/PhotoCollages/thumbnails') . '/' . $PhotoCollage->thumbnail
+                    "thumbnail" => url('/storage/PhotoCollages/thumbnails') . '/' . $PhotoCollage->thumbnail,
+                    "dimensions" => json_decode($PhotoCollage->dimensions)
                 ]);
             }
             return response()->macroJsonExtention(

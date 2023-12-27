@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('image');
             $table->text('thumbnail');
+            $table->json('dimensions')->nullable();
             $table->timestamps();
             $table->softDeletesTz();            
         });

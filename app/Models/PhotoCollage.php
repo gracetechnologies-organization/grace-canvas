@@ -40,11 +40,12 @@ class PhotoCollage extends Model
         return self::insert($Data);
     }
 
-    public static function updateInfo(int $ID, string $Image = null, string $Thumbnail = null)
+    public static function updateInfo(int $ID, string $Image = null, string $Thumbnail = null, string $Dimensions)
     {
         $PhotoCollage = self::findOrFail($ID);
         if (!is_null($Image)) $PhotoCollage->image = $Image;
         if (!is_null($Thumbnail)) $PhotoCollage->thumbnail = $Thumbnail;
+        if (!is_null($Dimensions)) $PhotoCollage->dimensions = $Dimensions;
         return $PhotoCollage->save();
     }
 
@@ -84,7 +85,8 @@ class PhotoCollage extends Model
         return [
             "id" => $PhotoCollage->id,
             "image" => url('/storage/PhotoCollages') . '/' . $PhotoCollage->image,
-            "thumbnail" => url('/storage/PhotoCollages/thumbnails') . '/' . $PhotoCollage->thumbnail
+            "thumbnail" => url('/storage/PhotoCollages/thumbnails') . '/' . $PhotoCollage->thumbnail,
+            "dimensions" => json_decode($PhotoCollage->dimensions)
         ];
     }
 
