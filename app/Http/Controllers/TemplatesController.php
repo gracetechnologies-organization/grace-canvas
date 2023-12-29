@@ -495,7 +495,7 @@ class TemplatesController extends Controller
             );
         }
     }
-    
+
     public function birthdayTemplates(Request $Req)
     {
         try {
@@ -521,20 +521,19 @@ class TemplatesController extends Controller
             //         config('messages.HTTP_SUCCESS_CODE')
             //     );
             // }
-            
+
             /* 
             * Here we can't use cache bcz then pagination will not work properly 
             */
             $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates($Req->Type);
-            $Data = [];
             foreach ($BirthdayTemplates as $BirthdayTemplate) {
-                array_push($Data, [
+                $Data[] = [
                     "id" => $BirthdayTemplate->id,
                     "image" => url('/storage/birthday_templates') . '/' . $BirthdayTemplate->image,
                     "thumbnail" => url('/storage/birthday_templates/thumbnails') . '/' . $BirthdayTemplate->thumbnail,
                     "type" => $BirthdayTemplate->type,
                     "version" => $BirthdayTemplate->version
-                ]);
+                ];
             }
             return response()->macroJsonExtention(
                 $Data,
