@@ -14,7 +14,7 @@ class BirthdayTemplatesController extends Controller
     {
         $Validator = Validator::make($Req->all(), [
             'Image' => 'required|mimes:jpg,png|max:800',
-            'Thumbnail' => 'required|mimes:jpg,png|max:150',
+            'Thumbnail' => 'required|mimes:jpg,png|max:200',
             'Type' => 'required|integer',
             'Version' => 'required|integer'
         ]);
@@ -53,7 +53,7 @@ class BirthdayTemplatesController extends Controller
         try {
             $Validator = Validator::make($Req->all(), [
                 'Images.*' => 'required|mimes:jpg,png|max:800',
-                'Thumbnails.*' => 'required|mimes:jpg,png|max:150',
+                'Thumbnails.*' => 'required|mimes:jpg,png|max:200',
                 'Type' => 'required|integer',
                 'Version' => 'required|integer'
             ]);
@@ -111,7 +111,7 @@ class BirthdayTemplatesController extends Controller
         try {
             $Validator = Validator::make($Req->all(), [
                 'Image' => 'mimes:jpg,png|max:800',
-                'Thumbnail' => 'mimes:jpg,png|max:150',
+                'Thumbnail' => 'mimes:jpg,png|max:200',
                 'Type' => 'integer',
                 'Version' => 'integer'
             ]);
