@@ -525,7 +525,7 @@ class TemplatesController extends Controller
             /* 
             * Here we can't use cache bcz then pagination will not work properly 
             */
-            $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates($Req->Type);
+            $BirthdayTemplates = BirthdayTemplates::getBirthdayTemplates('desc', $Req->Type);
             foreach ($BirthdayTemplates as $BirthdayTemplate) {
                 $Data[] = [
                     "id" => $BirthdayTemplate->id,

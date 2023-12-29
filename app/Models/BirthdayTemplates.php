@@ -58,11 +58,11 @@ class BirthdayTemplates extends Model
     //     ];
     // }
 
-    public static function getBirthdayTemplates(int $Type = null)
+    public static function getBirthdayTemplates(string $OrderBy, int $Type = null)
     {
         return self::when($Type, function ($Query) use ($Type) {
             return $Query->where('type', $Type);
-        })->orderByDesc('id')->paginate(8);
+        })->orderBy('id', $OrderBy)->paginate(8);
     }
 
     public static function getLastInsertedID()
