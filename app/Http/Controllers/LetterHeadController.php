@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class LetterHeadController extends Controller
 {
-    public function TestingMethod()
-    {
-       return Process::run('dir')->output();
-    }
-
     public function index()
     {
         //

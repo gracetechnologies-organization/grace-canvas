@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use app\Contracts\DefaultMethods;
+use App\Models\TestModel;
+use App\Models\TestModel2;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -15,7 +18,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(DefaultMethods::class, function ($app) {
+            return new TestModel2();
+        });
+
+        $this->app->bind(DefaultMethods::class, function ($app) {
+            return new TestModel();
+        });
     }
 
     /**

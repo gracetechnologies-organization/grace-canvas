@@ -14,7 +14,9 @@ use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\WallpaperController;
 use App\Http\Controllers\StickerController;
+use App\Http\Controllers\TestModelController;
 use App\Models\ParentCategory;
+use App\Models\TestModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -152,7 +154,12 @@ Route::middleware('auth.api.reqs')->group(function () {
         Route::post('/destroy', [CacheController::class, 'destroy']);
     });
 
-    Route::get('testing', [LetterHeadController::class, 'TestingMethod'])->withoutMiddleware('auth.api.reqs');
+    Route::prefix('test')->group(function () {
+
+        Route::get('/contracts', [TestModelController::class, 'show'])->withoutMiddleware('auth.api.reqs');
+        Route::get('/contracts/birthday_templates', [TestModelController::class, 'showBirthdayTemplates'])->withoutMiddleware('auth.api.reqs');
+
+    });
 
 });
 
