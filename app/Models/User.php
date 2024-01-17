@@ -2,20 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Laravel\Cashier\Billable;
-use Laravel\Cashier\Subscription;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
-    use Billable;
 
 
     /**
@@ -66,20 +62,8 @@ class User extends Authenticatable
     | ORM Relations
     |--------------------------------------------------------------------------
     */
-    public function SaveResumePage()
-    {
-        return $this->hasMany(SaveResumePage::class);
-    }
-
-    public function subscribPlan()
-    {
-        return $this->hasMany(SubcribePlan::class, 'user_id');
-    }
-
-    public function subscription()
-    {
-        return $this->hasOne(Subscription::class); // Assuming you have a Subscription model
-    }
+    // 
+    
     /*
     |--------------------------------------------------------------------------
     | Helpers
