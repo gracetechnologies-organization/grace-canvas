@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+        // Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -168,7 +168,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
         // App\Providers\FortifyServiceProvider::class,
     ])->toArray(),
 
@@ -185,9 +184,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Fortify' => Laravel\Fortify\FortifyFacade::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'GoogleTranslate' => Stichoza\GoogleTranslate\GoogleTranslate::class,
-        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ])->toArray(),
 
 ];
