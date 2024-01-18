@@ -255,7 +255,7 @@ class BirthdayCakeController extends Controller
             /* 
             * Here we can't use cache bcz then pagination will not work properly 
             */
-            $BirthdayCakes = BirthdayCake::getBirthdayCakes();
+            $BirthdayCakes = BirthdayCake::getBirthdayCakes('desc');
             $Data = [];
             foreach ($BirthdayCakes as $BirthdayCake) {
                 array_push($Data, [
