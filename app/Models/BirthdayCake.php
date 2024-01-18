@@ -38,7 +38,7 @@ class BirthdayCake extends Model
 
     public static function getBirthdayCakes(string $OrderBy)
     {
-        return self::orderBy('created_at', $OrderBy)->paginate(9);
+        return self::orderBy('id', $OrderBy)->paginate(9);
     }
 
     public static function getLastInsertedID()
